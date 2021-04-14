@@ -8,7 +8,7 @@ import sqlite3
 import time
 
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -103,17 +103,16 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
     driver = login(username, password)
     for year in years:
         print(year)
-        driver, search_results = update_database(driver, year)
-        with db:
-            db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
+        #driver, search_results = update_database(driver, year)
+        #with db:
+        #    db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
         max_pro = db.execute('SELECT MAX(number) FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
-        if max_pro <= 500:
+        print(max_pro)
+        if max_pro - 500 > len(common_names):
             # update_database() gets the last 500 matters of each type
             # No type except PRO ever has > 500 matters per year
             # If max_pro <= 500 then we've already retrieved all matters for the year
-            continue
-        if max_pro - 500 > len(common_names):
-            # It's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
+            # If max_pro - 500 > ~50, it's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
             for name in common_names:
                 print(name)
                 driver = search(driver, party_surname=name, year=year, matter_type='PRO')
@@ -121,10 +120,12 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
                 with db:
                     db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
                 count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
+                print(count_pro)
                 if count_pro == max_pro:
                     # ie we've found all matters for the year
                     break
         count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
+        print(count_pro)
         if count_pro == max_pro:
             # ie we've found all matters for the year
             continue
@@ -163,7 +164,7 @@ def login(username='jlondon@robertsonhayles.com', password=None):
     #chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.headless = True
     driver = webdriver.Chrome(options=chrome_options)
-    #driver.implicitly_wait(0.5 + (not chrome_options.headless))
+    driver.implicitly_wait(1.5)
     
     driver.get(LOGIN_URL)
     if 'Acknowledge' in driver.title:
@@ -177,15 +178,13 @@ def search(driver, deceased_surname='', deceased_firstnames='', party_surname=''
     Select(driver.find_element_by_id(DIVISION_SELECTOR_ID)).select_by_visible_text('Probate')
     if matter_type:
         try:
-            matter_type_selector = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID))
-        except NoSuchElementException:
-            matter_type_selector = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID))
-        matter_type_selector.select_by_visible_text(matter_type)
+            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
+        except (NoSuchElementException, StaleElementReferenceException):
+            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
     try:
-        year_field = driver.find_element_by_id(YEAR_FIELD_START_PAGE_ID)
-    except NoSuchElementException:
-        year_field = driver.find_element_by_id(YEAR_FIELD_ID)
-    year_field.send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
+        driver.find_element_by_id(YEAR_FIELD_START_PAGE_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
+    except (NoSuchElementException, StaleElementReferenceException):
+        driver.find_element_by_id(YEAR_FIELD_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
     return driver
 
 def unrestrict_search(driver, matter_type=None, year=None):
@@ -193,22 +192,20 @@ def unrestrict_search(driver, matter_type=None, year=None):
         try:
             page1 = driver.find_element_by_link_text('1')
             break
-        except NoSuchElementException:
+        except (NoSuchElementException, StaleElementReferenceException):
             try:
                 driver.find_element_by_css_selector('.pagedList a').click()
             except:
                 driver.back()
     if matter_type:
         try:
-            matter_type_selector = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID))
-        except NoSuchElementException:
-            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID))
-        matter_type_selector.select_by_visible_text(matter_type)
+            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
+        except (NoSuchElementException, StaleElementReferenceException):
+            driver = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
     try:
-        name_field = driver.find_element_by_id(NAME_FIELD_START_PAGE_ID)
-    except NoSuchElementException:
-        name_field = driver.find_element_by_id(NAME_FIELD_ID)
-    name_field.clear()
+        driver.find_element_by_id(NAME_FIELD_START_PAGE_ID).clear()
+    except (NoSuchElementException, StaleElementReferenceException):
+        driver.find_element_by_id(NAME_FIELD_ID).clear()
     page1.click()
     return driver
 
@@ -217,14 +214,14 @@ def browse_pages(driver):
         driver.find_element_by_id('divError')
         driver.back()
         return driver, []
-    except NoSuchElementException:
+    except (NoSuchElementException, StaleElementReferenceException):
         pass
     results = scrape(driver)
     for page in range(2, 51):
         print(page)
         try:
             driver.find_element_by_link_text(str(page)).click()
-        except NoSuchElementException:
+        except (NoSuchElementException, StaleElementReferenceException):
             try:
                 next_page_link = driver.find_elements_by_css_selector('.pagedList a')[-1]
                 if next_page_link.text == '...':
