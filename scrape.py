@@ -22,11 +22,11 @@ JURISDICTION_SELECTOR_ID = 'ucQuickSearch_mUcJDLSearch_ddlJurisdiction'
 DIVISION_SELECTOR_ID = 'ucQuickSearch_mUcJDLSearch_ddlDivision'
 MATTER_TYPE_SELECTOR_START_PAGE_ID = 'ucQuickSearch_ddlMatterType'
 MATTER_TYPE_SELECTOR_ID = 'ddlMatterType'
-YEAR_SELECTOR_START_PAGE_ID = 'ucQuickSearch_txtFileYear'
-YEAR_SELECTOR_ID = 'txtFileYear'
-NUMBER_SELECTOR_ID = 'txtFileNumber'
-NAME_SELECTOR_START_PAGE_ID = 'ucQuickSearch_txtPartyName'
-NAME_SELECTOR_ID = 'txtPartyName'
+YEAR_FIELD_START_PAGE_ID = 'ucQuickSearch_txtFileYear'
+YEAR_FIELD_ID = 'txtFileYear'
+NUMBER_FIELD_ID = 'txtFileNumber'
+NAME_FIELD_START_PAGE_ID = 'ucQuickSearch_txtPartyName'
+NAME_FIELD_ID = 'txtPartyName'
 MATTER_LIST_ID = 'dgdMatterList'
 MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
 
@@ -110,7 +110,7 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         if max_pro <= 500:
             # update_database() gets the last 500 matters of each type
             # No type except PRO ever has > 500 matters per year
-            # If max_pro <= 500 then we've retrieved all matters for the year
+            # If max_pro <= 500 then we've already retrieved all matters for the year
             continue
         if max_pro - 500 > len(common_names):
             # It's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
@@ -131,11 +131,11 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         found_pro = db.execute('SELECT number FROM matters WHERE type = ? and year = ?', ('PRO', year))
         remaining = set(range(1, max_pro + 1)) - set(matter[0] for matter in found_pro.fetchall())
         Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text('PRO')
-        driver.find_element_by_id(NAME_SELECTOR_ID).clear()
+        driver.find_element_by_id(NAME_FIELD_ID).clear()
         search_results = []
         for number in remaining:
             print(number)
-            driver.find_element_by_id(NUMBER_SELECTOR_ID).clear().send_keys(number, Keys.ENTER)
+            driver.find_element_by_id(NUMBER_FIELD_ID).clear().send_keys(number, Keys.ENTER)
             search_results += scrape(driver)
         with db:
             db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
@@ -146,6 +146,7 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
 def update_database(driver, year=None):
     if year is None:
         year = datetime.datetime.now().year
+    driver = search(driver, party_surname='the public trustee', year=year, matter_type=None)
     search_results = []
     for matter_type in MATTER_TYPES:
         print(matter_type)
@@ -162,7 +163,7 @@ def login(username='jlondon@robertsonhayles.com', password=None):
     #chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.headless = True
     driver = webdriver.Chrome(options=chrome_options)
-    driver.implicitly_wait(0.5 + (not chrome_options.headless))
+    #driver.implicitly_wait(0.5 + (not chrome_options.headless))
     
     driver.get(LOGIN_URL)
     if 'Acknowledge' in driver.title:
@@ -176,19 +177,21 @@ def search(driver, deceased_surname='', deceased_firstnames='', party_surname=''
     Select(driver.find_element_by_id(DIVISION_SELECTOR_ID)).select_by_visible_text('Probate')
     if matter_type:
         try:
-            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
+            matter_type_selector = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID))
         except NoSuchElementException:
-            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
+            matter_type_selector = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID))
+        matter_type_selector.select_by_visible_text(matter_type)
     try:
-        driver.find_element_by_id(YEAR_SELECTOR_START_PAGE_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
+        year_field = driver.find_element_by_id(YEAR_FIELD_START_PAGE_ID)
     except NoSuchElementException:
-        driver.find_element_by_id(YEAR_SELECTOR_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
+        year_field = driver.find_element_by_id(YEAR_FIELD_ID)
+    year_field.send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
     return driver
 
 def unrestrict_search(driver, matter_type=None, year=None):
     while True:
         try:
-            driver.find_element_by_link_text('1')
+            page1 = driver.find_element_by_link_text('1')
             break
         except NoSuchElementException:
             try:
@@ -197,14 +200,16 @@ def unrestrict_search(driver, matter_type=None, year=None):
                 driver.back()
     if matter_type:
         try:
-            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
+            matter_type_selector = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID))
         except NoSuchElementException:
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID))
+        matter_type_selector.select_by_visible_text(matter_type)
     try:
-        driver.find_element_by_id(NAME_SELECTOR_START_PAGE_ID).clear()
+        name_field = driver.find_element_by_id(NAME_FIELD_START_PAGE_ID)
     except NoSuchElementException:
-        driver.find_element_by_id(NAME_SELECTOR_ID).clear()
-    driver.find_element_by_link_text('1').click()
+        name_field = driver.find_element_by_id(NAME_FIELD_ID)
+    name_field.clear()
+    page1.click()
     return driver
 
 def browse_pages(driver):
