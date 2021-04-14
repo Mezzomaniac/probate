@@ -8,7 +8,7 @@ import sqlite3
 import time
 
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -164,7 +164,7 @@ def login(username='jlondon@robertsonhayles.com', password=None):
     #chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.headless = True
     driver = webdriver.Chrome(options=chrome_options)
-    driver.implicitly_wait(1.5)
+    driver.implicitly_wait(0.5 + (not chrome_options.headless))
     
     driver.get(LOGIN_URL)
     if 'Acknowledge' in driver.title:
@@ -175,15 +175,16 @@ def login(username='jlondon@robertsonhayles.com', password=None):
 def search(driver, deceased_surname='', deceased_firstnames='', party_surname='', year=None, matter_type=None):
     driver.get(ELODGMENT_URL)
     Select(driver.find_element_by_id(JURISDICTION_SELECTOR_ID)).select_by_visible_text('Supreme Court')
+    time.sleep(2)
     Select(driver.find_element_by_id(DIVISION_SELECTOR_ID)).select_by_visible_text('Probate')
     if matter_type:
         try:
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
-        except (NoSuchElementException, StaleElementReferenceException):
+        except NoSuchElementException:
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
     try:
         driver.find_element_by_id(YEAR_FIELD_START_PAGE_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
-    except (NoSuchElementException, StaleElementReferenceException):
+    except NoSuchElementException:
         driver.find_element_by_id(YEAR_FIELD_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
     return driver
 
@@ -192,7 +193,7 @@ def unrestrict_search(driver, matter_type=None, year=None):
         try:
             page1 = driver.find_element_by_link_text('1')
             break
-        except (NoSuchElementException, StaleElementReferenceException):
+        except NoSuchElementException:
             try:
                 driver.find_element_by_css_selector('.pagedList a').click()
             except:
@@ -200,11 +201,11 @@ def unrestrict_search(driver, matter_type=None, year=None):
     if matter_type:
         try:
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
-        except (NoSuchElementException, StaleElementReferenceException):
+        except NoSuchElementException:
             driver = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
     try:
         driver.find_element_by_id(NAME_FIELD_START_PAGE_ID).clear()
-    except (NoSuchElementException, StaleElementReferenceException):
+    except NoSuchElementException:
         driver.find_element_by_id(NAME_FIELD_ID).clear()
     page1.click()
     return driver
@@ -214,14 +215,14 @@ def browse_pages(driver):
         driver.find_element_by_id('divError')
         driver.back()
         return driver, []
-    except (NoSuchElementException, StaleElementReferenceException):
+    except NoSuchElementException:
         pass
     results = scrape(driver)
     for page in range(2, 51):
         print(page)
         try:
             driver.find_element_by_link_text(str(page)).click()
-        except (NoSuchElementException, StaleElementReferenceException):
+        except NoSuchElementException:
             try:
                 next_page_link = driver.find_elements_by_css_selector('.pagedList a')[-1]
                 if next_page_link.text == '...':
