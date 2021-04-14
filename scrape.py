@@ -24,6 +24,7 @@ MATTER_TYPE_SELECTOR_START_PAGE_ID = 'ucQuickSearch_ddlMatterType'
 MATTER_TYPE_SELECTOR_ID = 'ddlMatterType'
 YEAR_SELECTOR_START_PAGE_ID = 'ucQuickSearch_txtFileYear'
 YEAR_SELECTOR_ID = 'txtFileYear'
+NUMBER_SELECTOR_ID = 'txtFileNumber'
 NAME_SELECTOR_START_PAGE_ID = 'ucQuickSearch_txtPartyName'
 NAME_SELECTOR_ID = 'txtPartyName'
 MATTER_LIST_ID = 'dgdMatterList'
@@ -127,7 +128,17 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         if count_pro = max_pro:
             # ie we've found all matters for the year
             continue
-        # TODO: fill in gaps
+        found_pro = db.execute('SELECT number FROM matters WHERE type = ? and year = ?', ('PRO', year))
+        remaining = set(range(1, max_pro + 1)) - set(matter[0] for matter in found_pro.fetchall())
+        Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text('PRO')
+        driver.find_element_by_id(NAME_SELECTOR_ID).clear()
+        search_results = []
+        for number in remaining:
+            print(number)
+            driver.find_element_by_id(NUMBER_SELECTOR_ID).clear().send_keys(number, Keys.ENTER)
+            search_results += scrape(driver)
+        with db:
+            db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
 
     db.close()
     driver.close()
@@ -203,7 +214,7 @@ def browse_pages(driver):
         return driver, []
     except NoSuchElementException:
         pass
-    results = scrape_selenium(driver)
+    results = scrape(driver)
     for page in range(2, 51):
         print(page)
         try:
@@ -217,7 +228,7 @@ def browse_pages(driver):
                     break
             except IndexError:
                 break
-        results += scrape_selenium(driver)
+        results += scrape(driver)
     return driver, results
 
 def scrape(driver):
