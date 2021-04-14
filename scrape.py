@@ -121,11 +121,11 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
                 with db:
                     db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
                 count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
-                if count_pro = max_pro:
+                if count_pro == max_pro:
                     # ie we've found all matters for the year
                     break
         count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
-        if count_pro = max_pro:
+        if count_pro == max_pro:
             # ie we've found all matters for the year
             continue
         found_pro = db.execute('SELECT number FROM matters WHERE type = ? and year = ?', ('PRO', year))
@@ -152,7 +152,7 @@ def update_database(driver, year=None):
         driver = unrestrict_search(driver, matter_type=matter_type, year=year)
         if not driver:
             continue
-        driver, search_results = browse_pages(driver)
+        driver, results = browse_pages(driver)
         search_results += results
     return driver, search_results
 
