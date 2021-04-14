@@ -51,38 +51,53 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         this_year = datetime.datetime.now().year
         years = years or range(this_year, this_year + 1)
 
-    common_names = ['campbell', 
+    common_names = ['anderson', 
+        'armstrong', 
+        'campbell', 
         'cooper', 
+        'davies', 
         'davis', 
         'evans', 
+        'fisher'
         'gray', 
         'hall', 
+        'hamilton', 
         'harris', 
         'hill', 
         'hughes', 
+        'jackson', 
         'james', 
         'johnson', 
         'jones', 
+        'kelly', 
         'king', 
         'lee', 
         'lewis', 
         'martin', 
+        'mills', 
         'morris', 
+        'parker', 
         'phillips', 
         'richardson', 
         'roberts', 
         'robertson', 
         'rogers', 
+        'russell', 
         'smith', 
         'tan', 
         'taylor', 
         'the public trustee', 
         'thompson', 
         'thomson', 
+        'turner', 
         'walker', 
         'watson', 
+        'wells', 
         'white', 
-        'williams']
+        'williams', 
+        'wood', 
+        'wright', 
+        'young']
     
     driver = login(username, password)
     for year in years:
@@ -90,14 +105,28 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         driver, search_results = update_database(driver, year)
         with db:
             db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
-        # TODO: if max PRO number <= 500: continue
-        for name in common_names:
-            print(name)
-            driver = search(driver, party_surname=name, year=year, matter_type='PRO')
-            driver, search_results = browse_pages(driver)
-            with db:
-                db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
-        # TODO: if count PRO number == max PRO number: continue
+        max_pro = db.execute('SELECT MAX(number) FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
+        if max_pro <= 500:
+            # update_database() gets the last 500 matters of each type
+            # No type except PRO ever has > 500 matters per year
+            # If max_pro <= 500 then we've retrieved all matters for the year
+            continue
+        if max_pro - 500 > len(common_names):
+            # It's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
+            for name in common_names:
+                print(name)
+                driver = search(driver, party_surname=name, year=year, matter_type='PRO')
+                driver, search_results = browse_pages(driver)
+                with db:
+                    db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
+                count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
+                if count_pro = max_pro:
+                    # ie we've found all matters for the year
+                    break
+        count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
+        if count_pro = max_pro:
+            # ie we've found all matters for the year
+            continue
         # TODO: fill in gaps
 
     db.close()
@@ -208,13 +237,15 @@ def yesno(question):
             return False
         print('Please type "y" or "n" to select your answer.')
 
-def database_size(year=None):
+def count_database(year=None):
     db = sqlite3.connect('probate.db')
-    db.row_factory = sqlite3.Row
-    database = list(db.execute("SELECT * FROM matters ORDER BY year DESC, number DESC"))
-    print(f"Size of database = {len(database)}")
+    if year:
+        count = db.execute('SELECT COUNT() FROM matters WHERE year = ?', (year,)).fetchone()[0]
+    else:
+        count = db.execute('SELECT COUNT() FROM matters').fetchone()[0]
+    return count
 
 if __name__ == '__main__':
-    database_size()
+    print(count_database())
     setup_database(2021)
-    database_size()
+    print(count_database())
