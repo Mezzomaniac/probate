@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% if title %}
+        <title>{{ title }} - Probate Search WA</title>
+        <meta name="description" content="{{ title }}">
+        {% else %}
+        <title>Probate Search WA</title>
+        {% endif %}
+        <meta name="author" content="Jeremy Thomas London">
+        {% block keywords %}
+        <meta name="keywords" content="administration, administrator, application, caveat, citation, court, death, deceased, executor, grant, law, probate, renuciation, search, supreme court, supreme court of western australia, wa, western australia, will">
+        {% endblock %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        {% block scripts %}{% endblock %}
+    </head>
+    
+    <body>
+        <header>
+            <a href="{{ url_for('index') }}">Probate Search WA</a>
+            {% if config['TESTING'] %}
+            <a href="{{ url_for('test') }}">test</a>
+            {% endif %}
+            <hr>
+        </header>
+        <main role="main">
+        {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>
