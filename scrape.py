@@ -8,10 +8,12 @@ import sqlite3
 import time
 
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import Select, WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 fieldnames = 'type number year title'
 Matter = namedtuple('Matter', fieldnames)
@@ -52,53 +54,8 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         this_year = datetime.datetime.now().year
         years = years or range(this_year, this_year + 1)
 
-    common_names = ['anderson', 
-        'armstrong', 
-        'campbell', 
-        'cooper', 
-        'davies', 
-        'davis', 
-        'evans', 
-        'fisher'
-        'gray', 
-        'hall', 
-        'hamilton', 
-        'harris', 
-        'hill', 
-        'hughes', 
-        'jackson', 
-        'james', 
-        'johnson', 
-        'jones', 
-        'kelly', 
-        'king', 
-        'lee', 
-        'lewis', 
-        'martin', 
-        'mills', 
-        'morris', 
-        'parker', 
-        'phillips', 
-        'richardson', 
-        'roberts', 
-        'robertson', 
-        'rogers', 
-        'russell', 
-        'smith', 
-        'tan', 
-        'taylor', 
-        'the public trustee', 
-        'thompson', 
-        'thomson', 
-        'turner', 
-        'walker', 
-        'watson', 
-        'wells', 
-        'white', 
-        'williams', 
-        'wood', 
-        'wright', 
-        'young']
+    with open('common_names.txt') as common_names_file:
+        common_names = [name.strip() for name in common_names_file]
     
     driver = login(username, password)
     for year in years:
@@ -112,7 +69,7 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
             # update_database() gets the last 500 matters of each type
             # No type except PRO ever has > 500 matters per year
             # If max_pro <= 500 then we've already retrieved all matters for the year
-            # If max_pro - 500 > ~50, it's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
+            # If max_pro - 500 > ~100, it's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
             for name in common_names:
                 print(name)
                 driver = search(driver, party_surname=name, year=year, matter_type='PRO')
@@ -136,7 +93,9 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         search_results = []
         for number in remaining:
             print(number)
-            driver.find_element_by_id(NUMBER_FIELD_ID).clear().send_keys(number, Keys.ENTER)
+            number_field = driver.find_element_by_id(NUMBER_FIELD_ID)
+            number_field.clear()
+            number_field.send_keys(number, Keys.ENTER)
             search_results += scrape(driver)
         with db:
             db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
@@ -174,18 +133,22 @@ def login(username='jlondon@robertsonhayles.com', password=None):
 
 def search(driver, deceased_surname='', deceased_firstnames='', party_surname='', year=None, matter_type=None):
     driver.get(ELODGMENT_URL)
-    Select(driver.find_element_by_id(JURISDICTION_SELECTOR_ID)).select_by_visible_text('Supreme Court')
-    time.sleep(2)
-    Select(driver.find_element_by_id(DIVISION_SELECTOR_ID)).select_by_visible_text('Probate')
+    Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, JURISDICTION_SELECTOR_ID)))).select_by_visible_text('Supreme Court')
+    time.sleep(1)
+    Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, DIVISION_SELECTOR_ID)))).select_by_visible_text('Probate')  # Create a wait until not stale Wait
     if matter_type:
         try:
-            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
-        except NoSuchElementException:
+            #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_ID)))).select_by_visible_text(matter_type)
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
+        except (NoSuchElementException, StaleElementReferenceException):
+            #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_START_PAGE_ID)))).select_by_visible_text(matter_type)
+            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
     try:
-        driver.find_element_by_id(YEAR_FIELD_START_PAGE_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
-    except NoSuchElementException:
+        #WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, YEAR_FIELD_ID))).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
         driver.find_element_by_id(YEAR_FIELD_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
+    except (NoSuchElementException, StaleElementReferenceException):
+        #WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, YEAR_FIELD_START_PAGE_ID))).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
+        driver.find_element_by_id(YEAR_FIELD_START_PAGE_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
     return driver
 
 def unrestrict_search(driver, matter_type=None, year=None):
@@ -200,13 +163,15 @@ def unrestrict_search(driver, matter_type=None, year=None):
                 driver.back()
     if matter_type:
         try:
+            #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_ID)))).select_by_visible_text(matter_type)
+            Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
+        except (NoSuchElementException, StaleElementReferenceException):
+            #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_START_PAGE_ID)))).select_by_visible_text(matter_type)
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
-        except NoSuchElementException:
-            driver = Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
     try:
-        driver.find_element_by_id(NAME_FIELD_START_PAGE_ID).clear()
-    except NoSuchElementException:
         driver.find_element_by_id(NAME_FIELD_ID).clear()
+    except (NoSuchElementException, StaleElementReferenceException):
+        driver.find_element_by_id(NAME_FIELD_START_PAGE_ID).clear()
     page1.click()
     return driver
 
