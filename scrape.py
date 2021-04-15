@@ -61,9 +61,7 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
     driver = login(username, password)
     for year in years:
         print(year)
-        driver, search_results = update_database(driver, year)
-        with db:
-            db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
+        driver = update_database(driver, db, year)
         max_pro = db.execute('SELECT MAX(number) FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
         print(max_pro)
         if max_pro - 500 > len(common_names):
@@ -74,9 +72,7 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
             for name in common_names:
                 print(name)
                 driver = search(driver, party_surname=name, year=year, matter_type='PRO')
-                driver, search_results = browse_pages(driver)
-                with db:
-                    db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
+                driver = browse_pages(driver, db)
                 count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
                 print(count_pro)
                 if count_pro == max_pro:
@@ -108,20 +104,17 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
     db.close()
     driver.close()
 
-def update_database(driver, year=None):
-    # TODO: only search back as far as is assumed to be necessary
+def update_database(driver, db, year=None):
     if year is None:
         year = datetime.datetime.now().year
     driver = search(driver, party_surname='the public trustee', year=year, matter_type=None)
-    search_results = []
     for matter_type in MATTER_TYPES:
         print(matter_type)
         driver = unrestrict_search(driver, matter_type=matter_type, year=year)
         if not driver:
             continue
-        driver, results = browse_pages(driver)
-        search_results += results
-    return driver, search_results
+        driver = browse_pages(driver, db, abort_if_repeated=True)
+    return driver
 
 def login(username='jlondon@robertsonhayles.com', password=None):
     chrome_options = Options()
@@ -141,7 +134,8 @@ def search(driver, deceased_surname='', deceased_firstnames='', party_surname=''
     driver.get(ELODGMENT_URL)
     Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, JURISDICTION_SELECTOR_ID)))).select_by_visible_text('Supreme Court')
     time.sleep(1)
-    Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, DIVISION_SELECTOR_ID)))).select_by_visible_text('Probate')  # Create a wait until not stale Wait
+    # TODO: Create a wait until not stale Wait
+    Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, DIVISION_SELECTOR_ID)))).select_by_visible_text('Probate')
     if matter_type:
         try:
             #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_ID)))).select_by_visible_text(matter_type)
@@ -181,14 +175,23 @@ def unrestrict_search(driver, matter_type=None, year=None):
     page1.click()
     return driver
 
-def browse_pages(driver):
+def browse_pages(driver, db, abort_if_repeated=False):
     try:
         driver.find_element_by_id('divError')
         driver.back()
         return driver, []
     except NoSuchElementException:
         pass
-    results = scrape(driver)
+    if abort_if_repeated:
+        command = "INSERT INTO matters VALUES (?, ?, ?, ?)"
+    else:
+        command = "INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)"
+    search_results = scrape(driver)
+    with db:
+        try:
+            db.executemany(command, search_results)
+        except sqlite3.IntegrityError:
+            return driver
     for page in range(2, 51):
         print(page)
         try:
@@ -202,8 +205,13 @@ def browse_pages(driver):
                     break
             except IndexError:
                 break
-        results += scrape(driver)
-    return driver, results
+        search_results = scrape(driver)
+        with db:
+            try:
+                db.executemany(command, search_results)
+            except sqlite3.IntegrityError:
+                break
+    return driver
 
 def scrape(driver):
     table = driver.find_element_by_id(MATTER_LIST_ID)
