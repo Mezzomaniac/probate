@@ -55,21 +55,22 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         years = years or range(this_year, this_year + 1)
 
     with open('common_names.txt') as common_names_file:
+        # The list is mostly from https://forebears.io/australia/western-australia/surnames
         common_names = [name.strip() for name in common_names_file]
     
     driver = login(username, password)
     for year in years:
         print(year)
-        #driver, search_results = update_database(driver, year)
-        #with db:
-        #    db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
+        driver, search_results = update_database(driver, year)
+        with db:
+            db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
         max_pro = db.execute('SELECT MAX(number) FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
         print(max_pro)
         if max_pro - 500 > len(common_names):
             # update_database() gets the last 500 matters of each type
             # No type except PRO ever has > 500 matters per year
             # If max_pro <= 500 then we've already retrieved all matters for the year
-            # If max_pro - 500 > ~100, it's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
+            # If max_pro - 500 > ~200, it's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
             for name in common_names:
                 print(name)
                 driver = search(driver, party_surname=name, year=year, matter_type='PRO')
@@ -86,24 +87,29 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         if count_pro == max_pro:
             # ie we've found all matters for the year
             continue
-        found_pro = db.execute('SELECT number FROM matters WHERE type = ? and year = ?', ('PRO', year))
-        remaining = set(range(1, max_pro + 1)) - set(matter[0] for matter in found_pro.fetchall())
+        found_pro = db.execute('SELECT number FROM matters WHERE type = ? and year = ?', ('PRO', year)).fetchall()
+        remaining = set(range(1, max_pro + 1)) - set(matter[0] for matter in found_pro)
         Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text('PRO')
         driver.find_element_by_id(NAME_FIELD_ID).clear()
-        search_results = []
         for number in remaining:
             print(number)
             number_field = driver.find_element_by_id(NUMBER_FIELD_ID)
             number_field.clear()
             number_field.send_keys(number, Keys.ENTER)
-            search_results += scrape(driver)
-        with db:
-            db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
+            try:
+                driver.find_element_by_id('divError')
+                print('missing')
+                continue
+            except NoSuchElementException:
+                search_results = scrape(driver)
+            with db:
+                db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?)", search_results)
 
     db.close()
     driver.close()
 
 def update_database(driver, year=None):
+    # TODO: only search back as far as is assumed to be necessary
     if year is None:
         year = datetime.datetime.now().year
     driver = search(driver, party_surname='the public trustee', year=year, matter_type=None)
@@ -201,7 +207,7 @@ def browse_pages(driver):
 
 def scrape(driver):
     table = driver.find_element_by_id(MATTER_LIST_ID)
-    search_results = table.find_elements_by_tag_name('tr')[1:-1]
+    search_results = table.find_elements_by_tag_name('tr')[1:11]
     return [Matter(*(row_data.text for row_data in search_result.find_elements_by_tag_name('td')[:4])) for search_result in search_results]
     
 def fmt_matter(matter):
@@ -226,5 +232,6 @@ def count_database(year=None):
 
 if __name__ == '__main__':
     print(count_database())
+    print(count_database(2021))
     setup_database(2021)
-    print(count_database())
+    print(count_database(2021))
