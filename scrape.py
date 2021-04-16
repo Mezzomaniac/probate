@@ -72,7 +72,7 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
             count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
             count_pro_remaining = max_pro - count_pro
             print(count_pro_remaining)
-            if count_pro_remaining < 250:
+            if count_pro_remaining < 550:
                 # It's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
                 break
             print(name)
