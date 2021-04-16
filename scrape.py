@@ -45,6 +45,8 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
     with db:
         db.execute("""CREATE TABLE IF NOT EXISTS matters 
 (type text(4), number integer, year integer, title text, PRIMARY KEY(type, number, year))""")
+#(type text(4), number integer, year integer, title text, first_names text, surname text, 
+#PRIMARY KEY(type, number, year))""")
 
     password = get_password(username, password)
 
@@ -100,6 +102,7 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
                 search_results = scrape(driver)
             with db:
                 db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?)", search_results)
+                #db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)", search_results)
 
     db.close()
     driver.close()
@@ -184,8 +187,10 @@ def browse_pages(driver, db, abort_if_repeated=False):
         pass
     if abort_if_repeated:
         command = "INSERT INTO matters VALUES (?, ?, ?, ?)"
+        #command = "INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)"
     else:
         command = "INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)"
+        #command = "INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?, ?, ?)"
     search_results = scrape(driver)
     with db:
         try:
@@ -216,6 +221,21 @@ def browse_pages(driver, db, abort_if_repeated=False):
 def scrape(driver):
     table = driver.find_element_by_id(MATTER_LIST_ID)
     search_results = table.find_elements_by_tag_name('tr')[1:11]
+    """matters = []
+    for search_result in search_results:
+        matter = Matter(*(row_data.text for row_data in search_result.find_elements_by_tag_name('td')[:4]))
+        title_words = matter['title'].casefold().split()
+        if matter['type'] != 'STAT':
+            first_names = title_words[4:-2]
+            surname = title_words[-2]
+            #TODO: Deal with multi-word surnames
+        else:
+            names = title_words[:title_words.index('of')]
+            first_names = names[:-1]
+            surname = names[-1]
+            #TODO: Deal with multi-word surnames
+        matters.append(matter + (first_names, surname))
+    return matters"""
     return [Matter(*(row_data.text for row_data in search_result.find_elements_by_tag_name('td')[:4])) for search_result in search_results]
     
 def fmt_matter(matter):
