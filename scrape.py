@@ -72,7 +72,7 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
             count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
             count_pro_remaining = max_pro - count_pro
             print(count_pro_remaining)
-            if count_pro_remaining < 200:
+            if count_pro_remaining < 250:
                 # It's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
                 break
             print(name)
@@ -134,16 +134,12 @@ def search(driver, deceased_surname='', deceased_firstnames='', party_surname=''
     Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, DIVISION_SELECTOR_ID)))).select_by_visible_text('Probate')
     if matter_type:
         try:
-            #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_ID)))).select_by_visible_text(matter_type)
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
         except (NoSuchElementException, StaleElementReferenceException):
-            #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_START_PAGE_ID)))).select_by_visible_text(matter_type)
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
     try:
-        #WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, YEAR_FIELD_ID))).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
         driver.find_element_by_id(YEAR_FIELD_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
     except (NoSuchElementException, StaleElementReferenceException):
-        #WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, YEAR_FIELD_START_PAGE_ID))).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
         driver.find_element_by_id(YEAR_FIELD_START_PAGE_ID).send_keys(year, Keys.TAB, party_surname, Keys.ENTER)
     return driver
 
@@ -159,10 +155,8 @@ def unrestrict_search(driver, matter_type=None, year=None):
                 driver.back()
     if matter_type:
         try:
-            #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_ID)))).select_by_visible_text(matter_type)
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text(matter_type)
         except (NoSuchElementException, StaleElementReferenceException):
-            #Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, MATTER_TYPE_SELECTOR_START_PAGE_ID)))).select_by_visible_text(matter_type)
             Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_START_PAGE_ID)).select_by_visible_text(matter_type)
     try:
         driver.find_element_by_id(NAME_FIELD_ID).clear()
