@@ -65,26 +65,19 @@ def setup_database(years=None, username='jlondon@robertsonhayles.com', password=
         print(year)
         driver = update_database(driver, db, year)
         max_pro = db.execute('SELECT MAX(number) FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
+        # update_database() gets the last 500 matters of each type
+        # No type except PRO ever has > 500 matters per year so there are only PROs left to scrape
         print(max_pro)
-        if max_pro - 500 > len(common_names):
-            # update_database() gets the last 500 matters of each type
-            # No type except PRO ever has > 500 matters per year
-            # If max_pro <= 500 then we've already retrieved all matters for the year
-            # If max_pro - 500 > ~200, it's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
-            for name in common_names:
-                print(name)
-                driver = search(driver, party_surname=name, year=year, matter_type='PRO')
-                driver = browse_pages(driver, db)
-                count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
-                print(count_pro)
-                if count_pro == max_pro:
-                    # ie we've found all matters for the year
-                    break
-        count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
-        print(count_pro)
-        if count_pro == max_pro:
-            # ie we've found all matters for the year
-            continue
+        for name in common_names:
+            count_pro = db.execute('SELECT COUNT() FROM matters WHERE type = ? AND year = ?', ('PRO', year)).fetchone()[0]
+            count_pro_remaining = max_pro - count_pro
+            print(count_pro_remaining)
+            if count_pro_remaining < 200:
+                # It's probably more efficient to just get each remaining matter individually (see below) than to first try reducing the number remaining by guessing the parties' names
+                break
+            print(name)
+            driver = search(driver, party_surname=name, year=year, matter_type='PRO')
+            driver = browse_pages(driver, db)
         found_pro = db.execute('SELECT number FROM matters WHERE type = ? and year = ?', ('PRO', year)).fetchall()
         remaining = set(range(1, max_pro + 1)) - set(matter[0] for matter in found_pro)
         Select(driver.find_element_by_id(MATTER_TYPE_SELECTOR_ID)).select_by_visible_text('PRO')
