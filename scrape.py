@@ -182,7 +182,7 @@ def browse_pages(driver, db, abort_if_repeated=False):
     try:
         driver.find_element_by_id('divError')
         driver.back()
-        return driver, []
+        return driver
     except NoSuchElementException:
         pass
     if abort_if_repeated:
@@ -223,6 +223,8 @@ def scrape(driver):
     search_results = table.find_elements_by_tag_name('tr')[1:11]
     """matters = []
     for search_result in search_results:
+        if 'pagedList' in search_result.get_attribute('class'):
+            break
         matter = Matter(*(row_data.text for row_data in search_result.find_elements_by_tag_name('td')[:4]))
         title_words = matter['title'].casefold().split()
         if matter['type'] != 'STAT':
@@ -236,7 +238,7 @@ def scrape(driver):
             #TODO: Deal with multi-word surnames
         matters.append(matter + (first_names, surname))
     return matters"""
-    return [Matter(*(row_data.text for row_data in search_result.find_elements_by_tag_name('td')[:4])) for search_result in search_results]
+    return [Matter(*(row_data.text for row_data in search_result.find_elements_by_tag_name('td')[:4])) for search_result in search_results if 'pagedList' not in search_result.get_attribute('class')]
     
 def fmt_matter(matter):
     return f"{matter['type']} {matter['number']}/{matter['year']}: {matter['title']}"
