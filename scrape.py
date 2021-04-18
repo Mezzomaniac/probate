@@ -252,3 +252,87 @@ if __name__ == '__main__':
     print(count_database(2021))
     setup_database(2021)
     print(count_database(2021))
+    
+
+#temp:
+
+from robobrowser import RoboBrowser
+
+fieldnames = 'type number year title first_names surname'
+Matter = namedtuple('Matter', fieldnames)
+
+fieldnames = 'first_names surname type number year'
+Party = namedtuple('Party', fieldnames)
+
+LOGIN_URL = 'https://ecourts.justice.wa.gov.au/eCourtsPortal/Account/Login'
+
+def main():
+    db = sqlite3.connect(':memory:')
+    db.execute("CREATE TABLE IF NOT EXISTS matters (type text(4), number integer, year integer, description text, deceased_first_names text, deceased_surname text, PRIMARY KEY(type, number, year))")
+    db.execute("PRAGMA foreign_keys = ON")
+    db.execute("CREATE TABLE IF NOT EXISTS parties (party_first_names text, party_surname text, type text(4), number integer, year integer, FOREIGN KEY (type, number, year) REFERENCES matters(type, number, year))")
+    
+    browser = RoboBrowser()
+    browser.open(LOGIN_URL)
+    acknowledgement_form = browser.get_form()
+    browser.submit_form(acknowledgement_form)
+    login_form = browser.get_form()
+    login_form['UserName'].value = 'jlondon@robertsonhayles.com'
+    login_form['Password'].value = 'ZhC&6WgPdxwS'
+    browser.submit_form(login_form)
+    browser.follow_link(browser.get_link('eLodgment'))
+    search_form = browser.get_form()
+    search_form['ucQuickSearch$mUcJDLSearch$ddlJurisdiction'].value = 'Supreme Court'
+    browser.submit_form(search_form)
+    search_form = browser.get_form()
+    search_form['ucQuickSearch$mUcJDLSearch$ddlDivision'].value = 'Probate'
+    browser.submit_form(search_form)
+    search_form = browser.get_form()
+    search_form['ucQuickSearch$ddlMatterType'] = 'PRO'
+    search_form['ucQuickSearch$txtFileYear'] = '2021'
+    search_form['ucQuickSearch$txtFileNumber'] = '0'
+    browser.submit_form(search_form)
+    matters = []
+    parties = []
+    consecutive_errors = 0
+    for n in range(81, 101):
+        search_form = browser.get_form()
+        search_form['txtFileNumber'] = str(n)
+        browser.submit_form(search_form)
+        try:
+            browser.follow_link(browser.get_link('View...'))
+            consecutive_errors = 0
+        except TypeError:
+            consecutive_errors += 1
+            if consecutive_errors == 4:
+                break
+            continue
+        title = browser.select('#lblTitle')[0].text
+        matter_type = browser.select('#lblType')[0].text
+        number = browser.select('#lblIndex')[0].text
+        year = browser.select('#lblYear')[0].text
+        title_words = title.casefold().split()
+        if matter_type != 'STAT':
+            deceased_names = title_words[4:-1]
+        else:
+            deceased_names = title_words[:title_words.index('of')]
+        deceased_first_names, deceased_surname = name_parts(deceased_names)
+        matters.append(Matter(matter_type, number, year, title, deceased_first_names, deceased_surname))
+        for row in browser.select('#dgdApplicants tr')[1:] + browser.select('#dgdRespondents tr')[1:]:
+            party_names = row.select('td')[1].text.casefold().split()
+            party_first_names, party_surname = name_parts(party_names)
+            parties.append(Party(party_first_names, party_surname, matter_type, number, year))
+        browser.back()
+    db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)", matters)
+    db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?, ?)", parties)
+    #print(matters)
+    #print(parties)
+
+def name_parts(names):
+    #TODO: Deal with multi-word surnames
+    return ' '.join(names[:-1]), names[-1]
+
+
+t = time.time()
+main()
+print(time.time() - t)
