@@ -102,16 +102,17 @@ def setup_database(years=None, username=None, password=None):
     browser.submit_form(search_form)
 
     for year in years:
+        search_form = browser.get_form()
         print(f'year={year}')
-        search_form[YEAR_FIELD_NAME] = year
         for matter_type in MATTER_TYPES:
             print(matter_type)
-            search_form[MATTER_TYPE_SELECTOR_NAME].value = matter_type
             consecutive_errors = 0
             number = db.execute("SELECT max(number) from matters WHERE type = ? and year = ?", (matter_type, year)).fetchone()[0] or 0
             while consecutive_errors < 4:
                 number += 1
                 search_form = browser.get_form()
+                search_form[MATTER_TYPE_SELECTOR_NAME].value = matter_type
+                search_form[YEAR_FIELD_NAME] = str(year)
                 search_form[NUMBER_FIELD_NAME] = str(number)
                 browser.submit_form(search_form)
                 try:
@@ -122,7 +123,7 @@ def setup_database(years=None, username=None, password=None):
                     continue
                 title = browser.select(TITLE_ID)[0].text
                 matter_type = browser.select(MATTER_TYPE_ID)[0].text
-                number = browser.select(FILE_NUMBER_ID)[0].text
+                file_number = browser.select(FILE_NUMBER_ID)[0].text
                 year = browser.select(YEAR_ID)[0].text
                 title_words = title.casefold().split()
                 if matter_type != 'STAT':
@@ -130,18 +131,18 @@ def setup_database(years=None, username=None, password=None):
                 else:
                     deceased_names = title_words[:title_words.index('of')]
                 deceased_firstnames, deceased_surname = name_parts(deceased_names)
-                matter = Matter(matter_type, number, year, title, deceased_firstnames, deceased_surname)
+                matter = Matter(matter_type, file_number, year, title, deceased_firstnames, deceased_surname)
                 parties = []
                 for row in browser.select(f'{APPLICANTS_ID} tr')[1:] + browser.select(f'{RESPONDENTS_ID} tr')[1:]:
                     party_names = row.select('td')[1].text.casefold().split()
                     party_firstnames, party_surname = name_parts(party_names)
-                    parties.append(Party(party_firstnames, party_surname, matter_type, number, year))
-                db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)", matter)
-                db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?, ?)", parties)
+                    parties.append(Party(party_firstnames, party_surname, matter_type, file_number, year))
+                with db:
+                    db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)", matter)
+                    db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?, ?)", parties)
                 browser.back()
                 if not number % 10:
                     time.sleep(2)  # Limit the server load
-        
     db.close()
 
 def name_parts(names):
