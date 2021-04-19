@@ -7,10 +7,8 @@ import os
 import sqlite3
 import time
 
-import re
-re._pattern_type = re.Pattern
-import werkzeug
-werkzeug.cached_property = werkzeug.utils.cached_property
+import re; re._pattern_type = re.Pattern
+import werkzeug; werkzeug.cached_property = werkzeug.utils.cached_property
 from robobrowser import RoboBrowser
 
 fieldnames = 'type number year title first_names surname'
@@ -108,6 +106,7 @@ def setup_database(years=None, username=None, password=None):
             print(matter_type)
             consecutive_errors = 0
             number = db.execute("SELECT max(number) from matters WHERE type = ? and year = ?", (matter_type, year)).fetchone()[0] or 0
+            print(number)
             while consecutive_errors < 4:
                 number += 1
                 search_form = browser.get_form()
@@ -142,11 +141,12 @@ def setup_database(years=None, username=None, password=None):
                     db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?, ?)", parties)
                 browser.back()
                 if not number % 10:
+                    print(number)
                     time.sleep(2)  # Limit the server load
     db.close()
 
 def name_parts(names):
-    #TODO: Deal with multi-word surnames
+    #TODO: Deal with multi-word surnames: see affix list: https://en.wikipedia.org/wiki/List_of_family_name_affixes
     return ' '.join(names[:-1]), names[-1]
 
 def count_database(year=None):
