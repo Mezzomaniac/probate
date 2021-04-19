@@ -1,6 +1,4 @@
-def main(deceased_surname='', deceased_firstnames='', party_surname='', year=None, username='jlondon@robertsonhayles.com', password=None):
-    password = get_password(password)
-    
+def search(deceased_firstnames='', deceased_surname='', party_surname='', party_firstnames='', start_year=None, end_year=None):
     if year is None:
         year = (datetime.datetime.now() - datetime.timedelta(weeks=26)).year
     this_year = datetime.datetime.now().year
@@ -17,4 +15,8 @@ def main(deceased_surname='', deceased_firstnames='', party_surname='', year=Non
     with db:
         db.executemany("INSERT OR IGNORE INTO matters VALUES (?, ?, ?, ?)", search_results)
     db.close()
-    
+
+
+# TODO: make searches by party name for equivalent organisations return results from both
+# TODO: fine tune search by date
+# TODO: enable email notifications of a new matter/grant

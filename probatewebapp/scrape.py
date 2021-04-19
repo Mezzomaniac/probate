@@ -268,9 +268,9 @@ LOGIN_URL = 'https://ecourts.justice.wa.gov.au/eCourtsPortal/Account/Login'
 
 def main():
     db = sqlite3.connect(':memory:')
-    db.execute("CREATE TABLE IF NOT EXISTS matters (type text(4), number integer, year integer, description text, deceased_first_names text, deceased_surname text, PRIMARY KEY(type, number, year))")
+    db.execute("CREATE TABLE IF NOT EXISTS matters (type text(4), number integer, year integer, description text, deceased_firstnames text, deceased_surname text, PRIMARY KEY(type, number, year))")
     db.execute("PRAGMA foreign_keys = ON")
-    db.execute("CREATE TABLE IF NOT EXISTS parties (party_first_names text, party_surname text, type text(4), number integer, year integer, FOREIGN KEY (type, number, year) REFERENCES matters(type, number, year))")
+    db.execute("CREATE TABLE IF NOT EXISTS parties (party_firstnames text, party_surname text, type text(4), number integer, year integer, FOREIGN KEY (type, number, year) REFERENCES matters(type, number, year))")
     
     browser = RoboBrowser()
     browser.open(LOGIN_URL)
@@ -316,12 +316,12 @@ def main():
             deceased_names = title_words[4:-1]
         else:
             deceased_names = title_words[:title_words.index('of')]
-        deceased_first_names, deceased_surname = name_parts(deceased_names)
-        matters.append(Matter(matter_type, number, year, title, deceased_first_names, deceased_surname))
+        deceased_firstnames, deceased_surname = name_parts(deceased_names)
+        matters.append(Matter(matter_type, number, year, title, deceased_firstnames, deceased_surname))
         for row in browser.select('#dgdApplicants tr')[1:] + browser.select('#dgdRespondents tr')[1:]:
             party_names = row.select('td')[1].text.casefold().split()
-            party_first_names, party_surname = name_parts(party_names)
-            parties.append(Party(party_first_names, party_surname, matter_type, number, year))
+            party_firstnames, party_surname = name_parts(party_names)
+            parties.append(Party(party_firstnames, party_surname, matter_type, number, year))
         browser.back()
     db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)", matters)
     db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?, ?)", parties)

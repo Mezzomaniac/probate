@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to Probate Search WA</h1>
+<hr>
+<div id="intro">
+    <p id="creator">
+        Created 2021 by Jeremy Thomas London
+    </p>
+    <p id="version">
+        v {{ config['VERSION'] }}
+    </p>
+    <address>
+        Please report any bugs to <a href="mailto:jeremylondon@outlook.com.au?subject=Probate%20Search">jeremylondon@outlook.com.au</a>
+    </address>
+    <p id="changelog"></p>
+</div>
+<hr>
+<div id="main">
+    <form action="" method="post" class="main-form" novalidate>
+        {{ form.hidden_tag() }}
+        {% for field in form %}
+        {% if field.type not in ("CSRFTokenField", "SubmitField") %}
+        <div id="{{ field.id }}-div" class="{{ field.render_kw['class'] }}">
+            {{ field.label }}<br>
+            {{ field(size=32) }}<br>
+            {% for error in field.errors %}
+            <span class="error">{{ error|safe }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endfor %}
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+</div>
+{% endblock %}

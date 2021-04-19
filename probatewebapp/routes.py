@@ -2,24 +2,27 @@ from flask import abort, redirect, render_template, url_for#, flash, g, request,
 
 from . import app
 from .forms import SearchForm
-from . import processing, session_interface, utils
-from intestacywebapp import _tests
+from .search import search
+
 
 @app.route('/', methods=['GET', 'POST'])
-def main():
+def home():
     form = SearchForm()
     if form.validate_on_submit():
-        return redirect(url_for('results'))
-    return render_template('main.html', title='Probate Search WA', form=form)
-
-@app.route('/results')
-def results():
-    return render_template('results.html', title='Results - Probate Search WA')
+        '''deceased_first_names = form.deceased_first_names.data
+        deceased_surname = form.deceased_surname.data
+        party_first_names = form.party_first_names.data
+        party_surname = form.party_surname.data
+        start_year = form.start_year.data
+        end_year = form.end_year.data'''
+        results = search(form.data)
+        #results = search(deceased_surname, start_year, end_year)
+        return render_template('results.html', title='Search results')
+    return render_template('home.html', title='Home', form=form)
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
     if not app.config['TESTING']:
         abort(403)
-    return redirect(url_for('main'))
+    return redirect(url_for('home'))
     
-    return render_template('test.html', title='Test')
