@@ -1,8 +1,5 @@
-# probate.py - search WASC Probate Division by deceased's name
-
 from collections import namedtuple
 import datetime
-from getpass import getpass
 import os
 import sqlite3
 import time
@@ -35,23 +32,7 @@ APPLICANTS_ID = '#dgdApplicants'
 RESPONDENTS_ID = '#dgdRespondents'
 MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
 
-def get_username(username=None):
-    if username is None:
-        username = os.getenv('ELODGMENT_USERNAME')
-        if username is None:
-            username = input(f'eCourts Portal username?')
-    return username
-
-def get_password(username, password=None):
-    if password is None:
-        password = os.getenv('ELODGMENT_PASSWORD')
-        if password is None:
-            password = getpass(f'eCourts Portal password for {username}?')
-    return password
-
-def setup_database(years=None, username=None, password=None):
-    db = sqlite3.connect('probate.db')
-    db.row_factory = sqlite3.Row
+def setup_database(db, username='', password='', years=None):
     with db:
         db.execute("""CREATE TABLE IF NOT EXISTS matters 
             (type text(4), 
@@ -59,23 +40,21 @@ def setup_database(years=None, username=None, password=None):
             year integer, 
             description text, 
             deceased_name text, 
-            PRIMARY KEY(type, number, year))""")
+            PRIMARY KEY (type, number, year))""")
         db.execute("PRAGMA foreign_keys = ON")
         db.execute("""CREATE TABLE IF NOT EXISTS parties 
             (party_name text, 
             type text(4), 
             number integer, 
             year integer, 
-            FOREIGN KEY (type, number, year) REFERENCES matters(type, number, year))""")
+            FOREIGN KEY (type, number, year) REFERENCES matters (type, number, year))""")
         
-    username = get_username(username)
-    password = get_password(username, password)
-
     try:
         years = range(years, years + 1)
     except TypeError:
-        this_year = datetime.datetime.now().year
+        this_year = datetime.date.today().year
         years = years or range(this_year, this_year + 1)
+    # TODO: default to starting at this year and working backwards until 4 failures in a year
 
     browser = RoboBrowser()
     browser.open(LOGIN_URL)
@@ -143,10 +122,8 @@ def setup_database(years=None, username=None, password=None):
                 if not number % 10:
                     print(number)
                     time.sleep(2)  # Limit the server load
-    db.close()
 
-def count_database(year=None):
-    db = sqlite3.connect('probate.db')
+def count_database(db, year=None):
     if year:
         count = db.execute('SELECT COUNT() FROM matters WHERE year = ?', (year,)).fetchone()[0]
     else:
@@ -154,8 +131,11 @@ def count_database(year=None):
     return count
 
 if __name__ == '__main__':
-    print(count_database())
-    print(count_database(2021))
-    setup_database(2021)
-    print(count_database(2021))
-    print(count_database())
+    db = sqlite3.connect('probate.db')
+    username = os.getenv('ELODGMENT_USERNAME')
+    password = os.getenv('ELODGMENT_PASSWORD')
+    print(count_database(db))
+    print(count_database(db, 2021))
+    setup_database(db, username, password, years=2021)
+    print(count_database(db, 2021))
+    print(count_database(db))

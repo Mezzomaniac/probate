@@ -1,6 +1,6 @@
 import datetime
 
-def search(deceased_firstnames='', deceased_surname='', party_firstnames='', party_surname='', start_year=None, end_year=None):
+def search(db, deceased_firstnames='', deceased_surname='', party_firstnames='', party_surname='', start_year=None, end_year=None, **discards):
     if party_surname.casefold().startswith('the '):
         party_surname = party_surname[4:]
     elif party_surname.casefold().endswith('limited'):
@@ -8,7 +8,7 @@ def search(deceased_firstnames='', deceased_surname='', party_firstnames='', par
     start_year = start_year or 0
     if end_year is None:
         end_year = datetime.date.today().year
-    db = sqlite3.connect('probate.db')
+    
     results = db.execute("""SELECT type, number, year, title 
         FROM matters NATURAL JOIN parties 
         WHERE deceased_name LIKE '%' || :dec_first || '%' || :dec_sur 
@@ -21,7 +21,6 @@ def search(deceased_firstnames='', deceased_surname='', party_firstnames='', par
         'party_sur': party_surname, 
         'start_year': start_year,
         'end_year': end_year}).fetchall()
-    db.close()
     return results
 
 
