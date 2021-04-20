@@ -11,10 +11,10 @@ import re; re._pattern_type = re.Pattern
 import werkzeug; werkzeug.cached_property = werkzeug.utils.cached_property
 from robobrowser import RoboBrowser
 
-fieldnames = 'type number year title first_names surname'
+fieldnames = 'type number year title deceased_name'
 Matter = namedtuple('Matter', fieldnames)
 
-fieldnames = 'first_names surname type number year'
+fieldnames = 'party_name type number year'
 Party = namedtuple('Party', fieldnames)
 
 LOGIN_URL = 'https://ecourts.justice.wa.gov.au/eCourtsPortal/Account/Login'
@@ -58,13 +58,11 @@ def setup_database(years=None, username=None, password=None):
             number integer, 
             year integer, 
             description text, 
-            deceased_firstnames text, 
-            deceased_surname text, 
+            deceased_name text, 
             PRIMARY KEY(type, number, year))""")
         db.execute("PRAGMA foreign_keys = ON")
         db.execute("""CREATE TABLE IF NOT EXISTS parties 
-            (party_firstnames text, 
-            party_surname text, 
+            (party_name text, 
             type text(4), 
             number integer, 
             year integer, 
@@ -105,7 +103,7 @@ def setup_database(years=None, username=None, password=None):
         for matter_type in MATTER_TYPES:
             print(matter_type)
             consecutive_errors = 0
-            number = db.execute("SELECT max(number) from matters WHERE type = ? and year = ?", (matter_type, year)).fetchone()[0] or 0
+            number = db.execute("SELECT max(number) from matters WHERE type = ? AND year = ?", (matter_type, year)).fetchone()[0] or 0
             print(number)
             while consecutive_errors < 4:
                 number += 1
@@ -126,28 +124,26 @@ def setup_database(years=None, username=None, password=None):
                 year = browser.select(YEAR_ID)[0].text
                 title_words = title.casefold().split()
                 if matter_type != 'STAT':
-                    deceased_names = title_words[4:-1]
+                    deceased_name = ' '.join(title_words[4:-1])
                 else:
-                    deceased_names = title_words[:title_words.index('of')]
-                deceased_firstnames, deceased_surname = name_parts(deceased_names)
-                matter = Matter(matter_type, file_number, year, title, deceased_firstnames, deceased_surname)
+                    deceased_name = ' '.join(title_words[:title_words.index('of')])
+                matter = Matter(matter_type, file_number, year, title, deceased_name)
                 parties = []
                 for row in browser.select(f'{APPLICANTS_ID} tr')[1:] + browser.select(f'{RESPONDENTS_ID} tr')[1:]:
-                    party_names = row.select('td')[1].text.casefold().split()
-                    party_firstnames, party_surname = name_parts(party_names)
-                    parties.append(Party(party_firstnames, party_surname, matter_type, file_number, year))
+                    party_name = row.select('td')[1].text.casefold().strip()
+                    if party_name.startswith('the '):
+                        party_name = party_name[4:]
+                    elif party_name.endswith('limited'):
+                        party_name = f'{party_name[:-6]}td'
+                    parties.append(Party(party_name, matter_type, file_number, year))
                 with db:
-                    db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)", matter)
-                    db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?, ?)", parties)
+                    db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matter)
+                    db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
                 browser.back()
                 if not number % 10:
                     print(number)
                     time.sleep(2)  # Limit the server load
     db.close()
-
-def name_parts(names):
-    #TODO: Deal with multi-word surnames: see affix list: https://en.wikipedia.org/wiki/List_of_family_name_affixes
-    return ' '.join(names[:-1]), names[-1]
 
 def count_database(year=None):
     db = sqlite3.connect('probate.db')
