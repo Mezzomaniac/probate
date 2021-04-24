@@ -1,6 +1,11 @@
 from flask import abort, redirect, render_template, url_for#, flash, g, request, session
 
-from . import app, db
+from . import app
+try:
+    from . import db
+except ImportError:
+    from . import _tests
+    db = _tests.sample_database()
 from .forms import SearchForm
 from .search import search
 
@@ -10,7 +15,7 @@ def home():
     form = SearchForm()
     if form.validate_on_submit():
         results = search(db, **form.data)
-        return render_template('results.html', title='Search results')
+        return render_template('results.html', title='Search results', results=results)
     return render_template('home.html', title='Home', form=form)
 
 @app.route('/test', methods=['GET', 'POST'])

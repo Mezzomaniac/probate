@@ -1,8 +1,6 @@
 from getpass import getpass
 import os
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-
 def get_username():
     username = os.getenv('ELODGMENT_USERNAME')
     if username is None:
@@ -26,11 +24,14 @@ class Config:
     #PERMANENT_SESSION_LIFETIME = 60
     #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
     #    'sqlite:///' + os.path.join(basedir, 'probate.db')
-    SQLITE_DATABASE_URI = os.path.join(basedir, 'probate.db')
+    BASEDIR = os.path.abspath(os.path.dirname(__file__))
+    SQLITE_DATABASE_URI = os.path.join(BASEDIR, 'probate.db')
     #SQLALCHEMY_TRACK_MODIFICATIONS = False
     #SQLALCHEMY_ECHO = True
     #SESSION_TYPE = 'sqlalchemy'
     #SESSION_TYPE = 'filesystem'
     
-    ELODGMENT_USERNAME = get_username()
-    ELODGMENT_PASSWORD = get_password(ELODGMENT_USERNAME)
+    ELODGMENT_USERNAME = 'jlondon@robertsonhayles.com' or get_username()  # remove hardcoding after testing
+    ELODGMENT_PASSWORD = 'ZhC&6WgPdxwS' or get_password(ELODGMENT_USERNAME)  # remove hardcoding after testing
+    
+    SPILLOVER_PARTIES_FILE_URI = os.path.join(BASEDIR, 'spillover_parties.txt')

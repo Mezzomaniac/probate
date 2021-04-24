@@ -4,9 +4,21 @@ import os
 import sqlite3
 import time
 
-import re; re._pattern_type = re.Pattern
-import werkzeug; werkzeug.cached_property = werkzeug.utils.cached_property
+# Handle different versions:
+import re
+try:
+    re._pattern_type = re.Pattern
+except AttributeError:
+    pass
+import werkzeug
+try:
+    werkzeug.cached_property = werkzeug.utils.cached_property
+except AttributeError:
+    pass
 from robobrowser import RoboBrowser
+
+from . import app
+
 
 fieldnames = 'type number year title deceased_name'
 Matter = namedtuple('Matter', fieldnames)
@@ -30,6 +42,7 @@ FILE_NUMBER_ID = '#lblIndex'
 YEAR_ID = '#lblYear'
 APPLICANTS_ID = '#dgdApplicants'
 RESPONDENTS_ID = '#dgdRespondents'
+OTHER_PARTIES_ID = '#dgdOtherParties'
 MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
 
 def setup_database(db, username='', password='', years=None):
@@ -38,7 +51,7 @@ def setup_database(db, username='', password='', years=None):
             (type text(4), 
             number integer, 
             year integer, 
-            description text, 
+            title text, 
             deceased_name text, 
             PRIMARY KEY (type, number, year))""")
         db.execute("PRAGMA foreign_keys = ON")
@@ -53,8 +66,7 @@ def setup_database(db, username='', password='', years=None):
         years = range(years, years + 1)
     except TypeError:
         this_year = datetime.date.today().year
-        years = years or range(this_year, this_year + 1)
-    # TODO: default to starting at this year and working backwards until 4 failures in a year
+        years = years or range(this_year, 1828, -1)
 
     browser = RoboBrowser()
     browser.open(LOGIN_URL)
@@ -77,7 +89,6 @@ def setup_database(db, username='', password='', years=None):
     browser.submit_form(search_form)
 
     for year in years:
-        search_form = browser.get_form()
         print(f'year={year}')
         for matter_type in MATTER_TYPES:
             print(matter_type)
@@ -108,13 +119,19 @@ def setup_database(db, username='', password='', years=None):
                     deceased_name = ' '.join(title_words[:title_words.index('of')])
                 matter = Matter(matter_type, file_number, year, title, deceased_name)
                 parties = []
-                for row in browser.select(f'{APPLICANTS_ID} tr')[1:] + browser.select(f'{RESPONDENTS_ID} tr')[1:]:
+                applicants = browser.select(f'{APPLICANTS_ID} tr')[1:]
+                respondents = browser.select(f'{RESPONDENTS_ID} tr')[1:]
+                other_parties = browser.select(f'{OTHER_PARTIES_ID} tr')[1:]
+                for row in applicants + respondents + other_parties:
                     party_name = row.select('td')[1].text.casefold().strip()
                     if party_name.startswith('the '):
                         party_name = party_name[4:]
                     elif party_name.endswith('limited'):
                         party_name = f'{party_name[:-6]}td'
                     parties.append(Party(party_name, matter_type, file_number, year))
+                if browser.get_link('2'):
+                    with open(app.config['SPILLOVER_PARTIES_FILE_URI'], 'a') as spillover_parties_file:
+                        spillover_parties_file.write(f'{matter}\n')
                 with db:
                     db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matter)
                     db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
@@ -122,13 +139,15 @@ def setup_database(db, username='', password='', years=None):
                 if not number % 10:
                     print(number)
                     time.sleep(2)  # Limit the server load
+        if not count_database(db, year):
+            return
 
 def count_database(db, year=None):
     if year:
-        count = db.execute('SELECT COUNT() FROM matters WHERE year = ?', (year,)).fetchone()[0]
+        count = db.execute('SELECT COUNT() FROM matters WHERE year = ?', (year,))
     else:
-        count = db.execute('SELECT COUNT() FROM matters').fetchone()[0]
-    return count
+        count = db.execute('SELECT COUNT() FROM matters')
+    return count.fetchone()[0]
 
 if __name__ == '__main__':
     db = sqlite3.connect('probate.db')
@@ -139,3 +158,5 @@ if __name__ == '__main__':
     setup_database(db, username, password, years=2021)
     print(count_database(db, 2021))
     print(count_database(db))
+
+# TODO: if useful, a function to update the party details where the party is 'probate legacy'

@@ -19,8 +19,8 @@ class SearchForm(FlaskForm):
         render_kw={"placeholder": "Applicant's/party's surname"})
     start_year = IntegerField(
         "Start year", 
-        render_kw={"placeholder": "E.g. 2020"})
+        render_kw={"placeholder": "E.g. 2020", "required": False})
     end_year = IntegerField(
         "End year", 
-        render_kw={"placeholder": "E.g.  2021"})
+        render_kw={"placeholder": "E.g.  2021", "required": False})
     submit = SubmitField('Search')

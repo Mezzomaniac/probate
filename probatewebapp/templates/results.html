@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search results</h1>
+<div id="results">
+    <table>
+        <!--Add a <caption>-->
+        <colgroup>
+            <col class="file-no">
+            <col class="matter-title">
+        </colgroup>
+        <thead>
+            <tr>
+                <th scope="col" class="file-no">File number</th>
+                <th scope="col" class="matter-title">Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            {% set row_class = loop.cycle('odd', 'even') %}
+            <tr class="row-{{ row_class }}">
+                <td class="file-no">{{ result.type }} {{ result.number }}/{{ result.year }}</td>
+                <td class="matter-title">{{ result.title|e }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<aside><p>
+    Last database update:
+</p></aside>
+{% endblock %}

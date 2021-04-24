@@ -1,6 +1,8 @@
 import datetime
 
 def search(db, deceased_firstnames='', deceased_surname='', party_firstnames='', party_surname='', start_year=None, end_year=None, **discards):
+    deceased_surname = deceased_surname.strip()
+    party_surname = party_surname.strip()
     if party_surname.casefold().startswith('the '):
         party_surname = party_surname[4:]
     elif party_surname.casefold().endswith('limited'):
@@ -23,6 +25,4 @@ def search(db, deceased_firstnames='', deceased_surname='', party_firstnames='',
         'end_year': end_year}).fetchall()
     return results
 
-
-# TODO: fine tune search by date
-# TODO: enable email notifications of a new matter/grant
+# TODO: enable email notifications of a new matter/grant - careful though if still using check_same_thread=False for the db connection
