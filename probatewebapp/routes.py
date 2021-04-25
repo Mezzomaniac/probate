@@ -1,4 +1,4 @@
-from flask import abort, redirect, render_template, url_for#, flash, g, request, session
+from flask import abort, redirect, render_template, url_for
 
 from . import app
 try:
@@ -13,10 +13,11 @@ from .search import search
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = SearchForm()
+    results = None
     if form.validate_on_submit():
         results = search(db, **form.data)
-        return render_template('results.html', title='Search results', results=results)
-    return render_template('home.html', title='Home', form=form)
+        #return render_template('results.html', title='Search results', results=results)
+    return render_template('home.html', title='Home', form=form, results=results)
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():

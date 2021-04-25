@@ -11,17 +11,18 @@
         v {{ config['VERSION'] }}
     </p>
     <address>
-        Please report any bugs to <a href="mailto:jeremylondon@outlook.com.au?subject=Probate%20Search">jeremylondon@outlook.com.au</a>
+        Please report any bugs to <a href="mailto:{{ config['EMAIL_ADDRESS'] }}?subject=Probate%20Search">{{ config['EMAIL_ADDRESS'] }}</a>
     </address>
     <p id="changelog"></p>
 </div>
 <hr>
-<div id="main">
-    <form action="" method="post" class="main-form" novalidate>
+<h2>Search form</h2>
+<div id="search">
+    <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         {% for field in form %}
         {% if field.type not in ("CSRFTokenField", "SubmitField") %}
-        <div id="{{ field.id }}-div" class="{{ field.render_kw['class'] }}">
+        <div id="{{ field.id }}-div">
             {{ field.label }}<br>
             {{ field(size=32) }}<br>
             {% for error in field.errors %}
@@ -35,7 +36,15 @@
         </p>
     </form>
 </div>
+{% if results %}
+{% include "results.html" %}
+{% endif %}
 <aside><p>
-    Last database update:
+    Last database update: 
+    {% if config['LAST_DATABASE_UPDATE'] %}
+    <time datetime="{{ config['LAST_DATABASE_UPDATE'].strftime('%Y-%m-%d %H:%M:%S%z') }}">{{ config['LAST_DATABASE_UPDATE'].strftime('%Y-%m-%d %H:%M:%S%z') }}</time>
+    {% else %}
+    None
+    {% endif %}
 </p></aside>
 {% endblock %}

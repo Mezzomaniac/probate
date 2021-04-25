@@ -1,8 +1,8 @@
 import datetime
 
 def search(db, deceased_firstnames='', deceased_surname='', party_firstnames='', party_surname='', start_year=None, end_year=None, **discards):
-    deceased_surname = deceased_surname.strip()
-    party_surname = party_surname.strip()
+    deceased_surname = deceased_surname.rstrip()
+    party_surname = party_surname.rstrip()
     if party_surname.casefold().startswith('the '):
         party_surname = party_surname[4:]
     elif party_surname.casefold().endswith('limited'):

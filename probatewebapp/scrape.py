@@ -61,11 +61,11 @@ def setup_database(db, username='', password='', years=None):
             number integer, 
             year integer, 
             FOREIGN KEY (type, number, year) REFERENCES matters (type, number, year))""")
-        
+    
+    this_year = datetime.date.today().year
     try:
         years = range(years, years + 1)
     except TypeError:
-        this_year = datetime.date.today().year
         years = years or range(this_year, 1828, -1)
 
     browser = RoboBrowser()
@@ -139,7 +139,9 @@ def setup_database(db, username='', password='', years=None):
                 if not number % 10:
                     print(number)
                     time.sleep(2)  # Limit the server load
-        if not count_database(db, year):
+        if year ==         this_year:
+            app.config['LAST_DATABASE_UPDATE'] = datetime.datetime.now().astimezone(datetime.timezone(datetime.timedelta(hours=8)))
+        elif not count_database(db, year):
             return
 
 def count_database(db, year=None):

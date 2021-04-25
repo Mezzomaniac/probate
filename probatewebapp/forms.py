@@ -1,7 +1,8 @@
+import datetime
 from flask_wtf import FlaskForm
-from wtforms import FieldList, FormField, StringField, SubmitField
+from wtforms import StringField, SubmitField
 from wtforms.fields.html5 import IntegerField
-from wtforms.validators import InputRequired, ValidationError
+from wtforms.validators import Optional
 
 class SearchForm(FlaskForm):
     
@@ -19,8 +20,12 @@ class SearchForm(FlaskForm):
         render_kw={"placeholder": "Applicant's/party's surname"})
     start_year = IntegerField(
         "Start year", 
-        render_kw={"placeholder": "E.g. 2020", "required": False})
+        validators=[Optional()], 
+        render_kw={"placeholder": "E.g. 2020"}, 
+        default=(datetime.date.today() - datetime.timedelta(weeks=26)).year)
     end_year = IntegerField(
         "End year", 
-        render_kw={"placeholder": "E.g.  2021", "required": False})
+        validators=[Optional()], 
+        render_kw={"placeholder": "E.g.  2021"}, 
+        default=datetime.date.today().year)
     submit = SubmitField('Search')
