@@ -4,8 +4,7 @@ from . import app
 try:
     from . import db
 except ImportError:
-    from . import _tests
-    db = _tests.sample_database()
+    from ._tests import db
 from .forms import SearchForm
 from .search import search
 

@@ -45,7 +45,14 @@ RESPONDENTS_ID = '#dgdRespondents'
 OTHER_PARTIES_ID = '#dgdOtherParties'
 MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
 
-def setup_database(db, username='', password='', years=None):
+def schedule(db, username, password):
+    while True:
+        now = datetime.datetime.now(app.config['TIMEZONE'])
+        if now.weekday() in range(5) and now.hour in range(8, 19):
+            setup_database(db, username, password, now.year)
+        time.sleep(3600)
+
+def setup_database(db, username, password, years=None):
     with db:
         db.execute("""CREATE TABLE IF NOT EXISTS matters 
             (type text(4), 
@@ -87,9 +94,9 @@ def setup_database(db, username='', password='', years=None):
     search_form[YEAR_FIELD_START_PAGE_NAME] = '2021'
     search_form[NUMBER_FIELD_START_PAGE_NAME] = '0'
     browser.submit_form(search_form)
-
+    
     for year in years:
-        print(f'year={year}')
+        print(year)
         for matter_type in MATTER_TYPES:
             print(matter_type)
             consecutive_errors = 0
@@ -133,14 +140,17 @@ def setup_database(db, username='', password='', years=None):
                     with open(app.config['SPILLOVER_PARTIES_FILE_URI'], 'a') as spillover_parties_file:
                         spillover_parties_file.write(f'{matter}\n')
                 with db:
-                    db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matter)
-                    db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
+                    try:
+                        db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matter)
+                        db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
+                    except sqlite3.OperationalError as e:
+                        return  # Try again later
                 browser.back()
                 if not number % 10:
                     print(number)
                     time.sleep(2)  # Limit the server load
         if year ==         this_year:
-            app.config['LAST_DATABASE_UPDATE'] = datetime.datetime.now().astimezone(datetime.timezone(datetime.timedelta(hours=8)))
+            app.config['LAST_DATABASE_UPDATE'] = datetime.datetime.now(app.config['TIMEZONE'])
         elif not count_database(db, year):
             return
 

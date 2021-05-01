@@ -39,3 +39,5 @@ def sample_database():
         db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
         db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
     return db
+
+db = sample_database()
