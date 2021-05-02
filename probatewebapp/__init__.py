@@ -3,6 +3,7 @@ import threading
 from flask import Flask
 #from flask_sqlalchemy import SQLAlchemy
 from .config import Config
+#from . import _tests
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -16,10 +17,11 @@ db = sqlite3.connect(app.config['SQLITE_DATABASE_URI'], check_same_thread=False)
 db.row_factory = sqlite3.Row
 scraper = threading.Thread(
     target=database.setup_database, 
-    kwargs={
-        'db': db, 
-        'username': app.config['ELODGMENT_USERNAME'], 
-        'password': app.config['ELODGMENT_PASSWORD']})
+    args=(
+        db, 
+        app.config['ELODGMENT_USERNAME'], 
+        app.config['ELODGMENT_PASSWORD']))
 scraper.start()
+#db = _tests.sample_database()
 
 from . import routes

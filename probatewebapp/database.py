@@ -95,6 +95,8 @@ def setup_database(db, username, password, years=None):
     search_form[NUMBER_FIELD_START_PAGE_NAME] = '0'
     browser.submit_form(search_form)
     
+    matters = []
+    parties = []
     for year in years:
         print(year)
         for matter_type in MATTER_TYPES:
@@ -124,8 +126,7 @@ def setup_database(db, username, password, years=None):
                     deceased_name = ' '.join(title_words[4:-1])
                 else:
                     deceased_name = ' '.join(title_words[:title_words.index('of')])
-                matter = Matter(matter_type, file_number, year, title, deceased_name)
-                parties = []
+                matters.append(Matter(matter_type, file_number, year, title, deceased_name))
                 applicants = browser.select(f'{APPLICANTS_ID} tr')[1:]
                 respondents = browser.select(f'{RESPONDENTS_ID} tr')[1:]
                 other_parties = browser.select(f'{OTHER_PARTIES_ID} tr')[1:]
@@ -139,16 +140,23 @@ def setup_database(db, username, password, years=None):
                 if browser.get_link('2'):
                     with open(app.config['SPILLOVER_PARTIES_FILE_URI'], 'a') as spillover_parties_file:
                         spillover_parties_file.write(f'{matter}\n')
-                with db:
-                    try:
-                        db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matter)
+                try:
+                    with db:
+                        db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
+                    matters.clear()
+                except sqlite3.OperationalError:
+                    pass
+                try:
+                    with db:
                         db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
-                    except sqlite3.OperationalError as e:
-                        return  # Try again later
-                browser.back()
-                if not number % 10:
-                    print(number)
-                    time.sleep(2)  # Limit the server load
+                    parties.clear()
+                except sqlite3.OperationalError:
+                    continue
+                finally:
+                    browser.back()
+                    if not number % 10:
+                        print(number)
+                        #time.sleep(2)  # Limit the server load
         if year ==         this_year:
             app.config['LAST_DATABASE_UPDATE'] = datetime.datetime.now(app.config['TIMEZONE'])
         elif not count_database(db, year):
