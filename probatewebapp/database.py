@@ -4,6 +4,8 @@ import os
 import sqlite3
 import time
 
+import yaml
+
 # Handle different versions:
 import re
 try:
@@ -126,20 +128,20 @@ def setup_database(db, username, password, years=None):
                     deceased_name = ' '.join(title_words[4:-1])
                 else:
                     deceased_name = ' '.join(title_words[:title_words.index('of')])
-                matters.append(Matter(matter_type, file_number, year, title, deceased_name))
+                matter = Matter(matter_type, file_number, year, title, deceased_name)
+                matters.append(matter)
                 applicants = browser.select(f'{APPLICANTS_ID} tr')[1:]
                 respondents = browser.select(f'{RESPONDENTS_ID} tr')[1:]
                 other_parties = browser.select(f'{OTHER_PARTIES_ID} tr')[1:]
                 for row in applicants + respondents + other_parties:
-                    party_name = row.select('td')[1].text.casefold().strip()
-                    if party_name.startswith('the '):
-                        party_name = party_name[4:]
-                    elif party_name.endswith('limited'):
-                        party_name = f'{party_name[:-6]}td'
+                    try:
+                        party_name = row.select('td')[1].text
+                    except IndexError:
+                        # The row of links to further pages of party names
+                        with open(app.config['SPILLOVER_MATTERS_FILE_URI'], 'a') as spillover_matters_file:
+                            spillover_parties_file.write(f'{matter_type} {file_number}/{year}\n')
+                    party_name = standardize_party_name(party_name)
                     parties.append(Party(party_name, matter_type, file_number, year))
-                if browser.get_link('2'):
-                    with open(app.config['SPILLOVER_PARTIES_FILE_URI'], 'a') as spillover_parties_file:
-                        spillover_parties_file.write(f'{matter}\n')
                 try:
                     with db:
                         db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
@@ -156,11 +158,31 @@ def setup_database(db, username, password, years=None):
                     browser.back()
                     if not number % 10:
                         print(number)
-                        #time.sleep(2)  # Limit the server load
+                        time.sleep(1)  # Limit the server load
         if year ==         this_year:
             app.config['LAST_DATABASE_UPDATE'] = datetime.datetime.now(app.config['TIMEZONE'])
+            app.config['LAST_DATABASE_UPDATE']  # Force update
         elif not count_database(db, year):
             return
+
+def standardize_party_name(name):
+    name = name.casefold().strip()
+    if name.startswith('the '):
+        name = name[4:]
+    if name.endswith('limited'):
+        name = f'{name[:-6]}td'
+    return name
+
+def insert_spillover_parties(db):
+    with open(app.config['SPILLOVER_PARTIES_FILE_URI']) as spillover_parties_file:
+        parties = list(yaml.load_all(spillover_parties_file))
+    for party in parties:
+        party['party_name'] = standardize_party_name(party['party_name'])
+    with db:
+        db.executemany('INSERT INTO parties VALUES (:party_name, :type, :number, :year)', parties)
+    with open(app.config['SPILLOVER_PARTIES_FILE_URI'], 'w') as spillover_parties_file:
+        spillover_parties_file.write('')
+        # Clear the file
 
 def count_database(db, year=None):
     if year:
@@ -168,15 +190,5 @@ def count_database(db, year=None):
     else:
         count = db.execute('SELECT COUNT() FROM matters')
     return count.fetchone()[0]
-
-if __name__ == '__main__':
-    db = sqlite3.connect('probate.db')
-    username = os.getenv('ELODGMENT_USERNAME')
-    password = os.getenv('ELODGMENT_PASSWORD')
-    print(count_database(db))
-    print(count_database(db, 2021))
-    setup_database(db, username, password, years=2021)
-    print(count_database(db, 2021))
-    print(count_database(db))
 
 # TODO: if useful, a function to update the party details where the party is 'probate legacy'

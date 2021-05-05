@@ -38,4 +38,5 @@ class Config:
     ELODGMENT_PASSWORD = 'ZhC&6WgPdxwS' or get_password(ELODGMENT_USERNAME)  # remove hardcoding after testing
     LAST_DATABASE_UPDATE = None
     
-    SPILLOVER_PARTIES_FILE_URI = os.path.join(BASEDIR, 'spillover_parties.txt')
+    SPILLOVER_MATTERS_FILE_URI = os.path.join(BASEDIR, 'spillover_matters.txt')
+    SPILLOVER_PARTIES_FILE_URI = os.path.join(BASEDIR, 'spillover_parties.yaml')
