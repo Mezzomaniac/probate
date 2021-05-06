@@ -77,7 +77,7 @@ def setup_database(db, username, password, years=None):
     except TypeError:
         years = years or range(this_year, 1828, -1)
 
-    browser = RoboBrowser()
+    browser = RoboBrowser(parser='html5lib')
     browser.open(LOGIN_URL)
     acknowledgement_form = browser.get_form()
     browser.submit_form(acknowledgement_form)
@@ -139,7 +139,7 @@ def setup_database(db, username, password, years=None):
                     except IndexError:
                         # The row of links to further pages of party names
                         with open(app.config['SPILLOVER_MATTERS_FILE_URI'], 'a') as spillover_matters_file:
-                            spillover_parties_file.write(f'{matter_type} {file_number}/{year}\n')
+                            spillover_matters_file.write(f'{matter_type} {file_number}/{year}\n')
                     party_name = standardize_party_name(party_name)
                     parties.append(Party(party_name, matter_type, file_number, year))
                 try:
@@ -161,7 +161,6 @@ def setup_database(db, username, password, years=None):
                         time.sleep(1)  # Limit the server load
         if year ==         this_year:
             app.config['LAST_DATABASE_UPDATE'] = datetime.datetime.now(app.config['TIMEZONE'])
-            app.config['LAST_DATABASE_UPDATE']  # Force update
         elif not count_database(db, year):
             return
 
@@ -175,7 +174,7 @@ def standardize_party_name(name):
 
 def insert_spillover_parties(db):
     with open(app.config['SPILLOVER_PARTIES_FILE_URI']) as spillover_parties_file:
-        parties = list(yaml.load_all(spillover_parties_file))
+        parties = list(yaml.safe_load_all(spillover_parties_file))
     for party in parties:
         party['party_name'] = standardize_party_name(party['party_name'])
     with db:

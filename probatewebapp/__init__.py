@@ -22,7 +22,7 @@ scraper = threading.Thread(
         db, 
         app.config['ELODGMENT_USERNAME'], 
         app.config['ELODGMENT_PASSWORD'], 
-        [2021] + list((range(2015, 1828, -1)))
+        [2021] + list((range(2014, 1828, -1)))
         ))
 scraper.start()
 #db = _tests.sample_database()

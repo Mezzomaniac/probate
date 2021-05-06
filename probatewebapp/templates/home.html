@@ -22,7 +22,7 @@
         {{ form.hidden_tag() }}
         {% for field in form %}
         {% if field.type not in ("CSRFTokenField", "SubmitField") %}
-        <div id="{{ field.id }}-div">
+        <div id="{{ field.id }}-div" class="field">
             {{ field.label }}<br>
             {{ field(size=32) }}<br>
             {% for error in field.errors %}

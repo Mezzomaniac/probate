@@ -11,7 +11,7 @@ def search(db, deceased_firstnames='', deceased_surname='', party_firstnames='',
     if end_year is None:
         end_year = datetime.date.today().year
     
-    results = db.execute("""SELECT DISTINCT type, number, year, title 
+    results = db.execute("""SELECT type, number, year, title, party_name 
         FROM matters NATURAL JOIN parties 
         WHERE deceased_name LIKE '%' || :dec_first || '%' || :dec_sur 
         AND party_name LIKE '%' || :party_first || '%' || :party_sur 

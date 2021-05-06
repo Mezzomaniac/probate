@@ -10,6 +10,7 @@
             <tr>
                 <th scope="col" class="file-no">File number</th>
                 <th scope="col" class="matter-title">Title</th>
+                <th scope="col" class="matter-title">Party</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@
             <tr class="row-{{ row_class }}">
                 <td class="file-no">{{ result.type }} {{ result.number }}/{{ result.year }}</td>
                 <td class="matter-title">{{ result.title|e }}</td>
+                <td class="party-name">{{ result.party_name.title()|e }}</td>
             </tr>
             {% endfor %}
         </tbody>

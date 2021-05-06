@@ -20,7 +20,7 @@ class Config:
     EMAIL_ADDRESS = 'jeremylondon@outlook.com.au'
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
     
-    TESTING = True
+    TESTING = False
     SEND_FILE_MAX_AGE_DEFAULT = 0  # For development only
     
     SESSION_PERMANENT = False
@@ -34,8 +34,8 @@ class Config:
     #SESSION_TYPE = 'sqlalchemy'
     #SESSION_TYPE = 'filesystem'
     
-    ELODGMENT_USERNAME = 'jlondon@robertsonhayles.com' or get_username()  # remove hardcoding after testing
-    ELODGMENT_PASSWORD = 'ZhC&6WgPdxwS' or get_password(ELODGMENT_USERNAME)  # remove hardcoding after testing
+    ELODGMENT_USERNAME = get_username()
+    ELODGMENT_PASSWORD = get_password(ELODGMENT_USERNAME)
     LAST_DATABASE_UPDATE = None
     
     SPILLOVER_MATTERS_FILE_URI = os.path.join(BASEDIR, 'spillover_matters.txt')
