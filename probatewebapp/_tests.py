@@ -8,7 +8,8 @@ def sample_database():
         ('PRO', 4, 2021, 'In...', 'Penelope POSTMAN'), 
         ('PRO', 5, 2021, 'In...', 'Hank de Vries'), 
         ('PRO', 6, 2021, 'In...', 'Beattie Xena Pattie van der Wilde'), 
-        ('PRO', 1, 2020, 'In...', 'DONALD XAVIER POSTMAN')]
+        ('PRO', 1, 2020, 'In...', 'DONALD XAVIER POSTMAN'), 
+        ('CAV', 1, 2020, 'In...', 'DONALD XAVIER POSTMAN')]
     parties = [
         ('Eustace Wallace', 'PRO', 1, 2021), 
         ('Augustus CHURCHILL', 'PRO', 1, 2021), 
@@ -18,7 +19,9 @@ def sample_database():
         ('Manny Danny Gant', 'PRO', 5, 2021), 
         ('Doyle Oliver DE VRIES', 'PRO', 5, 2021), 
         ('Constance Banner-Beane', 'PRO', 6, 2021), 
-        ('Gareth Bart Teller', 'PRO', 1, 2020)]
+        ('Gareth Bart Teller', 'PRO', 1, 2020), 
+        ('Ash Teller', 'PRO', 1, 2020), 
+        ('Gareth Bart Teller', 'CAV', 1, 2020)]
     db = sqlite3.connect(':memory:', check_same_thread=False)
     db.row_factory = sqlite3.Row
     with db:

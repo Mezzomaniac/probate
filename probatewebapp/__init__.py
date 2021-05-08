@@ -1,15 +1,11 @@
 import sqlite3
 import threading
 from flask import Flask
-#from flask_sqlalchemy import SQLAlchemy
 from .config import Config
 #from . import _tests
 
 app = Flask(__name__)
 app.config.from_object(Config)
-#db = SQLAlchemy(app)
-#app.config['SESSION_SQLALCHEMY'] = db
-#db.create_all()
 
 from . import database
 
@@ -22,7 +18,7 @@ scraper = threading.Thread(
         db, 
         app.config['ELODGMENT_USERNAME'], 
         app.config['ELODGMENT_PASSWORD'], 
-        [2021] + list((range(2014, 1828, -1)))
+        [2021] + list((range(2012, 1828, -1)))
         ))
 scraper.start()
 #db = _tests.sample_database()

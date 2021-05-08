@@ -57,19 +57,21 @@ def schedule(db, username, password):
 def setup_database(db, username, password, years=None):
     with db:
         db.execute("""CREATE TABLE IF NOT EXISTS matters 
-            (type text(4), 
-            number integer, 
-            year integer, 
-            title text, 
-            deceased_name text, 
+            (type TEXT(4), 
+            number INTEGER, 
+            year INTEGER, 
+            title TEXT, 
+            deceased_name TEXT, 
             PRIMARY KEY (type, number, year))""")
         db.execute("PRAGMA foreign_keys = ON")
         db.execute("""CREATE TABLE IF NOT EXISTS parties 
-            (party_name text, 
-            type text(4), 
-            number integer, 
-            year integer, 
+            (party_name TEXT, 
+            type TEXT(4), 
+            number INTEGER, 
+            year INTEGER, 
             FOREIGN KEY (type, number, year) REFERENCES matters (type, number, year))""")
+        db.execute("""CREATE TABLE IF NOT EXISTS events 
+            (event TEXT UNIQUE, time TEXT DEFAULT null)""")
     
     this_year = datetime.date.today().year
     try:
@@ -160,7 +162,9 @@ def setup_database(db, username, password, years=None):
                         print(number)
                         time.sleep(1)  # Limit the server load
         if year ==         this_year:
-            app.config['LAST_DATABASE_UPDATE'] = datetime.datetime.now(app.config['TIMEZONE'])
+            last_update = datetime.datetime.now(app.config['TIMEZONE']).strftime('%Y-%m-%d %H:%M:%S%z')
+            with db:
+                db.execute("REPLACE INTO events VALUES ('last_update', ?)", (last_update,))
         elif not count_database(db, year):
             return
 

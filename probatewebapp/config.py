@@ -29,14 +29,9 @@ class Config:
     #    'sqlite:///' + os.path.join(basedir, 'probate.db')
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
     SQLITE_DATABASE_URI = os.path.join(BASEDIR, 'probate.db')
-    #SQLALCHEMY_TRACK_MODIFICATIONS = False
-    #SQLALCHEMY_ECHO = True
-    #SESSION_TYPE = 'sqlalchemy'
-    #SESSION_TYPE = 'filesystem'
     
     ELODGMENT_USERNAME = get_username()
     ELODGMENT_PASSWORD = get_password(ELODGMENT_USERNAME)
-    LAST_DATABASE_UPDATE = None
     
     SPILLOVER_MATTERS_FILE_URI = os.path.join(BASEDIR, 'spillover_matters.txt')
     SPILLOVER_PARTIES_FILE_URI = os.path.join(BASEDIR, 'spillover_parties.yaml')
