@@ -16,7 +16,7 @@ def get_password(username):
 
 class Config:
     SECRET_KEY = os.urandom(16)
-    VERSION = '0.1.0'
+    VERSION = '0.2.1'
     EMAIL_ADDRESS = 'jeremylondon@outlook.com.au'
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
     
@@ -33,5 +33,4 @@ class Config:
     ELODGMENT_USERNAME = get_username()
     ELODGMENT_PASSWORD = get_password(ELODGMENT_USERNAME)
     
-    SPILLOVER_MATTERS_FILE_URI = os.path.join(BASEDIR, 'spillover_matters.txt')
-    SPILLOVER_PARTIES_FILE_URI = os.path.join(BASEDIR, 'spillover_parties.yaml')
+    MULTIPAGE_MATTERS_FILE_URI = os.path.join(BASEDIR, 'multipage_matters.txt')

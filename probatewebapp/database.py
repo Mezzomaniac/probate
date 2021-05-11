@@ -4,8 +4,6 @@ import os
 import sqlite3
 import time
 
-import yaml
-
 # Handle different versions:
 import re
 try:
@@ -19,14 +17,15 @@ except AttributeError:
     pass
 from robobrowser import RoboBrowser
 
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select, WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from . import app
-
-
-fieldnames = 'type number year title deceased_name'
-Matter = namedtuple('Matter', fieldnames)
-
-fieldnames = 'party_name type number year'
-Party = namedtuple('Party', fieldnames)
 
 LOGIN_URL = 'https://ecourts.justice.wa.gov.au/eCourtsPortal/Account/Login'
 USERNAME_FIELD_NAME = 'UserName'
@@ -38,19 +37,26 @@ YEAR_FIELD_START_PAGE_NAME = 'ucQuickSearch$txtFileYear'
 YEAR_FIELD_NAME = 'txtFileYear'
 NUMBER_FIELD_START_PAGE_NAME = 'ucQuickSearch$txtFileNumber'
 NUMBER_FIELD_NAME = 'txtFileNumber'
-TITLE_ID = '#lblTitle'
-MATTER_TYPE_ID = '#lblType'
-FILE_NUMBER_ID = '#lblIndex'
-YEAR_ID = '#lblYear'
-APPLICANTS_ID = '#dgdApplicants'
-RESPONDENTS_ID = '#dgdRespondents'
-OTHER_PARTIES_ID = '#dgdOtherParties'
+TITLE_ID = 'lblTitle'
+MATTER_TYPE_ID = 'lblType'
+FILE_NUMBER_ID = 'lblIndex'
+YEAR_ID = 'lblYear'
+APPLICANTS_ID = 'dgdApplicants'
+RESPONDENTS_ID = 'dgdRespondents'
+OTHER_PARTIES_ID = 'dgdOtherParties'
 MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
+
+fieldnames = 'type number year title deceased_name'
+Matter = namedtuple('Matter', fieldnames)
+
+fieldnames = 'party_name type number year'
+Party = namedtuple('Party', fieldnames)
 
 def schedule(db, username, password):
     while True:
         now = datetime.datetime.now(app.config['TIMEZONE'])
         if now.weekday() in range(5) and now.hour in range(8, 19):
+            #insert_multipage_parties(db, username, password)
             setup_database(db, username, password, now.year)
         time.sleep(3600)
 
@@ -99,8 +105,8 @@ def setup_database(db, username, password, years=None):
     search_form[NUMBER_FIELD_START_PAGE_NAME] = '0'
     browser.submit_form(search_form)
     
-    matters = []
-    parties = []
+    matters = set()
+    parties = set()
     for year in years:
         print(year)
         for matter_type in MATTER_TYPES:
@@ -108,7 +114,7 @@ def setup_database(db, username, password, years=None):
             consecutive_errors = 0
             number = db.execute("SELECT max(number) from matters WHERE type = ? AND year = ?", (matter_type, year)).fetchone()[0] or 0
             print(number)
-            while consecutive_errors < 4:
+            while consecutive_errors < 30:
                 number += 1
                 search_form = browser.get_form()
                 search_form[MATTER_TYPE_SELECTOR_NAME].value = matter_type
@@ -121,29 +127,36 @@ def setup_database(db, username, password, years=None):
                 except TypeError:
                     consecutive_errors += 1
                     continue
-                title = browser.select(TITLE_ID)[0].text
-                matter_type = browser.select(MATTER_TYPE_ID)[0].text
-                file_number = browser.select(FILE_NUMBER_ID)[0].text
-                year = browser.select(YEAR_ID)[0].text
+                title = browser.select(f'#{TITLE_ID}')[0].text
+                matter_type = browser.select(f'#{MATTER_TYPE_ID}')[0].text
+                file_number = browser.select(f'#{FILE_NUMBER_ID}')[0].text
+                year = browser.select(f'#{YEAR_ID}')[0].text
                 title_words = title.casefold().split()
                 if matter_type != 'STAT':
                     deceased_name = ' '.join(title_words[4:-1])
                 else:
                     deceased_name = ' '.join(title_words[:title_words.index('of')])
                 matter = Matter(matter_type, file_number, year, title, deceased_name)
-                matters.append(matter)
-                applicants = browser.select(f'{APPLICANTS_ID} tr')[1:]
-                respondents = browser.select(f'{RESPONDENTS_ID} tr')[1:]
-                other_parties = browser.select(f'{OTHER_PARTIES_ID} tr')[1:]
+                matters.add(matter)
+                applicants = browser.select(f'#{APPLICANTS_ID} tr')[1:]
+                respondents = browser.select(f'#{RESPONDENTS_ID} tr')[1:]
+                other_parties = browser.select(f'#{OTHER_PARTIES_ID} tr')[1:]
                 for row in applicants + respondents + other_parties:
                     try:
                         party_name = row.select('td')[1].text
+                        party_name = standardize_party_name(party_name)
+                        parties.add(Party(party_name, matter_type, file_number, year))
                     except IndexError:
                         # The row of links to further pages of party names
-                        with open(app.config['SPILLOVER_MATTERS_FILE_URI'], 'a') as spillover_matters_file:
-                            spillover_matters_file.write(f'{matter_type} {file_number}/{year}\n')
-                    party_name = standardize_party_name(party_name)
-                    parties.append(Party(party_name, matter_type, file_number, year))
+                        try:
+                            driver = setup_selenium(username, password)
+                            party_names = get_multipage_parties(driver, matter_type, number, year)
+                            parties.update({Party(standardize_party_name(party_name), matter_type, file_number, year) for party_name in party_names})
+                            driver.close()
+                            continue
+                        except PermissionError:
+                            with open(app.config['MULTIPAGE_MATTERS_FILE_URI'], 'a') as multipage_matters_file:
+                                multipage_matters_file.write(f'{matter_type} {file_number}/{year}\n')
                 try:
                     with db:
                         db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
@@ -176,16 +189,65 @@ def standardize_party_name(name):
         name = f'{name[:-6]}td'
     return name
 
-def insert_spillover_parties(db):
-    with open(app.config['SPILLOVER_PARTIES_FILE_URI']) as spillover_parties_file:
-        parties = list(yaml.safe_load_all(spillover_parties_file))
-    for party in parties:
-        party['party_name'] = standardize_party_name(party['party_name'])
+def insert_multipage_parties(db, username, password):
+    with open(app.config['MULTIPAGR_MATTERS_FILE_URI']) as multipage_matters_file:
+        lines = [line.strip() for line in multipage_matters_file.readlines()]
+        if lines == ['']:
+            return
+        driver = setup_selenium(username, password)
+        parties = set()
+        for line in lines:
+            matter_type, *rest = line.split()
+            number, year = (int(part) for part in rest)
+            multipage_parties = get_multipage_parties(driver, matter_type, number, year)
+            parties.update({Party(standardize_party_name(party_name), matter_type, file_number, year) for party_name in multipage_parties})
+    driver.close()
     with db:
-        db.executemany('INSERT INTO parties VALUES (:party_name, :type, :number, :year)', parties)
-    with open(app.config['SPILLOVER_PARTIES_FILE_URI'], 'w') as spillover_parties_file:
-        spillover_parties_file.write('')
+        db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
+    with open(app.config['MULTIPAGR_MATTERS_FILE_URI'], 'w') as multipage_matters_file:
+        multipage_matters_file.write('')
         # Clear the file
+
+def setup_selenium(username, password):
+    chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
+    #chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.headless = True
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.implicitly_wait(0.5 + (not chrome_options.headless))
+    
+    driver.get(LOGIN_URL)
+    if 'Acknowledge' in driver.title:
+        driver.find_element_by_id('chkRead').send_keys(Keys.SPACE, Keys.ENTER)
+    driver.find_element_by_name(USERNAME_FIELD_NAME).send_keys(username, Keys.TAB, password, Keys.ENTER)
+    driver.get(ELODGMENT_URL)
+    Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, JURISDICTION_SELECTOR_NAME)))).select_by_visible_text('Supreme Court')
+    time.sleep(1)
+    # TODO: Create a wait until not stale Wait
+    Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, DIVISION_SELECTOR_NAME)))).select_by_visible_text('Probate')
+    driver.find_element_by_name(NUMBER_FIELD_START_PAGE_NAME).send_keys('0', Keys.TAB, '2021', Keys.ENTER)
+    return driver
+
+def get_multipage_parties(driver, matter_type, number, year):
+    Select(driver.find_element_by_name(MATTER_TYPE_SELECTOR_NAME)).select_by_visible_text(matter_type)
+    number_field = driver.find_element_by_name(NUMBER_FIELD_NAME)
+    number_field.clear()
+    number_field.send_keys(number, Keys.TAB, year, Keys.ENTER)
+    driver.find_element_by_link_text('View...').click()
+    table_ids = [APPLICANTS_ID, RESPONDENTS_ID, OTHER_PARTIES_ID]
+    parties = set()
+    for table_id in table_ids:
+        page = 2
+        while True:
+            table = driver.find_element_by_id(table_id)
+            try:
+                table.find_element_by_link_text(str(page)).click()
+            except NoSuchElementException:
+                break
+            rows = driver.find_element_by_css_selector(f'#{table_id} tr')[1:-1]
+            parties.update({row.find_elements_by_css_selector('td')[1].text for row in rows})
+            page += 1
+    return parties
 
 def count_database(db, year=None):
     if year:
