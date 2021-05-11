@@ -108,7 +108,7 @@ def setup_database(db, username, password, years=None):
             consecutive_errors = 0
             number = db.execute("SELECT max(number) from matters WHERE type = ? AND year = ?", (matter_type, year)).fetchone()[0] or 0
             print(number)
-            while consecutive_errors < 4:
+            while consecutive_errors < 30:
                 number += 1
                 search_form = browser.get_form()
                 search_form[MATTER_TYPE_SELECTOR_NAME].value = matter_type
