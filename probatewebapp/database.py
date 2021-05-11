@@ -1,6 +1,5 @@
 from collections import namedtuple
 import datetime
-import os
 import sqlite3
 import time
 
@@ -52,13 +51,17 @@ Matter = namedtuple('Matter', fieldnames)
 fieldnames = 'party_name type number year'
 Party = namedtuple('Party', fieldnames)
 
-def schedule(db, username, password):
+def schedule(db, username, password, setup=False, years=None):
     while True:
         now = datetime.datetime.now(app.config['TIMEZONE'])
-        if now.weekday() in range(5) and now.hour in range(8, 19):
-            #insert_multipage_parties(db, username, password)
-            setup_database(db, username, password, now.year)
-        time.sleep(3600)
+        during_business_hours = now.weekday() in range(5) and now.hour in range(8, 19)
+        if not setup:
+            years = now.year
+        if during_business_hours or setup:
+            insert_multipage_parties(db, username, password)
+            setup_database(db, username, password, years)
+        if not setup:
+            time.sleep(3600)
 
 def setup_database(db, username, password, years=None):
     with db:
@@ -174,7 +177,7 @@ def setup_database(db, username, password, years=None):
                     if not number % 10:
                         print(number)
                         time.sleep(1)  # Limit the server load
-        if year ==         this_year:
+        if year == this_year:
             last_update = datetime.datetime.now(app.config['TIMEZONE']).strftime('%Y-%m-%d %H:%M:%S%z')
             with db:
                 db.execute("REPLACE INTO events VALUES ('last_update', ?)", (last_update,))
@@ -190,21 +193,21 @@ def standardize_party_name(name):
     return name
 
 def insert_multipage_parties(db, username, password):
-    with open(app.config['MULTIPAGR_MATTERS_FILE_URI']) as multipage_matters_file:
+    with open(app.config['MULTIPAGE_MATTERS_FILE_URI']) as multipage_matters_file:
         lines = [line.strip() for line in multipage_matters_file.readlines()]
-        if lines == ['']:
-            return
-        driver = setup_selenium(username, password)
-        parties = set()
-        for line in lines:
-            matter_type, *rest = line.split()
-            number, year = (int(part) for part in rest)
-            multipage_parties = get_multipage_parties(driver, matter_type, number, year)
-            parties.update({Party(standardize_party_name(party_name), matter_type, file_number, year) for party_name in multipage_parties})
+    if not lines:
+        return
+    driver = setup_selenium(username, password)
+    parties = set()
+    for line in lines:
+        matter_type, rest = line.split()
+        number, year = (int(part) for part in rest.split('/'))
+        multipage_parties = get_multipage_parties(driver, matter_type, number, year)
+        parties.update({Party(standardize_party_name(party_name), matter_type, number, year) for party_name in multipage_parties})
     driver.close()
     with db:
         db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
-    with open(app.config['MULTIPAGR_MATTERS_FILE_URI'], 'w') as multipage_matters_file:
+    with open(app.config['MULTIPAGE_MATTERS_FILE_URI'], 'w') as multipage_matters_file:
         multipage_matters_file.write('')
         # Clear the file
 
@@ -220,11 +223,12 @@ def setup_selenium(username, password):
     if 'Acknowledge' in driver.title:
         driver.find_element_by_id('chkRead').send_keys(Keys.SPACE, Keys.ENTER)
     driver.find_element_by_name(USERNAME_FIELD_NAME).send_keys(username, Keys.TAB, password, Keys.ENTER)
-    driver.get(ELODGMENT_URL)
+    driver.find_element_by_link_text('eLodgment').click()
     Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, JURISDICTION_SELECTOR_NAME)))).select_by_visible_text('Supreme Court')
     time.sleep(1)
     # TODO: Create a wait until not stale Wait
     Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, DIVISION_SELECTOR_NAME)))).select_by_visible_text('Probate')
+    time.sleep(1)
     driver.find_element_by_name(NUMBER_FIELD_START_PAGE_NAME).send_keys('0', Keys.TAB, '2021', Keys.ENTER)
     return driver
 
@@ -239,12 +243,12 @@ def get_multipage_parties(driver, matter_type, number, year):
     for table_id in table_ids:
         page = 2
         while True:
-            table = driver.find_element_by_id(table_id)
             try:
+                table = driver.find_element_by_id(table_id)
                 table.find_element_by_link_text(str(page)).click()
             except NoSuchElementException:
                 break
-            rows = driver.find_element_by_css_selector(f'#{table_id} tr')[1:-1]
+            rows = driver.find_elements_by_css_selector(f'#{table_id} tr')[1:-1]
             parties.update({row.find_elements_by_css_selector('td')[1].text for row in rows})
             page += 1
     return parties

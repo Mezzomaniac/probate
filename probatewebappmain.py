@@ -5,4 +5,4 @@ from probatewebapp import app
 
 if __name__ == '__main__':
     #app.run(debug=True, use_reloader=False)
-    serve(app, host='0.0.0.0')
+    serve(app, port=5000)
