@@ -19,6 +19,7 @@ def home():
     results = None
     if form.validate_on_submit():
         results = search(db, **form.data)
+    #print(last_update)
     return render_template('home.html', title='Home', form=form, last_update=last_update, results=results)
 
 @app.route('/test', methods=['GET', 'POST'])

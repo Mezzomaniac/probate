@@ -179,8 +179,10 @@ def setup_database(db, username, password, years=None):
                         time.sleep(1)  # Limit the server load
         if year == this_year:
             last_update = datetime.datetime.now(app.config['TIMEZONE']).strftime('%Y-%m-%d %H:%M:%S%z')
+            #print(last_update)
             with db:
                 db.execute("REPLACE INTO events VALUES ('last_update', ?)", (last_update,))
+            #print(db.execute("SELECT time FROM events WHERE event = 'last_update'").fetchone())
         elif not count_database(db, year):
             return
 
@@ -252,6 +254,16 @@ def get_multipage_parties(driver, matter_type, number, year):
             parties.update({row.find_elements_by_css_selector('td')[1].text for row in rows})
             page += 1
     return parties
+
+def find_gaps(db):
+    all_gaps = {}
+    years = set(year[0] for year in db.execute('SELECT DISTINCT year FROM matters').fetchall())
+    for year in years:
+        for matter_type in MATTER_TYPES:
+            found = set(number[0] for number in db.execute('SELECT number FROM matters WHERE type = ? and year = ?', (matter_type, year)).fetchall())
+            gaps = set(range(1, max(found, default=0))) - found
+            all_gaps[f'{year}:{matter_type}'] = list(sorted(gaps))
+    return all_gaps
 
 def count_database(db, year=None):
     if year:

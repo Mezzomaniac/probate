@@ -29,3 +29,7 @@ class SearchForm(FlaskForm):
         render_kw={"placeholder": "E.g.  2021"}, 
         default=datetime.date.today().year)
     submit = SubmitField('Search')
+
+# TODO: enable a checkbox to switch to whole-name searching
+
+# TODO: enable email notifications of a new matter/grant - careful though if still using check_same_thread=False for the db connection

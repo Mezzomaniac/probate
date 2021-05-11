@@ -28,5 +28,3 @@ def search(db, deceased_firstnames='', deceased_surname='', party_firstnames='',
 if __name__ == '__main__':
     from _tests import db
     print([list(row) for row in search(db, deceased_surname='postman')])
-    
-# TODO: enable email notifications of a new matter/grant - careful though if still using check_same_thread=False for the db connection
