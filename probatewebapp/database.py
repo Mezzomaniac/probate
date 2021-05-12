@@ -37,9 +37,6 @@ YEAR_FIELD_NAME = 'txtFileYear'
 NUMBER_FIELD_START_PAGE_NAME = 'ucQuickSearch$txtFileNumber'
 NUMBER_FIELD_NAME = 'txtFileNumber'
 TITLE_ID = 'lblTitle'
-MATTER_TYPE_ID = 'lblType'
-FILE_NUMBER_ID = 'lblIndex'
-YEAR_ID = 'lblYear'
 APPLICANTS_ID = 'dgdApplicants'
 RESPONDENTS_ID = 'dgdRespondents'
 OTHER_PARTIES_ID = 'dgdOtherParties'
@@ -113,15 +110,20 @@ def setup_database(db, username, password, years=None):
     for year in years:
         print(year)
         for matter_type in MATTER_TYPES:
-            if matter_type == 'ELEC' and year <= 2010:
+            if year <= 2010 and matter_type == 'ELEC':
+                max_elec = db.execute("SELECT max(number) from matters WHERE type = 'ELEC' AND year = ?", (year,)).fetchone()[0] or 0
                 continue
             print(matter_type)
             missing = False
             consecutive_missing = 0
             number = db.execute("SELECT max(number) from matters WHERE type = ? AND year = ?", (matter_type, year)).fetchone()[0] or 0
+            if year <= 2010 and matter_type == 'PRO':
+                number = max((number, max_elec), default=0)
             print(number)
-            while consecutive_missing < 30:
+            while consecutive_missing < 4:
                 number += 1
+                if year <= 2010 and matter_type == 'ELEC':
+                    matter_type = 'PRO'
                 browser = search_matter(browser, matter_type, number, year)
                 try:
                     browser.follow_link(browser.get_link('View...'))
@@ -168,7 +170,7 @@ def setup_database(db, username, password, years=None):
                             continue
                         except PermissionError:
                             with open(app.config['MULTIPAGE_MATTERS_FILE_URI'], 'a') as multipage_matters_file:
-                                multipage_matters_file.write(f'{matter_type} {file_number}/{year}\n')
+                                multipage_matters_file.write(f'{matter_type} {number}/{year}\n')
                 try:
                     with db:
                         db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
