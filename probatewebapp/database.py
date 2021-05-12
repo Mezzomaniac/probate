@@ -113,33 +113,42 @@ def setup_database(db, username, password, years=None):
     for year in years:
         print(year)
         for matter_type in MATTER_TYPES:
+            if matter_type == 'ELEC' and year <= 2010:
+                continue
             print(matter_type)
-            consecutive_errors = 0
+            missing = False
+            consecutive_missing = 0
             number = db.execute("SELECT max(number) from matters WHERE type = ? AND year = ?", (matter_type, year)).fetchone()[0] or 0
             print(number)
-            while consecutive_errors < 30:
+            while consecutive_missing < 30:
                 number += 1
-                search_form = browser.get_form()
-                search_form[MATTER_TYPE_SELECTOR_NAME].value = matter_type
-                search_form[YEAR_FIELD_NAME] = str(year)
-                search_form[NUMBER_FIELD_NAME] = str(number)
-                browser.submit_form(search_form)
+                browser = search_matter(browser, matter_type, number, year)
                 try:
                     browser.follow_link(browser.get_link('View...'))
-                    consecutive_errors = 0
                 except TypeError:
-                    consecutive_errors += 1
+                    # browser.get_link('View...') returns None
+                    missing = True
+                    if year <= 2010 and matter_type == 'PRO':
+                        matter_type = 'ELEC'
+                        browser = search_matter(browser, matter_type, number, year)
+                        try:
+                            browser.follow_link(browser.get_link('View...'))
+                            missing = False
+                        except TypeError:
+                            # browser.get_link('View...') returns None
+                            pass
+                if missing:
+                    consecutive_missing += 1
+                    missing = False
                     continue
+                consecutive_missing = 0
                 title = browser.select(f'#{TITLE_ID}')[0].text
-                matter_type = browser.select(f'#{MATTER_TYPE_ID}')[0].text
-                file_number = browser.select(f'#{FILE_NUMBER_ID}')[0].text
-                year = browser.select(f'#{YEAR_ID}')[0].text
                 title_words = title.casefold().split()
                 if matter_type != 'STAT':
                     deceased_name = ' '.join(title_words[4:-1])
                 else:
                     deceased_name = ' '.join(title_words[:title_words.index('of')])
-                matter = Matter(matter_type, file_number, year, title, deceased_name)
+                matter = Matter(matter_type, number, year, title, deceased_name)
                 matters.add(matter)
                 applicants = browser.select(f'#{APPLICANTS_ID} tr')[1:]
                 respondents = browser.select(f'#{RESPONDENTS_ID} tr')[1:]
@@ -148,13 +157,13 @@ def setup_database(db, username, password, years=None):
                     try:
                         party_name = row.select('td')[1].text
                         party_name = standardize_party_name(party_name)
-                        parties.add(Party(party_name, matter_type, file_number, year))
+                        parties.add(Party(party_name, matter_type, number, year))
                     except IndexError:
                         # The row of links to further pages of party names
                         try:
                             driver = setup_selenium(username, password)
                             party_names = get_multipage_parties(driver, matter_type, number, year)
-                            parties.update({Party(standardize_party_name(party_name), matter_type, file_number, year) for party_name in party_names})
+                            parties.update({Party(standardize_party_name(party_name), matter_type, number, year) for party_name in party_names})
                             driver.close()
                             continue
                         except PermissionError:
@@ -185,6 +194,14 @@ def setup_database(db, username, password, years=None):
             #print(db.execute("SELECT time FROM events WHERE event = 'last_update'").fetchone())
         elif not count_database(db, year):
             return
+
+def search_matter(browser, matter_type, number, year):
+    search_form = browser.get_form()
+    search_form[MATTER_TYPE_SELECTOR_NAME].value = matter_type
+    search_form[YEAR_FIELD_NAME] = str(year)
+    search_form[NUMBER_FIELD_NAME] = str(number)
+    browser.submit_form(search_form)
+    return browser
 
 def standardize_party_name(name):
     name = name.casefold().strip()
@@ -257,13 +274,26 @@ def get_multipage_parties(driver, matter_type, number, year):
 
 def find_gaps(db):
     all_gaps = {}
-    years = set(year[0] for year in db.execute('SELECT DISTINCT year FROM matters').fetchall())
+    years = (year[0] for year in db.execute('SELECT DISTINCT year FROM matters').fetchall())
     for year in years:
         for matter_type in MATTER_TYPES:
             found = set(number[0] for number in db.execute('SELECT number FROM matters WHERE type = ? and year = ?', (matter_type, year)).fetchall())
+            if year <= 2010 and matter_type == 'ELEC':
+                found_elec = found
+                continue
+            elif year <= 2010 and matter_type == 'PRO':
+                if found & found_elec:
+                    raise ValueError("Aren't PRO and ELEC matter numbers continuous pre-2011?")
+                found |= found_elec
+                matter_type = 'PRO/ELEC'
             gaps = set(range(1, max(found, default=0))) - found
-            all_gaps[f'{year}:{matter_type}'] = list(sorted(gaps))
+            all_gaps[f'{year}:{matter_type}'] = gaps
     return all_gaps
+
+def print_gaps(db):
+    gaps = find_gaps(db)
+    for key, value in sorted(gaps.items(), reverse=True):
+        print(key, sorted(value))
 
 def count_database(db, year=None):
     if year:

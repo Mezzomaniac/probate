@@ -11,8 +11,7 @@ from . import database
 
 db = sqlite3.connect(app.config['SQLITE_DATABASE_URI'], check_same_thread=False)
 db.row_factory = sqlite3.Row
-#for item in sorted(database.find_gaps(db).items(), reverse=True):
-    #print(item)
+database.print_gaps(db)
 scraper = threading.Thread(
     target=database.schedule, 
     args=(
