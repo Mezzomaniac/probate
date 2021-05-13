@@ -61,23 +61,8 @@ def schedule(db, username, password, setup=False, years=None):
             time.sleep(3600)
 
 def setup_database(db, username, password, years=None):
-    with db:
-        db.execute("""CREATE TABLE IF NOT EXISTS matters 
-            (type TEXT(4), 
-            number INTEGER, 
-            year INTEGER, 
-            title TEXT, 
-            deceased_name TEXT, 
-            PRIMARY KEY (type, number, year))""")
-        db.execute("PRAGMA foreign_keys = ON")
-        db.execute("""CREATE TABLE IF NOT EXISTS parties 
-            (party_name TEXT, 
-            type TEXT(4), 
-            number INTEGER, 
-            year INTEGER, 
-            FOREIGN KEY (type, number, year) REFERENCES matters (type, number, year))""")
-        db.execute("""CREATE TABLE IF NOT EXISTS events 
-            (event TEXT UNIQUE, time TEXT DEFAULT null)""")
+    with db, open(app.config['SCHEMA_URI']) as schema_file:
+        db.executescript(schema_file.read())
     
     this_year = datetime.date.today().year
     try:
@@ -273,6 +258,9 @@ def get_multipage_parties(driver, matter_type, number, year):
             parties.update({row.find_elements_by_css_selector('td')[1].text for row in rows})
             page += 1
     return parties
+
+def fill_elec_gaps():
+    ...
 
 def find_gaps(db):
     all_gaps = {}

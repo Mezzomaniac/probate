@@ -25,10 +25,10 @@ class Config:
     
     SESSION_PERMANENT = False
     #PERMANENT_SESSION_LIFETIME = 60
-    #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-    #    'sqlite:///' + os.path.join(basedir, 'probate.db')
+
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
     SQLITE_DATABASE_URI = os.path.join(BASEDIR, 'probate.db')
+    SCHEMA_URI = os.path.join(BASEDIR, 'schema.sql')
     
     ELODGMENT_USERNAME = get_username()
     ELODGMENT_PASSWORD = get_password(ELODGMENT_USERNAME)
