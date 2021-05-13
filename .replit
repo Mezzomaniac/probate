@@ -1,3 +1,2 @@
 language = "python3"
 run = "python probatewebappmain.py"
-memory = "250M"

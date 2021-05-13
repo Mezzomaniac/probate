@@ -20,7 +20,7 @@ scraper = threading.Thread(
         app.config['ELODGMENT_PASSWORD']), 
     kwargs={
         'setup': True, 
-        'years': [2021] + list(range(2003, 1828, -1))}
+        'years': [2021] + list(range(2000, 1828, -1))}
     )
 scraper.start()
 #db = _tests.sample_database()

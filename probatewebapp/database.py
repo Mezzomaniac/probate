@@ -54,11 +54,16 @@ def schedule(db, username, password, setup=False, years=None):
         during_business_hours = now.weekday() in range(5) and now.hour in range(8, 19)
         if not setup:
             years = now.year
+            pause = 3600
+        else:
+            pause = 0
         if during_business_hours or setup:
-            insert_multipage_parties(db, username, password)
-            setup_database(db, username, password, years)
-        if not setup:
-            time.sleep(3600)
+            try:
+                insert_multipage_parties(db, username, password)
+                setup_database(db, username, password, years)
+            except: #ConnectionError:
+                pause = 1800
+        time.sleep(pause)
 
 def setup_database(db, username, password, years=None):
     with db, open(app.config['SCHEMA_URI']) as schema_file:
@@ -105,7 +110,7 @@ def setup_database(db, username, password, years=None):
             if year <= 2010 and matter_type == 'PRO':
                 number = max((number, max_elec), default=0)
             print(number)
-            while consecutive_missing < 4:
+            while consecutive_missing < 10:
                 number += 1
                 if year <= 2010 and matter_type == 'ELEC':
                     matter_type = 'PRO'
