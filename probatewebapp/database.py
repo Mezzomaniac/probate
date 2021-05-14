@@ -32,14 +32,15 @@ PASSWORD_FIELD_NAME = 'Password'
 JURISDICTION_SELECTOR_NAME = 'ucQuickSearch$mUcJDLSearch$ddlJurisdiction'
 DIVISION_SELECTOR_NAME = 'ucQuickSearch$mUcJDLSearch$ddlDivision'
 MATTER_TYPE_SELECTOR_NAME = 'ddlMatterType'
-YEAR_FIELD_START_PAGE_NAME = 'ucQuickSearch$txtFileYear'
-YEAR_FIELD_NAME = 'txtFileYear'
 NUMBER_FIELD_START_PAGE_NAME = 'ucQuickSearch$txtFileNumber'
 NUMBER_FIELD_NAME = 'txtFileNumber'
+YEAR_FIELD_START_PAGE_NAME = 'ucQuickSearch$txtFileYear'
+YEAR_FIELD_NAME = 'txtFileYear'
+MATTERS_TABLE_ID = 'dgdMatterList'
 TITLE_ID = 'lblTitle'
-APPLICANTS_ID = 'dgdApplicants'
-RESPONDENTS_ID = 'dgdRespondents'
-OTHER_PARTIES_ID = 'dgdOtherParties'
+APPLICANTS_TABLE_ID = 'dgdApplicants'
+RESPONDENTS_TABLE_ID = 'dgdRespondents'
+OTHER_PARTIES_TABLE_ID = 'dgdOtherParties'
 MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
 
 fieldnames = 'type number year title deceased_name'
@@ -54,46 +55,29 @@ def schedule(db, username, password, setup=False, years=None):
         during_business_hours = now.weekday() in range(5) and now.hour in range(8, 19)
         if not setup:
             years = now.year
-            pause = 3600
+            pause = 1800  # 30 mins
         else:
             pause = 0
         if during_business_hours or setup:
             try:
                 insert_multipage_parties(db, username, password)
+                fill_elec_gaps(db, username, password)
                 setup_database(db, username, password, years)
             except: #ConnectionError:
-                pause = 1800
+                pause = 900  # 15 mins
         time.sleep(pause)
 
 def setup_database(db, username, password, years=None):
     with db, open(app.config['SCHEMA_URI']) as schema_file:
         db.executescript(schema_file.read())
+
+    browser = setup_robobrowser(username, password)
     
     this_year = datetime.date.today().year
     try:
         years = range(years, years + 1)
     except TypeError:
         years = years or range(this_year, 1828, -1)
-
-    browser = RoboBrowser(parser='html5lib')
-    browser.open(LOGIN_URL)
-    acknowledgement_form = browser.get_form()
-    browser.submit_form(acknowledgement_form)
-    login_form = browser.get_form()
-    login_form[USERNAME_FIELD_NAME].value = username
-    login_form[PASSWORD_FIELD_NAME].value = password
-    browser.submit_form(login_form)
-    browser.follow_link(browser.get_link('eLodgment'))
-    search_form = browser.get_form()
-    search_form[JURISDICTION_SELECTOR_NAME].value = 'Supreme Court'
-    browser.submit_form(search_form)
-    search_form = browser.get_form()
-    search_form[DIVISION_SELECTOR_NAME].value = 'Probate'
-    browser.submit_form(search_form)
-    search_form = browser.get_form()
-    search_form[YEAR_FIELD_START_PAGE_NAME] = '2021'
-    search_form[NUMBER_FIELD_START_PAGE_NAME] = '0'
-    browser.submit_form(search_form)
     
     matters = set()
     parties = set()
@@ -134,33 +118,10 @@ def setup_database(db, username, password, years=None):
                     missing = False
                     continue
                 consecutive_missing = 0
-                title = browser.select(f'#{TITLE_ID}')[0].text
-                title_words = title.casefold().split()
-                if matter_type != 'STAT':
-                    deceased_name = ' '.join(title_words[4:-1])
-                else:
-                    deceased_name = ' '.join(title_words[:title_words.index('of')])
-                matter = Matter(matter_type, number, year, title, deceased_name)
-                matters.add(matter)
-                applicants = browser.select(f'#{APPLICANTS_ID} tr')[1:]
-                respondents = browser.select(f'#{RESPONDENTS_ID} tr')[1:]
-                other_parties = browser.select(f'#{OTHER_PARTIES_ID} tr')[1:]
-                for row in applicants + respondents + other_parties:
-                    try:
-                        party_name = row.select('td')[1].text
-                        party_name = standardize_party_name(party_name)
-                        parties.add(Party(party_name, matter_type, number, year))
-                    except IndexError:
-                        # The row of links to further pages of party names
-                        try:
-                            driver = setup_selenium(username, password)
-                            party_names = get_multipage_parties(driver, matter_type, number, year)
-                            parties.update({Party(standardize_party_name(party_name), matter_type, number, year) for party_name in party_names})
-                            driver.close()
-                            continue
-                        except PermissionError:
-                            with open(app.config['MULTIPAGE_MATTERS_FILE_URI'], 'a') as multipage_matters_file:
-                                multipage_matters_file.write(f'{matter_type} {number}/{year}\n')
+                new_matter = scrape_matter(browser, matter_type, number, year)
+                matters.add(new_matter)
+                new_parties = scrape_parties(browser, matter_type, number, year, username, password)
+                parties.update(new_parties)
                 try:
                     with db:
                         db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
@@ -187,6 +148,28 @@ def setup_database(db, username, password, years=None):
         elif not count_database(db, year):
             return
 
+def setup_robobrowser(username, password):
+    browser = RoboBrowser(parser='html5lib')
+    browser.open(LOGIN_URL)
+    acknowledgement_form = browser.get_form()
+    browser.submit_form(acknowledgement_form)
+    login_form = browser.get_form()
+    login_form[USERNAME_FIELD_NAME].value = username
+    login_form[PASSWORD_FIELD_NAME].value = password
+    browser.submit_form(login_form)
+    browser.follow_link(browser.get_link('eLodgment'))
+    search_form = browser.get_form()
+    search_form[JURISDICTION_SELECTOR_NAME].value = 'Supreme Court'
+    browser.submit_form(search_form)
+    search_form = browser.get_form()
+    search_form[DIVISION_SELECTOR_NAME].value = 'Probate'
+    browser.submit_form(search_form)
+    search_form = browser.get_form()
+    search_form[YEAR_FIELD_START_PAGE_NAME] = '2021'  # any year with matters will work
+    search_form[NUMBER_FIELD_START_PAGE_NAME] = '0'
+    browser.submit_form(search_form)
+    return browser
+
 def search_matter(browser, matter_type, number, year):
     search_form = browser.get_form()
     search_form[MATTER_TYPE_SELECTOR_NAME].value = matter_type
@@ -194,6 +177,37 @@ def search_matter(browser, matter_type, number, year):
     search_form[NUMBER_FIELD_NAME] = str(number)
     browser.submit_form(search_form)
     return browser
+
+def scrape_matter(browser, matter_type, number, year):
+    title = browser.select(f'#{TITLE_ID}')[0].text
+    title_words = title.casefold().split()
+    if matter_type == 'STAT':
+        deceased_name = ' '.join(title_words[:title_words.index('of')])
+    else:
+        deceased_name = ' '.join(title_words[4:-1])
+    return Matter(matter_type, number, year, title, deceased_name)
+
+def scrape_parties(browser, matter_type, number, year, username, password):
+    parties = set()
+    applicants = browser.select(f'#{APPLICANTS_TABLE_ID} tr')[1:]
+    respondents = browser.select(f'#{RESPONDENTS_TABLE_ID} tr')[1:]
+    other_parties = browser.select(f'#{OTHER_PARTIES_TABLE_ID} tr')[1:]
+    for row in applicants + respondents + other_parties:
+        try:
+            party_name = row.select('td')[1].text
+            party_name = standardize_party_name(party_name)
+            parties.add(Party(party_name, matter_type, number, year))
+        except IndexError:
+            # The row of links to further pages of party names
+            try:
+                driver = setup_selenium(username, password)
+                party_names = get_multipage_parties(driver, matter_type, number, year)
+                parties.update({Party(standardize_party_name(party_name), matter_type, number, year) for party_name in party_names})
+                driver.close()
+            except PermissionError:
+                with open(app.config['MULTIPAGE_MATTERS_FILE_URI'], 'a') as multipage_matters_file:
+                    multipage_matters_file.write(f'{matter_type} {number}/{year}\n')
+    return parties
 
 def standardize_party_name(name):
     name = name.casefold().strip()
@@ -264,8 +278,44 @@ def get_multipage_parties(driver, matter_type, number, year):
             page += 1
     return parties
 
-def fill_elec_gaps():
-    ...
+def fill_elec_gaps(db, username, password):
+    gaps = find_gaps(db)
+    matters = set()
+    parties = set()
+    for year in range(2010, 1999, -1):
+        print(year)
+        for number in gaps[f'{year}:PRO/ELEC']:
+            print(number)
+            found = False
+            browser = search_matter(browser, 'All', number, year)
+            search_results = browser.select(f'#{MATTERS_TABLE_ID} tr')[1:]
+            for row in search_results:
+                matter_type = row.select('td')[0]
+                if matter_type not in ('ELEC', 'PRO'):
+                    continue
+                if found:
+                    raise ValueError("Aren't PRO and ELEC matter numbers continuous pre-2011?")
+                print(f'found {matter_type}')
+                found = True
+                browser.follow_link(row.get_link('View...'))
+                new_matter = scrape_matter(browser, matter_type, number, year)
+                matters.add(new_matter)
+                new_parties = scrape_parties(browser, matter_type, number, year, username, password)
+                parties.update(new_parties)
+                try:
+                    with db:
+                        db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
+                    matters.clear()
+                except sqlite3.OperationalError:
+                    pass
+                try:
+                    with db:
+                        db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
+                    parties.clear()
+                except sqlite3.OperationalError:
+                    continue
+                finally:
+                    browser.back()
 
 def find_gaps(db):
     all_gaps = {}
