@@ -29,6 +29,9 @@
             {% for error in field.errors %}
             <span class="error">{{ error|safe }}</span>
             {% endfor %}
+            {% if email and field.type == EmailField %}
+            <span class="notify">A notification email will be sent to {{ email }} if any matters match this search.</span>
+            {% endif %}
         </div>
         {% endif %}
         {% endfor %}
