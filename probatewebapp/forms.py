@@ -1,6 +1,6 @@
 import datetime
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import BooleanField, StringField, SubmitField
 from wtforms.fields.html5 import IntegerField
 from wtforms.validators import Optional
 
@@ -12,12 +12,14 @@ class SearchForm(FlaskForm):
     deceased_surname = StringField(
         "What is the deceased person's surname?", 
         render_kw={"placeholder": "Deceased's surname"})
+    deceased_name_strict = BooleanField('Search only for deceased people with this exact combination of first/middle names and surname (not case sensitive)')
     party_firstnames = StringField(
         "What are the applicant's/party's first names?", 
         render_kw={"placeholder": "Applicant's/party's first names"})
     party_surname = StringField(
         "What is the applicant's/party's surname (or corporation's name)?", 
         render_kw={"placeholder": "Applicant's/party's surname"})
+    party_name_strict = BooleanField('Search only for applicants/parties with this exact combination of first/middle names and surname (or corporation name) (not case sensitive)')
     start_year = IntegerField(
         "Start year", 
         validators=[Optional()], 
@@ -29,7 +31,5 @@ class SearchForm(FlaskForm):
         render_kw={"placeholder": "E.g.  2021"}, 
         default=datetime.date.today().year)
     submit = SubmitField('Search')
-
-# TODO: enable a checkbox to switch to whole-name searching
 
 # TODO: enable email notifications of a new matter/grant - careful though if still using check_same_thread=False for the db connection

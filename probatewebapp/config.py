@@ -16,7 +16,7 @@ def get_password(username):
 
 class Config:
     SECRET_KEY = os.urandom(16)
-    VERSION = '0.2.2'
+    VERSION = '0.3.0'
     EMAIL_ADDRESS = 'jeremylondon@outlook.com.au'
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
     
