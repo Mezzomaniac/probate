@@ -141,10 +141,8 @@ def setup_database(db, username, password, years=None):
                         time.sleep(1)  # Limit the server load
         if year == this_year:
             last_update = datetime.datetime.now(app.config['TIMEZONE']).strftime('%Y-%m-%d %H:%M:%S%z')
-            #print(last_update)
             with db:
                 db.execute("REPLACE INTO events VALUES ('last_update', ?)", (last_update,))
-            #print(db.execute("SELECT time FROM events WHERE event = 'last_update'").fetchone())
         elif not count_database(db, year):
             return
 
@@ -347,6 +345,8 @@ def count_database(db, year=None):
     else:
         count = db.execute('SELECT COUNT() FROM matters')
     return count.fetchone()[0]
+
+# TODO: get single PRO matters from 1995, 1994, 1990, 1981
 
 # TODO: if useful, a function to update the party details where the party is 'probate legacy'
 
