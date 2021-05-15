@@ -61,7 +61,7 @@ def schedule(db, username, password, setup=False, years=None):
         if during_business_hours or setup:
             try:
                 insert_multipage_parties(db, username, password)
-                fill_elec_gaps(db, username, password)
+                #fill_elec_gaps(db, username, password)
                 setup_database(db, username, password, years)
             except: #ConnectionError:
                 pause = 900  # 15 mins
@@ -94,7 +94,7 @@ def setup_database(db, username, password, years=None):
             if year <= 2010 and matter_type == 'PRO':
                 number = max((number, max_elec), default=0)
             print(number)
-            while consecutive_missing < 10:
+            while consecutive_missing < 50:
                 number += 1
                 if year <= 2010 and matter_type == 'ELEC':
                     matter_type = 'PRO'
@@ -263,7 +263,7 @@ def get_multipage_parties(driver, matter_type, number, year):
     number_field.clear()
     number_field.send_keys(number, Keys.TAB, year, Keys.ENTER)
     driver.find_element_by_link_text('View...').click()
-    table_ids = [APPLICANTS_ID, RESPONDENTS_ID, OTHER_PARTIES_ID]
+    table_ids = [APPLICANTS_TABLE_ID, RESPONDENTS_TABLE_ID, OTHER_PARTIES_TABLE_ID]
     parties = set()
     for table_id in table_ids:
         page = 2
@@ -279,25 +279,26 @@ def get_multipage_parties(driver, matter_type, number, year):
     return parties
 
 def fill_elec_gaps(db, username, password):
+    browser = setup_robobrowser(username, password)
     gaps = find_gaps(db)
     matters = set()
     parties = set()
-    for year in range(2010, 1999, -1):
+    for year in range(2010, 2002, -1):
         print(year)
-        for number in gaps[f'{year}:PRO/ELEC']:
+        for number in sorted(gaps[f'{year}:PRO/ELEC']):
             print(number)
             found = False
             browser = search_matter(browser, 'All', number, year)
             search_results = browser.select(f'#{MATTERS_TABLE_ID} tr')[1:]
             for row in search_results:
-                matter_type = row.select('td')[0]
+                matter_type = row.select('td')[0].text
                 if matter_type not in ('ELEC', 'PRO'):
                     continue
                 if found:
                     raise ValueError("Aren't PRO and ELEC matter numbers continuous pre-2011?")
                 print(f'found {matter_type}')
                 found = True
-                browser.follow_link(row.get_link('View...'))
+                browser.follow_link(row.select('a')[0])
                 new_matter = scrape_matter(browser, matter_type, number, year)
                 matters.add(new_matter)
                 new_parties = scrape_parties(browser, matter_type, number, year, username, password)
@@ -348,3 +349,5 @@ def count_database(db, year=None):
     return count.fetchone()[0]
 
 # TODO: if useful, a function to update the party details where the party is 'probate legacy'
+
+# See also https://archive.sro.wa.gov.au/index.php/files-probate-s34
