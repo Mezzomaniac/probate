@@ -24,7 +24,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from . import app
+try:
+    from . import app
+    from .processing import check_notification_requests
+except ImportError:
+    pass
 
 LOGIN_URL = 'https://ecourts.justice.wa.gov.au/eCourtsPortal/Account/Login'
 USERNAME_FIELD_NAME = 'UserName'
@@ -67,9 +71,16 @@ def schedule(db, username, password, setup=False, years=None):
                 pause = 900  # 15 mins
         time.sleep(pause)
 
-def setup_database(db, username, password, years=None):
-    with db, open(app.config['SCHEMA_URI']) as schema_file:
+def create_tables(db, schema_uri):
+    with db, open(schema_uri) as schema_file:
         db.executescript(schema_file.read())
+    return db
+
+def setup_database(db, username, password, years=None):
+    temp_db = sqlite3.connect(':memory:')
+    schema_uri = app.config['SCHEMA_URI']
+    db = create_tables(db, schema_uri)
+    temp_db = create_tables(temp_db, schema_uri)
 
     browser = setup_robobrowser(username, password)
     
@@ -136,6 +147,7 @@ def setup_database(db, username, password, years=None):
                     continue
                 finally:
                     browser.back()
+                    check_notification_requests(db, temp_db, new_matter, new_parties)
                     if not number % 10:
                         print(number)
                         time.sleep(1)  # Limit the server load
@@ -345,6 +357,8 @@ def count_database(db, year=None):
     else:
         count = db.execute('SELECT COUNT() FROM matters')
     return count.fetchone()[0]
+
+# TODO: rescrape recent matters to add additional parties for when the court doesn't input their details immediately
 
 # TODO: get single PRO matters from 1995, 1994, 1990, 1981
 

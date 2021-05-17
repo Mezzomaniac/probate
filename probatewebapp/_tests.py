@@ -1,5 +1,13 @@
 import sqlite3
 
+try:
+    from . import database, processing
+    from . import app
+    schema_uri = app.config['SCHEMA_URI']
+except ImportError:
+    import database, processing
+    schema_uri = 'schema.sql'
+
 def sample_database():
     matters = [
         ('PRO', 1, 2021, 'In...', 'Peter Lucas Churchill'), 
@@ -22,25 +30,32 @@ def sample_database():
         ('Gareth Bart Teller', 'PRO', 1, 2020), 
         ('Ash Teller', 'PRO', 1, 2020), 
         ('Gareth Bart Teller', 'CAV', 1, 2020)]
+    notifications = [
+        {'email': 'themezj@hotmail.com', 
+        'dec_first': 'florence tabatha', 
+        'dec_sur': 'hockey', 
+        'dec_strict': True, 
+        'party_first': '', 
+        'party_sur': '', 
+        'party_strict': False, 'start_year': 2021, 
+        'end_year': 2021}]
     db = sqlite3.connect(':memory:', check_same_thread=False)
     db.row_factory = sqlite3.Row
+    db = database.create_tables(db, schema_uri)
     with db:
-        db.execute("""CREATE TABLE matters 
-            (type text(4), 
-            number integer, 
-            year integer, 
-            title text, 
-            deceased_name text, 
-            PRIMARY KEY (type, number, year))""")
-        db.execute("PRAGMA foreign_keys = ON")
-        db.execute("""CREATE TABLE parties 
-            (party_name text, 
-            type text(4), 
-            number integer, 
-            year integer, 
-            FOREIGN KEY (type, number, year) REFERENCES matters (type, number, year))""")
         db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
         db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
+        db.executemany("""INSERT INTO notifications VALUES 
+            (:email, :dec_first, :dec_sur, :dec_strict, :party_first, :party_sur, :party_strict, :start_year, :end_year)""", 
+            notifications)
     return db
 
 db = sample_database()
+
+if __name__ == '__main__':
+    temp_db = sqlite3.connect(':memory:')
+    temp_db = database.create_tables(temp_db, schema_uri)
+    #print([list(row) for row in processing.search(db, deceased_surname='postman')])
+    matter = ('PRO', 7, 2021, 'In...', 'florence tabatha hockey')
+    parties = [('the public trustee', 'PRO', 7, 2021), ('gary arbuckle', 'PRO', 7, 2021)]
+    processing.check_notification_requests(db, temp_db, matter, parties)
