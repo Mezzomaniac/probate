@@ -1,14 +1,8 @@
 import datetime
-from email.message import EmailMessage
-from smtplib import SMTP
-
-try:
-    from . import app
-    from_ = app.config['EMAIL_ADDRESS']
-    password = app.config['EMAIL_PASSWORD']
-except ImportError:
-    from_ = 'jeremylondon@outlook.com.au'
-    password = 'FZ6%5cpM8VX9v'
+from flask import render_template
+from flask_mail import Message
+import jwt
+from . import app, mail
 
 def search(db, 
     deceased_firstnames='', 
@@ -94,34 +88,39 @@ def register(db,
         'end_year': end_year})
     db.commit()
 
-def check_notification_requests(db, temp_db, new_matter, new_parties):
+def notify(db, temp_db, new_matter, new_parties):
     with temp_db:
         temp_db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", new_matter)
         temp_db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", new_parties)
-    for record in db.execute('SELECT * FROM notifications'):
-        search_results = search(temp_db, **record)
-        if search_results:
-            notify(record, search_results)
+    with mail.connect() as conn:
+        for record in db.execute('SELECT * FROM notifications'):
+            search_results = search(temp_db, **record)
+            if search_results:
+                message = construct_message(record, search_results)
+                conn.send(message)
     with temp_db:
         temp_db.execute('DELETE FROM parties')
         temp_db.execute('DELETE FROM matters')
 
-# TODO: implement cache for search() from check_notification_requests - remember to exclude the email kwarg 
+# TODO: implement cache for search() from notify - remember to exclude the email kwarg 
 
-def notify(record, search_results):
-    '''Returns a dictionary of addresses it failed to send to.'''
+def construct_message(record, search_results):
     print(list(record), list(search_results))
-    #from_ = app.config['EMAIL_ADDRESS']
-    with SMTP('smtp.live.com', 587) as smtp:
-        smtp.starttls()
-        smtp.login(from_, password)#app.config['EMAIL_PASSWORD'])
-        msg = EmailMessage()
-        subject = 'Probate Search Notification'
-        message = f"There is a new record matching your search {record}. The new record is {search_results}"  # TODO: use jinja2 template instead
-        msg.set_content(message)
-        msg['Subject'] = subject
-        msg['From'] = from_
-        msg['To'] = record['email']
-        result = smtp.send_message(msg)
-        print(result)
-        return result
+    message = Message('Probate Notification', recipients = [record.email])
+    token_single = create_token(record.rowid)
+    token_all = create_token(record.email)
+    text = render_template('notification.txt', record=record, search_results=search_results, token_single=token_single, token_all=token_all)
+    html = render_template('notification.html', record=record, search_results=search_results, token_single=token_single, token_all=token_all)
+    message.body = text
+    message.html = html
+    return message
+
+def create_token(value):
+    payload = {'key': value}
+    return jwt.encode(payload, app.config['SECRET_KEY'], algorithm='HS256')
+
+def verify_token(token, db):
+    try:
+        return jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])['key']
+    except:
+        return

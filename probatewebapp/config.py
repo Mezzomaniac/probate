@@ -17,9 +17,16 @@ def get_password(service, username):
 class Config:
     SECRET_KEY = os.urandom(16)
     VERSION = '0.3.0'
-    EMAIL_ADDRESS = 'jeremylondon@outlook.com.au'
-    EMAIL_PASSWORD = get_password('EMAIL', EMAIL_ADDRESS)
+
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
+    
+    MAIL_SERVER = 'smtp.live.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = 'jeremylondon@outlook.com.au'
+    MAIL_PASSWORD = get_password('MAIL', MAIL_USERNAME)
+    MAIL_DEFAULT_SENDER = ('Probate Search WA', MAIL_USERNAME)
+    ADMINS = [MAIL_USERNAME]
     
     TESTING = False
     SEND_FILE_MAX_AGE_DEFAULT = 0  # For development only

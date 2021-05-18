@@ -26,7 +26,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 try:
     from . import app
-    from .processing import check_notification_requests
+    from .processing import notify
 except ImportError:
     pass
 
@@ -147,7 +147,7 @@ def setup_database(db, username, password, years=None):
                     continue
                 finally:
                     browser.back()
-                    check_notification_requests(db, temp_db, new_matter, new_parties)
+                    notify(db, temp_db, new_matter, new_parties)
                     if not number % 10:
                         print(number)
                         time.sleep(1)  # Limit the server load
