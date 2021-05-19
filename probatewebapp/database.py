@@ -288,6 +288,21 @@ def get_multipage_parties(driver, matter_type, number, year):
             page += 1
     return parties
 
+def add_scattered_pros(db, username, password, matters):
+    ...
+
+def add_matter(db, username, password, matter_type, number, year):
+    browser = setup_robobrowser(username, password)
+    browser = search_matter(browser, matter_type, number, year)
+    browser.follow_link(browser.get_link('View...'))
+    matter = scrape_matter(browser, matter_type, number, year)
+    parties = scrape_parties(browser, matter_type, number, year, username, password)
+    with db:
+        db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matter)
+        db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
+    browser.back()
+    return browser
+
 def fill_elec_gaps(db, username, password):
     browser = setup_robobrowser(username, password)
     gaps = find_gaps(db)
