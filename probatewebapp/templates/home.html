@@ -38,7 +38,10 @@
     </form>
 </div>
 {% if results %}
-{% include "results.html" %}
+<h2>Search results</h2>
+<div id="results">
+    {% include "results.html" %}
+</div>
 {% endif %}
 <aside><p>
     Last database update: 

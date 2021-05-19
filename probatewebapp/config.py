@@ -2,23 +2,31 @@ import datetime
 from getpass import getpass
 import os
 
-def get_username():
-    username = os.getenv('ELODGMENT_USERNAME')
+def get_username(service):
+    username = os.getenv(f'{service}_USERNAME')
     if username is None:
-        username = input('eCourts Portal username?')
+        username = input(f'{service} username?')
     return username
 
-def get_password(username):
-    password = os.getenv('ELODGMENT_PASSWORD')
+def get_password(service, username):
+    password = os.getenv(f'{service}_PASSWORD')
     if password is None:
-        password = getpass(f'eCourts Portal password for {username}?')
+        password = getpass(f'{service} password for {username}?')
     return password
 
 class Config:
     SECRET_KEY = os.urandom(16)
     VERSION = '0.3.0'
-    EMAIL_ADDRESS = 'jeremylondon@outlook.com.au'
+
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
+    
+    MAIL_SERVER = 'smtp.live.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = 'jeremylondon@outlook.com.au'
+    MAIL_PASSWORD = get_password('MAIL', MAIL_USERNAME)
+    MAIL_DEFAULT_SENDER = ('Probate Search WA', MAIL_USERNAME)
+    ADMINS = [MAIL_USERNAME]
     
     TESTING = False
     SEND_FILE_MAX_AGE_DEFAULT = 0  # For development only
@@ -30,7 +38,7 @@ class Config:
     SQLITE_DATABASE_URI = os.path.join(BASEDIR, 'probate.db')
     SCHEMA_URI = os.path.join(BASEDIR, 'schema.sql')
     
-    ELODGMENT_USERNAME = get_username()
-    ELODGMENT_PASSWORD = get_password(ELODGMENT_USERNAME)
+    ELODGMENT_USERNAME = get_username('ELODGMENT')
+    ELODGMENT_PASSWORD = get_password('ELODGMENT', ELODGMENT_USERNAME)
     
     MULTIPAGE_MATTERS_FILE_URI = os.path.join(BASEDIR, 'multipage_matters.txt')

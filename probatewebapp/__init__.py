@@ -1,11 +1,13 @@
 import sqlite3
 import threading
 from flask import Flask
+from flask_mail import Mail
 from .config import Config
 #from . import _tests
 
 app = Flask(__name__)
 app.config.from_object(Config)
+mail = Mail(app)
 
 from . import database
 
@@ -23,7 +25,7 @@ scraper = threading.Thread(
         #'setup': True, 
         #'years': None}
     )
-scraper.start()
+#scraper.start()
 #db = _tests.sample_database()
 
 from . import routes
