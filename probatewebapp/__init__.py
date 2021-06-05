@@ -14,18 +14,19 @@ from . import database
 #db = sqlite3.connect(':memory:', check_same_thread=False)
 db = sqlite3.connect(app.config['SQLITE_DATABASE_URI'], check_same_thread=False)
 db.row_factory = sqlite3.Row
-#database.print_gaps(db)
-scraper = threading.Thread(
+scraping_schedule = threading.Thread(
     target=database.schedule, 
-    args=(
-        db, 
-        app.config['ELODGMENT_USERNAME'], 
-        app.config['ELODGMENT_PASSWORD'])#, 
-    #kwargs={
-        #'setup': True, 
-        #'years': None}
+    kwargs={
+        'db': db, 
+        'schema_uri': app.config['SCHEMA_URI'], 
+        'username': app.config['ELODGMENT_USERNAME'], 
+        'password': app.config['ELODGMENT_PASSWORD'], 
+        'multipage_matters_file_uri': app.config['MULTIPAGE_MATTERS_FILE_URI'], 
+        'timezone': app.config['TIMEZONE'], 
+        'years': None, 
+        'setup': True}
     )
-#scraper.start()
+scraping_schedule.start()
 #db = _tests.sample_database()
 
 from . import routes
