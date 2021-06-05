@@ -306,9 +306,10 @@ class ProbateDBScraper:
                 # Clear the file
 
     def add_scattered_pros(self):
-        matters = []  # TODO: get single PRO matters from 1995, 1994, 1990, 1981
-        for matter in matters:
-            self.current_matter = matter
+        matters = [(2031, 1995), (2636, 1994), (3591, 1990), (4046, 1981)]
+        for number, year in matters:
+            self.search_matter(Matter('PRO', number, year, None, None))
+            self.view_matter()
             self.add_matter()
     
     def fill_elec_gaps(self):
