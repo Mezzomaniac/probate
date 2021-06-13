@@ -23,7 +23,7 @@ scraping_schedule = threading.Thread(
         'password': app.config['ELODGMENT_PASSWORD'], 
         'timezone': app.config['TIMEZONE'], 
         'years': None, 
-        'setup': True}
+        'setup': False}
     )
 scraping_schedule.start()
 #db = _tests.sample_database()

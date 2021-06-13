@@ -96,7 +96,6 @@ class ProbateDBScraper:
         self.db = db or sqlite3.connect(':memory:')
         with self.db:
             self.db.executescript(self.schema)
-            self.db.execute("ALTER TABLE matters ADD flags TEXT")  # remove this once it's run
         self.timezone = timezone
         self.username = username
         self.password = password
@@ -314,7 +313,7 @@ class ProbateDBScraper:
         self.parties_cache.update(parties)
 
     def insert_matters_and_parties(self):
-        notify(self.db, self.temp_db, self.matters_cache, self.parties_cache)
+        #notify(self.db, self.temp_db, self.matters_cache, self.parties_cache)
         with self.db:
             try:
                 self.db.executemany("REPLACE INTO matters VALUES (?, ?, ?, ?, ?, ?)", self.matters_cache)
@@ -435,6 +434,7 @@ class ProbateDBScraper:
         
         for matter in self.db.execute("SELECT * FROM matters WHERE flags != 'm'"):
             matter = Matter(*matter[:-1], None)
+            print(matter.type, matter.number, matter.year)
             self.search_matter(matter)
             self.view_matter()
             self.add_matter(rescraping=True)
