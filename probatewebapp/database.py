@@ -42,22 +42,30 @@ YEAR_FIELD_START_PAGE_NAME = 'ucQuickSearch$txtFileYear'
 YEAR_FIELD_NAME = 'txtFileYear'
 MATTERS_TABLE_ID = 'dgdMatterList'
 TITLE_ID = 'lblTitle'
+STATUS_ID = 'lblStatus'
 APPLICANTS_TABLE_ID = 'dgdApplicants'
 RESPONDENTS_TABLE_ID = 'dgdRespondents'
 OTHER_PARTIES_TABLE_ID = 'dgdOtherParties'
+DOCUMENT_COUNT_ID = 'lblDocumentCount'
 MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
+PUBLIC_HOLIDAYS_URL = 'https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia'
 
-fieldnames = 'type number year title deceased_name'
+fieldnames = 'type number year title deceased_name flags'
 Matter = namedtuple('Matter', fieldnames)
 
 fieldnames = 'party_name type number year'
 Party = namedtuple('Party', fieldnames)
 
-def schedule(db, schema_uri, username, password, multipage_matters_file_uri, timezone=None, years=None, setup=False):
-    probate_db_scraper = ProbateDBScraper(db=db, schema_uri=schema_uri, timezone=timezone, username=username, password=password, multipage_matters_file_uri=multipage_matters_file_uri)
+def schedule(db, schema_uri, username, password, timezone=None, years=None, setup=False):
+    probate_db_scraper = ProbateDBScraper(db=db, schema_uri=schema_uri, timezone=timezone, username=username, password=password)
+    current_month = None
     while True:
         now = datetime.datetime.now(timezone)
-        during_business_hours = now.weekday() in range(5) and now.hour in range(8, 19)
+        month = now.month
+        if not current_month or month in (12, 1) and month != current_month:
+            probate_db_scraper.update_public_holidays()
+        current_month = month
+        during_business_hours = now.weekday() in range(5) and now.hour in range(8, 19) and now.date() not in probate_db_scraper.public_holidays
         if not setup:
             years = now.year
             pause = 1800  # 30 mins
@@ -67,18 +75,19 @@ def schedule(db, schema_uri, username, password, multipage_matters_file_uri, tim
             if setup:
                 probate_db_scraper.fill_elec_gaps()
                 probate_db_scraper.add_scattered_pros()
+                probate_db_scraper.add_retrospective_flags()
             if during_business_hours or setup:
                 probate_db_scraper.add_multipage_parties()
                 probate_db_scraper.update(years)
-        except Exception as e: #ConnectionError:
-            print(e)
+                probate_db_scraper.rescrape()
+        except ConnectionError:
             pause = 900  # 15 mins
         for i in range(pause):
             time.sleep(1)
 
 class ProbateDBScraper:
     
-    def __init__(self, db=None, schema_uri='', schema='', timezone=None, username='', password='', multipage_matters_file_uri=''):
+    def __init__(self, db=None, schema_uri='', schema='', timezone=None, username='', password=''):
         if schema_uri:
             with open(schema_uri) as schema_file:
                 self.schema = schema_file.read()
@@ -87,6 +96,7 @@ class ProbateDBScraper:
         self.db = db or sqlite3.connect(':memory:')
         with self.db:
             self.db.executescript(self.schema)
+            self.db.execute("ALTER TABLE matters ADD flags TEXT")  # remove this once it's run
         self.timezone = timezone
         self.username = username
         self.password = password
@@ -95,8 +105,8 @@ class ProbateDBScraper:
         self.current_matter = None
         self.matters_cache = set()
         self.parties_cache = set()
-        self.multipage_matters_file_uri = multipage_matters_file_uri
-        self.temp_db = ProbateDBScraper(schema=self.schema)
+        self._public_holidays = set()
+        #self.temp_db = ProbateDBScraper(schema=self.schema)
 
     @property
     def browser(self):
@@ -145,16 +155,54 @@ class ProbateDBScraper:
         # TODO: Create a wait until not stale Wait
         Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, DIVISION_SELECTOR_NAME)))).select_by_visible_text('Probate')
         time.sleep(1)
-        driver.find_element_by_name(NUMBER_FIELD_START_PAGE_NAME).send_keys('0', Keys.TAB, '2021', Keys.ENTER)
+        driver.find_element_by_name(NUMBER_FIELD_START_PAGE_NAME).send_keys('0', Keys.TAB, '2021', Keys.ENTER)  # any year with matters will work
         self._driver = driver
         return driver
+
+    @property
+    def public_holidays(self):
+        if self._public_holidays:
+            return self._public_holidays
+        dates = self.get_public_holidays()
+        dates = {datetime.datetime.strptime(date, '%Y-%m-%d').date() for date in dates}
+        self._public_holidays = dates
+        return dates
+
+    def get_public_holidays(self, year=None):
+        if year:
+            dates = self.db.execute("SELECT date FROM public_holidays WHERE year = ?", (year,))
+        else:
+            dates = self.db.execute("SELECT date FROM public_holidays")
+        return {record[0] for record in dates}
+
+    def update_public_holidays(self):
+        today = datetime.date.today()
+        this_year = today.year
+        years = set()
+        if not self.get_public_holidays(this_year):
+            years.add(this_year)
+        if today.month == 12 and not self.get_public_holidays(this_year + 1):
+            years.add(this_year + 1)
+        dates = public_holidays(years)
+        dates = ((date.year, date.strftime('%Y-%m-%d')) for date in dates)
+        with self.db:
+            self.db.executemany("INSERT OR IGNORE INTO public_holidays VALUES (?, ?)", dates)
+            self.db.execute("DELETE FROM public_holidays WHERE year < ?", (this_year,))
+        self._public_holidays.clear()  # Force update
+
+    def next_business_day(self, date: datetime.date, days: int) -> datetime.date:
+        while days:
+            date += datetime.timedelta(days=1)
+            if date.weekday() in range(5) and date not in self.public_holidays:
+                days -= 1
+        return date
 
     def update(self, years=None):
         this_year = datetime.date.today().year
         try:
             years = range(years, years + 1)
         except TypeError:
-            years = years or range(this_year, 1828, -1)
+            years = years or range(this_year, this_year + 1)
         for year in years:
             print(year)
             for matter_type in MATTER_TYPES:
@@ -169,7 +217,7 @@ class ProbateDBScraper:
                 consecutive_missing = 0
                 while consecutive_missing < 50:
                     number += 1
-                    self.search_matter(Matter(matter_type, number, year, None, None))
+                    self.search_matter(Matter(matter_type, number, year, None, None, None))
                     try:
                         self.view_matter()
                         consecutive_missing = 0
@@ -183,8 +231,9 @@ class ProbateDBScraper:
             if year == this_year:
                 last_update = datetime.datetime.now(self.timezone).strftime('%Y-%m-%d %H:%M:%S%z')
                 with self.db:
-                    self.db.execute("REPLACE INTO events VALUES ('last_update', ?)", (last_update,))
-            elif not self.count_database(year):
+                    self.db.execute("UPDATE events SET time = ? WHERE event = 'last_update'", (last_update,))
+                    # TODO: can this be done using CREATE TRIGGER and datetime('now', '8 hours')?
+            elif not self.count_matters(year):
                 return
 
     def matter_type_max(self, matter_type, year):
@@ -193,7 +242,7 @@ class ProbateDBScraper:
     def search_matter(self, matter):
         self.current_matter = matter
         search_form = self.browser.get_form()
-        search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.matter_type
+        search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.type
         search_form[YEAR_FIELD_NAME] = str(matter.year)
         search_form[NUMBER_FIELD_NAME] = str(matter.number)
         self.browser.submit_form(search_form)
@@ -204,15 +253,18 @@ class ProbateDBScraper:
             self.browser.follow_link(self.browser.get_link('View...'))
         except TypeError:
             # self.browser.get_link('View...') returns None
-            if matter.year <= 2010 and matter.matter_type == 'PRO':
+            if matter.year <= 2010 and matter.type == 'PRO':
                 self.search_matter(Matter('ELEC', *matter[1:]))
                 self.view_matter()
             else:
-                raise ValueError(f'No such matter {matter.matter_type} {matter.number}/{matter.year}')
+                raise ValueError(f'No such matter {matter.type} {matter.number}/{matter.year}')
 
-    def add_matter(self):
-        self.scrape_matter()
-        self.scrape_parties()
+    def add_matter(self, rescraping=False):
+        if not rescraping:
+            self.scrape_matter()
+        else:
+            self.matters_cache.add(self.current_matter)
+        self.scrape_parties(rescraping)
         self.insert_matters_and_parties()
         self.browser.back()
 
@@ -220,21 +272,32 @@ class ProbateDBScraper:
         matter = self.current_matter
         title = self.browser.select(f'#{TITLE_ID}')[0].text
         title_words = title.casefold().split()
-        if matter.matter_type == 'STAT':
+        if matter.type == 'STAT':
             deceased_name = ' '.join(title_words[:title_words.index('of')])
         else:
             deceased_name = ' '.join(title_words[4:-1])
-        matter = Matter(*matter[:3], title, deceased_name)
+        flag = None
+        status_words = self.browser.select(f'#{STATUS_ID}')[0].text.split()
+        status, *_, date = status_words
+        date = datetime.datetime.strptime(date, '%d/%m/%Y').date()
+        fifth_business_day = self.next_business_day(date, 5)
+        doccount = self.browser.select(f'#{DOCUMENT_COUNT_ID}')[0].text.split()[0]
+        if status == 'Lodged' and doccount == '1' and len(self.browser.select(f'#{APPLICANTS_TABLE_ID} tr')[1:]) < 2 and datetime.date.today() < fifth_business_day:
+            flag = fifth_business_day.strftime('%Y-%m-%d')
+        matter = Matter(*matter[:3], title, deceased_name, flag)
         self.current_matter = matter
         self.matters_cache.add(matter)
 
-    def scrape_parties(self):
+    def scrape_parties(self, rescraping=False):
         matter = self.current_matter
         parties = set()
         applicants = self.browser.select(f'#{APPLICANTS_TABLE_ID} tr')[1:]
         respondents = self.browser.select(f'#{RESPONDENTS_TABLE_ID} tr')[1:]
         other_parties = self.browser.select(f'#{OTHER_PARTIES_TABLE_ID} tr')[1:]
-        for row in applicants + respondents + other_parties:
+        for n, row in enumerate(applicants + respondents + other_parties):
+            if rescraping and n == 0:
+                # Skip the first one because it's already in the database
+                continue
             try:
                 party_name = row.select('td')[1].text
                 party_name = standardize_party_name(party_name)
@@ -245,15 +308,16 @@ class ProbateDBScraper:
                     party_names = self.get_multipage_party_names()
                     parties.update({Party(standardize_party_name(party_name), *self.current_matter[:3]) for party_name in party_names})
                 except PermissionError:
-                    with open(self.multipage_matters_file_uri, 'a') as multipage_matters_file:
-                        multipage_matters_file.write(f'{matter.matter_type} {matter.number}/{matter.year}\n')
+                    self.matters_cache.discard(matter)
+                    self.current_matter = Matter(*matter[:-1], 'm')
+                    self.matters_cache.add(self.current_matter)
         self.parties_cache.update(parties)
 
     def insert_matters_and_parties(self):
         notify(self.db, self.temp_db, self.matters_cache, self.parties_cache)
         with self.db:
             try:
-                self.db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", self.matters_cache)
+                self.db.executemany("REPLACE INTO matters VALUES (?, ?, ?, ?, ?, ?)", self.matters_cache)
                 self.matters_cache.clear()
                 self.db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", self.parties_cache)
                 self.parties_cache.clear()
@@ -261,7 +325,7 @@ class ProbateDBScraper:
                 return False
         return True
 
-    def count_database(self, year=None):
+    def count_matters(self, year=None):
         if year:
             count = self.db.execute('SELECT COUNT() FROM matters WHERE year = ?', (year,))
         else:
@@ -270,7 +334,7 @@ class ProbateDBScraper:
 
     def get_multipage_party_names(self):
         matter = self.current_matter
-        Select(self.driver.find_element_by_name(MATTER_TYPE_SELECTOR_NAME)).select_by_visible_text(matter.matter_type)
+        Select(self.driver.find_element_by_name(MATTER_TYPE_SELECTOR_NAME)).select_by_visible_text(matter.type)
         number_field = self.driver.find_element_by_name(NUMBER_FIELD_NAME)
         number_field.clear()
         number_field.send_keys(matter.number, Keys.TAB, matter.year, Keys.ENTER)
@@ -291,24 +355,20 @@ class ProbateDBScraper:
         return party_names
 
     def add_multipage_parties(self):
-        with open(self.multipage_matters_file_uri) as multipage_matters_file:
-            lines = multipage_matters_file.read().splitlines()
+        matters = self.db.execute("SELECT * FROM matters WHERE flags = 'm'")
         parties = set()
-        for line in lines:
-            matter_type, rest = line.split()
-            number, year = (int(part) for part in rest.split('/'))
-            self.current_matter = Matter(matter_type, number, year, None, None)
+        for matter in matters:
             party_names = self.get_multipage_party_names()
             self.parties_cache.update({Party(standardize_party_name(name), *self.current_matter[:3]) for name in party_names})
-        if self.insert_matters_and_parties():
-            with open(self.multipage_matters_file_uri, 'w') as multipage_matters_file:
-                multipage_matters_file.write('')
-                # Clear the file
+            self.matters_cache.discard(Matter(*matter))
+            self.current_matter = Matter(*matter[:-1], None)
+            self.matters_cache.add(self.current_matter)
+        self.insert_matters_and_parties()
 
     def add_scattered_pros(self):
         matters = [(2031, 1995), (2636, 1994), (3591, 1990), (4046, 1981)]
         for number, year in matters:
-            self.search_matter(Matter('PRO', number, year, None, None))
+            self.search_matter(Matter('PRO', number, year, None, None, None))
             self.view_matter()
             self.add_matter()
     
@@ -319,7 +379,7 @@ class ProbateDBScraper:
             for number in sorted(gaps[f'{year}:PRO/ELEC']):
                 print(number)
                 found = False
-                matter = Matter('All', number, year, None, None)
+                matter = Matter('All', number, year, None, None, None)
                 self.search_matter(matter)
                 search_results = self.browser.select(f'#{MATTERS_TABLE_ID} tr')[1:]
                 for row in search_results:
@@ -336,10 +396,10 @@ class ProbateDBScraper:
     
     def find_gaps(self):
         all_gaps = {}
-        years = (year[0] for year in self.db.execute('SELECT DISTINCT year FROM matters').fetchall())
+        years = (record[0] for record in self.db.execute('SELECT DISTINCT year FROM matters'))
         for year in years:
             for matter_type in MATTER_TYPES:
-                found = set(number[0] for number in self.db.execute('SELECT number FROM matters WHERE type = ? and year = ?', (matter_type, year)).fetchall())
+                found = {record[0] for record in self.db.execute('SELECT number FROM matters WHERE type = ? and year = ?', (matter_type, year))}
                 if year <= 2010 and matter_type == 'ELEC':
                     found_elec = found
                     continue
@@ -356,6 +416,28 @@ class ProbateDBScraper:
         gaps = self.find_gaps()
         for key, value in sorted(gaps.items(), reverse=True):
             print(key, sorted(value))
+    
+    def add_retrospective_flags(self):
+        '''Add rescraping flags to matters added between 13/4/21 (a week before the schema for the matters and parties tables was fixed) and when flag use began.'''
+        
+        starts = {'CAV': 54, 'PRO': 2095, 'REN': 18}
+        flag = self.next_business_day(datetime.date.today(), 5).strftime('%Y-%m-%d')
+        with self.db:
+            self.db.executemany(
+                """UPDATE matters SET flags = ? 
+                    WHERE type = ? AND number >= ? AND year = 2021 
+                    AND (SELECT COUNT(*) FROM parties WHERE parties.type = matters.type AND parties.number = matters.number AND parties.year = matters.year) < 2""", 
+                ((flag, matter_type, number) for matter_type, number in starts.items())
+            )
+    
+    def rescrape(self):
+        '''Check whether there are additional parties to add if the court mightn't have input their details at the time of the original scrape'''
+        
+        for matter in self.db.execute("SELECT * FROM matters WHERE flags != 'm'"):
+            matter = Matter(*matter[:-1], None)
+            self.search_matter(matter)
+            self.view_matter()
+            self.add_matter(rescraping=True)
 
 def standardize_party_name(name):
     name = name.casefold().strip()
@@ -365,7 +447,15 @@ def standardize_party_name(name):
         name = f'{name[:-6]}td'
     return name
 
-# TODO: rescrape recent matters to add additional parties for when the court doesn't input their details immediately
+def public_holidays(years):
+    browser = RoboBrowser(parser='html5lib')
+    browser.open(PUBLIC_HOLIDAYS_URL)
+    results = set()
+    for year in years:
+        column = [th.text for th in browser.select('th')].index(str(year))
+        dates = {tr.select('td')[column].text.strip().split('&\n\n\t\t\t')[-1] for tr in browser.select('tr')[1:]}
+        dates = {datetime.datetime.strptime(date, '%A %d %B') for date in dates}
+        results.update({datetime.date(year, date.month, date.day) for date in dates})
 
 # TODO: if useful, a function to update the party details where the party is 'probate legacy'
 

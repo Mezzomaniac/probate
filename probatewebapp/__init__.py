@@ -21,7 +21,6 @@ scraping_schedule = threading.Thread(
         'schema_uri': app.config['SCHEMA_URI'], 
         'username': app.config['ELODGMENT_USERNAME'], 
         'password': app.config['ELODGMENT_PASSWORD'], 
-        'multipage_matters_file_uri': app.config['MULTIPAGE_MATTERS_FILE_URI'], 
         'timezone': app.config['TIMEZONE'], 
         'years': None, 
         'setup': True}

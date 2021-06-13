@@ -40,5 +40,3 @@ class Config:
     
     ELODGMENT_USERNAME = get_username('ELODGMENT')
     ELODGMENT_PASSWORD = get_password('ELODGMENT', ELODGMENT_USERNAME)
-    
-    MULTIPAGE_MATTERS_FILE_URI = os.path.join(BASEDIR, 'multipage_matters.txt')

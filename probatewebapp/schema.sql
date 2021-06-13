@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS matters
     year INTEGER, 
     title TEXT, 
     deceased_name TEXT, 
+    flags TEXT, 
     PRIMARY KEY (type, number, year)
     );
 
@@ -25,6 +26,8 @@ CREATE TABLE IF NOT EXISTS events
     time TEXT DEFAULT null
     );
 
+INSERT OR IGNORE INTO events VALUES ('last_update', null);
+
 CREATE TABLE IF NOT EXISTS notifications 
     (
     email TEXT,
@@ -36,4 +39,10 @@ CREATE TABLE IF NOT EXISTS notifications
     party_name_strict INTEGER, 
     start_year INTEGER, 
     end_year INTEGER
+    );
+
+CREATE TABLE IF NOT EXISTS public_holidays 
+    (
+    year INTEGER, 
+    date TEXT UNIQUE
     );

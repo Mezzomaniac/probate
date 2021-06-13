@@ -5,7 +5,7 @@ try:
     from . import app
     schema_uri = app.config['SCHEMA_URI']
 except ImportError:
-    import database, processing
+    import database#, processing
     schema_uri = 'schema.sql'
 
 def sample_database():
@@ -17,7 +17,8 @@ def sample_database():
         ('PRO', 5, 2021, 'In...', 'Hank de Vries'), 
         ('PRO', 6, 2021, 'In...', 'Beattie Xena Pattie van der Wilde'), 
         ('PRO', 1, 2020, 'In...', 'DONALD XAVIER POSTMAN'), 
-        ('CAV', 1, 2020, 'In...', 'DONALD XAVIER POSTMAN')]
+        ('CAV', 1, 2020, 'In...', 'DONALD XAVIER POSTMAN'), 
+        ('CAV', 2, 2021, 'In...', 'Atticus Oswald')]
     parties = [
         ('Eustace Wallace', 'PRO', 1, 2021), 
         ('Augustus CHURCHILL', 'PRO', 1, 2021), 
@@ -45,6 +46,7 @@ def sample_database():
     with db:
         db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
         db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
+        db.execute("ALTER TABLE matters ADD flags TEXT")
         db.executemany("""INSERT INTO notifications VALUES 
             (:email, :dec_first, :dec_sur, :dec_strict, :party_first, :party_sur, :party_strict, :start_year, :end_year)""", 
             notifications)
@@ -58,4 +60,4 @@ if __name__ == '__main__':
     #print([list(row) for row in processing.search(db, deceased_surname='postman')])
     matter = ('PRO', 7, 2021, 'In...', 'florence tabatha hockey')
     parties = [('the public trustee', 'PRO', 7, 2021), ('gary arbuckle', 'PRO', 7, 2021)]
-    processing.check_notification_requests(db, temp_db, matter, parties)
+    #processing.check_notification_requests(db, temp_db, matter, parties)
