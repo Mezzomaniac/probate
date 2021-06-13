@@ -98,6 +98,7 @@ class ProbateDBScraper:
             self.db.executescript(self.schema)
             self.db.execute("ALTER TABLE matters ADD flags TEXT")  # remove this once it's run
         self.timezone = timezone
+        self.tz_offset = timezone.utcoffset(None).seconds // 3600
         self.username = username
         self.password = password
         self._browser = None
@@ -229,10 +230,8 @@ class ProbateDBScraper:
                         print(number)
                         time.sleep(1)  # Limit the server load
             if year == this_year:
-                last_update = datetime.datetime.now(self.timezone).strftime('%Y-%m-%d %H:%M:%S%z')
                 with self.db:
-                    self.db.execute("UPDATE events SET time = ? WHERE event = 'last_update'", (last_update,))
-                    # TODO: can this be done using CREATE TRIGGER and datetime('now', '8 hours')?
+                    self.db.execute("UPDATE events SET time = datetime('now', ?) WHERE event = 'last_update'", (f'{self.tz_offset} hours',))
             elif not self.count_matters(year):
                 return
 
@@ -433,7 +432,7 @@ class ProbateDBScraper:
     def rescrape(self):
         '''Check whether there are additional parties to add if the court mightn't have input their details at the time of the original scrape'''
         
-        for matter in self.db.execute("SELECT * FROM matters WHERE flags != 'm'"):
+        for matter in self.db.execute("SELECT * FROM matters WHERE flags <= date('now', ?)", (f'{self.tz_offset} hours',)):
             matter = Matter(*matter[:-1], None)
             self.search_matter(matter)
             self.view_matter()
