@@ -456,6 +456,7 @@ def public_holidays(years):
         dates = {tr.select('td')[column].text.strip().split('&\n\n\t\t\t')[-1] for tr in browser.select('tr')[1:]}
         dates = {datetime.datetime.strptime(date, '%A %d %B') for date in dates}
         results.update({datetime.date(year, date.month, date.day) for date in dates})
+    return results
 
 # TODO: if useful, a function to update the party details where the party is 'probate legacy'
 
