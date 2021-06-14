@@ -73,8 +73,8 @@ def schedule(db, schema_uri, username, password, timezone=None, years=None, setu
             pause = 0
         try:
             if setup:
-                probate_db_scraper.fill_elec_gaps()
-                probate_db_scraper.add_scattered_pros()
+                #probate_db_scraper.fill_elec_gaps()
+                #probate_db_scraper.add_scattered_pros()
                 probate_db_scraper.add_retrospective_flags()
             if during_business_hours or setup:
                 probate_db_scraper.add_multipage_parties()
@@ -82,6 +82,7 @@ def schedule(db, schema_uri, username, password, timezone=None, years=None, setu
                 probate_db_scraper.rescrape()
         except ConnectionError:
             pause = 900  # 15 mins
+        print('Sleeping...')
         for i in range(pause):
             time.sleep(1)
 
