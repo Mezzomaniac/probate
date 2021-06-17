@@ -7,20 +7,20 @@ import email_validator
 
 class SearchForm(FlaskForm):
     
-    deceased_firstnames = StringField(
-        "What are the deceased person's first names?", 
-        render_kw={"placeholder": "Deceased's first names"})
-    deceased_surname = StringField(
+    dec_first = StringField(
+        "What are the deceased person's firstnames?", 
+        render_kw={"placeholder": "Deceased's firstnames"})
+    dec_sur = StringField(
         "What is the deceased person's surname?", 
         render_kw={"placeholder": "Deceased's surname"})
-    deceased_name_strict = BooleanField('Search only for deceased people with this exact combination of first/middle names and surname (not case sensitive)')
-    party_firstnames = StringField(
-        "What are the applicant's/party's first names?", 
-        render_kw={"placeholder": "Applicant's/party's first names"})
-    party_surname = StringField(
+    dec_strict = BooleanField('Search only for deceased people with this exact combination of firstnames and surname (not case sensitive)')
+    party_first = StringField(
+        "What are the applicant's/party's firstnames?", 
+        render_kw={"placeholder": "Applicant's/party's firstnames"})
+    party_sur = StringField(
         "What is the applicant's/party's surname (or corporation's name)?", 
         render_kw={"placeholder": "Applicant's/party's surname"})
-    party_name_strict = BooleanField('Search only for applicants/parties with this exact combination of first/middle names and surname (or corporation name) (not case sensitive)')
+    party_strict = BooleanField('Search only for applicants/parties with this exact combination of firstnames and surname (or corporation name) (not case sensitive)')
     start_year = IntegerField(
         "Start year", 
         validators=[Optional()], 
@@ -36,4 +36,6 @@ class SearchForm(FlaskForm):
         validators=[Optional(), Email()])
     submit = SubmitField('Search')
 
-# TODO: enable email notifications of a new matter/grant - careful though if still using check_same_thread=False for the db connection
+# TODO: enable email notifications of a new grant - careful though if still using check_same_thread=False for the db connection
+
+# TODO: form to request re-issue of notification cancellation link

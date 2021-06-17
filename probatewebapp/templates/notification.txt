@@ -2,17 +2,11 @@ Dear {{ record.email }}
 
 You requested to be notified of new records matching your search with the following parameters:
 
-{% for key, value in record.items() %}
-{% if key != 'email' %}
-* {{ key }}: {{ value }}
-{% endif %}
-{% endfor %}
+{% for field in record.parameters %}    * {{ field.description }}: {{ field.value }}{% endfor %}
 
-The following new records have been found:
+The following new record has been found:
 
-{% for result in search_results %}
-* {{ result.type }} {{ result.number }}/{{ result.year }}: {{ result.title|e }}. {{ result.party_name.title() }} is a party.
-{% endfor %}
+{% for field in record.result %}    {{ field.description }}: {{ field.value }}{% endfor %}
 
 To cancel future notifications matching this search, click here: {{ url_for('cancel_notification', token=token_single, _external=True) }}.
 

@@ -1,12 +1,16 @@
 import sqlite3
 
 try:
-    from . import database, processing
+    from . import processing
     from . import app
     schema_uri = app.config['SCHEMA_URI']
 except ImportError:
-    import database#, processing
+    import processing
     schema_uri = 'schema.sql'
+
+def notify(*x):
+    if __name__ == '__main__':
+        print(x)
 
 def sample_database():
     matters = [
@@ -32,32 +36,43 @@ def sample_database():
         ('Ash Teller', 'PRO', 1, 2020), 
         ('Gareth Bart Teller', 'CAV', 1, 2020)]
     notifications = [
-        {'email': 'themezj@hotmail.com', 
-        'dec_first': 'florence tabatha', 
-        'dec_sur': 'hockey', 
-        'dec_strict': True, 
+        {'email': 'one@example.com', 
+        'dec_first': '', 
+        'dec_sur': 'postman', 
+        'dec_strict': False, 
         'party_first': '', 
-        'party_sur': '', 
-        'party_strict': False, 'start_year': 2021, 
-        'end_year': 2021}]
+        'party_sur': 'teller', 
+        'party_strict': False, 'start_year': 2020, 
+        'end_year': 2021}, 
+        {'email': 'two@example.com', 
+        'dec_first': '', 
+        'dec_sur': 'postman', 
+        'dec_strict': False, 
+        'party_first': '', 
+        'party_sur': 'teller', 
+        'party_strict': False, 'start_year': 2020, 
+        'end_year': 2021}, 
+        {'email': 'three@example.com', 
+        'dec_first': '', 
+        'dec_sur': 'qqq', 
+        'dec_strict': False, 
+        'party_first': '', 
+        'party_sur': 'qqq', 
+        'party_strict': False, 'start_year': 2020, 
+        'end_year': 2021}, ]
     db = sqlite3.connect(':memory:', check_same_thread=False)
     db.row_factory = sqlite3.Row
-    db = database.create_tables(db, schema_uri)
+    db.create_function('notify', -1, notify)
+    with db, open(schema_uri) as schema_file:
+        db.executescript(schema_file.read())
+    for notification in notifications:
+        processing.register(db, processing.standardize_search_parameters(**notification), notification['email'])
     with db:
-        db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", matters)
-        db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", parties)
-        db.execute("ALTER TABLE matters ADD flags TEXT")
-        db.executemany("""INSERT INTO notifications VALUES 
-            (:email, :dec_first, :dec_sur, :dec_strict, :party_first, :party_sur, :party_strict, :start_year, :end_year)""", 
-            notifications)
+        db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)", ((*matter, None) for matter in matters))
+        for party in parties:
+            #print(party)
+            db.execute("INSERT INTO parties VALUES (?, ?, ?, ?)", party)
+            #print()
     return db
 
 db = sample_database()
-
-if __name__ == '__main__':
-    temp_db = sqlite3.connect(':memory:')
-    temp_db = database.create_tables(temp_db, schema_uri)
-    #print([list(row) for row in processing.search(db, deceased_surname='postman')])
-    matter = ('PRO', 7, 2021, 'In...', 'florence tabatha hockey')
-    parties = [('the public trustee', 'PRO', 7, 2021), ('gary arbuckle', 'PRO', 7, 2021)]
-    #processing.check_notification_requests(db, temp_db, matter, parties)

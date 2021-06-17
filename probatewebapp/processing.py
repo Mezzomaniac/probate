@@ -1,116 +1,160 @@
-import datetime
+from collections import namedtuple
 from flask import render_template
 from flask_mail import Message
 import jwt
-from . import app, mail
+try:
+    from . import app, mail
+except ImportError:
+    pass
 
-def search(db, 
-    deceased_firstnames='', 
-    deceased_surname='', 
-    deceased_name_strict=False, 
-    party_firstnames='', 
-    party_surname='', 
-    party_name_strict=False, 
-    start_year=None, 
-    end_year=None, 
+
+NotificationField = namedtuple('NotificationField', 'description value')
+
+class NotificationRecord:
+    
+    def __init__(self, 
+        id, 
+        email, 
+        dec_first, 
+        dec_sur, 
+        dec_strict, 
+        party_first, 
+        party_sur, 
+        party_strict, 
+        start_year, 
+        end_year, 
+        type, 
+        number, 
+        year, 
+        title, 
+        party_name
+        ):
+        
+        self.id = id
+        self.email = email
+        self.dec_first = NotificationField("Deceased's firstnames", dec_first)
+        self.dec_sur = NotificationField("Deceased's surname", dec_sur)
+        self.dec_strict = NotificationField("Deceased's names strict", dec_strict)
+        self.party_first = NotificationField("Applicant's/party's firstnames", party_first)
+        self.party_sur = NotificationField("Applicant's/party's surname", party_sur)
+        self.party_strict = NotificationField("Applicant's/party's names strict", party_strict)
+        self.start_year = NotificationField("Start year", start_year)
+        self.end_year = NotificationField("End year", end_year)
+        self.file_no = NotificationField("File number", f'{type} {number}/{year}')
+        self.title = NotificationField("Title", title)
+        self.party = NotificationField("Party", party_name.title())
+        self.parameters = [self.dec_first, self.dec_sur, self.dec_strict, self.party_first, self.party_sur, self.party_strict, self.start_year, self.end_year]
+        self.result = [self.file_no, self.title, self.party]
+    
+    def __repr__(self):
+        attrs = "id, email, dec_first, dec_sur, dec_strict, party_first, party_sur, party_strict, start_year, end_year, file_no, title, party".split(', ')
+        return f"NotificationRecord({', '.join(getattr(self, attr) for attr in attrs)}"
+
+
+def standardize_search_parameters(dec_first, 
+    dec_sur, 
+    dec_strict, 
+    party_first, 
+    party_sur, 
+    party_strict, 
+    start_year, 
+    end_year, 
     **discards):
-    
-    deceased_surname = deceased_surname.rstrip()
-    party_surname = party_surname.rstrip()
-    if party_surname.casefold().startswith('the '):
-        party_surname = party_surname[4:]
-    elif party_surname.casefold().endswith('limited'):
-        party_surname = f'{party_surname[:-6]}td'
-    start_year = start_year or 0
-    if end_year is None:
-        end_year = datetime.date.today().year
-    
-    if deceased_name_strict:
-        deceased_name_search_query = ":dec_first || ' ' || :dec_sur"
+        
+    dec_sur_temp = dec_sur.rstrip()
+    if dec_strict:
+        dec = f'{dec_first} {dec_sur_temp}'
     else:
-        deceased_name_search_query = "'%' || :dec_first || '%' || :dec_sur"
-    if party_name_strict:
-        if party_firstnames:
-            party_name_search_query = ":party_first || ' ' || :party_sur"
+        dec = f'%{dec_first}%{dec_sur_temp}'
+    party_sur_temp = party_sur.casefold().rstrip()
+    if party_sur_temp.startswith('the '):
+        party_sur_temp = party_sur_temp[4:]
+    elif party_sur_temp.endswith('limited'):
+        party_sur_temp = f'{party_surname[:-6]}td'
+    if party_strict:
+        if party_first:
+            party = f'{party_firstnames} {party_surname_temp}'
         else:
-            party_name_search_query = ":party_sur"
+            party = party_sur_temp
     else:
-        party_name_search_query = "'%' || :party_first || '%' || :party_sur"
-    search_results = db.execute("""SELECT DISTINCT type, number, year, title, party_name 
-        FROM matters NATURAL JOIN parties 
-        WHERE deceased_name LIKE {} 
-        AND party_name LIKE {} 
-        AND year BETWEEN :start_year AND :end_year
-        ORDER BY year DESC, number DESC""".format(
-            deceased_name_search_query, 
-            party_name_search_query), 
-        {'dec_first': deceased_firstnames, 
-        'dec_sur': deceased_surname, 
-        'party_first': party_firstnames, 
-        'party_sur': party_surname, 
-        'start_year': start_year,
-        'end_year': end_year}).fetchall()
-    return search_results
+        party = f'%{party_first}%{party_sur_temp}'
+    start = start_year or 0
+    end = end_year
+    if end is None:
+        end = 3000
 
-def register(db, 
-    email, 
-    deceased_firstnames='', 
-    deceased_surname='', 
-    deceased_name_strict=False, 
-    party_firstnames='', 
-    party_surname='', 
-    party_name_strict=False, 
-    start_year=None, 
-    end_year=None, 
-    **discards):
-    
-    email = email.strip()
-    if not email:
-        return
-    #deceased_surname = deceased_surname.rstrip()
-    #party_surname = party_surname.rstrip()
-    #if party_surname.casefold().startswith('the '):
-        #party_surname = party_surname[4:]
-    #elif party_surname.casefold().endswith('limited'):
-        #party_surname = f'{party_surname[:-6]}td'
-    #start_year = start_year or 0
-    
-    db.execute("""INSERT INTO notifications VALUES 
-        (:email, :dec_first, :dec_sur, :dec_strict, :party_first, :party_sur, :party_strict, :start_year, :end_year)""", 
-        {'email': email, 
-        'dec_first': deceased_firstnames, 
-        'dec_sur': deceased_surname, 
-        'dec_strict': int(deceased_name_strict), 
-        'party_first': party_firstnames, 
-        'party_sur': party_surname, 
-        'party_strict': int(party_name_strict), 
-        'start_year': start_year,
-        'end_year': end_year})
-    db.commit()
+    return {'dec_first': dec_first, 
+        'dec_sur': dec_sur, 
+        'dec_strict': dec_strict, 
+        'dec': dec, 
+        'party_first': party_first, 
+        'party_sur': party_sur, 
+        'party_strict': party_strict, 
+        'party': party, 
+        'start_year': start_year, 
+        'start': start, 
+        'end_year': end_year, 
+        'end': end}
 
-def notify(db, temp_db, new_matter, new_parties):
-    with temp_db:
-        temp_db.execute("INSERT INTO matters VALUES (?, ?, ?, ?, ?)", new_matter)
-        temp_db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", new_parties)
+def search(db, parameters):
+    return db.execute("""SELECT DISTINCT type, number, year, title, party_name 
+        FROM search
+        WHERE deceased_name LIKE :dec 
+        AND party_name LIKE :party 
+        AND year BETWEEN :start AND :end
+        ORDER BY year DESC, number DESC""", 
+        parameters)
+
+def register(db, parameters, email):
+    parameters['email'] = email
+    with db:
+        # TODO: Is there a problem using check_same_thread=False for the db connection?
+        db.execute("""INSERT INTO notifications (
+            email, 
+            dec_first, 
+            dec_sur, 
+            dec_strict, 
+            dec, 
+            party_first, 
+            party_sur, 
+            party_strict, 
+            party, 
+            start_year, 
+            start, 
+            end_year, 
+            end)
+        VALUES 
+            (:email, 
+            :dec_first, 
+            :dec_sur, 
+            :dec_strict, 
+            :dec, 
+            :party_first, 
+            :party_sur, 
+            :party_strict, 
+            :party, 
+            :start_year, 
+            :start, 
+            :end_year, 
+            :end)""", 
+            parameters)
+
+def notify(record):
+    '''This function is registered in the db to be used as a callback from a TRIGGER AFTER INSERT ON parties.'''
+    
+    record = NotificationRecord(*record)
+    print(record)
     with mail.connect() as conn:
-        for record in db.execute('SELECT * FROM notifications'):
-            search_results = search(temp_db, **record)
-            if search_results:
-                message = construct_message(record, search_results)
-                conn.send(message)
-    with temp_db:
-        temp_db.execute('DELETE FROM parties')
-        temp_db.execute('DELETE FROM matters')
+        # TODO: If it's too slow sending each email using its own connection, add the records to a new db table and send them all at once periodically
+        message = construct_message(record)
+        conn.send(message)
 
-# TODO: implement cache for search() from notify - remember to exclude the email kwarg 
-
-def construct_message(record, search_results):
-    print(list(record), list(search_results))
+def construct_message(record):
     message = Message('Probate Notification', recipients = [record.email])
-    token_single = create_token(record.rowid)
+    token_single = create_token(record.id)
     token_all = create_token(record.email)
-    text = render_template('notification.txt', record=record, search_results=search_results, token_single=token_single, token_all=token_all)
-    html = render_template('notification.html', record=record, search_results=search_results, token_single=token_single, token_all=token_all)
+    text = render_template('notification.txt', record=record, token_single=token_single, token_all=token_all)
+    html = render_template('notification.html', record=record, token_single=token_single, token_all=token_all)
     message.body = text
     message.html = html
     return message

@@ -19,11 +19,12 @@ def home():
     results = None
     email = None
     if form.validate_on_submit():
-        results = processing.search(db, **form.data)
-        email = form.data['email']
+        search_parameters = processing.standardize_search_parameters(**form.data)
+        results = processing.search(db, search_parameters)
+        email = form.data['email'].strip()
         if email:
-            flash(f'A notification email will be sent to {email} if any matters match this search.')
-            processing.register(db, **form.data)
+            flash(f'A notification email will be sent to {email} if any matters/parties match this search.')
+            processing.register(db, search_parameters, email)
     return render_template('home.html', 
     title='Home', 
     form=form, 
@@ -31,15 +32,17 @@ def home():
     results=results, 
     email=email)
 
+# TODO: page to request re-issue of notification cancellation link
+
 @app.route('/cancel_notification/<token>')
 def cancel_notification(token):
     token = processing.verify_token(token)
     print(token)
-    if type(token) == int:
+    if isinstance(token, int):
         with db:
-            db.execute('DELETE FROM notifications WHERE rowid = ?', (token,))
+            db.execute('DELETE FROM notifications WHERE id = ?', (token,))
         flash('Your notification request has been cancelled.')
-    elif type(token) == str:
+    elif isinstance(token, str):
         with db:
             db.execute('DELETE FROM notifications WHERE email = ?', (token,))
         flash('All your notification requests have been cancelled.')

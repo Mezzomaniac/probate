@@ -26,7 +26,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 try:
     from . import app
-    from .processing import notify
 except ImportError:
     pass
 
@@ -73,8 +72,8 @@ def schedule(db, schema_uri, username, password, timezone=None, years=None, setu
             pause = 0
         try:
             if setup:
-                #probate_db_scraper.fill_elec_gaps()
-                #probate_db_scraper.add_scattered_pros()
+                probate_db_scraper.fill_elec_gaps()
+                probate_db_scraper.add_scattered_pros()
                 probate_db_scraper.add_retrospective_flags()
             if during_business_hours or setup:
                 probate_db_scraper.add_multipage_parties()
@@ -96,9 +95,12 @@ class ProbateDBScraper:
             self.schema = schema
         self.db = db or sqlite3.connect(':memory:')
         with self.db:
+            self.db.execute("DROP TABLE IF EXISTS notifications")
+            print("Delete drop table command after it's run once")
             self.db.executescript(self.schema)
-        self.timezone = timezone
-        self.tz_offset = timezone.utcoffset(None).seconds // 3600
+        self.timezone = timezone or datetime.timezone(datetime.timedelta())
+        
+        self.tz_offset = self.timezone.utcoffset(None).seconds // 3600
         self.username = username
         self.password = password
         self._browser = None
@@ -107,7 +109,6 @@ class ProbateDBScraper:
         self.matters_cache = set()
         self.parties_cache = set()
         self._public_holidays = set()
-        #self.temp_db = ProbateDBScraper(schema=self.schema)
 
     @property
     def browser(self):
@@ -313,7 +314,6 @@ class ProbateDBScraper:
         self.parties_cache.update(parties)
 
     def insert_matters_and_parties(self):
-        #notify(self.db, self.temp_db, self.matters_cache, self.parties_cache)
         with self.db:
             try:
                 self.db.executemany("REPLACE INTO matters VALUES (?, ?, ?, ?, ?, ?)", self.matters_cache)
@@ -321,8 +321,7 @@ class ProbateDBScraper:
                 self.db.executemany("INSERT INTO parties VALUES (?, ?, ?, ?)", self.parties_cache)
                 self.parties_cache.clear()
             except sqlite3.OperationalError:
-                return False
-        return True
+                pass
 
     def count_matters(self, year=None):
         if year:
