@@ -11,7 +11,7 @@
         v {{ config['VERSION'] }}
     </p>
     <address>
-        Please report any bugs to <a href="mailto:{{ config['MAIL_USERNAME'] }}?subject=Probate%20Search">{{ config['MAIL_USERNAME'] }}</a>
+        Please send any feedback to <a href="mailto:{{ config['MAIL_USERNAME'] }}?subject=Probate%20Search">{{ config['MAIL_USERNAME'] }}</a>
     </address>
     <p id="changelog"></p>
 </div>
@@ -32,6 +32,15 @@
         </div>
         {% endif %}
         {% endfor %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li style="color: green;">{{ message }}</li>
+            {% endfor%}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <p>
             {{ form.submit() }}
         </p>

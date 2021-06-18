@@ -70,10 +70,10 @@ def standardize_search_parameters(dec_first,
     if party_sur_temp.startswith('the '):
         party_sur_temp = party_sur_temp[4:]
     elif party_sur_temp.endswith('limited'):
-        party_sur_temp = f'{party_surname[:-6]}td'
+        party_sur_temp = f'{party_sur_temp[:-6]}td'
     if party_strict:
         if party_first:
-            party = f'{party_firstnames} {party_surname_temp}'
+            party = f'{party_first} {party_sur_temp}'
         else:
             party = party_sur_temp
     else:
@@ -108,7 +108,6 @@ def search(db, parameters):
 def register(db, parameters, email):
     parameters['email'] = email
     with db:
-        # TODO: Is there a problem using check_same_thread=False for the db connection?
         db.execute("""INSERT INTO notifications (
             email, 
             dec_first, 

@@ -61,7 +61,7 @@ def sample_database():
         'party_strict': False, 'start_year': 2020, 
         'end_year': 2021}, ]
     db = sqlite3.connect(':memory:', check_same_thread=False)
-    db.row_factory = sqlite3.Row
+    #db.row_factory = sqlite3.Row
     db.create_function('notify', -1, notify)
     with db, open(schema_uri) as schema_file:
         db.executescript(schema_file.read())
@@ -70,9 +70,9 @@ def sample_database():
     with db:
         db.executemany("INSERT INTO matters VALUES (?, ?, ?, ?, ?, ?)", ((*matter, None) for matter in matters))
         for party in parties:
-            #print(party)
+            print(party)
             db.execute("INSERT INTO parties VALUES (?, ?, ?, ?)", party)
-            #print()
+            print()
     return db
 
 db = sample_database()

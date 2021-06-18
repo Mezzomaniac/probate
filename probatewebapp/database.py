@@ -24,10 +24,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-try:
-    from . import app
-except ImportError:
-    pass
+from .processing import notify
 
 LOGIN_URL = 'https://ecourts.justice.wa.gov.au/eCourtsPortal/Account/Login'
 USERNAME_FIELD_NAME = 'UserName'
@@ -55,8 +52,8 @@ Matter = namedtuple('Matter', fieldnames)
 fieldnames = 'party_name type number year'
 Party = namedtuple('Party', fieldnames)
 
-def schedule(db, schema_uri, username, password, timezone=None, years=None, setup=False):
-    probate_db_scraper = ProbateDBScraper(db=db, schema_uri=schema_uri, timezone=timezone, username=username, password=password)
+def schedule(db_uri, schema_uri, username, password, timezone=None, years=None, setup=False):
+    probate_db_scraper = ProbateDBScraper(db_uri, schema_uri, username, password, timezone)
     current_month = None
     while True:
         now = datetime.datetime.now(timezone)
@@ -81,30 +78,28 @@ def schedule(db, schema_uri, username, password, timezone=None, years=None, setu
                 probate_db_scraper.rescrape()
         except ConnectionError:
             pause = 900  # 15 mins
-        print('Sleeping...')
+        print(f'Sleeping until {datetime.datetime.now(timezone) + datetime.timedelta(seconds=pause)}')
+        probate_db_scraper._browser = None
+        probate_db_scraper._driver = None
         for i in range(pause):
             time.sleep(1)
 
 class ProbateDBScraper:
     
-    def __init__(self, db=None, schema_uri='', schema='', timezone=None, username='', password=''):
+    def __init__(self, db_uri='', schema_uri='', username='', password='', timezone=None):
+        self.db = sqlite3.connect(db_uri or ':memory:')
+        self.db.row_factory = sqlite3.Row
+        self.db.create_function('notify', -1, notify)
         if schema_uri:
-            with open(schema_uri) as schema_file:
+            with db, open(schema_uri) as schema_file:
                 self.schema = schema_file.read()
-        else:
-            self.schema = schema
-        self.db = db or sqlite3.connect(':memory:')
-        with self.db:
-            self.db.execute("DROP TABLE IF EXISTS notifications")
-            print("Delete drop table command after it's run once")
-            self.db.executescript(self.schema)
-        self.timezone = timezone or datetime.timezone(datetime.timedelta())
-        
-        self.tz_offset = self.timezone.utcoffset(None).seconds // 3600
+                self.db.executescript(self.schema)
         self.username = username
         self.password = password
         self._browser = None
         self._driver = None
+        self.timezone = timezone or datetime.timezone(datetime.timedelta())
+        self.tz_offset = self.timezone.utcoffset(None).seconds // 3600
         self.current_matter = None
         self.matters_cache = set()
         self.parties_cache = set()
@@ -354,7 +349,6 @@ class ProbateDBScraper:
 
     def add_multipage_parties(self):
         matters = self.db.execute("SELECT * FROM matters WHERE flags = 'm'")
-        parties = set()
         for matter in matters:
             party_names = self.get_multipage_party_names()
             self.parties_cache.update({Party(standardize_party_name(name), *self.current_matter[:3]) for name in party_names})
