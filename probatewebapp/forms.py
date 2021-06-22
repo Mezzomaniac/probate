@@ -1,5 +1,13 @@
 import datetime
+
+# Handle different versions:
+import werkzeug
+try:
+    werkzeug.url_encode = werkzeug.urls.url_encode
+except AttributeError:
+    pass
 from flask_wtf import FlaskForm
+
 from wtforms import BooleanField, StringField, SubmitField
 from wtforms.fields.html5 import EmailField, IntegerField
 from wtforms.validators import Optional, Email
@@ -35,6 +43,6 @@ class SearchForm(FlaskForm):
         validators=[Optional(), Email()])
     submit = SubmitField('Search')
 
-# TODO: enable email notifications of a new grant - careful though if still using check_same_thread=False for the db connection
+# TODO: enable email notifications of a new grant
 
 # TODO: form to request re-issue of notification cancellation link

@@ -2,6 +2,8 @@ import datetime
 from getpass import getpass
 import os
 
+BASEDIR = os.path.abspath(os.path.dirname(__file__))
+
 def get_username(service):
     username = os.getenv(f'{service}_USERNAME')
     if username is None:
@@ -16,11 +18,14 @@ def get_password(service, username):
 
 class Config:
     SECRET_KEY = os.urandom(16)
-    VERSION = '0.4.2'
+    VERSION = '0.4.3'
 
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
     
-    MAIL_SERVER = 'smtp.live.com'
+    PREFERRED_URL_SCHEME = 'https'
+    SERVER_NAME = 'probate.mez.repl.co'
+    
+    MAIL_SERVER = 'smtp-mail.outlook.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'jeremylondon@outlook.com.au'
@@ -28,15 +33,16 @@ class Config:
     MAIL_DEFAULT_SENDER = ('Probate Search WA', MAIL_USERNAME)
     ADMINS = [MAIL_USERNAME]
     
-    TESTING = False
-    SEND_FILE_MAX_AGE_DEFAULT = 0  # For development only
-    
     SESSION_PERMANENT = False
-    #PERMANENT_SESSION_LIFETIME = 60
 
-    BASEDIR = os.path.abspath(os.path.dirname(__file__))
-    SQLITE_DATABASE_URI = os.path.join(BASEDIR, 'probate.db')
-    SCHEMA_URI = os.path.join(BASEDIR, 'schema.sql')
+    DATABASE = os.path.join(BASEDIR, 'probate.db')
+    SCHEMA = os.path.join(BASEDIR, 'schema.sql')
     
     ELODGMENT_USERNAME = get_username('ELODGMENT')
     ELODGMENT_PASSWORD = get_password('ELODGMENT', ELODGMENT_USERNAME)
+
+class TestingConfig(Config):
+    TESTING = True
+    SERVER_NAME = 'localhost:5000'
+    SEND_FILE_MAX_AGE_DEFAULT = 0
+    DATABASE = os.path.join(BASEDIR, 'test.db')

@@ -1,28 +1,23 @@
-import sqlite3
 import threading
 from flask import Flask
 from flask_mail import Mail
-from .config import Config
 
-app = Flask(__name__)
-app.config.from_object(Config)
-mail = Mail(app)
+from .config import Config, TestingConfig
 
-from .database import schedule
+mail = Mail()
 
-db = sqlite3.connect(app.config['SQLITE_DATABASE_URI'])
-# Adjust the timeout arg for the db connection if necessary
-scraping_schedule = threading.Thread(
-    target=schedule, 
-    args=(
-        app.config['SQLITE_DATABASE_URI'], 
-        app.config['SCHEMA_URI'], 
-        app.config['ELODGMENT_USERNAME'], 
-        app.config['ELODGMENT_PASSWORD'], 
-        app.config['TIMEZONE']
-    )
-    kwargs={'years': None, 'setup': False}
-    )
-scraping_schedule.start()
+from .database import init_db#, close_db
+from .update_db import update_db
 
-from . import routes
+def create_app(test=False):
+    app = Flask(__name__)
+    config = TestingConfig if test else Config
+    app.config.from_object(config)
+    with app.app_context():
+        mail.init_app(app)
+        init_db()
+        from . import routes
+        threading.Thread(target=update_db, args=(app,), kwargs={'years': None, 'setup': False}).start()
+    #app.teardown_appcontext(close_db)
+    return app
+

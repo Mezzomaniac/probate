@@ -1,11 +1,6 @@
 from collections import namedtuple
-from flask import render_template
-from flask_mail import Message
+
 import jwt
-try:
-    from . import app, mail
-except ImportError:
-    pass
 
 
 NotificationField = namedtuple('NotificationField', 'description value')
@@ -32,12 +27,12 @@ class NotificationRecord:
         
         self.id = id
         self.email = email
-        self.dec_first = NotificationField("Deceased's firstnames", dec_first)
-        self.dec_sur = NotificationField("Deceased's surname", dec_sur)
-        self.dec_strict = NotificationField("Deceased's names strict", dec_strict)
-        self.party_first = NotificationField("Applicant's/party's firstnames", party_first)
-        self.party_sur = NotificationField("Applicant's/party's surname", party_sur)
-        self.party_strict = NotificationField("Applicant's/party's names strict", party_strict)
+        self.dec_first = NotificationField("Deceased's firstnames", dec_first or '[None]')
+        self.dec_sur = NotificationField("Deceased's surname", dec_sur or '[None]')
+        self.dec_strict = NotificationField("Deceased's names strict", bool(dec_strict))
+        self.party_first = NotificationField("Applicant's/party's firstnames", party_first or '[None]')
+        self.party_sur = NotificationField("Applicant's/party's surname", party_sur or '[None]')
+        self.party_strict = NotificationField("Applicant's/party's names strict", bool(party_strict))
         self.start_year = NotificationField("Start year", start_year)
         self.end_year = NotificationField("End year", end_year)
         self.file_no = NotificationField("File number", f'{type} {number}/{year}')
@@ -48,8 +43,16 @@ class NotificationRecord:
     
     def __repr__(self):
         attrs = "id, email, dec_first, dec_sur, dec_strict, party_first, party_sur, party_strict, start_year, end_year, file_no, title, party".split(', ')
-        return f"NotificationRecord({', '.join(getattr(self, attr) for attr in attrs)}"
+        return f"NotificationRecord({', '.join(str(getattr(self, attr)) for attr in attrs)}"
 
+
+def standardize_party_name(name):
+    name = name.casefold().rstrip()
+    if name.startswith('the '):
+        name = name[4:]
+    if name.endswith('limited'):
+        name = f'{name[:-6]}td'
+    return name
 
 def standardize_search_parameters(dec_first, 
     dec_sur, 
@@ -66,11 +69,7 @@ def standardize_search_parameters(dec_first,
         dec = f'{dec_first} {dec_sur_temp}'
     else:
         dec = f'%{dec_first}%{dec_sur_temp}'
-    party_sur_temp = party_sur.casefold().rstrip()
-    if party_sur_temp.startswith('the '):
-        party_sur_temp = party_sur_temp[4:]
-    elif party_sur_temp.endswith('limited'):
-        party_sur_temp = f'{party_sur_temp[:-6]}td'
+    party_sur_temp = standardize_party_name(party_sur)
     if party_strict:
         if party_first:
             party = f'{party_first} {party_sur_temp}'
@@ -138,32 +137,8 @@ def register(db, parameters, email):
             :end)""", 
             parameters)
 
-def notify(record):
-    '''This function is registered in the db to be used as a callback from a TRIGGER AFTER INSERT ON parties.'''
-    
-    record = NotificationRecord(*record)
-    print(record)
-    with mail.connect() as conn:
-        # TODO: If it's too slow sending each email using its own connection, add the records to a new db table and send them all at once periodically
-        message = construct_message(record)
-        conn.send(message)
-
-def construct_message(record):
-    message = Message('Probate Notification', recipients = [record.email])
-    token_single = create_token(record.id)
-    token_all = create_token(record.email)
-    text = render_template('notification.txt', record=record, token_single=token_single, token_all=token_all)
-    html = render_template('notification.html', record=record, token_single=token_single, token_all=token_all)
-    message.body = text
-    message.html = html
-    return message
-
-def create_token(value):
-    payload = {'key': value}
-    return jwt.encode(payload, app.config['SECRET_KEY'], algorithm='HS256')
-
-def verify_token(token, db):
+def verify_token(token, secret_key):
     try:
-        return jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])['key']
+        return jwt.decode(token, secret_key, algorithms=['HS256'])
     except:
         return

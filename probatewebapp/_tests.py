@@ -1,12 +1,6 @@
 import sqlite3
 
-try:
-    from . import processing
-    from . import app
-    schema_uri = app.config['SCHEMA_URI']
-except ImportError:
-    import processing
-    schema_uri = 'schema.sql'
+from . import processing
 
 def notify(*x):
     if __name__ == '__main__':
@@ -63,7 +57,7 @@ def sample_database():
     db = sqlite3.connect(':memory:', check_same_thread=False)
     #db.row_factory = sqlite3.Row
     db.create_function('notify', -1, notify)
-    with db, open(schema_uri) as schema_file:
+    with db, open('schema.sql') as schema_file:
         db.executescript(schema_file.read())
     for notification in notifications:
         processing.register(db, processing.standardize_search_parameters(**notification), notification['email'])
