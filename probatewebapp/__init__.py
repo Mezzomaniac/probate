@@ -17,7 +17,7 @@ def create_app(test=False):
         mail.init_app(app)
         init_db()
         from . import routes
-        threading.Thread(target=update_db, args=(app,), kwargs={'years': None, 'setup': False}).start()
+    threading.Thread(target=update_db, args=(app,), kwargs={'years': None, 'setup': False}).start()
     #app.teardown_appcontext(close_db)
     return app
 

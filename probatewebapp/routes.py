@@ -35,17 +35,18 @@ def home():
 @app.route('/cancel_notification/<token>')
 def cancel_notification(token):
     db = get_db()
-    token = processing.verify_token(token, app.config['SECRET_KEY'])
-    print(token)
-    if isinstance(token, int):
+    value = processing.verify_token(token, app.config['SECRET_KEY'])['key']
+    print(value)
+    if isinstance(value, int):
         with db:
-            db.execute('DELETE FROM notifications WHERE id = ?', (token,))
+            db.execute('DELETE FROM notifications WHERE id = ?', (value,))
         flash('Your notification request has been cancelled.')
-    elif isinstance(token, str):
+    elif isinstance(value, str):
         with db:
-            db.execute('DELETE FROM notifications WHERE email = ?', (token,))
+            db.execute('DELETE FROM notifications WHERE email = ?', (value,))
         flash('All your notification requests have been cancelled.')
     close_db()
+    # TODO: a distinct page
     return redirect(url_for('home'))
 
 @app.route('/test', methods=['GET', 'POST'])

@@ -3,7 +3,6 @@ import datetime
 import sqlite3
 import time
 
-from flask import current_app
 # Handle different versions:
 import re
 try:
@@ -75,12 +74,13 @@ def update_db(app, years=None, setup=False):
             pause = 0
         try:
             if setup:
-                updater.fill_elec_gaps()
-                updater.add_scattered_pros()
-                updater.add_retrospective_flags()
+                pass
+                #updater.fill_elec_gaps()
+                #updater.add_scattered_pros()
+                #updater.add_retrospective_flags()
             if during_business_hours or setup:
-                updater.add_multipage_parties()
                 updater.update(years)
+                updater.add_multipage_parties()
                 updater.rescrape()
         except ConnectionError:
             pause = 900  # 15 mins

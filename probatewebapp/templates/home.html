@@ -46,12 +46,14 @@
         </p>
     </form>
 </div>
-{% if results %}
 <h2>Search results</h2>
 <div id="results">
+{% if results %}
     {% include "results.html" %}
-</div>
+{% else %}
+    No results.
 {% endif %}
+</div>
 <aside><p>
     Last database update: 
     {% if last_update %}

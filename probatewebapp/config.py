@@ -18,12 +18,15 @@ def get_password(service, username):
 
 class Config:
     SECRET_KEY = os.urandom(16)
-    VERSION = '0.4.3'
+    VERSION = '0.4.4'
 
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
     
-    PREFERRED_URL_SCHEME = 'https'
-    SERVER_NAME = 'probate.mez.repl.co'
+    #PREFERRED_URL_SCHEME = 'https'
+    # SERVER_NAME being set to 'probate.mez.repl.co' is incompatible with Replit's system
+    # but we still need a domain name to pass to app.test_request_context in database.Notify.__call__
+    # so Notify.construct can use flask.url_for to insert an external url in the email template
+    server_name = 'probate.mez.repl.co'
     
     MAIL_SERVER = 'smtp-mail.outlook.com'
     MAIL_PORT = 587
