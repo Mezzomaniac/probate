@@ -93,6 +93,6 @@ def register(db, parameters, email):
 
 def verify_token(token, secret_key):
     try:
-        return jwt.decode(token, secret_key, algorithms=['HS256'])
+        return jwt.decode(token, secret_key, algorithms=['HS256']).get('key')
     except:
         return

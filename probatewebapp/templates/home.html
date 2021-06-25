@@ -16,8 +16,8 @@
     <p id="changelog"></p>
 </div>
 <hr>
-<h2>Search form</h2>
 <div id="search">
+    <h2>Search form</h2>
     <p>Not case sensitive. You may use "%" as a wildcard.</p>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
@@ -46,14 +46,6 @@
         </p>
     </form>
 </div>
-<h2>Search results</h2>
-<div id="results">
-{% if results %}
-    {% include "results.html" %}
-{% else %}
-    No results.
-{% endif %}
-</div>
 <aside><p>
     Last database update: 
     {% if last_update %}
@@ -62,4 +54,14 @@
     None
     {% endif %}
 </p></aside>
+<div id="results">
+    {% if request.method == 'POST' %}
+    <h2>Search results</h2>
+    {% if results %}
+    {% include "results.html" %}
+    {% else %}
+    No results.
+    {% endif %}
+    {% endif %}
+</div>
 {% endblock %}

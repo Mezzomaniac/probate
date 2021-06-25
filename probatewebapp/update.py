@@ -84,6 +84,7 @@ def update_db(app, years=None, setup=False):
                 updater.rescrape()
         except ConnectionError:
             pause = 900  # 15 mins
+        # TODO: any other error, send me an email with the error
         print(f'Sleeping until {datetime.datetime.now(updater.timezone) + datetime.timedelta(seconds=pause)}')
         del updater
         for i in range(pause):
@@ -230,7 +231,7 @@ class ProbateDBUpdater:
                         print(number)
                         time.sleep(1)  # Limit the server load
             if year == this_year:
-                last_update = datetime.datetime.now(self.timezone)
+                last_update = datetime.datetime.now(self.timezone).strftime('%Y-%m-%d %H:M %z')
                 with self.db:
                     self.db.execute("UPDATE events SET time = ? WHERE event = 'last_update'", (last_update,))
                 self.app.config['LAST_UPDATE'] = last_update

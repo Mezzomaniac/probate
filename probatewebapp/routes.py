@@ -31,7 +31,7 @@ def home():
 
 @app.route('/cancel_registration/<token>')
 def cancel_registration(token):
-    value = processing.verify_token(token, app.config['SECRET_KEY'])['key']
+    value = processing.verify_token(token, app.config['SECRET_KEY'])
     print(value)
     db = get_db()
     if isinstance(value, int):
@@ -43,8 +43,7 @@ def cancel_registration(token):
             db.execute('DELETE FROM notifications WHERE email = ?', (value,))
         flash('All your notification requests have been cancelled.')
     close_db()
-    # TODO: a distinct page
-    return redirect(url_for('home'))
+    return render_template('cancel_registration.html')
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():

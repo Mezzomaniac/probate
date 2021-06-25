@@ -18,13 +18,13 @@
     </head>
     
     <body>
-        <header>
+        <nav>
             <a href="{{ url_for('home') }}">Probate Search WA</a>
             {% if config['TESTING'] %}
             <a href="{{ url_for('test') }}">test</a>
             {% endif %}
             <hr>
-        </header>
+        </nav>
         <main role="main">
         {% block content %}{% endblock %}
         </main>
