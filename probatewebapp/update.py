@@ -230,8 +230,10 @@ class ProbateDBUpdater:
                         print(number)
                         time.sleep(1)  # Limit the server load
             if year == this_year:
+                last_update = datetime.datetime.now(self.timezone)
                 with self.db:
-                    self.db.execute("UPDATE events SET time = datetime('now', ?) WHERE event = 'last_update'", (f'{self.tz_offset} hours',))
+                    self.db.execute("UPDATE events SET time = ? WHERE event = 'last_update'", (last_update,))
+                self.app.config['LAST_UPDATE'] = last_update
             elif not self.count_matters(year):
                 return
 

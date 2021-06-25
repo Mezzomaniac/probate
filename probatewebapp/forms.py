@@ -1,13 +1,6 @@
 import datetime
 
-# Handle different versions:
-import werkzeug
-try:
-    werkzeug.url_encode = werkzeug.urls.url_encode
-except AttributeError:
-    pass
 from flask_wtf import FlaskForm
-
 from wtforms import BooleanField, StringField, SubmitField
 from wtforms.fields.html5 import EmailField, IntegerField
 from wtforms.validators import Optional, Email

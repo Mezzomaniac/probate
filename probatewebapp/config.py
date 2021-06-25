@@ -23,10 +23,7 @@ class Config:
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
     
     #PREFERRED_URL_SCHEME = 'https'
-    # SERVER_NAME being set to 'probate.mez.repl.co' is incompatible with Replit's system
-    # but we still need a domain name to pass to app.test_request_context in database.Notify.__call__
-    # so Notify.construct can use flask.url_for to insert an external url in the email template
-    server_name = 'probate.mez.repl.co'
+    BASE_URL = 'https://probate.mez.repl.co/'
     
     MAIL_SERVER = 'smtp-mail.outlook.com'
     MAIL_PORT = 587
@@ -43,9 +40,10 @@ class Config:
     
     ELODGMENT_USERNAME = get_username('ELODGMENT')
     ELODGMENT_PASSWORD = get_password('ELODGMENT', ELODGMENT_USERNAME)
+    LAST_UPDATE = None
 
 class TestingConfig(Config):
     TESTING = True
-    SERVER_NAME = 'localhost:5000'
+    BASE_URL = 'http://localhost:5000/'
     SEND_FILE_MAX_AGE_DEFAULT = 0
     DATABASE = os.path.join(BASEDIR, 'test.db')

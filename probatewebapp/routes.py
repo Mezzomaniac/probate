@@ -1,4 +1,4 @@
-from flask import abort, current_app as app, flash, g, redirect, render_template, url_for
+from flask import abort, current_app as app, flash, redirect, render_template, url_for
 
 from .forms import SearchForm
 from .database import get_db, close_db
@@ -8,22 +8,19 @@ from . import processing
 @app.route('/', methods=['GET', 'POST'])
 def home():
     title = 'Home'
-    db = get_db()
     form = SearchForm()
-    try:
-        last_update = db.execute("SELECT time FROM events WHERE event = 'last_update'").fetchone()[0]
-    except TypeError:
-        last_update = None
+    last_update = app.config['LAST_UPDATE']
     results = None
     if form.validate_on_submit():
         title = 'Search results'
         search_parameters = processing.standardize_search_parameters(**form.data)
+        db = get_db()
         results = processing.search(db, search_parameters)
         email = form.data['email'].strip()
         if email:
             flash(f'A notification email will be sent to {email} if any matters/parties match this search.')
             processing.register(db, search_parameters, email)
-    close_db()
+        close_db()
     return render_template('home.html', 
     title=title, 
     form=form, 
@@ -32,11 +29,11 @@ def home():
 
 # TODO: page to request re-issue of notification cancellation link
 
-@app.route('/cancel_notification/<token>')
-def cancel_notification(token):
-    db = get_db()
+@app.route('/cancel_registration/<token>')
+def cancel_registration(token):
     value = processing.verify_token(token, app.config['SECRET_KEY'])['key']
     print(value)
+    db = get_db()
     if isinstance(value, int):
         with db:
             db.execute('DELETE FROM notifications WHERE id = ?', (value,))

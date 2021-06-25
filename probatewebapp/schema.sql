@@ -1,3 +1,5 @@
+PRAGMA journal_mode=WAL;
+
 CREATE TABLE IF NOT EXISTS matters(
     type TEXT(4), 
     number INTEGER, 
@@ -8,7 +10,7 @@ CREATE TABLE IF NOT EXISTS matters(
     PRIMARY KEY (type, number, year)
 );
 
-PRAGMA foreign_keys = ON;
+PRAGMA foreign_keys=ON;
 
 CREATE TABLE IF NOT EXISTS parties(
     party_name TEXT, 
@@ -21,7 +23,7 @@ CREATE TABLE IF NOT EXISTS parties(
 CREATE TABLE IF NOT EXISTS events(
     event TEXT UNIQUE, 
     time TEXT DEFAULT null
-    );
+);
 
 INSERT OR IGNORE INTO events VALUES ('last_update', null);
 

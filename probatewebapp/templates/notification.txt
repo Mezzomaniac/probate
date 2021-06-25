@@ -10,9 +10,9 @@ The following new record has been found:
 {% for field in record.result %}    {{ field.description }}: {{ field.value }}
 {% endfor %}
 
-To cancel future notifications matching this search, click here: {{ url_for('cancel_notification', token=token_single, _external=True) }}.
+To cancel future notifications matching this search, click here: {{ url_for('cancel_registration', token=token_single, _external=True) }}.
 
-To cancel all notifications requested for this email address, click here: {{ url_for('cancel_notification', token=token_all, _external=True) }}.
+To cancel all notifications requested for this email address, click here: {{ url_for('cancel_registration', token=token_all, _external=True) }}.
 
 Regards
 

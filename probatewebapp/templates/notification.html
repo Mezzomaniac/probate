@@ -11,8 +11,8 @@
         <ul style="list-style-type: none;">{% for field in record.result %}
             <li>{{ field.description }}: <span style="font-weight: bold;"">{{ field.value }}</span></li>
         {% endfor %}</ul>
-        <p>To cancel future notifications matching this search, click <a href="{{ url_for('cancel_notification', token=token_single, _external=True) }}">here</a>.</p>
-        <p>To cancel all notifications requested for this email address, click <a href="{{ url_for('cancel_notification', token=token_all, _external=True) }}">here</a>.</p>
+        <p>To cancel future notifications matching this search, click <a href="{{ url_for('cancel_registration', token=token_single, _external=True) }}">here</a>.</p>
+        <p>To cancel all notifications requested for this email address, click <a href="{{ url_for('cancel_registration', token=token_all, _external=True) }}">here</a>.</p>
         <p>Regards</p>
         <p>Probate Search WA</p>
         <p><a href="{{ url_for('home', _external=True) }}">{{ url_for('home', _external=True) }}</a></p>

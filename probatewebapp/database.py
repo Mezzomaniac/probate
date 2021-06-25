@@ -25,6 +25,15 @@ def init_db():
         db.executescript(schema_file.read().decode('utf8'))
     close_db()
 
+def db_last_update():
+    db = get_db()
+    try:
+        last_update = db.execute("SELECT time FROM events WHERE event = 'last_update'").fetchone()[0]
+    except TypeError:
+        last_update = None
+    close_db()
+    return last_update
+
 class Notify:
     '''This class is registered in the db to be used as a callback from a TRIGGER AFTER INSERT ON parties.'''
     
@@ -37,7 +46,7 @@ class Notify:
         # TODO: If it's too slow/frequent sending each email using its own connection, add the records to a new db table and send them in batches to each recipient periodically
         # with mail.connect() as conn:
         # conn.send(message)
-        with self.app.app_context(), self.app.test_request_context(self.app.config['SERVER_NAME'] or self.app.config['server_name']):
+        with self.app.app_context(), self.app.test_request_context(base_url=self.app.config['BASE_URL']):
             message = self.construct_message(record)
             print('Sending')
             mail.send(message)
