@@ -231,7 +231,7 @@ class ProbateDBUpdater:
                         print(number)
                         time.sleep(1)  # Limit the server load
             if year == this_year:
-                last_update = datetime.datetime.now(self.timezone).strftime('%Y-%m-%d %H:M %z')
+                last_update = datetime.datetime.now(self.timezone).strftime('%Y-%m-%d %H:%M %z')
                 with self.db:
                     self.db.execute("UPDATE events SET time = ? WHERE event = 'last_update'", (last_update,))
                 self.app.config['LAST_UPDATE'] = last_update
