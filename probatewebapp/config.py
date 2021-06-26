@@ -35,7 +35,7 @@ class Config:
     
     SESSION_PERMANENT = False
 
-    DATABASE = os.path.join(BASEDIR, 'probate.db')
+    DATABASE = os.path.join(BASEDIR, 'db', 'probate.db')
     SCHEMA = os.path.join(BASEDIR, 'schema.sql')
     
     ELODGMENT_USERNAME = get_username('ELODGMENT')
@@ -46,4 +46,4 @@ class TestingConfig(Config):
     TESTING = True
     BASE_URL = 'http://localhost:5000/'
     SEND_FILE_MAX_AGE_DEFAULT = 0
-    DATABASE = os.path.join(BASEDIR, 'test.db')
+    DATABASE = os.path.join(BASEDIR, 'db', 'test.db')

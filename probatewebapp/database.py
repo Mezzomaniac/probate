@@ -56,8 +56,8 @@ class Notify:
         message = Message('Probate Notification', recipients = [record.email])
         token_single = self.create_token(record.id)
         token_all = self.create_token(record.email)
-        text = render_template('notification.txt', record=record, token_single=token_single, token_all=token_all)
-        html = render_template('notification.html', record=record, token_single=token_single, token_all=token_all)
+        text = render_template('emails/notification.txt', record=record, token_single=token_single, token_all=token_all)
+        html = render_template('emails/notification.html', record=record, token_single=token_single, token_all=token_all)
         message.body = text
         message.html = html
         return message
