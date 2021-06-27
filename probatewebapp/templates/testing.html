@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>
+    Last database update: 
+    {% if last_update %}
+    <time datetime="{{ last_update }}">{{ last_update }}</time>
+    {% else %}
+    None
+    {% endif %}
+</p>
+{% endblock %}
