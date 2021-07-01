@@ -32,18 +32,19 @@
         </div>
         {% endif %}
         {% endfor %}
+        <div class="flashes">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul class="flashes">
-            {% for message in messages %}
-            <li style="color: green;">{{ message }}</li>
-            {% endfor%}
-        </ul>
+            <ul>
+                {% for message in messages %}
+                <li style="color: green;">{{ message }}</li>
+                {% endfor%}
+            </ul>
         {% endif %}
         {% endwith %}
-        <p>
-            {{ form.submit() }}
-        </p>
+        </div>
+        <p>Click <a href="{{ url_for('manage_registration') }}">here</a> to manage existing notification requests.</p>
+        <p>{{ form.submit() }}</p>
     </form>
 </div>
 <aside><p>

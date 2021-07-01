@@ -11,4 +11,4 @@ def run(test=False):
         serve(app, port=5000)
 
 if __name__ == '__main__':
-    run(True)
+    run()

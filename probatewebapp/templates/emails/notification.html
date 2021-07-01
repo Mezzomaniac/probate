@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head></head>
-    <body>
-        <p>Dear {{ record.email }}</p>
-        <p>You requested to be notified of new records matching your search with the following parameters:</p>
-        <ul>{% for field in record.parameters %}
-            <li>{{ field.description }}: <span style="font-weight: bold;">{{ field.value }}</span></li>
-        {% endfor %}</ul>
-        <p>The following new record has been found:</p>
-        <ul style="list-style-type: none;">{% for field in record.result %}
-            <li>{{ field.description }}: <span style="font-weight: bold;"">{{ field.value }}</span></li>
-        {% endfor %}</ul>
-        <p>To cancel future notifications matching this search, click <a href="{{ url_for('cancel_registration', token=token_single, _external=True) }}">here</a>.</p>
-        <p>To cancel all notifications requested for this email address, click <a href="{{ url_for('cancel_registration', token=token_all, _external=True) }}">here</a>.</p>
-        <p>Regards</p>
-        <p>Probate Search WA</p>
-        <p><a href="{{ url_for('home', _external=True) }}">{{ url_for('home', _external=True) }}</a></p>
-    </body>
-</html>
+{% extends "emails/base.html" %}
+
+{% block content %}
+<p>You requested to be notified of new records matching your search with the following parameters:</p>
+<ul>{% for field in record.parameters %}
+    <li>{{ field.description }}: <span style="font-weight: bold;">{{ field.value }}</span></li>
+{% endfor %}</ul>
+<p>The following new record has been found:</p>
+<ul style="list-style-type: none;">{% for field in record.result %}
+    <li>{{ field.description }}: <span style="font-weight: bold;"">{{ field.value }}</span></li>
+{% endfor %}</ul>
+<p>To cancel future notifications matching these criteria, click <a href="{{ url_for('cancel_registration', token=id_token, _external=True) }}">here</a>.</p>
+{% endblock %}

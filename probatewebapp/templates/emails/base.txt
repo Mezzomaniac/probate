@@ -1,0 +1,10 @@
+Dear {{ recipient }}
+
+{% block content %}{% endblock %}
+
+To cancel all notifications requested for this email address, click here: {{ url_for('cancel_registration', token=email_token, _external=True) }}.
+
+Regards
+
+Probate Search WA
+{{ url_for('home', _external=True) }}

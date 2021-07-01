@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head></head>
+    <body>
+        <p>Dear {{ recipient }}</p>
+        {% block content %}{% endblock %}
+        <p>To cancel all notifications requested for this email address, click <a href="{{ url_for('cancel_registration', token=email_token, _external=True) }}">here</a>.</p>
+        <p>Regards</p>
+        <p>Probate Search WA</p>
+        <p><a href="{{ url_for('home', _external=True) }}">{{ url_for('home', _external=True) }}</a></p>
+    </body>
+</html>

@@ -1,7 +1,8 @@
 from flask import abort, current_app as app, flash, redirect, render_template, url_for
 
-from .forms import SearchForm
+from .forms import SearchForm, RequestNotificationListForm
 from .database import get_db, close_db
+from .models import Notification
 from . import processing
 
 
@@ -27,7 +28,26 @@ def home():
     last_update=last_update, 
     results=results)
 
-# TODO: page to request re-issue of notification cancellation link
+@app.route('/manage_registration', methods=['GET', 'POST'])
+def manage_registration():
+    form = RequestNotificationListForm()
+    if form.validate_on_submit():
+        email = form.data['email'].strip()
+        db = get_db()
+        command = "SELECT id, email, dec_first, dec_sur, dec_strict, party_first, party_sur, party_strict, start_year, end_year FROM party_notification_requests WHERE email = ?"
+        party_notification_requests = [Notification(*party_notification_request) for party_notification_request in db.execute(command, (email,))]
+        secret_key = app.config['SECRET_KEY']
+        id_tokens = {party_notification_request.id: processing.create_token(party_notification_request.id, secret_key) for party_notification_request in party_notification_requests}
+        email_token = processing.create_token(email, secret_key)
+        processing.send_message(email, 
+            'Notifications List', 
+            'list', 
+            notification_requests=party_notification_requests, 
+            id_tokens=id_tokens, 
+            email_token=email_token)
+        close_db()
+        flash('The email has been sent.')
+    return render_template('manage_registration.html', title='Manage registration', form=form)
 
 @app.route('/cancel_registration/<token>')
 def cancel_registration(token):
@@ -36,20 +56,20 @@ def cancel_registration(token):
     db = get_db()
     if isinstance(value, int):
         with db:
-            db.execute('DELETE FROM notifications WHERE id = ?', (value,))
+            db.execute('DELETE FROM party_notification_requests WHERE id = ?', (value,))
         flash('Your notification request has been cancelled.')
     elif isinstance(value, str):
         with db:
-            db.execute('DELETE FROM notifications WHERE email = ?', (value,))
+            db.execute('DELETE FROM party_notification_requests WHERE email = ?', (value,))
         flash('All your notification requests have been cancelled.')
     close_db()
-    return render_template('cancel_registration.html')
+    return render_template('cancel_registration.html', title='Cancel registration')
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
     if not app.testing:
         abort(403)
-    record = (1, 'themezj@hotmail.com', '', 'gobble', 0, '', '', 0, 2022, 2022, 'PRO', 1, 2022, 'In the estate of Quentin Nelly Gobble', 'Human Ladybird Hybrid')
+    #record = (1, 'themezj@hotmail.com', '', 'gobble', 0, '', '', 0, 2022, 2022, 'PRO', 1, 2022, 'In the estate of Quentin Nelly Gobble', 'Human Ladybird Hybrid')
     #database.Notify(*record)
     #return render_template('test.html', title='Test', last_update=last_update)
     return redirect(url_for('home'))

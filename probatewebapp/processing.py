@@ -1,4 +1,8 @@
+from flask import render_template
+from flask_mail import Message
 import jwt
+
+from . import mail
 
 def standardize_party_name(name):
     name = name.casefold().rstrip()
@@ -61,7 +65,7 @@ def search(db, parameters):
 def register(db, parameters, email):
     parameters['email'] = email
     with db:
-        db.execute("""INSERT INTO notifications (
+        db.execute("""INSERT INTO party_notification_requests (
             email, 
             dec_first, 
             dec_sur, 
@@ -90,6 +94,18 @@ def register(db, parameters, email):
             :end_year, 
             :end)""", 
             parameters)
+
+def send_message(recipient, subject, template_name, **variables):
+    message = Message(subject, recipients=[recipient])
+    text = render_template(f'emails/{template_name}.txt', recipient=recipient, **variables)
+    html = render_template(f'emails/{template_name}.html', recipient=recipient, **variables)
+    message.body = text
+    message.html = html
+    mail.send(message)
+
+def create_token(value, secret_key):
+    payload = {'key': value}
+    return jwt.encode(payload, secret_key, algorithm='HS256')
 
 def verify_token(token, secret_key):
     try:

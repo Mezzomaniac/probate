@@ -1,4 +1,3 @@
-from collections import namedtuple
 import datetime
 import sqlite3
 import time
@@ -26,6 +25,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from .database import get_db, close_db, Notify
 from .processing import standardize_party_name
+from .models import Matter, Party
 
 
 LOGIN_URL = 'https://ecourts.justice.wa.gov.au/eCourtsPortal/Account/Login'
@@ -47,13 +47,6 @@ OTHER_PARTIES_TABLE_ID = 'dgdOtherParties'
 DOCUMENT_COUNT_ID = 'lblDocumentCount'
 MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
 PUBLIC_HOLIDAYS_URL = 'https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia'
-
-
-fieldnames = 'type number year title deceased_name flags'
-Matter = namedtuple('Matter', fieldnames)
-
-fieldnames = 'party_name type number year'
-Party = namedtuple('Party', fieldnames)
 
 
 def update_db(app, years=None, setup=False):
