@@ -2,10 +2,10 @@
 
 {% block content %}
 <h2>Cancel registration</h2>
-<div>
+<div class="flashes">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-    <ul class="flashes">
+    <ul>
         {% for message in messages %}
         <li style="color: green;">{{ message }}</li>
         {% endfor%}

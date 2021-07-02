@@ -36,6 +36,10 @@ class SearchForm(FlaskForm):
         validators=[Optional(), Email()])
     submit = SubmitField('Search')
 
-# TODO: enable email notifications of a new grant
+class RequestNotificationListForm(FlaskForm):
+    email = EmailField(
+        'Enter your email address to be sent a list of your active notification requests, with cancellation links.', 
+        validators=[Email()])
+    submit = SubmitField('Go')
 
-# TODO: form to request re-issue of notification cancellation link
+# TODO: enable email notifications of a new grant

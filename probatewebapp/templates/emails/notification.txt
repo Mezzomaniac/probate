@@ -1,0 +1,13 @@
+{% extends "emails/base.txt" %}
+
+{% block content %}You requested to be notified of new records matching your search with the following parameters:
+
+{% for field in record.parameters %}    * {{ field.description }}: {{ field.value }}
+{% endfor %}
+
+The following new record has been found:
+
+{% for field in record.result %}    {{ field.description }}: {{ field.value }}
+{% endfor %}
+
+To cancel future notifications matching these criteria, click here: {{ url_for('cancel_registration', token=id_token, _external=True) }}.{% endblock %}

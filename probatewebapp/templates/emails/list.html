@@ -1,0 +1,15 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<p>As requested, here is a list of all your active notification requests:</p>
+{% if notification_requests %}
+<ul style="list-style-type: none;">{% for notification_request in notification_requests %}
+    <ul>{% for field in notification_request.parameters %}
+        <li>{{ field.description }}: <span style="font-weight: bold;">{{ field.value }}</span></li>
+    {% endfor %}</ul>
+    <p>To cancel future notifications matching these criteria, click <a href="{{ url_for('cancel_registration', token=id_tokens[notification_request.id], _external=True) }}">here</a>.</p>
+{% endfor %}</ul>
+{% else %}
+<p>You have no active notification requests.</p>
+{% endif %}
+{% endblock %}

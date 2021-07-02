@@ -1,4 +1,3 @@
-from collections import namedtuple
 import datetime
 import sqlite3
 import time
@@ -24,8 +23,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from .database import get_db, Notify
+from .database import get_db, close_db, Notify
 from .processing import standardize_party_name
+from .models import Matter, Party
 
 
 LOGIN_URL = 'https://ecourts.justice.wa.gov.au/eCourtsPortal/Account/Login'
@@ -49,44 +49,38 @@ MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
 PUBLIC_HOLIDAYS_URL = 'https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia'
 
 
-fieldnames = 'type number year title deceased_name flags'
-Matter = namedtuple('Matter', fieldnames)
-
-fieldnames = 'party_name type number year'
-Party = namedtuple('Party', fieldnames)
-
-
 def update_db(app, years=None, setup=False):
+    updater = ProbateDBUpdater(app)
     current_month = None
     while True:
-        updater = ProbateDBUpdater(app)
         now = datetime.datetime.now(updater.timezone)
         month = now.month
         if not current_month or month in (12, 1) and month != current_month:
             updater.update_public_holidays()
         current_month = month
-        during_business_hours = now.weekday() in range(5) and now.hour in range(8, 19) and now.date() not in updater.public_holidays
-        if not setup:
-            years = now.year
+        business_day = now.weekday() in range(5) and now.date() not in updater.public_holidays
+        if setup or (business_day and now.hour in range(8, 18)):
             pause = 1800  # 30 mins
-            # TODO: if not setup and not during_business_hours, pause until it will be during_business_hours
-        else:
-            pause = 0
-        try:
-            if setup:
-                pass
-                #updater.fill_elec_gaps()
-                #updater.add_scattered_pros()
-                #updater.add_retrospective_flags()
-            if during_business_hours or setup:
+            try:
+                if setup:
+                    pause = 0
+                    #updater.fill_elec_gaps()
+                    #updater.add_scattered_pros()
+                    #updater.add_retrospective_flags()
                 updater.update(years)
                 updater.add_multipage_parties()
                 updater.rescrape()
-        except ConnectionError:
-            pause = 900  # 15 mins
-        # TODO: any other error, send me an email with the error
-        print(f'Sleeping until {datetime.datetime.now(updater.timezone) + datetime.timedelta(seconds=pause)}')
-        del updater
+            except ConnectionError:
+                pause = 900  # 15 mins
+            # TODO: any other error, send me an email with the error
+        elif now.hour > 17 or not business_day:
+            pause = int((datetime.datetime.combine(updater.next_business_day(now, 1), datetime.time(8), now.tzinfo) - now).total_seconds())
+        elif now.hour < 8:
+            pause = int((datetime.datetime.combine(now.date(), datetime.time(8), now.tzinfo) - now).total_seconds())
+        else:
+            raise ValueError(f'Unhandled time: {now}')
+        del updater.db
+        print(f'Sleeping for {pause} seconds')
         for i in range(pause):
             time.sleep(1)
 
@@ -95,9 +89,7 @@ class ProbateDBUpdater:
     
     def __init__(self, app):
         self.app = app
-        with app.app_context():
-            self.db = get_db()
-            self.db.create_function('notify', -1, Notify(app))
+        self._db = None
         self.username = app.config['ELODGMENT_USERNAME']
         self.password = app.config['ELODGMENT_PASSWORD']
         self._browser = None
@@ -108,6 +100,20 @@ class ProbateDBUpdater:
         self.matters_cache = set()
         self.parties_cache = set()
         self._public_holidays = set()
+
+    @property
+    def db(self):
+        if not self._db:
+            with self.app.app_context():
+                self._db = get_db()
+                self._db.create_function('notify', -1, Notify(self.app))
+        return self._db
+
+    @db.deleter
+    def db(self):
+        with self.app.app_context():
+            close_db()
+        self._db = None
 
     @property
     def browser(self):
@@ -192,7 +198,11 @@ class ProbateDBUpdater:
             self.db.execute("DELETE FROM public_holidays WHERE year < ?", (this_year,))
         self._public_holidays.clear()  # Force update
 
-    def next_business_day(self, date: datetime.date, days: int) -> datetime.date:
+    def next_business_day(self, date, days: int) -> datetime.date:
+        try:
+            date = date.date()
+        except AttributeError:
+            pass
         while days:
             date += datetime.timedelta(days=1)
             if date.weekday() in range(5) and date not in self.public_holidays:

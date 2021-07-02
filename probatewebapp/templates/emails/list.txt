@@ -1,0 +1,10 @@
+{% extends "emails/base.txt" %}
+
+{% block content %}As requested, here is a list of all your active notification requests:
+{% if notification_requests %}
+{% for notification_request in notification_requests %}{% for field in notification_request.parameters %}    * {{ field.description }}: {{ field.value }}
+{% endfor %}
+To cancel future notifications matching these criteria, click here: {{ url_for('cancel_registration', token=id_tokens[notification_request.id], _external=True) }}.
+
+
+{% endfor %}{% else %}You have no active notification requests.{% endif %}{% endblock %}
