@@ -73,4 +73,3 @@ def test():
     #database.Notify(*record)
     #return render_template('test.html', title='Test', last_update=last_update)
     return redirect(url_for('home'))
-    

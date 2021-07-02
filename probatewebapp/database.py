@@ -20,10 +20,6 @@ def close_db(error=None):
 def init_db():
     db = get_db()
     with db, current_app.open_resource(current_app.config['SCHEMA']) as schema_file:
-        db.execute("DROP TRIGGER notify")
-        db.execute("DROP VIEW register")
-        db.execute("DROP TABLE notifications")
-        # Delete DROPs after run once
         db.executescript(schema_file.read().decode('utf8'))
     close_db()
 
