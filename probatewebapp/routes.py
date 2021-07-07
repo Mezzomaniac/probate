@@ -65,6 +65,17 @@ def cancel_registration(token):
     close_db()
     return render_template('cancel_registration.html', title='Cancel registration')
 
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'), 404
+    
+@app.errorhandler(500)
+def internal_error(error):
+    if 'db' in g:
+        g.db.rollback()
+        close_db()
+    return render_template('500.html'), 500
+
 @app.route('/test', methods=['GET', 'POST'])
 def test():
     if not app.testing:
