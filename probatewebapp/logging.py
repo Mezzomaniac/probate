@@ -4,6 +4,7 @@ from logging.handlers import RotatingFileHandler, SMTPHandler
 import sys
 
 def setup_logger(app):
+    #logging.getLogger().handlers.clear()
     app.logger.handlers.clear()  # Prevent Pythonista caching problems
     
     class FormatterTZ(logging.Formatter):
@@ -49,12 +50,9 @@ def setup_logger(app):
         
         file_handler = RotatingFileHandler(app.config['LOG'], maxBytes=102400, backupCount=1)
         file_handler.setFormatter(detailed_formatter)
+        file_handler.setLevel(logging.DEBUG)
         app.logger.addHandler(file_handler)
 
     app.logger.addHandler(stdout_handler)
     app.logger.setLevel(logging.DEBUG)
-    if app.debug or app.testing:
-        app.logger.info('App startup in development/testing mode')
-    else:
-        app.logger.info('App startup in production mode')
 

@@ -16,13 +16,17 @@ def create_app(test=False):
     config = TestingConfig if test else Config
     app.config.from_object(config)
     setup_logger(app)
+    if app.debug or app.testing:
+        app.logger.info('App startup in development/testing mode')
+    else:
+        app.logger.info('App startup in production mode')
     with app.app_context():
         mail.init_app(app)
         init_db()
         app.config['LAST_UPDATE'] = db_last_update()
         from . import routes
-    threading.Thread(target=update_db, name='updater_thread', args=(app,), kwargs={'years': None, 'setup': False}).start()
     #app.teardown_appcontext(close_db)
     app.teardown_request(close_db)
+    threading.Thread(target=update_db, name='updater_thread', args=(app,), kwargs={'years': None, 'setup': False}).start()
     return app
 
