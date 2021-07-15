@@ -72,7 +72,9 @@ def update_db(app, years=None, setup=False):
                 updater.rescrape()
             except ConnectionError:
                 pause = 900  # 15 mins
-            # TODO: any other error, send me an email with the error
+            except Exception:
+                app.logger.exception('Unexpected error:')
+                pause = 900  # 15 mins
         elif now.hour > 17 or not business_day:
             pause = int((datetime.datetime.combine(updater.next_business_day(now, 1), datetime.time(8), now.tzinfo) - now).total_seconds())
         elif now.hour < 8:
@@ -80,7 +82,7 @@ def update_db(app, years=None, setup=False):
         else:
             raise ValueError(f'Unhandled time: {now}')
         del updater.db
-        print(f'Sleeping for {pause} seconds')
+        app.logger.info(f'Sleeping for {pause} seconds')
         for i in range(pause):
             time.sleep(1)
 
@@ -216,16 +218,16 @@ class ProbateDBUpdater:
         except TypeError:
             years = years or range(this_year, this_year + 1)
         for year in years:
-            print(year)
+            self.app.logger.info(year)
             for matter_type in MATTER_TYPES:
                 if year <= 2010 and matter_type == 'ELEC':
                     max_elec = self.matter_type_max(matter_type, year)
                     continue
-                print(matter_type)
+                self.app.logger.info(matter_type)
                 number = self.matter_type_max(matter_type, year)
                 if year <= 2010 and matter_type == 'PRO':
                     number = max((number, max_elec), default=0)
-                print(number)
+                self.app.logger.info(number)
                 consecutive_missing = 0
                 while consecutive_missing < 50:
                     number += 1
@@ -238,7 +240,7 @@ class ProbateDBUpdater:
                         continue
                     self.add_matter()
                     if not number % 10:
-                        print(number)
+                        self.app.logger.info(number)
                         time.sleep(1)  # Limit the server load
             if year == this_year:
                 last_update = datetime.datetime.now(self.timezone).strftime('%Y-%m-%d %H:%M %Z')
@@ -254,7 +256,11 @@ class ProbateDBUpdater:
     def search_matter(self, matter):
         self.current_matter = matter
         search_form = self.browser.get_form()
-        search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.type
+        try:
+            search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.type
+        except werkzeug.exceptions.BadRequestKeyError:
+            self.app.logger.error(f'search_form={search_form}; search_form.fields={search_form.fields}')
+            raise
         search_form[YEAR_FIELD_NAME] = str(matter.year)
         search_form[NUMBER_FIELD_NAME] = str(matter.number)
         self.browser.submit_form(search_form)
@@ -367,6 +373,7 @@ class ProbateDBUpdater:
     def add_multipage_parties(self):
         matters = self.db.execute("SELECT * FROM matters WHERE flags = 'm'")
         for matter in matters:
+            self.app.logger.info(f'multipage matter: {matter}')
             party_names = self.get_multipage_party_names()
             self.parties_cache.update({Party(standardize_party_name(name), *self.current_matter[:3]) for name in party_names})
             self.matters_cache.discard(Matter(*matter))
@@ -384,9 +391,9 @@ class ProbateDBUpdater:
     def fill_elec_gaps(self):
         gaps = self.find_gaps()
         for year in range(2010, 2002, -1):
-            print(year)
+            self.app.logger.info(f'fill_elec_gaps: {year}')
             for number in sorted(gaps[f'{year}:PRO/ELEC']):
-                print(number)
+                self.app.logger.debug(number)
                 found = False
                 matter = Matter('All', number, year, None, None, None)
                 self.search_matter(matter)
@@ -397,7 +404,7 @@ class ProbateDBUpdater:
                         continue
                     if found:
                         raise ValueError("Aren't PRO and ELEC matter numbers continuous pre-2011?")
-                    print(f'found {matter_type}')
+                    self.app.logger.debug(f'found {matter_type}')
                     found = True
                     self.current_matter = Matter(matter_type, *matter[1:])
                     self.browser.follow_link(row.select('a')[0])
@@ -442,9 +449,10 @@ class ProbateDBUpdater:
     def rescrape(self):
         '''Check whether there are additional parties to add if the court mightn't have input their details at the time of the original scrape'''
         
+        self.app.logger.info('rescraping')
         for matter in self.db.execute("SELECT * FROM matters WHERE flags <= date('now', ?)", (f'{self.tz_offset} hours',)):
             matter = Matter(*matter[:-1], None)
-            print(matter.type, matter.number, matter.year)
+            self.app.logger.debug(matter.type, matter.number, matter.year)
             self.search_matter(matter)
             self.view_matter()
             self.add_matter(rescraping=True)

@@ -52,7 +52,7 @@ def manage_registration():
 @app.route('/cancel_registration/<token>')
 def cancel_registration(token):
     value = processing.verify_token(token, app.config['SECRET_KEY'])
-    print(value)
+    app.logger.debug(f'token value={value}')
     db = get_db()
     if isinstance(value, int):
         with db:
@@ -71,7 +71,7 @@ def not_found_error(error):
     
 @app.errorhandler(500)
 def internal_error(error):
-    print(error)
+    app.logger.error(error)
     if 'db' in g:
         g.db.rollback()
         close_db()

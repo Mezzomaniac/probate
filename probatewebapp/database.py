@@ -40,7 +40,7 @@ class Notify:
     
     def __call__(self, *record):
         record = Notification(*record)
-        print(record)
+        self.app.logger.debug(f'record={record}')
         # TODO: If it's too slow/frequent sending each email using its own connection, add the records to a new db table and send them in batches to each recipient periodically
         # with mail.connect() as conn:
         # conn.send(message)
@@ -53,4 +53,4 @@ class Notify:
                 record=record, 
                 id_token=id_token, 
                 email_token=email_token)
-        print('Sent')
+        self.app.logger.debug('Sent')
