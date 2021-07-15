@@ -261,7 +261,7 @@ class ProbateDBUpdater:
         try:
             search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.type
         except werkzeug.exceptions.BadRequestKeyError:
-            self.app.logger.error(f'search_form={search_form}; search_form.fields={search_form.fields}')
+            self.app.logger.error(f'current_matter={matter}\nsearch_form={search_form}\nsearch_form.fields={search_form.fields}')
             raise
         search_form[YEAR_FIELD_NAME] = str(matter.year)
         search_form[NUMBER_FIELD_NAME] = str(matter.number)
