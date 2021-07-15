@@ -1,7 +1,7 @@
-from flask import abort, current_app as app, flash, redirect, render_template, url_for
+from flask import abort, current_app as app, flash, g, redirect, render_template, url_for
 
 from .forms import SearchForm, RequestNotificationListForm
-from .database import get_db, close_db
+from .database import get_db#, close_db
 from .models import Notification
 from . import processing
 
@@ -21,7 +21,7 @@ def home():
         if email:
             flash(f'A notification email will be sent to {email} if any matters/parties match this search.')
             processing.register(db, search_parameters, email)
-        close_db()
+        #close_db()
     return render_template('home.html', 
     title=title, 
     form=form, 
@@ -45,7 +45,7 @@ def manage_registration():
             notification_requests=party_notification_requests, 
             id_tokens=id_tokens, 
             email_token=email_token)
-        close_db()
+        #close_db()
         flash('The email has been sent.')
     return render_template('manage_registration.html', title='Manage registration', form=form)
 
@@ -62,7 +62,7 @@ def cancel_registration(token):
         with db:
             db.execute('DELETE FROM party_notification_requests WHERE email = ?', (value,))
         flash('All your notification requests have been cancelled.')
-    close_db()
+    #close_db()
     return render_template('cancel_registration.html', title='Cancel registration')
 
 @app.errorhandler(404)
@@ -71,6 +71,7 @@ def not_found_error(error):
     
 @app.errorhandler(500)
 def internal_error(error):
+    print(error)
     if 'db' in g:
         g.db.rollback()
         close_db()
@@ -82,5 +83,5 @@ def test():
         abort(403)
     #record = (1, 'themezj@hotmail.com', '', 'gobble', 0, '', '', 0, 2022, 2022, 'PRO', 1, 2022, 'In the estate of Quentin Nelly Gobble', 'Human Ladybird Hybrid')
     #database.Notify(*record)
-    #return render_template('test.html', title='Test', last_update=last_update)
+    return render_template('t.html', title='Test', last_update=last_update)
     return redirect(url_for('home'))

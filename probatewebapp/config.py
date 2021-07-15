@@ -18,9 +18,9 @@ def get_password(service, username):
 
 class Config:
     SECRET_KEY = os.urandom(16)
-    VERSION = '0.7.0'
+    VERSION = '0.7.2'
 
-    TIMEZONE = datetime.timezone(datetime.timedelta(hours=8))
+    TIMEZONE = datetime.timezone(datetime.timedelta(hours=8), 'AWST')
     
     #PREFERRED_URL_SCHEME = 'https'
     BASE_URL = 'https://probate.mez.repl.co/'
@@ -34,6 +34,8 @@ class Config:
     ADMINS = [MAIL_USERNAME]
     
     SESSION_PERMANENT = False
+
+    LOG = os.path.join(BASEDIR, 'logs', 'probatewebapp.log')
 
     DATABASE = os.path.join(BASEDIR, 'db', 'probate.db')
     SCHEMA = os.path.join(BASEDIR, 'schema.sql')
