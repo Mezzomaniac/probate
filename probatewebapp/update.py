@@ -49,7 +49,7 @@ MATTER_TYPES = ('CAV', 'CIT', 'ELEC', 'PRO', 'REN', 'STAT')
 PUBLIC_HOLIDAYS_URL = 'https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia'
 
 
-def update_db(app, years=None, setup=False):
+def update_db(app, setup=False, years=None):
     updater = ProbateDBUpdater(app)
     current_month = None
     while True:
@@ -81,7 +81,7 @@ def update_db(app, years=None, setup=False):
             pause = int((datetime.datetime.combine(now.date(), datetime.time(8), now.tzinfo) - now).total_seconds())
         else:
             raise ValueError(f'Unhandled time: {now}')
-        del updater.db
+        updater.teardown()
         app.logger.info(f'Sleeping for {pause} seconds')
         for i in range(pause):
             time.sleep(1)
@@ -143,6 +143,12 @@ class ProbateDBUpdater:
         self._browser = browser
         return browser
 
+    @browser.deleter
+    def browser(self):
+        if self._browser:
+            self._browser.close()
+        self._browser = None
+
     @property
     def driver(self):
         if self._driver:
@@ -169,6 +175,12 @@ class ProbateDBUpdater:
         self._driver = driver
         return driver
 
+    @driver.deleter
+    def driver(self):
+        if self._driver:
+            self._driver.close()
+        self._driver = None
+
     @property
     def public_holidays(self):
         if self._public_holidays:
@@ -177,6 +189,11 @@ class ProbateDBUpdater:
         dates = {datetime.datetime.strptime(date, '%Y-%m-%d').date() for date in dates}
         self._public_holidays = dates
         return dates
+
+    def teardown(self):
+        del self.db
+        del self.browser
+        del self.driver
 
     def get_public_holidays(self, year=None):
         if year:
@@ -452,7 +469,7 @@ class ProbateDBUpdater:
         self.app.logger.info('rescraping')
         for matter in self.db.execute("SELECT * FROM matters WHERE flags <= date('now', ?)", (f'{self.tz_offset} hours',)):
             matter = Matter(*matter[:-1], None)
-            self.app.logger.debug(matter.type, matter.number, matter.year)
+            self.app.logger.debug(f'{matter.type} {matter.number}/ {matter.year}')
             self.search_matter(matter)
             self.view_matter()
             self.add_matter(rescraping=True)

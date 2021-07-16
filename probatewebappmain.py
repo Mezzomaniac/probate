@@ -3,8 +3,8 @@
 from waitress import serve
 from probatewebapp import create_app
 
-def run(test=False):
-    app = create_app(test)
+def run(test=False, setup=False, years=None):
+    app = create_app(test, setup, years)
     try:
         if test:
             app.run(debug=True, use_reloader=False)
