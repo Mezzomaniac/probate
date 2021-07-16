@@ -1,5 +1,4 @@
 import datetime
-import logging
 import sqlite3
 import time
 
@@ -51,7 +50,6 @@ PUBLIC_HOLIDAYS_URL = 'https://www.wa.gov.au/service/employment/workplace-agreem
 
 
 def update_db(app, years=None, setup=False):
-    logging.getLogger().handlers.clear()
     updater = ProbateDBUpdater(app)
     current_month = None
     while True:

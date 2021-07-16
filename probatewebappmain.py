@@ -9,7 +9,7 @@ def run(test=False):
         if test:
             app.run(debug=True, use_reloader=False)
         else:
-            serve(app, port=5000)
+            serve(app, port=5000, _quiet=True)
     except Exception:
         app.logger.exception('Unexpected error:')
 

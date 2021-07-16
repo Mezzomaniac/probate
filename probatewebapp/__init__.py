@@ -15,11 +15,6 @@ def create_app(test=False):
     app = Flask(__name__)
     config = TestingConfig if test else Config
     app.config.from_object(config)
-    setup_logger(app)
-    if app.debug or app.testing:
-        app.logger.info('App startup in development/testing mode')
-    else:
-        app.logger.info('App startup in production mode')
     with app.app_context():
         mail.init_app(app)
         init_db()
@@ -27,6 +22,14 @@ def create_app(test=False):
         from . import routes
     #app.teardown_appcontext(close_db)
     app.teardown_request(close_db)
+    
+    setup_logger(app)
+    if app.debug or app.testing:
+        app.logger.info('App startup in development/testing mode')
+    else:
+        app.logger.info('App startup in production mode')
+
     threading.Thread(target=update_db, name='updater_thread', args=(app,), kwargs={'years': None, 'setup': False}).start()
+
     return app
 

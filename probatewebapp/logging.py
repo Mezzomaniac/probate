@@ -4,7 +4,6 @@ from logging.handlers import RotatingFileHandler, SMTPHandler
 import sys
 
 def setup_logger(app):
-    #logging.getLogger().handlers.clear()
     app.logger.handlers.clear()  # Prevent Pythonista caching problems
     
     class FormatterTZ(logging.Formatter):
@@ -28,12 +27,12 @@ def setup_logger(app):
         "[%(asctime)s] %(levelname)s: %(message)s", 
         "%H:%M:%S")
     
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    stdout_handler.setFormatter(simple_formatter)
-    stdout_handler.setLevel(logging.DEBUG)
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setFormatter(simple_formatter)
+    console_handler.setLevel(logging.DEBUG)
 
     if not app.debug and not app.testing:
-        stdout_handler.setLevel(logging.INFO)
+        console_handler.setLevel(logging.INFO)
         
         mailhost = (app.config['MAIL_SERVER'], app.config['MAIL_PORT'])
         credentials = (app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
@@ -53,6 +52,6 @@ def setup_logger(app):
         file_handler.setLevel(logging.DEBUG)
         app.logger.addHandler(file_handler)
 
-    app.logger.addHandler(stdout_handler)
+    app.logger.addHandler(console_handler)
     app.logger.setLevel(logging.DEBUG)
 
