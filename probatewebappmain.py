@@ -4,8 +4,8 @@ from waitress import serve
 from probatewebapp import create_app
 
 def run(test=False, setup=False, years=None):
-    app = create_app(test, setup, years)
     try:
+        app = create_app(test, setup, years)
         if test:
             app.run(debug=True, use_reloader=False)
         else:

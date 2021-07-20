@@ -1,0 +1,85 @@
+[2021-07-20 08:35:22.711] DEBUG: update.rescrape @ 472: PRO 3940/ 2021
+[2021-07-20 08:35:24.0] DEBUG: update.rescrape @ 472: PRO 3941/ 2021
+[2021-07-20 08:35:25.968] DEBUG: update.rescrape @ 472: PRO 3942/ 2021
+[2021-07-20 08:35:28.92] DEBUG: update.rescrape @ 472: PRO 3943/ 2021
+[2021-07-20 08:35:30.592] DEBUG: update.rescrape @ 472: PRO 3944/ 2021
+[2021-07-20 08:35:32.338] DEBUG: update.rescrape @ 472: PRO 3945/ 2021
+[2021-07-20 08:35:34.327] DEBUG: update.rescrape @ 472: PRO 3946/ 2021
+[2021-07-20 08:35:36.834] DEBUG: update.rescrape @ 472: PRO 3947/ 2021
+[2021-07-20 08:35:39.419] DEBUG: update.rescrape @ 472: PRO 3948/ 2021
+[2021-07-20 08:35:41.253] DEBUG: update.rescrape @ 472: PRO 3949/ 2021
+[2021-07-20 08:35:43.547] DEBUG: update.rescrape @ 472: PRO 3950/ 2021
+[2021-07-20 08:35:45.400] DEBUG: update.rescrape @ 472: PRO 3951/ 2021
+[2021-07-20 08:35:47.673] DEBUG: update.rescrape @ 472: PRO 3952/ 2021
+[2021-07-20 08:35:50.89] DEBUG: update.rescrape @ 472: PRO 3953/ 2021
+[2021-07-20 08:35:52.69] DEBUG: update.rescrape @ 472: PRO 3954/ 2021
+[2021-07-20 08:35:54.126] DEBUG: update.rescrape @ 472: PRO 3955/ 2021
+[2021-07-20 08:35:56.305] DEBUG: update.rescrape @ 472: PRO 3956/ 2021
+[2021-07-20 08:35:58.742] DEBUG: update.rescrape @ 472: PRO 3957/ 2021
+[2021-07-20 08:36:01.184] DEBUG: update.rescrape @ 472: PRO 3958/ 2021
+[2021-07-20 08:36:04.191] DEBUG: update.rescrape @ 472: PRO 3959/ 2021
+[2021-07-20 08:36:07.145] DEBUG: update.rescrape @ 472: PRO 3960/ 2021
+[2021-07-20 08:36:09.842] DEBUG: update.rescrape @ 472: PRO 3961/ 2021
+[2021-07-20 08:36:11.918] DEBUG: update.rescrape @ 472: PRO 3962/ 2021
+[2021-07-20 08:36:14.211] DEBUG: update.rescrape @ 472: PRO 3963/ 2021
+[2021-07-20 08:36:15.539] DEBUG: update.rescrape @ 472: PRO 3964/ 2021
+[2021-07-20 08:36:17.14] DEBUG: update.rescrape @ 472: PRO 3965/ 2021
+[2021-07-20 08:36:18.718] DEBUG: update.rescrape @ 472: PRO 3966/ 2021
+[2021-07-20 08:36:20.276] DEBUG: update.rescrape @ 472: PRO 3967/ 2021
+[2021-07-20 08:36:22.156] DEBUG: update.rescrape @ 472: PRO 3968/ 2021
+[2021-07-20 08:36:24.23] DEBUG: update.rescrape @ 472: PRO 3969/ 2021
+[2021-07-20 08:36:25.770] DEBUG: update.rescrape @ 472: PRO 3970/ 2021
+[2021-07-20 08:36:27.526] DEBUG: update.rescrape @ 472: PRO 3971/ 2021
+[2021-07-20 08:36:29.41] DEBUG: update.rescrape @ 472: PRO 3972/ 2021
+[2021-07-20 08:36:30.654] DEBUG: update.rescrape @ 472: PRO 3973/ 2021
+[2021-07-20 08:36:31.984] DEBUG: update.rescrape @ 472: PRO 3974/ 2021
+[2021-07-20 08:36:40.237] DEBUG: update.rescrape @ 472: PRO 3975/ 2021
+[2021-07-20 08:36:41.671] DEBUG: update.rescrape @ 472: PRO 3976/ 2021
+[2021-07-20 08:36:44.81] DEBUG: update.rescrape @ 472: PRO 3977/ 2021
+[2021-07-20 08:36:45.894] DEBUG: update.rescrape @ 472: PRO 3978/ 2021
+[2021-07-20 08:36:47.638] DEBUG: update.rescrape @ 472: PRO 3979/ 2021
+[2021-07-20 08:36:49.834] DEBUG: update.rescrape @ 472: PRO 3980/ 2021
+[2021-07-20 08:36:51.787] DEBUG: update.rescrape @ 472: PRO 3981/ 2021
+[2021-07-20 08:36:53.516] DEBUG: update.rescrape @ 472: PRO 3982/ 2021
+[2021-07-20 08:36:55.165] DEBUG: update.rescrape @ 472: PRO 3983/ 2021
+[2021-07-20 08:36:57.274] DEBUG: update.rescrape @ 472: PRO 3984/ 2021
+[2021-07-20 08:36:58.898] DEBUG: update.rescrape @ 472: PRO 3985/ 2021
+[2021-07-20 08:37:00.199] DEBUG: update.rescrape @ 472: PRO 3986/ 2021
+[2021-07-20 08:37:01.534] DEBUG: update.rescrape @ 472: PRO 3987/ 2021
+[2021-07-20 08:37:03.625] DEBUG: update.rescrape @ 472: PRO 3988/ 2021
+[2021-07-20 08:37:05.26] DEBUG: update.rescrape @ 472: PRO 3989/ 2021
+[2021-07-20 08:37:06.496] DEBUG: update.rescrape @ 472: PRO 3990/ 2021
+[2021-07-20 10:02:56.183] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-07-20 10:02:57.113] INFO: update.update @ 238: 2021
+[2021-07-20 10:02:57.113] INFO: update.update @ 243: CAV
+[2021-07-20 10:02:57.115] INFO: update.update @ 247: 66
+[2021-07-20 10:03:52.730] INFO: update.update @ 243: CIT
+[2021-07-20 10:03:52.731] INFO: update.update @ 247: 3
+[2021-07-20 10:04:16.167] INFO: update.update @ 243: ELEC
+[2021-07-20 10:04:16.175] INFO: update.update @ 247: 12
+[2021-07-20 10:04:42.362] INFO: update.update @ 243: PRO
+[2021-07-20 10:04:42.661] INFO: update.update @ 247: 4152
+[2021-07-20 10:05:08.115] INFO: update.update @ 243: REN
+[2021-07-20 10:05:08.146] INFO: update.update @ 247: 20
+[2021-07-20 10:05:31.891] INFO: update.update @ 243: STAT
+[2021-07-20 10:05:31.892] INFO: update.update @ 247: 0
+[2021-07-20 10:05:54.508] INFO: update.rescrape @ 469: rescraping
+[2021-07-20 17:47:01.868] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-07-20 17:47:02.982] INFO: update.update @ 238: 2021
+[2021-07-20 17:47:02.982] INFO: update.update @ 243: CAV
+[2021-07-20 17:47:02.991] INFO: update.update @ 247: 66
+[2021-07-20 17:47:56.21] INFO: update.update @ 243: CIT
+[2021-07-20 17:47:56.23] INFO: update.update @ 247: 3
+[2021-07-20 17:48:23.965] INFO: update.update @ 243: ELEC
+[2021-07-20 17:48:23.974] INFO: update.update @ 247: 12
+[2021-07-20 17:48:54.891] INFO: update.update @ 243: PRO
+[2021-07-20 17:48:55.8] INFO: update.update @ 247: 4153
+[2021-07-20 17:49:06.166] INFO: update.update @ 260: 4160
+[2021-07-20 17:49:29.958] INFO: update.update @ 260: 4170
+[2021-07-20 17:49:52.198] INFO: update.update @ 260: 4180
+[2021-07-20 17:50:06.920] INFO: update.update @ 260: 4190
+[2021-07-20 17:50:36.45] INFO: update.update @ 243: REN
+[2021-07-20 17:50:36.50] INFO: update.update @ 247: 20
+[2021-07-20 17:50:58.220] INFO: update.update @ 243: STAT
+[2021-07-20 17:50:58.220] INFO: update.update @ 247: 0
+[2021-07-20 17:51:26.782] INFO: update.rescrape @ 469: rescraping

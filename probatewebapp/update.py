@@ -145,8 +145,6 @@ class ProbateDBUpdater:
 
     @browser.deleter
     def browser(self):
-        if self._browser:
-            self._browser.close()
         self._browser = None
 
     @property
@@ -178,7 +176,7 @@ class ProbateDBUpdater:
     @driver.deleter
     def driver(self):
         if self._driver:
-            self._driver.close()
+            self._driver.quit()
         self._driver = None
 
     @property
@@ -469,7 +467,7 @@ class ProbateDBUpdater:
         self.app.logger.info('rescraping')
         for matter in self.db.execute("SELECT * FROM matters WHERE flags <= date('now', ?)", (f'{self.tz_offset} hours',)):
             matter = Matter(*matter[:-1], None)
-            self.app.logger.debug(f'{matter.type} {matter.number}/ {matter.year}')
+            self.app.logger.debug(f'{matter.type} {matter.number}/{matter.year}')
             self.search_matter(matter)
             self.view_matter()
             self.add_matter(rescraping=True)
