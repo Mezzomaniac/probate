@@ -390,7 +390,7 @@ class ProbateDBUpdater:
     def add_multipage_parties(self):
         matters = self.db.execute("SELECT * FROM matters WHERE flags = 'm'")
         for matter in matters:
-            self.app.logger.info(f'multipage matter: {matter}')
+            self.app.logger.warning(f'multipage matter: {matter}')
             party_names = self.get_multipage_party_names()
             self.parties_cache.update({Party(standardize_party_name(name), *self.current_matter[:3]) for name in party_names})
             self.matters_cache.discard(Matter(*matter))
