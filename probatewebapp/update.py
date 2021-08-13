@@ -14,6 +14,7 @@ try:
 except AttributeError:
     pass
 from robobrowser import RoboBrowser
+import requests
 
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
@@ -70,7 +71,7 @@ def update_db(app, setup=False, years=None):
                 updater.update(years)
                 updater.add_multipage_parties()
                 updater.rescrape()
-            except ConnectionError:
+            except (ConnectionError, requests.ConnectionError):
                 pause = 900  # 15 mins
             except Exception:
                 app.logger.exception('Unexpected error:')
