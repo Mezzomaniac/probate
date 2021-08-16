@@ -18,7 +18,7 @@
 <hr>
 <div id="search">
     <h2>Search form</h2>
-    <p>Not case sensitive. You may use "%" as a wildcard.</p>
+    <p>Not case sensitive. You may use "%" as a multi-character wildcard and "_" as a single character wildcard.</p>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         {% for field in form %}
