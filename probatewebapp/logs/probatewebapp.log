@@ -489,3 +489,38 @@ requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetErro
 [2021-08-13 17:34:35.561] INFO: update.update @ 245: 0
 [2021-08-13 17:35:07.412] INFO: update.rescrape @ 467: rescraping
 [2021-08-13 17:35:07.571] INFO: update.update_db @ 85: Sleeping for 1800 seconds
+[2021-08-13 18:03:20.742] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-13 18:03:21.687] INFO: update.update_db @ 86: Sleeping for 222999 seconds
+[2021-08-16 18:00:11.897] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-16 18:00:12.740] INFO: update.update_db @ 86: Sleeping for 50388 seconds
+[2021-08-16 18:24:05.142] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-16 18:24:06.13] INFO: update.update_db @ 86: Sleeping for 48954 seconds
+[2021-08-17 17:51:32.497] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-17 17:51:33.428] INFO: update.update @ 237: 2021
+[2021-08-17 17:51:33.428] INFO: update.update @ 242: CAV
+[2021-08-17 17:51:33.431] INFO: update.update @ 246: 80
+[2021-08-17 17:52:01.931] INFO: update.update @ 242: CIT
+[2021-08-17 17:52:01.931] INFO: update.update @ 246: 3
+[2021-08-17 17:52:19.759] INFO: update.update @ 242: ELEC
+[2021-08-17 17:52:19.764] INFO: update.update @ 246: 12
+[2021-08-17 17:52:36.859] INFO: update.update @ 242: PRO
+[2021-08-17 17:52:36.910] INFO: update.update @ 246: 4773
+[2021-08-17 17:52:45.88] INFO: update.update @ 259: 4780
+[2021-08-17 17:52:57.552] INFO: update.update @ 259: 4790
+[2021-08-17 17:53:11.466] INFO: update.update @ 259: 4800
+[2021-08-17 17:53:25.374] INFO: update.update @ 259: 4810
+[2021-08-17 17:53:40.209] INFO: update.update @ 259: 4820
+[2021-08-17 17:53:53.451] INFO: update.update @ 259: 4830
+[2021-08-17 17:54:09.520] INFO: update.update @ 259: 4840
+[2021-08-17 17:54:30.744] INFO: update.update @ 242: REN
+[2021-08-17 17:54:30.744] INFO: update.update @ 246: 22
+[2021-08-17 17:54:48.5] INFO: update.update @ 242: STAT
+[2021-08-17 17:54:48.6] INFO: update.update @ 246: 0
+[2021-08-17 17:55:05.312] INFO: update.rescrape @ 468: rescraping
+[2021-08-17 17:55:05.372] DEBUG: update.rescrape @ 471: CAV 80/2021
+[2021-08-17 17:55:06.620] DEBUG: update.rescrape @ 471: PRO 4614/2021
+[2021-08-17 17:55:07.860] DEBUG: update.rescrape @ 471: PRO 4667/2021
+[2021-08-17 17:55:08.975] DEBUG: update.rescrape @ 471: PRO 4669/2021
+[2021-08-17 17:55:11.794] DEBUG: update.rescrape @ 471: PRO 4671/2021
+[2021-08-17 17:55:13.7] DEBUG: update.rescrape @ 471: PRO 4672/2021
+[2021-08-17 17:55:14.322] INFO: update.update_db @ 86: Sleeping for 1800 seconds
