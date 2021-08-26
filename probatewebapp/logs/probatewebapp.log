@@ -524,3 +524,530 @@ requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetErro
 [2021-08-17 17:55:11.794] DEBUG: update.rescrape @ 471: PRO 4671/2021
 [2021-08-17 17:55:13.7] DEBUG: update.rescrape @ 471: PRO 4672/2021
 [2021-08-17 17:55:14.322] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-19 05:50:23.238] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-19 05:50:24.416] INFO: update.update_db @ 86: Sleeping for 7776 seconds
+[2021-08-19 08:00:11.83] INFO: update.update @ 237: 2021
+[2021-08-19 08:00:11.84] INFO: update.update @ 242: CAV
+[2021-08-19 08:00:11.92] INFO: update.update @ 246: 80
+[2021-08-19 08:01:08.912] INFO: update.update @ 242: CIT
+[2021-08-19 08:01:08.914] INFO: update.update @ 246: 3
+[2021-08-19 08:01:29.704] INFO: update.update @ 242: ELEC
+[2021-08-19 08:01:29.709] INFO: update.update @ 246: 12
+[2021-08-19 08:01:50.635] INFO: update.update @ 242: PRO
+[2021-08-19 08:01:50.777] INFO: update.update @ 246: 4842
+[2021-08-19 08:02:01.806] INFO: update.update @ 259: 4850
+[2021-08-19 08:02:16.503] INFO: update.update @ 259: 4860
+[2021-08-19 08:02:30.656] INFO: update.update @ 259: 4870
+[2021-08-19 08:02:54.482] INFO: update.update @ 242: REN
+[2021-08-19 08:02:54.484] INFO: update.update @ 246: 22
+[2021-08-19 08:03:13.833] INFO: update.update @ 242: STAT
+[2021-08-19 08:03:13.834] INFO: update.update @ 246: 0
+[2021-08-19 08:03:32.403] INFO: update.rescrape @ 468: rescraping
+[2021-08-19 08:03:32.449] DEBUG: update.rescrape @ 471: PRO 4673/2021
+[2021-08-19 08:03:33.870] DEBUG: update.rescrape @ 471: PRO 4675/2021
+[2021-08-19 08:03:35.163] DEBUG: update.rescrape @ 471: PRO 4676/2021
+[2021-08-19 08:03:36.693] DEBUG: update.rescrape @ 471: PRO 4677/2021
+[2021-08-19 08:03:38.254] DEBUG: update.rescrape @ 471: PRO 4678/2021
+[2021-08-19 08:03:39.787] DEBUG: update.rescrape @ 471: PRO 4679/2021
+[2021-08-19 08:03:41.624] DEBUG: update.rescrape @ 471: PRO 4697/2021
+[2021-08-19 08:03:43.28] DEBUG: update.rescrape @ 471: PRO 4698/2021
+[2021-08-19 08:03:44.488] DEBUG: update.rescrape @ 471: PRO 4699/2021
+[2021-08-19 08:03:45.980] DEBUG: update.rescrape @ 471: PRO 4709/2021
+[2021-08-19 08:03:47.488] DEBUG: update.rescrape @ 471: PRO 4711/2021
+[2021-08-19 08:03:48.861] DEBUG: update.rescrape @ 471: PRO 4712/2021
+[2021-08-19 08:03:50.268] DEBUG: update.rescrape @ 471: PRO 4713/2021
+[2021-08-19 08:03:51.742] DEBUG: update.rescrape @ 471: PRO 4714/2021
+[2021-08-19 08:03:53.161] DEBUG: update.rescrape @ 471: PRO 4718/2021
+[2021-08-19 08:03:54.769] DEBUG: update.rescrape @ 471: PRO 4719/2021
+[2021-08-19 08:03:56.127] DEBUG: update.rescrape @ 471: PRO 4720/2021
+[2021-08-19 08:03:57.351] DEBUG: update.rescrape @ 471: PRO 4721/2021
+[2021-08-19 08:03:58.766] DEBUG: update.rescrape @ 471: PRO 4722/2021
+[2021-08-19 08:04:00.296] DEBUG: update.rescrape @ 471: PRO 4723/2021
+[2021-08-19 08:04:01.711] DEBUG: update.rescrape @ 471: PRO 4724/2021
+[2021-08-19 08:04:03.163] DEBUG: update.rescrape @ 471: PRO 4725/2021
+[2021-08-19 08:04:05.76] DEBUG: update.rescrape @ 471: PRO 4726/2021
+[2021-08-19 08:04:06.631] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-19 08:34:08.931] INFO: update.update @ 237: 2021
+[2021-08-19 08:34:08.931] INFO: update.update @ 242: CAV
+[2021-08-19 08:34:08.948] INFO: update.update @ 246: 80
+[2021-08-19 08:34:46.839] INFO: update.update @ 242: CIT
+[2021-08-19 08:34:46.846] INFO: update.update @ 246: 3
+[2021-08-19 08:35:05.405] INFO: update.update @ 242: ELEC
+[2021-08-19 08:35:05.411] INFO: update.update @ 246: 12
+[2021-08-19 08:35:24.326] INFO: update.update @ 242: PRO
+[2021-08-19 08:35:24.366] INFO: update.update @ 246: 4872
+[2021-08-19 08:35:41.923] INFO: update.update @ 242: REN
+[2021-08-19 08:35:41.924] INFO: update.update @ 246: 22
+[2021-08-19 08:36:02.901] INFO: update.update @ 242: STAT
+[2021-08-19 08:36:02.905] INFO: update.update @ 246: 0
+[2021-08-19 08:36:22.410] INFO: update.rescrape @ 468: rescraping
+[2021-08-19 08:36:22.517] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-19 09:06:25.10] INFO: update.update @ 237: 2021
+[2021-08-19 09:06:25.11] INFO: update.update @ 242: CAV
+[2021-08-19 09:06:25.30] INFO: update.update @ 246: 80
+[2021-08-19 09:07:28.135] INFO: update.update @ 242: CIT
+[2021-08-19 09:07:28.141] INFO: update.update @ 246: 3
+[2021-08-19 09:07:54.789] INFO: update.update @ 242: ELEC
+[2021-08-19 09:07:54.797] INFO: update.update @ 246: 12
+[2021-08-19 09:08:18.349] INFO: update.update @ 242: PRO
+[2021-08-19 09:08:18.395] INFO: update.update @ 246: 4872
+[2021-08-19 09:08:41.124] INFO: update.update @ 242: REN
+[2021-08-19 09:08:41.126] INFO: update.update @ 246: 22
+[2021-08-19 09:09:03.132] INFO: update.update @ 242: STAT
+[2021-08-19 09:09:03.132] INFO: update.update @ 246: 0
+[2021-08-19 09:09:23.153] INFO: update.rescrape @ 468: rescraping
+[2021-08-19 09:09:23.237] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-19 09:39:25.891] INFO: update.update @ 237: 2021
+[2021-08-19 09:39:25.891] INFO: update.update @ 242: CAV
+[2021-08-19 09:39:25.901] INFO: update.update @ 246: 80
+[2021-08-19 09:40:26.883] INFO: update.update @ 242: CIT
+[2021-08-19 09:40:26.887] INFO: update.update @ 246: 3
+[2021-08-19 09:40:49.385] INFO: update.update @ 242: ELEC
+[2021-08-19 09:40:49.426] INFO: update.update @ 246: 12
+[2021-08-19 09:41:13.214] INFO: update.update @ 242: PRO
+[2021-08-19 09:41:13.226] INFO: update.update @ 246: 4874
+[2021-08-19 09:41:45.422] INFO: update.update @ 242: REN
+[2021-08-19 09:41:45.423] INFO: update.update @ 246: 22
+[2021-08-19 09:42:17.268] INFO: update.update @ 242: STAT
+[2021-08-19 09:42:17.273] INFO: update.update @ 246: 0
+[2021-08-19 09:42:57.482] INFO: update.rescrape @ 468: rescraping
+[2021-08-19 09:42:57.663] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-19 10:13:01.2] INFO: update.update @ 237: 2021
+[2021-08-19 10:13:01.4] INFO: update.update @ 242: CAV
+[2021-08-19 10:13:01.10] INFO: update.update @ 246: 80
+[2021-08-19 10:13:52.941] INFO: update.update @ 242: CIT
+[2021-08-19 10:13:52.945] INFO: update.update @ 246: 3
+[2021-08-19 10:14:39.96] INFO: update.update @ 242: ELEC
+[2021-08-19 10:14:39.99] INFO: update.update @ 246: 12
+[2021-08-19 10:15:22.386] INFO: update.update @ 242: PRO
+[2021-08-19 10:15:23.324] INFO: update.update @ 246: 4874
+[2021-08-19 10:16:07.967] INFO: update.update @ 242: REN
+[2021-08-19 10:16:07.981] INFO: update.update @ 246: 22
+[2021-08-19 10:16:34.595] INFO: update.update @ 242: STAT
+[2021-08-19 10:16:34.596] INFO: update.update @ 246: 0
+[2021-08-19 10:17:07.117] INFO: update.rescrape @ 468: rescraping
+[2021-08-19 10:17:07.679] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-19 10:33:40.424] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-19 10:33:41.365] INFO: update.update @ 237: 2021
+[2021-08-19 10:33:41.365] INFO: update.update @ 242: CAV
+[2021-08-19 10:33:41.367] INFO: update.update @ 246: 80
+[2021-08-19 10:34:03.644] INFO: update.update @ 242: CIT
+[2021-08-19 10:34:03.650] INFO: update.update @ 246: 3
+[2021-08-19 10:34:22.915] INFO: update.update @ 242: ELEC
+[2021-08-19 10:34:22.918] INFO: update.update @ 246: 12
+[2021-08-19 10:34:40.260] INFO: update.update @ 242: PRO
+[2021-08-19 10:34:40.297] INFO: update.update @ 246: 4875
+[2021-08-19 10:34:57.28] INFO: update.update @ 242: REN
+[2021-08-19 10:34:57.33] INFO: update.update @ 246: 22
+[2021-08-19 10:35:15.196] INFO: update.update @ 242: STAT
+[2021-08-19 10:35:15.197] INFO: update.update @ 246: 0
+[2021-08-19 10:35:33.668] INFO: update.rescrape @ 468: rescraping
+[2021-08-19 10:35:33.774] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-19 10:35:51.843] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-19 10:35:51.993] INFO: update.update @ 237: 2021
+[2021-08-19 10:35:51.993] INFO: update.update @ 242: CAV
+[2021-08-19 10:35:51.994] INFO: update.update @ 246: 80
+[2021-08-19 10:36:14.694] INFO: update.update @ 242: CIT
+[2021-08-19 10:36:14.695] INFO: update.update @ 246: 3
+[2021-08-19 10:36:31.168] INFO: update.update @ 242: ELEC
+[2021-08-19 10:36:31.168] INFO: update.update @ 246: 12
+[2021-08-19 10:36:48.919] INFO: update.update @ 242: PRO
+[2021-08-19 10:36:48.947] INFO: update.update @ 246: 4875
+[2021-08-19 10:37:05.45] INFO: update.update @ 242: REN
+[2021-08-19 10:37:05.45] INFO: update.update @ 246: 22
+[2021-08-19 10:37:20.825] INFO: update.update @ 242: STAT
+[2021-08-19 10:37:20.826] INFO: update.update @ 246: 0
+[2021-08-19 10:37:38.300] INFO: update.rescrape @ 468: rescraping
+[2021-08-19 10:37:38.507] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-19 10:51:11.276] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-19 10:51:12.352] INFO: update.update @ 237: 2021
+[2021-08-19 10:51:12.353] INFO: update.update @ 242: CAV
+[2021-08-19 10:51:12.357] INFO: update.update @ 246: 80
+[2021-08-19 10:54:32.252] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-19 10:54:33.130] INFO: update.update @ 237: 2021
+[2021-08-19 10:54:33.130] INFO: update.update @ 242: CAV
+[2021-08-19 10:54:33.134] INFO: update.update @ 246: 80
+[2021-08-19 10:54:59.277] INFO: update.update @ 242: CIT
+[2021-08-19 10:54:59.278] INFO: update.update @ 246: 3
+[2021-08-19 10:55:17.504] INFO: update.update @ 242: ELEC
+[2021-08-19 10:55:17.508] INFO: update.update @ 246: 12
+[2021-08-19 10:55:34.421] INFO: update.update @ 242: PRO
+[2021-08-19 10:55:34.473] INFO: update.update @ 246: 4875
+[2021-08-19 10:55:53.190] INFO: update.update @ 242: REN
+[2021-08-19 10:55:53.192] INFO: update.update @ 246: 22
+[2021-08-19 10:56:10.204] INFO: update.update @ 242: STAT
+[2021-08-19 10:56:10.205] INFO: update.update @ 246: 0
+[2021-08-19 10:56:27.543] INFO: update.rescrape @ 468: rescraping
+[2021-08-19 10:56:27.640] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-20 00:30:05.858] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-20 00:30:06.721] INFO: update.update_db @ 86: Sleeping for 26994 seconds
+[2021-08-20 08:00:27.164] INFO: update.update @ 237: 2021
+[2021-08-20 08:00:27.164] INFO: update.update @ 242: CAV
+[2021-08-20 08:00:27.170] INFO: update.update @ 246: 80
+[2021-08-20 08:03:04.721] INFO: update.update @ 242: CIT
+[2021-08-20 08:03:04.722] INFO: update.update @ 246: 3
+[2021-08-20 08:03:22.411] INFO: update.update @ 242: ELEC
+[2021-08-20 08:03:22.414] INFO: update.update @ 246: 12
+[2021-08-20 08:03:42.300] INFO: update.update @ 242: PRO
+[2021-08-20 08:03:42.342] INFO: update.update @ 246: 4878
+[2021-08-20 08:03:46.640] INFO: update.update @ 259: 4880
+[2021-08-20 08:04:06.428] INFO: update.update @ 259: 4890
+[2021-08-20 08:04:24.137] INFO: update.update @ 259: 4900
+[2021-08-20 08:04:48.127] INFO: update.update @ 242: REN
+[2021-08-20 08:04:48.128] INFO: update.update @ 246: 22
+[2021-08-20 08:05:07.725] INFO: update.update @ 242: STAT
+[2021-08-20 08:05:07.726] INFO: update.update @ 246: 0
+[2021-08-20 08:05:26.0] INFO: update.rescrape @ 468: rescraping
+[2021-08-20 08:05:26.50] DEBUG: update.rescrape @ 471: PRO 4727/2021
+[2021-08-20 08:05:28.18] DEBUG: update.rescrape @ 471: PRO 4728/2021
+[2021-08-20 08:05:30.76] DEBUG: update.rescrape @ 471: PRO 4729/2021
+[2021-08-20 08:05:32.25] DEBUG: update.rescrape @ 471: PRO 4730/2021
+[2021-08-20 08:05:33.963] DEBUG: update.rescrape @ 471: PRO 4731/2021
+[2021-08-20 08:05:36.833] DEBUG: update.rescrape @ 471: PRO 4732/2021
+[2021-08-20 08:05:39.245] DEBUG: update.rescrape @ 471: PRO 4733/2021
+[2021-08-20 08:05:41.815] DEBUG: update.rescrape @ 471: PRO 4734/2021
+[2021-08-20 08:05:44.554] DEBUG: update.rescrape @ 471: PRO 4735/2021
+[2021-08-20 08:05:46.874] DEBUG: update.rescrape @ 471: PRO 4736/2021
+[2021-08-20 08:05:48.731] DEBUG: update.rescrape @ 471: PRO 4737/2021
+[2021-08-20 08:05:51.290] DEBUG: update.rescrape @ 471: PRO 4738/2021
+[2021-08-20 08:05:53.660] DEBUG: update.rescrape @ 471: PRO 4739/2021
+[2021-08-20 08:05:55.461] DEBUG: update.rescrape @ 471: PRO 4740/2021
+[2021-08-20 08:05:57.777] DEBUG: update.rescrape @ 471: PRO 4741/2021
+[2021-08-20 08:05:59.823] DEBUG: update.rescrape @ 471: PRO 4742/2021
+[2021-08-20 08:06:01.988] DEBUG: update.rescrape @ 471: PRO 4743/2021
+[2021-08-20 08:06:04.189] DEBUG: update.rescrape @ 471: PRO 4744/2021
+[2021-08-20 08:06:06.175] DEBUG: update.rescrape @ 471: PRO 4745/2021
+[2021-08-20 08:06:08.135] DEBUG: update.rescrape @ 471: PRO 4746/2021
+[2021-08-20 08:06:10.479] DEBUG: update.rescrape @ 471: PRO 4747/2021
+[2021-08-20 08:06:12.819] DEBUG: update.rescrape @ 471: PRO 4748/2021
+[2021-08-20 08:06:15.565] DEBUG: update.rescrape @ 471: PRO 4749/2021
+[2021-08-20 08:06:17.221] DEBUG: update.rescrape @ 471: PRO 4750/2021
+[2021-08-20 08:06:19.285] DEBUG: update.rescrape @ 471: PRO 4751/2021
+[2021-08-20 08:06:21.385] DEBUG: update.rescrape @ 471: PRO 4752/2021
+[2021-08-20 08:06:23.304] DEBUG: update.rescrape @ 471: PRO 4753/2021
+[2021-08-20 08:06:24.946] DEBUG: update.rescrape @ 471: PRO 4754/2021
+[2021-08-20 08:06:26.809] DEBUG: update.rescrape @ 471: PRO 4755/2021
+[2021-08-20 08:06:28.445] DEBUG: update.rescrape @ 471: PRO 4756/2021
+[2021-08-20 08:06:31.352] DEBUG: update.rescrape @ 471: PRO 4757/2021
+[2021-08-20 08:06:33.227] DEBUG: update.rescrape @ 471: PRO 4758/2021
+[2021-08-20 08:06:35.630] DEBUG: update.rescrape @ 471: PRO 4759/2021
+[2021-08-20 08:06:38.127] DEBUG: update.rescrape @ 471: PRO 4760/2021
+[2021-08-20 08:06:40.531] DEBUG: update.rescrape @ 471: PRO 4761/2021
+[2021-08-20 08:06:45.359] DEBUG: update.rescrape @ 471: PRO 4762/2021
+[2021-08-20 08:06:47.588] DEBUG: update.rescrape @ 471: PRO 4763/2021
+[2021-08-20 08:06:49.423] DEBUG: update.rescrape @ 471: PRO 4764/2021
+[2021-08-20 08:06:51.149] DEBUG: update.rescrape @ 471: PRO 4765/2021
+[2021-08-20 08:06:53.27] DEBUG: update.rescrape @ 471: PRO 4766/2021
+[2021-08-20 08:06:55.172] DEBUG: update.rescrape @ 471: PRO 4767/2021
+[2021-08-20 08:06:57.129] DEBUG: update.rescrape @ 471: PRO 4768/2021
+[2021-08-20 08:06:58.991] DEBUG: update.rescrape @ 471: PRO 4769/2021
+[2021-08-20 08:07:01.406] DEBUG: update.rescrape @ 471: PRO 4770/2021
+[2021-08-20 08:07:03.374] DEBUG: update.rescrape @ 471: PRO 4771/2021
+[2021-08-20 08:07:05.228] DEBUG: update.rescrape @ 471: PRO 4772/2021
+[2021-08-20 08:07:06.930] DEBUG: update.rescrape @ 471: PRO 4773/2021
+[2021-08-20 08:07:08.769] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-20 08:37:10.599] INFO: update.update @ 237: 2021
+[2021-08-20 08:37:10.600] INFO: update.update @ 242: CAV
+[2021-08-20 08:37:10.602] INFO: update.update @ 246: 80
+[2021-08-20 08:37:56.292] INFO: update.update @ 242: CIT
+[2021-08-20 08:37:56.292] INFO: update.update @ 246: 3
+[2021-08-20 08:38:12.671] INFO: update.update @ 242: ELEC
+[2021-08-20 08:38:12.671] INFO: update.update @ 246: 12
+[2021-08-20 08:38:29.33] INFO: update.update @ 242: PRO
+[2021-08-20 08:38:29.37] INFO: update.update @ 246: 4903
+[2021-08-20 08:38:45.44] INFO: update.update @ 242: REN
+[2021-08-20 08:38:45.45] INFO: update.update @ 246: 22
+[2021-08-20 08:39:03.213] INFO: update.update @ 242: STAT
+[2021-08-20 08:39:03.213] INFO: update.update @ 246: 0
+[2021-08-20 08:39:20.269] INFO: update.rescrape @ 468: rescraping
+[2021-08-20 08:39:20.326] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-20 09:09:22.158] INFO: update.update @ 237: 2021
+[2021-08-20 09:09:22.159] INFO: update.update @ 242: CAV
+[2021-08-20 09:09:22.160] INFO: update.update @ 246: 80
+[2021-08-20 09:10:25.118] INFO: update.update @ 242: CIT
+[2021-08-20 09:10:25.120] INFO: update.update @ 246: 3
+[2021-08-20 09:10:46.636] INFO: update.update @ 242: ELEC
+[2021-08-20 09:10:46.636] INFO: update.update @ 246: 12
+[2021-08-20 09:11:04.724] INFO: update.update @ 242: PRO
+[2021-08-20 09:11:04.741] INFO: update.update @ 246: 4903
+[2021-08-20 09:11:26.502] INFO: update.update @ 242: REN
+[2021-08-20 09:11:26.503] INFO: update.update @ 246: 22
+[2021-08-20 09:11:46.784] INFO: update.update @ 242: STAT
+[2021-08-20 09:11:46.784] INFO: update.update @ 246: 0
+[2021-08-20 09:12:03.469] INFO: update.rescrape @ 468: rescraping
+[2021-08-20 09:12:03.557] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-20 09:42:05.514] INFO: update.update @ 237: 2021
+[2021-08-20 09:42:05.514] INFO: update.update @ 242: CAV
+[2021-08-20 09:42:05.516] INFO: update.update @ 246: 80
+[2021-08-20 09:42:54.192] INFO: update.update @ 242: CIT
+[2021-08-20 09:42:54.194] INFO: update.update @ 246: 3
+[2021-08-20 09:43:12.542] INFO: update.update @ 242: ELEC
+[2021-08-20 09:43:12.547] INFO: update.update @ 246: 12
+[2021-08-20 09:43:32.449] INFO: update.update @ 242: PRO
+[2021-08-20 09:43:32.470] INFO: update.update @ 246: 4904
+[2021-08-20 09:43:50.392] INFO: update.update @ 242: REN
+[2021-08-20 09:43:50.393] INFO: update.update @ 246: 22
+[2021-08-20 09:44:06.902] INFO: update.update @ 242: STAT
+[2021-08-20 09:44:06.902] INFO: update.update @ 246: 0
+[2021-08-20 09:44:25.480] INFO: update.rescrape @ 468: rescraping
+[2021-08-20 09:44:25.542] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-26 12:13:50.929] INFO: __init__.create_app @ 30: App startup in production mode
+[2021-08-26 12:13:52.108] INFO: update.update @ 237: 2021
+[2021-08-26 12:13:52.109] INFO: update.update @ 242: CAV
+[2021-08-26 12:13:52.118] INFO: update.update @ 246: 80
+[2021-08-26 12:14:31.199] INFO: update.update @ 242: CIT
+[2021-08-26 12:14:31.200] INFO: update.update @ 246: 3
+[2021-08-26 12:14:49.639] INFO: update.update @ 242: ELEC
+[2021-08-26 12:14:49.641] INFO: update.update @ 246: 12
+[2021-08-26 12:15:06.648] INFO: update.update @ 242: PRO
+[2021-08-26 12:15:06.652] INFO: update.update @ 246: 4905
+[2021-08-26 12:15:13.874] INFO: update.update @ 259: 4910
+[2021-08-26 12:15:30.763] INFO: update.update @ 259: 4920
+[2021-08-26 12:15:48.97] INFO: update.update @ 259: 4930
+[2021-08-26 12:16:05.54] INFO: update.update @ 259: 4940
+[2021-08-26 12:16:21.615] INFO: update.update @ 259: 4950
+[2021-08-26 12:16:37.796] INFO: update.update @ 259: 4960
+[2021-08-26 12:16:55.62] INFO: update.update @ 259: 4970
+[2021-08-26 12:17:11.238] INFO: update.update @ 259: 4980
+[2021-08-26 12:17:27.115] INFO: update.update @ 259: 4990
+[2021-08-26 12:17:43.965] INFO: update.update @ 259: 5000
+[2021-08-26 12:17:57.815] INFO: update.update @ 259: 5010
+[2021-08-26 12:18:10.369] INFO: update.update @ 259: 5020
+[2021-08-26 12:18:24.761] INFO: update.update @ 259: 5030
+[2021-08-26 12:18:38.51] INFO: update.update @ 259: 5040
+[2021-08-26 12:18:51.711] INFO: update.update @ 259: 5050
+[2021-08-26 12:19:05.681] INFO: update.update @ 259: 5060
+[2021-08-26 12:19:31.632] INFO: update.update @ 242: REN
+[2021-08-26 12:19:31.633] INFO: update.update @ 246: 22
+[2021-08-26 12:19:55.10] INFO: update.update @ 242: STAT
+[2021-08-26 12:19:55.12] INFO: update.update @ 246: 0
+[2021-08-26 12:20:20.240] INFO: update.rescrape @ 468: rescraping
+[2021-08-26 12:20:20.295] DEBUG: update.rescrape @ 471: PRO 4775/2021
+[2021-08-26 12:20:21.766] DEBUG: update.rescrape @ 471: PRO 4776/2021
+[2021-08-26 12:20:23.294] DEBUG: update.rescrape @ 471: PRO 4777/2021
+[2021-08-26 12:20:24.687] DEBUG: update.rescrape @ 471: PRO 4778/2021
+[2021-08-26 12:20:26.140] DEBUG: update.rescrape @ 471: PRO 4779/2021
+[2021-08-26 12:20:28.258] DEBUG: update.rescrape @ 471: PRO 4780/2021
+[2021-08-26 12:20:29.924] DEBUG: update.rescrape @ 471: PRO 4781/2021
+[2021-08-26 12:20:31.524] DEBUG: update.rescrape @ 471: PRO 4782/2021
+[2021-08-26 12:20:33.574] DEBUG: update.rescrape @ 471: PRO 4783/2021
+[2021-08-26 12:20:35.75] DEBUG: update.rescrape @ 471: PRO 4785/2021
+[2021-08-26 12:20:36.625] DEBUG: update.rescrape @ 471: PRO 4786/2021
+[2021-08-26 12:20:38.297] DEBUG: update.rescrape @ 471: PRO 4787/2021
+[2021-08-26 12:20:40.189] DEBUG: update.rescrape @ 471: PRO 4788/2021
+[2021-08-26 12:20:41.483] DEBUG: update.rescrape @ 471: PRO 4789/2021
+[2021-08-26 12:20:42.950] DEBUG: update.rescrape @ 471: PRO 4790/2021
+[2021-08-26 12:20:44.236] DEBUG: update.rescrape @ 471: PRO 4791/2021
+[2021-08-26 12:20:45.458] DEBUG: update.rescrape @ 471: PRO 4792/2021
+[2021-08-26 12:20:46.722] DEBUG: update.rescrape @ 471: PRO 4793/2021
+[2021-08-26 12:20:48.53] DEBUG: update.rescrape @ 471: PRO 4794/2021
+[2021-08-26 12:20:49.433] DEBUG: update.rescrape @ 471: PRO 4795/2021
+[2021-08-26 12:20:50.879] DEBUG: update.rescrape @ 471: PRO 4796/2021
+[2021-08-26 12:20:52.266] DEBUG: update.rescrape @ 471: PRO 4797/2021
+[2021-08-26 12:20:53.515] DEBUG: update.rescrape @ 471: PRO 4798/2021
+[2021-08-26 12:20:54.980] DEBUG: update.rescrape @ 471: PRO 4799/2021
+[2021-08-26 12:20:56.446] DEBUG: update.rescrape @ 471: PRO 4800/2021
+[2021-08-26 12:20:57.795] DEBUG: update.rescrape @ 471: PRO 4801/2021
+[2021-08-26 12:20:59.350] DEBUG: update.rescrape @ 471: PRO 4802/2021
+[2021-08-26 12:21:00.737] DEBUG: update.rescrape @ 471: PRO 4803/2021
+[2021-08-26 12:21:02.205] DEBUG: update.rescrape @ 471: PRO 4804/2021
+[2021-08-26 12:21:03.604] DEBUG: update.rescrape @ 471: PRO 4805/2021
+[2021-08-26 12:21:05.149] DEBUG: update.rescrape @ 471: PRO 4806/2021
+[2021-08-26 12:21:06.374] DEBUG: update.rescrape @ 471: PRO 4807/2021
+[2021-08-26 12:21:07.884] DEBUG: update.rescrape @ 471: PRO 4808/2021
+[2021-08-26 12:21:09.182] DEBUG: update.rescrape @ 471: PRO 4809/2021
+[2021-08-26 12:21:10.486] DEBUG: update.rescrape @ 471: PRO 4810/2021
+[2021-08-26 12:21:11.811] DEBUG: update.rescrape @ 471: PRO 4811/2021
+[2021-08-26 12:21:13.132] DEBUG: update.rescrape @ 471: PRO 4812/2021
+[2021-08-26 12:21:14.583] DEBUG: update.rescrape @ 471: PRO 4813/2021
+[2021-08-26 12:21:16.260] DEBUG: update.rescrape @ 471: PRO 4814/2021
+[2021-08-26 12:21:17.612] DEBUG: update.rescrape @ 471: PRO 4815/2021
+[2021-08-26 12:21:18.899] DEBUG: update.rescrape @ 471: PRO 4816/2021
+[2021-08-26 12:21:20.104] DEBUG: update.rescrape @ 471: PRO 4817/2021
+[2021-08-26 12:21:21.846] DEBUG: update.rescrape @ 471: PRO 4818/2021
+[2021-08-26 12:21:23.334] DEBUG: update.rescrape @ 471: PRO 4819/2021
+[2021-08-26 12:21:25.281] DEBUG: update.rescrape @ 471: PRO 4820/2021
+[2021-08-26 12:21:26.538] DEBUG: update.rescrape @ 471: PRO 4821/2021
+[2021-08-26 12:21:27.745] DEBUG: update.rescrape @ 471: PRO 4822/2021
+[2021-08-26 12:21:29.66] DEBUG: update.rescrape @ 471: PRO 4823/2021
+[2021-08-26 12:21:30.707] DEBUG: update.rescrape @ 471: PRO 4824/2021
+[2021-08-26 12:21:32.38] DEBUG: update.rescrape @ 471: PRO 4825/2021
+[2021-08-26 12:21:33.294] DEBUG: update.rescrape @ 471: PRO 4826/2021
+[2021-08-26 12:21:34.759] DEBUG: update.rescrape @ 471: PRO 4827/2021
+[2021-08-26 12:21:35.954] DEBUG: update.rescrape @ 471: PRO 4828/2021
+[2021-08-26 12:21:37.135] DEBUG: update.rescrape @ 471: PRO 4829/2021
+[2021-08-26 12:21:38.278] DEBUG: update.rescrape @ 471: PRO 4830/2021
+[2021-08-26 12:21:39.801] DEBUG: update.rescrape @ 471: PRO 4831/2021
+[2021-08-26 12:21:41.324] DEBUG: update.rescrape @ 471: PRO 4832/2021
+[2021-08-26 12:21:42.652] DEBUG: update.rescrape @ 471: PRO 4833/2021
+[2021-08-26 12:21:43.861] DEBUG: update.rescrape @ 471: PRO 4834/2021
+[2021-08-26 12:21:45.323] DEBUG: update.rescrape @ 471: PRO 4835/2021
+[2021-08-26 12:21:46.747] DEBUG: update.rescrape @ 471: PRO 4836/2021
+[2021-08-26 12:21:48.240] DEBUG: update.rescrape @ 471: PRO 4837/2021
+[2021-08-26 12:21:49.642] DEBUG: update.rescrape @ 471: PRO 4838/2021
+[2021-08-26 12:21:50.863] DEBUG: update.rescrape @ 471: PRO 4839/2021
+[2021-08-26 12:21:52.641] DEBUG: update.rescrape @ 471: PRO 4840/2021
+[2021-08-26 12:21:54.19] DEBUG: update.rescrape @ 471: PRO 4841/2021
+[2021-08-26 12:21:55.365] DEBUG: update.rescrape @ 471: PRO 4842/2021
+[2021-08-26 12:21:56.908] DEBUG: update.rescrape @ 471: PRO 4843/2021
+[2021-08-26 12:21:58.937] DEBUG: update.rescrape @ 471: PRO 4844/2021
+[2021-08-26 12:22:00.437] DEBUG: update.rescrape @ 471: PRO 4845/2021
+[2021-08-26 12:22:01.850] DEBUG: update.rescrape @ 471: PRO 4846/2021
+[2021-08-26 12:22:03.298] DEBUG: update.rescrape @ 471: PRO 4847/2021
+[2021-08-26 12:22:04.880] DEBUG: update.rescrape @ 471: PRO 4848/2021
+[2021-08-26 12:22:08.312] DEBUG: update.rescrape @ 471: PRO 4849/2021
+[2021-08-26 12:22:09.725] DEBUG: update.rescrape @ 471: PRO 4850/2021
+[2021-08-26 12:22:11.3] DEBUG: update.rescrape @ 471: PRO 4851/2021
+[2021-08-26 12:22:12.541] DEBUG: update.rescrape @ 471: PRO 4852/2021
+[2021-08-26 12:22:13.893] DEBUG: update.rescrape @ 471: PRO 4853/2021
+[2021-08-26 12:22:15.189] DEBUG: update.rescrape @ 471: PRO 4854/2021
+[2021-08-26 12:22:16.366] DEBUG: update.rescrape @ 471: PRO 4855/2021
+[2021-08-26 12:22:17.617] DEBUG: update.rescrape @ 471: PRO 4856/2021
+[2021-08-26 12:22:18.998] DEBUG: update.rescrape @ 471: PRO 4857/2021
+[2021-08-26 12:22:20.618] DEBUG: update.rescrape @ 471: PRO 4858/2021
+[2021-08-26 12:22:21.973] DEBUG: update.rescrape @ 471: PRO 4859/2021
+[2021-08-26 12:22:23.576] DEBUG: update.rescrape @ 471: PRO 4860/2021
+[2021-08-26 12:22:24.915] DEBUG: update.rescrape @ 471: PRO 4861/2021
+[2021-08-26 12:22:26.360] DEBUG: update.rescrape @ 471: PRO 4862/2021
+[2021-08-26 12:22:27.652] DEBUG: update.rescrape @ 471: PRO 4863/2021
+[2021-08-26 12:22:29.344] DEBUG: update.rescrape @ 471: PRO 4864/2021
+[2021-08-26 12:22:30.757] DEBUG: update.rescrape @ 471: PRO 4865/2021
+[2021-08-26 12:22:32.350] DEBUG: update.rescrape @ 471: PRO 4866/2021
+[2021-08-26 12:22:33.542] DEBUG: update.rescrape @ 471: PRO 4867/2021
+[2021-08-26 12:22:36.76] DEBUG: update.rescrape @ 471: PRO 4868/2021
+[2021-08-26 12:22:37.294] DEBUG: update.rescrape @ 471: PRO 4869/2021
+[2021-08-26 12:22:38.660] DEBUG: update.rescrape @ 471: PRO 4870/2021
+[2021-08-26 12:22:40.98] DEBUG: update.rescrape @ 471: PRO 4871/2021
+[2021-08-26 12:22:42.262] DEBUG: update.rescrape @ 471: PRO 4872/2021
+[2021-08-26 12:22:43.704] DEBUG: update.rescrape @ 471: PRO 4873/2021
+[2021-08-26 12:22:45.951] DEBUG: update.rescrape @ 471: PRO 4874/2021
+[2021-08-26 12:22:47.563] DEBUG: update.rescrape @ 471: PRO 4875/2021
+[2021-08-26 12:22:49.258] DEBUG: update.rescrape @ 471: PRO 4876/2021
+[2021-08-26 12:22:50.775] DEBUG: update.rescrape @ 471: PRO 4877/2021
+[2021-08-26 12:22:52.321] DEBUG: update.rescrape @ 471: PRO 4878/2021
+[2021-08-26 12:22:53.628] DEBUG: update.rescrape @ 471: PRO 4879/2021
+[2021-08-26 12:22:54.981] DEBUG: update.rescrape @ 471: PRO 4880/2021
+[2021-08-26 12:22:56.517] DEBUG: update.rescrape @ 471: PRO 4881/2021
+[2021-08-26 12:22:57.834] DEBUG: update.rescrape @ 471: PRO 4882/2021
+[2021-08-26 12:22:59.67] DEBUG: update.rescrape @ 471: PRO 4883/2021
+[2021-08-26 12:23:00.240] DEBUG: update.rescrape @ 471: PRO 4884/2021
+[2021-08-26 12:23:01.936] DEBUG: update.rescrape @ 471: PRO 4885/2021
+[2021-08-26 12:23:03.371] DEBUG: update.rescrape @ 471: PRO 4886/2021
+[2021-08-26 12:23:05.41] DEBUG: update.rescrape @ 471: PRO 4887/2021
+[2021-08-26 12:23:07.250] DEBUG: update.rescrape @ 471: PRO 4888/2021
+[2021-08-26 12:23:08.860] DEBUG: update.rescrape @ 471: PRO 4889/2021
+[2021-08-26 12:23:10.462] DEBUG: update.rescrape @ 471: PRO 4890/2021
+[2021-08-26 12:23:12.128] DEBUG: update.rescrape @ 471: PRO 4891/2021
+[2021-08-26 12:23:13.757] DEBUG: update.rescrape @ 471: PRO 4892/2021
+[2021-08-26 12:23:14.944] DEBUG: update.rescrape @ 471: PRO 4893/2021
+[2021-08-26 12:23:16.345] DEBUG: update.rescrape @ 471: PRO 4894/2021
+[2021-08-26 12:23:17.918] DEBUG: update.rescrape @ 471: PRO 4895/2021
+[2021-08-26 12:23:19.552] DEBUG: update.rescrape @ 471: PRO 4896/2021
+[2021-08-26 12:23:20.702] DEBUG: update.rescrape @ 471: PRO 4897/2021
+[2021-08-26 12:23:21.842] DEBUG: update.rescrape @ 471: PRO 4898/2021
+[2021-08-26 12:23:23.20] DEBUG: update.rescrape @ 471: PRO 4899/2021
+[2021-08-26 12:23:24.437] DEBUG: update.rescrape @ 471: PRO 4900/2021
+[2021-08-26 12:23:25.611] DEBUG: update.rescrape @ 471: PRO 4901/2021
+[2021-08-26 12:23:27.183] DEBUG: update.rescrape @ 471: PRO 4902/2021
+[2021-08-26 12:23:28.963] DEBUG: update.rescrape @ 471: PRO 4903/2021
+[2021-08-26 12:23:30.514] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-26 12:53:32.696] INFO: update.update @ 237: 2021
+[2021-08-26 12:53:32.696] INFO: update.update @ 242: CAV
+[2021-08-26 12:53:32.699] INFO: update.update @ 246: 80
+[2021-08-26 12:54:19.967] INFO: update.update @ 242: CIT
+[2021-08-26 12:54:19.976] INFO: update.update @ 246: 4
+[2021-08-26 12:54:50.2] INFO: update.update @ 242: ELEC
+[2021-08-26 12:54:50.5] INFO: update.update @ 246: 12
+[2021-08-26 12:55:03.759] ERROR: update.search_matter @ 278: current_matter=Matter(type='ELEC', number=44, year=2021, title=None, deceased_name=None, flags=None)
+search_form=<RoboForm __VIEWSTATE=hidcDf9FV3vcDcf1D2Z5c9ndW95K1NITKI0EKYbqx5KPjfGvS5r47+FUt9bIz7x655Kl7HlaS1FbIBNa/46a98pntqg=, __VIEWSTATEGENERATOR=7A2140AD, __VIEWSTATEENCRYPTED=>
+search_form.fields=OrderedMultiDict([('__VIEWSTATE', <robobrowser.forms.fields.Input object at 0x7fe049589df0>), ('__VIEWSTATEGENERATOR', <robobrowser.forms.fields.Input object at 0x7fe049589e80>), ('__VIEWSTATEENCRYPTED', <robobrowser.forms.fields.Input object at 0x7fe049589fd0>)])
+[2021-08-26 12:55:11.172] ERROR: update.update_db @ 77: Unexpected error:
+Traceback (most recent call last):
+  File "/home/runner/probate/probatewebapp/update.py", line 71, in update_db
+    updater.update(years)
+  File "/home/runner/probate/probatewebapp/update.py", line 250, in update
+    self.search_matter(Matter(matter_type, number, year, None, None, None))
+  File "/home/runner/probate/probatewebapp/update.py", line 276, in search_matter
+    search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.type
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/robobrowser/forms/form.py", line 213, in __getitem__
+    return self.fields[item]
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/werkzeug/datastructures.py", line 717, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+[2021-08-26 12:55:17.389] INFO: update.update_db @ 86: Sleeping for 900 seconds
+[2021-08-26 13:10:18.707] INFO: update.update @ 237: 2021
+[2021-08-26 13:10:18.708] INFO: update.update @ 242: CAV
+[2021-08-26 13:10:18.713] INFO: update.update @ 246: 80
+[2021-08-26 13:11:19.867] INFO: update.update @ 242: CIT
+[2021-08-26 13:11:19.876] INFO: update.update @ 246: 4
+[2021-08-26 13:11:46.23] INFO: update.update @ 242: ELEC
+[2021-08-26 13:11:46.29] INFO: update.update @ 246: 12
+[2021-08-26 13:12:09.833] INFO: update.update @ 242: PRO
+[2021-08-26 13:12:09.840] INFO: update.update @ 246: 5064
+[2021-08-26 13:12:35.150] INFO: update.update @ 242: REN
+[2021-08-26 13:12:35.152] INFO: update.update @ 246: 26
+[2021-08-26 13:12:58.381] INFO: update.update @ 242: STAT
+[2021-08-26 13:12:58.385] INFO: update.update @ 246: 0
+[2021-08-26 13:13:27.514] INFO: update.rescrape @ 468: rescraping
+[2021-08-26 13:13:27.694] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-26 13:43:30.300] INFO: update.update @ 237: 2021
+[2021-08-26 13:43:30.301] INFO: update.update @ 242: CAV
+[2021-08-26 13:43:30.304] INFO: update.update @ 246: 80
+[2021-08-26 13:44:50.266] INFO: update.update @ 242: CIT
+[2021-08-26 13:44:50.294] INFO: update.update @ 246: 4
+[2021-08-26 13:45:29.52] INFO: update.update @ 242: ELEC
+[2021-08-26 13:45:29.58] INFO: update.update @ 246: 12
+[2021-08-26 13:46:00.715] INFO: update.update @ 242: PRO
+[2021-08-26 13:46:00.717] INFO: update.update @ 246: 5066
+[2021-08-26 13:46:07.514] INFO: update.update @ 259: 5070
+[2021-08-26 13:46:35.554] INFO: update.update @ 242: REN
+[2021-08-26 13:46:35.560] INFO: update.update @ 246: 26
+[2021-08-26 13:47:00.739] INFO: update.update @ 242: STAT
+[2021-08-26 13:47:00.754] INFO: update.update @ 246: 0
+[2021-08-26 13:47:23.539] INFO: update.rescrape @ 468: rescraping
+[2021-08-26 13:47:23.596] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-26 14:17:26.333] INFO: update.update @ 237: 2021
+[2021-08-26 14:17:26.335] INFO: update.update @ 242: CAV
+[2021-08-26 14:17:26.353] INFO: update.update @ 246: 80
+[2021-08-26 14:18:34.163] INFO: update.update @ 242: CIT
+[2021-08-26 14:18:34.164] INFO: update.update @ 246: 4
+[2021-08-26 14:18:54.550] INFO: update.update @ 242: ELEC
+[2021-08-26 14:18:54.551] INFO: update.update @ 246: 12
+[2021-08-26 14:19:25.933] INFO: update.update @ 242: PRO
+[2021-08-26 14:19:25.940] INFO: update.update @ 246: 5070
+[2021-08-26 14:20:15.775] INFO: update.update @ 242: REN
+[2021-08-26 14:20:15.775] INFO: update.update @ 246: 26
+[2021-08-26 14:21:02.150] INFO: update.update @ 242: STAT
+[2021-08-26 14:21:02.150] INFO: update.update @ 246: 0
+[2021-08-26 14:22:00.470] INFO: update.rescrape @ 468: rescraping
+[2021-08-26 14:22:00.603] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-26 14:52:03.356] INFO: update.update @ 237: 2021
+[2021-08-26 14:52:03.357] INFO: update.update @ 242: CAV
+[2021-08-26 14:52:03.362] INFO: update.update @ 246: 80
+[2021-08-26 14:53:10.650] INFO: update.update @ 242: CIT
+[2021-08-26 14:53:10.651] INFO: update.update @ 246: 4
+[2021-08-26 14:53:34.809] INFO: update.update @ 242: ELEC
+[2021-08-26 14:53:34.811] INFO: update.update @ 246: 12
+[2021-08-26 14:54:02.267] INFO: update.update @ 242: PRO
+[2021-08-26 14:54:02.289] INFO: update.update @ 246: 5073
+[2021-08-26 14:54:45.399] INFO: update.update @ 242: REN
+[2021-08-26 14:54:45.399] INFO: update.update @ 246: 26
+[2021-08-26 14:55:14.774] INFO: update.update @ 242: STAT
+[2021-08-26 14:55:14.775] INFO: update.update @ 246: 0
+[2021-08-26 14:55:50.594] INFO: update.rescrape @ 468: rescraping
+[2021-08-26 14:55:50.771] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2021-08-26 15:25:53.489] INFO: update.update @ 237: 2021
+[2021-08-26 15:25:53.490] INFO: update.update @ 242: CAV
+[2021-08-26 15:25:53.522] INFO: update.update @ 246: 80
+[2021-08-26 15:27:31.167] INFO: update.update @ 242: CIT
+[2021-08-26 15:27:31.184] INFO: update.update @ 246: 4
+[2021-08-26 15:27:59.687] INFO: update.update @ 242: ELEC
+[2021-08-26 15:27:59.687] INFO: update.update @ 246: 12
+[2021-08-26 15:28:23.637] INFO: update.update @ 242: PRO
+[2021-08-26 15:28:23.646] INFO: update.update @ 246: 5076
+[2021-08-26 15:28:46.40] INFO: update.update @ 242: REN
+[2021-08-26 15:28:46.43] INFO: update.update @ 246: 26
+[2021-08-26 15:29:14.945] INFO: update.update @ 242: STAT
+[2021-08-26 15:29:14.949] INFO: update.update @ 246: 0
+[2021-08-26 15:29:43.169] INFO: update.rescrape @ 468: rescraping
+[2021-08-26 15:29:43.247] INFO: update.update_db @ 86: Sleeping for 1800 seconds
