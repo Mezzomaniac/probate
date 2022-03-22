@@ -1,7 +1,7 @@
 from flask import abort, current_app as app, flash, g, redirect, render_template, url_for
 
 from .forms import SearchForm, RequestNotificationListForm
-from .database import get_db#, close_db
+from .database import get_db, close_db
 from .models import Notification
 from . import processing
 
@@ -20,7 +20,12 @@ def home():
         email = form.data['email'].strip()
         if email:
             flash(f'A notification email will be sent to {email} if any matters/parties match this search.')
+            if 'robertsonhayles.com' in email:
+                app.logger.debug([tuple(row) for row in db.execute('select * from party_notification_requests')])
             processing.register(db, search_parameters, email)
+            if 'robertsonhayles.com' in email:
+                app.logger.debug(f'New registration for {email}: {search_parameters}')
+                app.logger.debug([tuple(row) for row in db.execute('select * from party_notification_requests')])
         #close_db()
     return render_template('home.html', 
     title=title, 
@@ -34,7 +39,17 @@ def manage_registration():
     if form.validate_on_submit():
         email = form.data['email'].strip()
         db = get_db()
-        command = "SELECT id, email, dec_first, dec_sur, dec_strict, party_first, party_sur, party_strict, start_year, end_year FROM party_notification_requests WHERE email = ?"
+        command = """SELECT id, 
+            email, 
+            dec_first, 
+            dec_sur, 
+            dec_strict, 
+            party_first, 
+            party_sur, 
+            party_strict, 
+            start_year, 
+            end_year 
+            FROM party_notification_requests WHERE email = ?"""
         party_notification_requests = [Notification(*party_notification_request) for party_notification_request in db.execute(command, (email,))]
         secret_key = app.config['SECRET_KEY']
         id_tokens = {party_notification_request.id: processing.create_token(party_notification_request.id, secret_key) for party_notification_request in party_notification_requests}
@@ -62,6 +77,8 @@ def cancel_registration(token):
         with db:
             db.execute('DELETE FROM party_notification_requests WHERE email = ?', (value,))
         flash('All your notification requests have been cancelled.')
+    else:
+        flash(f"Your cancellation link has expired. Please visit <a href=\"{url_for('manage_registration')}\">Manage registration</a> to request a new cancellation link.")
     #close_db()
     return render_template('cancel_registration.html', title='Cancel registration')
 

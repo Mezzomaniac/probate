@@ -478,9 +478,9 @@ def public_holidays(years):
     browser.open(PUBLIC_HOLIDAYS_URL)
     results = set()
     for year in years:
-        column = [th.text for th in browser.select('th')].index(str(year))
-        dates = {tr.select('td')[column].text.strip().split('&\n\n\t\t\t')[-1] for tr in browser.select('tr')[1:]}
-        dates = {datetime.datetime.strptime(date, '%A %d %B') for date in dates}
+        column = [th.text for th in browser.select('th')[1:]].index(str(year))
+        dates = {tr.select('td')[column].text.replace('*', '').replace('#', '').split('&')[-1] for tr in browser.select('tr')[1:]}
+        dates = {datetime.datetime.strptime(date.strip(), '%A %d %B') for date in dates}
         results.update({datetime.date(year, date.month, date.day) for date in dates})
     return results
 

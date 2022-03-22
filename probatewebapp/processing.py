@@ -63,7 +63,6 @@ def search(db, parameters):
         parameters).fetchall()
 
 def register(db, parameters, email):
-    print([tuple(row) for row in db.execute('select * from party_notification_requests')])
     parameters['email'] = email
     with db:
         db.execute("""INSERT INTO party_notification_requests (
@@ -95,8 +94,6 @@ def register(db, parameters, email):
             :end_year, 
             :end)""", 
             parameters)
-    print(f'New registration for {email}: {parameters}')
-    print([tuple(row) for row in db.execute('select * from party_notification_requests')])
 
 def send_message(recipient, subject, template_name, **variables):
     message = Message(subject, recipients=[recipient])
