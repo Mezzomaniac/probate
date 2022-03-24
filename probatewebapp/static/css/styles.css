@@ -1,5 +1,9 @@
-nav>a {
-	margin: 1.1em;
+nav {
+    display: flex;
+}
+
+nav>div {
+    padding: 0.9em;
 }
 
 .field {

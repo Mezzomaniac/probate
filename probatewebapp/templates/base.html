@@ -19,13 +19,13 @@
     
     <body>
         <nav>
-            <a href="{{ url_for('home') }}">Probate Search WA</a>
-            <a href="{{ url_for('manage_registration') }}">Manage registration</a>
+            <div><a href="{{ url_for('home') }}">Probate Search WA</a></div>
+            <div><a href="{{ url_for('manage_registration') }}">Manage registration</a></div>
             {% if config['TESTING'] %}
-            <a href="{{ url_for('test') }}">test</a>
+            <div><a href="{{ url_for('test') }}">test</a></div>
             {% endif %}
-            <hr>
         </nav>
+        <hr>
         <main role="main">
         {% block content %}{% endblock %}
         </main>
