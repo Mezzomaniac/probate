@@ -335,3 +335,62 @@ werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) 
 [2022-03-24 10:37:56.496] INFO: update.update @ 246: 0
 [2022-03-24 10:38:23.5] INFO: update.rescrape @ 468: rescraping
 [2022-03-24 10:38:23.88] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-24 11:08:25.21] INFO: update.update @ 237: 2022
+[2022-03-24 11:08:25.21] INFO: update.update @ 242: CAV
+[2022-03-24 11:08:25.23] INFO: update.update @ 246: 37
+[2022-03-24 11:09:03.24] INFO: update.update @ 242: CIT
+[2022-03-24 11:09:03.26] INFO: update.update @ 246: 2
+[2022-03-24 11:09:26.904] INFO: update.update @ 242: ELEC
+[2022-03-24 11:09:26.909] INFO: update.update @ 246: 1
+[2022-03-24 11:09:51.772] INFO: update.update @ 242: PRO
+[2022-03-24 11:09:51.828] INFO: update.update @ 246: 1766
+[2022-03-24 11:10:01.528] INFO: update.update @ 259: 1770
+[2022-03-24 11:10:26.610] INFO: update.update @ 242: REN
+[2022-03-24 11:10:26.610] INFO: update.update @ 246: 10
+[2022-03-24 11:10:48.402] INFO: update.update @ 242: STAT
+[2022-03-24 11:10:48.408] INFO: update.update @ 246: 0
+[2022-03-24 11:11:12.2] INFO: update.rescrape @ 468: rescraping
+[2022-03-24 11:11:12.68] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-25 00:02:01.856] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-25 00:02:03.122] INFO: update.update_db @ 86: Sleeping for 28678 seconds
+[2022-03-25 03:31:46.487] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-25 03:31:48.392] INFO: update.update_db @ 86: Sleeping for 16093 seconds
+[2022-03-25 09:48:24.761] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-25 09:48:25.304] INFO: update.update @ 237: 2022
+[2022-03-25 09:48:25.304] INFO: update.update @ 242: CAV
+[2022-03-25 09:48:25.312] INFO: update.update @ 246: 37
+[2022-03-25 14:04:01.903] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-25 14:04:04.81] INFO: update.update @ 237: 2022
+[2022-03-25 14:04:04.82] INFO: update.update @ 242: CAV
+[2022-03-25 14:04:04.86] INFO: update.update @ 246: 37
+[2022-03-25 14:05:27.933] INFO: update.update @ 242: CIT
+[2022-03-25 14:05:27.947] INFO: update.update @ 246: 2
+[2022-03-25 14:05:56.704] INFO: update.update @ 242: ELEC
+[2022-03-25 14:05:56.715] INFO: update.update @ 246: 1
+[2022-03-25 14:06:33.23] INFO: update.update @ 242: PRO
+[2022-03-25 14:06:33.169] INFO: update.update @ 246: 1770
+[2022-03-25 14:06:59.207] INFO: update.update @ 259: 1780
+[2022-03-25 14:07:22.562] INFO: update.update @ 259: 1790
+[2022-03-25 14:07:44.807] INFO: update.update @ 259: 1800
+[2022-03-25 14:08:35.988] INFO: update.update @ 242: REN
+[2022-03-25 14:08:35.989] INFO: update.update @ 246: 10
+[2022-03-25 14:09:11.417] INFO: update.update @ 242: STAT
+[2022-03-25 14:09:11.419] INFO: update.update @ 246: 0
+[2022-03-25 14:09:41.253] INFO: update.rescrape @ 468: rescraping
+[2022-03-25 14:09:41.399] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-25 14:39:43.768] INFO: update.update @ 237: 2022
+[2022-03-25 14:39:43.768] INFO: update.update @ 242: CAV
+[2022-03-25 14:39:43.772] INFO: update.update @ 246: 37
+[2022-03-25 14:41:40.393] INFO: update.update @ 242: CIT
+[2022-03-25 14:41:40.397] INFO: update.update @ 246: 2
+[2022-03-25 14:42:15.470] INFO: update.update @ 242: ELEC
+[2022-03-25 14:42:15.473] INFO: update.update @ 246: 2
+[2022-03-25 14:42:50.976] INFO: update.update @ 242: PRO
+[2022-03-25 14:42:51.68] INFO: update.update @ 246: 1807
+[2022-03-25 14:42:57.670] INFO: update.update @ 259: 1810
+[2022-03-25 14:43:34.911] INFO: update.update @ 242: REN
+[2022-03-25 14:43:34.914] INFO: update.update @ 246: 10
+[2022-03-25 14:44:10.933] INFO: update.update @ 242: STAT
+[2022-03-25 14:44:10.934] INFO: update.update @ 246: 0
+[2022-03-25 14:44:38.665] INFO: update.rescrape @ 468: rescraping
+[2022-03-25 14:44:38.777] INFO: update.update_db @ 86: Sleeping for 1800 seconds

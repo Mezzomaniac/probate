@@ -1,10 +1,12 @@
 nav {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.9em;
 }
 
-nav>div {
+/*nav>div {
     padding: 0.9em;
-}
+}*/
 
 .field {
 	margin: 0.6em 0.4em;
