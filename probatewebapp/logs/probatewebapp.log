@@ -394,3 +394,343 @@ werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) 
 [2022-03-25 14:44:10.934] INFO: update.update @ 246: 0
 [2022-03-25 14:44:38.665] INFO: update.rescrape @ 468: rescraping
 [2022-03-25 14:44:38.777] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-25 15:14:41.285] INFO: update.update @ 237: 2022
+[2022-03-25 15:14:41.285] INFO: update.update @ 242: CAV
+[2022-03-25 15:14:41.287] INFO: update.update @ 246: 37
+[2022-03-25 15:16:23.748] INFO: update.update @ 242: CIT
+[2022-03-25 15:16:23.754] INFO: update.update @ 246: 2
+[2022-03-25 15:16:55.399] INFO: update.update @ 242: ELEC
+[2022-03-25 15:16:55.400] INFO: update.update @ 246: 2
+[2022-03-25 15:17:26.649] INFO: update.update @ 242: PRO
+[2022-03-25 15:17:26.703] INFO: update.update @ 246: 1810
+[2022-03-25 15:18:01.634] INFO: update.update @ 242: REN
+[2022-03-25 15:18:01.634] INFO: update.update @ 246: 10
+[2022-03-25 15:18:36.128] INFO: update.update @ 242: STAT
+[2022-03-25 15:18:36.137] INFO: update.update @ 246: 0
+[2022-03-25 15:19:14.255] INFO: update.rescrape @ 468: rescraping
+[2022-03-25 15:19:14.460] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-25 15:49:16.953] INFO: update.update @ 237: 2022
+[2022-03-25 15:49:16.953] INFO: update.update @ 242: CAV
+[2022-03-25 15:49:16.955] INFO: update.update @ 246: 37
+[2022-03-25 15:50:37.752] INFO: update.update @ 242: CIT
+[2022-03-25 15:50:37.753] INFO: update.update @ 246: 2
+[2022-03-25 15:51:14.48] INFO: update.update @ 242: ELEC
+[2022-03-25 15:51:14.50] INFO: update.update @ 246: 2
+[2022-03-25 15:51:47.319] INFO: update.update @ 242: PRO
+[2022-03-25 15:51:47.437] INFO: update.update @ 246: 1811
+[2022-03-25 15:52:17.833] INFO: update.update @ 242: REN
+[2022-03-25 15:52:17.833] INFO: update.update @ 246: 10
+[2022-03-25 15:52:46.801] INFO: update.update @ 242: STAT
+[2022-03-25 15:52:46.801] INFO: update.update @ 246: 0
+[2022-03-25 15:53:18.532] INFO: update.rescrape @ 468: rescraping
+[2022-03-25 15:53:18.813] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-25 16:23:21.183] INFO: update.update @ 237: 2022
+[2022-03-25 16:23:21.183] INFO: update.update @ 242: CAV
+[2022-03-25 16:23:21.184] INFO: update.update @ 246: 37
+[2022-03-25 16:25:07.181] INFO: update.update @ 242: CIT
+[2022-03-25 16:25:07.183] INFO: update.update @ 246: 2
+[2022-03-25 16:25:52.14] INFO: update.update @ 242: ELEC
+[2022-03-25 16:25:52.19] INFO: update.update @ 246: 2
+[2022-03-25 16:26:40.726] INFO: update.update @ 242: PRO
+[2022-03-25 16:26:40.843] INFO: update.update @ 246: 1811
+[2022-03-25 16:26:48.272] ERROR: update.search_matter @ 278: current_matter=Matter(type='PRO', number=1814, year=2022, title=None, deceased_name=None, flags=None)
+search_form=<RoboForm __VIEWSTATE=o7dUHVF1TywgeNlds9pMJh6kQgRaN4kygoyv/skir1kGmPQWnyUGyhYbIl606RgWgzyOFjvBlpKAGyPJou+8lrWFDxK5vgObm7jn0pjH1mD0WG0gGP9KYuCtRa4EqHfqfolnri7bC+/K2kRCMSfVRzLW4RN7TXANl4C1pk3P/tWUmifIJpSFy4s1EeMx+2ZWHJRjlBxAvTHIgJUj+xsDRvPtialtA9Ox12YyCWovP453PFCSTZuhT0dUQWEGz4+09cr1zRvEAc9rVmsR3RF4O452dlnII+ZHfScpKLbxHN7M6/0Ny4CRgRUFhRUo3cp5k5Uf5bI3uDVHnhSKnQfofLdjOJYxM7k0p2mfzlId0nFQmJzQf7fm1ceoG8u1yQ8UCc5ptyxvbgYJD5Ih3pXLq6fjjJ+/yoxGZex+kRpQ54/EcVUBLgvqafiGaMF67k7hWfwmCVXPOXQYGnBL3HNYuq4sqyw2MI76vhw9GcKhS4LyyrPUHdHll7PTADWALwmz4AIeRyQ3PunNbQeA6IHgXzXKdFBIegUHVk9LH3uJrOt/7mwTiwBn5zAsexa+GIJCl7I7miVRwypNcdoe26RcE+D4RX50QteQtPf51rk8zYB3ice9D70JTBvNW/I+V8KDY04bhYKHQycLzkepQEj8v5s/6SU+knAuO0N4e2OyzoWlqiuuJb6peAYKSlcPBKh5dMXv39MGxdzuNmVI+79/0EnzIS/hy9yEHM1sBICthiKb9qd0n5mNviB51XgWL+ZrD3PZ43DUmnBkYjleQUTK5ezIzh5iDQWQQG7mwkKb9MgvB0p1TOW+BygMu77eij5wVn1Q6OePlouZD453NdeB1qswaCuxal8CbiXpeGz36o5S6sbR/Eo5AIStDgToIAbD5+FRCvWx+ZhjJeSHfDPbq8GjAZzvTPraMHV5yTDy2mB49on1wud+OlRzqjtRi6dEtEbFAr2cL9Z+k+iQP+M+NVX8fMlK+O6noklJdH/WYBjWyCscDHCIFtFzpLTCQWnNaiZkSFahkCHk5CDVbh1oA14c8RzFg3TFAgKFIXo1NX0T33yOzSxUYEJHdLdwx2oEKu/RcbS9TQBytFK/ZNHf36varA4ePAU/5BhldvfCUGRn250Qgx9rZANF/Yi+ZjBame41WOOEtqO31ePnn9d+geVz8Eh8i07GJvPq0RxKXOFjg1djCC0qMzZ+XW1uvh94HZm6bnQ2G6+/N8hq8o+xUEf82m+YeRbP+Q2YnypG/74eijAmo+q2d88cHjjLs60JfReImJK3wL1mzI4OovHrlwtBcCr8UHTcT34+2ogRo5u6PICGuwXtoUR9OBgeKFQioXbFJ7Fwurzjlm5Pq59K4A2FNVBuu4bPpZiSiCu+ZDeBpTLSF1T7HjtvRtoKbCzkORTB6pWGI/LmErbOwATzLeZINopXGEaCUrLN3xTZb9sZFHtjA9rkBbUb54yROKLB40BG+0XPgBjO+HBx79CDjXJ4ZhkhfE5pwHfJX7xe9Dh+cFE1Ok0xZN+P9MIGqSPh0CjTpHe3PjJ2GbXTn43QR4bs6smhaWsX8vHG8/Mv+ws3iYcE0KBPQifzd/+PeC+kz8XGptu6ROjOL1reWTCZrUOCpNdsAm0A0nB6Z9OjpN08Ge/67CshX/8vEplkcGeP7GtVzUpXitMgz4+SQMakiyBeU2jnQi8TorqO2ym7bv8wSlHGhC7BxxH9GQ9c3uwTDVkhsnlhhWVw2VP8OE6kN3EI4aj1xVCb6p0X90kFdB5Phs7esZgreK75p4JeVwqcE9RCFl6Aozy+xYs7Vi794fCZVWleBMBtCeW9LMJyy40/C7uzst5s1FT0nNi/cNkO+9G1/DBMIRF+5EPCuXVxZ4yTN342dvblc/atvdUBC0fiAA0gNCl1hbqygSdl2RflJhp1shmUN1AYk0/clLd15aWlmAOOaFgq1Qa8RA16+6DlMoSC, __VIEWSTATEGENERATOR=E559B24A, __VIEWSTATEENCRYPTED=, ucQuickSearch$mUcJDLSearch$ddlJurisdiction=, ucQuickSearch$mUcJDLSearch$ddlDivision=, ucQuickSearch$mUcJDLSearch$ddlLocation=, ucQuickSearch$ddlMatterType=, ucQuickSearch$txtFileNumber=, ucQuickSearch$txtFileYear=, ucQuickSearch$txtPartyName=, ucQuickSearch$searchButton=Search>
+search_form.fields=OrderedMultiDict([('__VIEWSTATE', <robobrowser.forms.fields.Input object at 0x7f6b4264c6d0>), ('__VIEWSTATEGENERATOR', <robobrowser.forms.fields.Input object at 0x7f6b4264c760>), ('__VIEWSTATEENCRYPTED', <robobrowser.forms.fields.Input object at 0x7f6b4264c8b0>), ('ucQuickSearch$mUcJDLSearch$ddlJurisdiction', <robobrowser.forms.fields.Select object at 0x7f6b4264c910>), ('ucQuickSearch$mUcJDLSearch$ddlDivision', <robobrowser.forms.fields.Select object at 0x7f6b4264c970>), ('ucQuickSearch$mUcJDLSearch$ddlLocation', <robobrowser.forms.fields.Select object at 0x7f6b4264ca30>), ('ucQuickSearch$ddlMatterType', <robobrowser.forms.fields.Select object at 0x7f6b4264c9a0>), ('ucQuickSearch$txtFileNumber', <robobrowser.forms.fields.Input object at 0x7f6b4264ca60>), ('ucQuickSearch$txtFileYear', <robobrowser.forms.fields.Input object at 0x7f6b4264cb80>), ('ucQuickSearch$txtPartyName', <robobrowser.forms.fields.Input object at 0x7f6b4264cac0>), ('ucQuickSearch$searchButton', <robobrowser.forms.fields.Submit object at 0x7f6b4264cb20>)])
+[2022-03-25 16:26:54.459] ERROR: update.update_db @ 77: Unexpected error:
+Traceback (most recent call last):
+  File "/home/runner/probate/probatewebapp/update.py", line 71, in update_db
+    updater.update(years)
+  File "/home/runner/probate/probatewebapp/update.py", line 250, in update
+    self.search_matter(Matter(matter_type, number, year, None, None, None))
+  File "/home/runner/probate/probatewebapp/update.py", line 276, in search_matter
+    search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.type
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/robobrowser/forms/form.py", line 213, in __getitem__
+    return self.fields[item]
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/werkzeug/datastructures.py", line 717, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+[2022-03-25 16:27:01.645] INFO: update.update_db @ 86: Sleeping for 900 seconds
+[2022-03-25 16:42:02.885] INFO: update.update @ 237: 2022
+[2022-03-25 16:42:02.886] INFO: update.update @ 242: CAV
+[2022-03-25 16:42:02.890] INFO: update.update @ 246: 37
+[2022-03-25 16:43:32.935] INFO: update.update @ 242: CIT
+[2022-03-25 16:43:32.942] INFO: update.update @ 246: 2
+[2022-03-25 16:44:17.589] INFO: update.update @ 242: ELEC
+[2022-03-25 16:44:17.620] INFO: update.update @ 246: 2
+[2022-03-25 16:44:59.313] INFO: update.update @ 242: PRO
+[2022-03-25 16:44:59.402] INFO: update.update @ 246: 1812
+[2022-03-25 16:45:50.60] INFO: update.update @ 242: REN
+[2022-03-25 16:45:50.67] INFO: update.update @ 246: 10
+[2022-03-25 16:46:37.129] INFO: update.update @ 242: STAT
+[2022-03-25 16:46:37.132] INFO: update.update @ 246: 0
+[2022-03-25 16:47:30.874] INFO: update.rescrape @ 468: rescraping
+[2022-03-25 16:47:31.122] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-25 17:17:33.558] INFO: update.update @ 237: 2022
+[2022-03-25 17:17:33.559] INFO: update.update @ 242: CAV
+[2022-03-25 17:17:33.562] INFO: update.update @ 246: 37
+[2022-03-25 17:18:44.527] INFO: update.update @ 242: CIT
+[2022-03-25 17:18:44.528] INFO: update.update @ 246: 2
+[2022-03-25 17:19:14.809] INFO: update.update @ 242: ELEC
+[2022-03-25 17:19:14.810] INFO: update.update @ 246: 2
+[2022-03-25 17:19:44.636] INFO: update.update @ 242: PRO
+[2022-03-25 17:19:44.656] INFO: update.update @ 246: 1813
+[2022-03-25 17:20:20.51] INFO: update.update @ 242: REN
+[2022-03-25 17:20:20.52] INFO: update.update @ 246: 10
+[2022-03-25 17:20:48.802] INFO: update.update @ 242: STAT
+[2022-03-25 17:20:48.803] INFO: update.update @ 246: 0
+[2022-03-25 17:21:16.672] INFO: update.rescrape @ 468: rescraping
+[2022-03-25 17:21:16.735] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-25 17:51:18.791] INFO: update.update @ 237: 2022
+[2022-03-25 17:51:18.792] INFO: update.update @ 242: CAV
+[2022-03-25 17:51:18.793] INFO: update.update @ 246: 37
+[2022-03-25 17:52:10.634] INFO: update.update @ 242: CIT
+[2022-03-25 17:52:10.637] INFO: update.update @ 246: 2
+[2022-03-25 17:52:45.301] INFO: update.update @ 242: ELEC
+[2022-03-25 17:52:45.307] INFO: update.update @ 246: 2
+[2022-03-25 17:53:17.685] INFO: update.update @ 242: PRO
+[2022-03-25 17:53:17.739] INFO: update.update @ 246: 1815
+[2022-03-25 17:53:51.289] INFO: update.update @ 242: REN
+[2022-03-25 17:53:51.290] INFO: update.update @ 246: 10
+[2022-03-25 17:54:19.561] INFO: update.update @ 242: STAT
+[2022-03-25 17:54:19.566] INFO: update.update @ 246: 0
+[2022-03-25 17:54:47.469] INFO: update.rescrape @ 468: rescraping
+[2022-03-25 17:54:47.514] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-03-26 10:36:57.950] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-26 10:36:59.284] INFO: update.update_db @ 86: Sleeping for 163382 seconds
+[2022-03-26 13:22:50.217] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-27 08:55:10.855] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-27 08:55:12.175] INFO: update.update_db @ 86: Sleeping for 83089 seconds
+[2022-03-27 11:24:38.503] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-27 11:24:39.477] INFO: update.update_db @ 86: Sleeping for 74121 seconds
+[2022-03-27 16:56:29.271] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-27 16:56:30.727] INFO: update.update_db @ 86: Sleeping for 54210 seconds
+[2022-03-28 01:47:52.501] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-28 01:47:54.48] INFO: update.update_db @ 86: Sleeping for 22327 seconds
+[2022-03-28 08:00:31.518] INFO: update.update @ 237: 2022
+[2022-03-28 08:00:31.518] INFO: update.update @ 242: CAV
+[2022-03-28 08:00:31.537] INFO: update.update @ 246: 37
+[2022-03-28 14:54:36.392] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-28 14:54:36.732] INFO: update.update @ 237: 2022
+[2022-03-28 14:54:36.732] INFO: update.update @ 242: CAV
+[2022-03-28 14:54:36.741] INFO: update.update @ 246: 37
+[2022-03-28 14:56:15.198] INFO: update.update @ 242: CIT
+[2022-03-28 14:56:15.199] INFO: update.update @ 246: 2
+[2022-03-28 14:56:39.947] INFO: update.update @ 242: ELEC
+[2022-03-28 14:56:39.958] INFO: update.update @ 246: 2
+[2022-03-28 14:57:02.566] INFO: update.update @ 242: PRO
+[2022-03-28 14:57:02.794] INFO: update.update @ 246: 1816
+[2022-03-28 15:57:09.306] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-28 15:57:09.826] INFO: update.update @ 237: 2022
+[2022-03-28 15:57:09.828] INFO: update.update @ 242: CAV
+[2022-03-28 15:57:09.850] INFO: update.update @ 246: 37
+[2022-03-28 15:58:47.9] INFO: update.update @ 242: CIT
+[2022-03-28 15:58:47.13] INFO: update.update @ 246: 2
+[2022-03-28 15:59:14.958] INFO: update.update @ 242: ELEC
+[2022-03-28 15:59:14.965] INFO: update.update @ 246: 2
+[2022-03-28 15:59:42.320] INFO: update.update @ 242: PRO
+[2022-03-28 15:59:42.472] INFO: update.update @ 246: 1817
+[2022-03-29 08:00:44.594] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-29 08:00:45.921] INFO: update.update @ 237: 2022
+[2022-03-29 08:00:45.922] INFO: update.update @ 242: CAV
+[2022-03-29 08:00:45.926] INFO: update.update @ 246: 37
+[2022-03-29 08:02:32.489] INFO: update.update @ 242: CIT
+[2022-03-29 08:02:32.493] INFO: update.update @ 246: 2
+[2022-03-29 08:03:04.295] INFO: update.update @ 242: ELEC
+[2022-03-29 08:03:04.299] INFO: update.update @ 246: 2
+[2022-03-29 08:03:35.193] INFO: update.update @ 242: PRO
+[2022-03-29 08:03:35.439] INFO: update.update @ 246: 1818
+[2022-03-29 08:45:42.676] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-29 08:45:44.48] INFO: update.update @ 237: 2022
+[2022-03-29 08:45:44.49] INFO: update.update @ 242: CAV
+[2022-03-29 08:45:44.55] INFO: update.update @ 246: 37
+[2022-03-29 08:46:30.178] INFO: update.update @ 242: CIT
+[2022-03-29 08:46:30.182] INFO: update.update @ 246: 2
+[2022-03-29 08:46:53.321] INFO: update.update @ 242: ELEC
+[2022-03-29 08:46:53.327] INFO: update.update @ 246: 2
+[2022-03-29 11:32:34.722] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-29 11:32:35.990] INFO: update.update @ 237: 2022
+[2022-03-29 11:32:35.991] INFO: update.update @ 242: CAV
+[2022-03-29 11:32:35.997] INFO: update.update @ 246: 37
+[2022-03-29 11:34:29.133] INFO: update.update @ 242: CIT
+[2022-03-29 11:34:29.165] INFO: update.update @ 246: 2
+[2022-03-29 11:35:13.639] INFO: update.update @ 242: ELEC
+[2022-03-29 11:35:13.678] INFO: update.update @ 246: 2
+[2022-03-29 11:35:48.772] INFO: update.update @ 242: PRO
+[2022-03-29 11:35:48.990] INFO: update.update @ 246: 1819
+[2022-03-29 11:35:52.244] INFO: update.update @ 259: 1820
+[2022-03-30 07:34:21.509] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-30 07:34:23.114] INFO: update.update_db @ 86: Sleeping for 1538 seconds
+[2022-03-30 08:00:03.270] INFO: update.update @ 237: 2022
+[2022-03-30 08:00:03.271] INFO: update.update @ 242: CAV
+[2022-03-30 08:00:03.288] INFO: update.update @ 246: 37
+[2022-03-30 09:51:03.31] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-30 09:51:04.244] INFO: update.update @ 237: 2022
+[2022-03-30 09:51:04.244] INFO: update.update @ 242: CAV
+[2022-03-30 09:51:04.247] INFO: update.update @ 246: 37
+[2022-03-30 09:52:44.711] INFO: update.update @ 242: CIT
+[2022-03-30 09:52:44.713] INFO: update.update @ 246: 2
+[2022-03-30 09:53:06.40] INFO: update.update @ 242: ELEC
+[2022-03-30 09:53:06.44] INFO: update.update @ 246: 2
+[2022-03-30 13:22:40.148] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-30 13:22:41.245] INFO: update.update @ 237: 2022
+[2022-03-30 13:22:41.245] INFO: update.update @ 242: CAV
+[2022-03-30 13:22:41.255] INFO: update.update @ 246: 37
+[2022-03-30 13:23:46.428] INFO: update.update @ 242: CIT
+[2022-03-30 13:23:46.430] INFO: update.update @ 246: 2
+[2022-03-30 13:24:05.433] INFO: update.update @ 242: ELEC
+[2022-03-30 13:24:05.437] INFO: update.update @ 246: 2
+[2022-03-31 08:09:15.118] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-31 08:09:16.451] INFO: update.update @ 237: 2022
+[2022-03-31 08:09:16.451] INFO: update.update @ 242: CAV
+[2022-03-31 08:09:16.464] INFO: update.update @ 246: 37
+[2022-03-31 08:11:09.692] INFO: update.update @ 242: CIT
+[2022-03-31 08:11:09.694] INFO: update.update @ 246: 2
+[2022-03-31 08:11:32.427] INFO: update.update @ 242: ELEC
+[2022-03-31 08:11:32.439] INFO: update.update @ 246: 2
+[2022-03-31 11:27:50.963] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-31 11:27:51.901] INFO: update.update @ 237: 2022
+[2022-03-31 11:27:51.904] INFO: update.update @ 242: CAV
+[2022-03-31 11:27:51.931] INFO: update.update @ 246: 37
+[2022-03-31 11:29:29.666] INFO: update.update @ 242: CIT
+[2022-03-31 11:29:29.669] INFO: update.update @ 246: 2
+[2022-03-31 11:30:13.184] INFO: update.update @ 242: ELEC
+[2022-03-31 11:30:13.195] INFO: update.update @ 246: 2
+[2022-03-31 11:30:52.424] INFO: update.update @ 242: PRO
+[2022-03-31 11:30:52.864] INFO: update.update @ 246: 1821
+[2022-03-31 16:17:47.836] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-03-31 16:17:49.471] INFO: update.update @ 237: 2022
+[2022-03-31 16:17:49.471] INFO: update.update @ 242: CAV
+[2022-03-31 16:17:49.477] INFO: update.update @ 246: 37
+[2022-04-01 00:35:08.241] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-01 00:35:09.309] INFO: update.update_db @ 86: Sleeping for 26691 seconds
+[2022-04-01 01:05:38.393] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-01 01:05:39.568] INFO: update.update_db @ 86: Sleeping for 24861 seconds
+[2022-04-01 08:00:33.930] INFO: update.update @ 237: 2022
+[2022-04-01 08:00:33.931] INFO: update.update @ 242: CAV
+[2022-04-01 08:37:24.765] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-01 08:37:25.932] INFO: update.update @ 237: 2022
+[2022-04-01 08:37:25.932] INFO: update.update @ 242: CAV
+[2022-04-01 08:37:25.937] INFO: update.update @ 246: 38
+[2022-04-01 08:38:40.495] INFO: update.update @ 242: CIT
+[2022-04-01 08:38:40.496] INFO: update.update @ 246: 2
+[2022-04-01 08:38:57.563] INFO: update.update @ 242: ELEC
+[2022-04-01 08:38:57.566] INFO: update.update @ 246: 2
+[2022-04-01 10:53:16.655] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-01 10:53:17.47] INFO: update.update @ 237: 2022
+[2022-04-01 10:53:17.47] INFO: update.update @ 242: CAV
+[2022-04-01 10:53:17.50] INFO: update.update @ 246: 38
+[2022-04-01 21:47:42.977] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-01 21:47:44.744] INFO: update.update_db @ 86: Sleeping for 209537 seconds
+[2022-04-02 11:07:16.814] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-02 11:07:18.182] INFO: update.update_db @ 86: Sleeping for 161563 seconds
+[2022-04-02 16:53:36.659] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-02 16:53:37.662] INFO: update.update_db @ 86: Sleeping for 140783 seconds
+[2022-04-03 08:38:34.498] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-03 08:38:35.935] INFO: update.update_db @ 86: Sleeping for 84085 seconds
+[2022-04-03 10:22:46.844] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-03 10:22:48.60] INFO: update.update_db @ 86: Sleeping for 77833 seconds
+[2022-04-03 21:52:50.627] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-03 21:52:51.722] INFO: update.update_db @ 86: Sleeping for 36429 seconds
+[2022-04-04 05:08:34.935] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-04 05:08:36.598] INFO: update.update_db @ 86: Sleeping for 10285 seconds
+[2022-04-04 08:00:15.642] INFO: update.update @ 237: 2022
+[2022-04-04 08:00:15.643] INFO: update.update @ 242: CAV
+[2022-04-04 08:00:15.658] INFO: update.update @ 246: 38
+[2022-04-04 09:38:21.109] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-04 09:38:22.417] INFO: update.update @ 237: 2022
+[2022-04-04 09:38:22.418] INFO: update.update @ 242: CAV
+[2022-04-04 09:38:22.422] INFO: update.update @ 246: 38
+[2022-04-04 09:49:45.662] INFO: update.update_db @ 86: Sleeping for 900 seconds
+[2022-04-04 12:08:23.737] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-04 12:08:24.931] INFO: update.update @ 237: 2022
+[2022-04-04 12:08:24.932] INFO: update.update @ 242: CAV
+[2022-04-04 12:08:24.942] INFO: update.update @ 246: 38
+[2022-04-04 12:09:42.621] INFO: update.update @ 242: CIT
+[2022-04-04 12:09:42.626] INFO: update.update @ 246: 2
+[2022-04-04 12:10:22.216] INFO: update.update @ 242: ELEC
+[2022-04-04 12:10:22.272] INFO: update.update @ 246: 2
+[2022-04-04 12:11:02.48] INFO: update.update @ 242: PRO
+[2022-04-04 12:11:02.390] INFO: update.update @ 246: 1826
+[2022-04-04 12:52:58.0] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-04 12:52:59.321] INFO: update.update @ 237: 2022
+[2022-04-04 12:52:59.322] INFO: update.update @ 242: CAV
+[2022-04-04 12:52:59.326] INFO: update.update @ 246: 38
+[2022-04-04 12:54:59.234] INFO: update.update @ 242: CIT
+[2022-04-04 12:54:59.236] INFO: update.update @ 246: 2
+[2022-04-04 12:55:20.797] INFO: update.update @ 242: ELEC
+[2022-04-04 12:55:20.803] INFO: update.update @ 246: 2
+[2022-04-04 14:08:31.485] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-04 14:08:33.809] INFO: update.update @ 237: 2022
+[2022-04-04 14:08:33.814] INFO: update.update @ 242: CAV
+[2022-04-04 14:08:33.829] INFO: update.update @ 246: 38
+[2022-04-04 19:08:45.722] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-04 19:08:47.266] INFO: update.update_db @ 86: Sleeping for 46274 seconds
+[2022-04-04 20:08:33.642] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-04 20:08:34.637] INFO: update.update_db @ 86: Sleeping for 42686 seconds
+[2022-04-05 07:52:43.995] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-05 07:52:45.615] INFO: update.update_db @ 86: Sleeping for 436 seconds
+[2022-04-05 08:00:02.125] INFO: update.update @ 237: 2022
+[2022-04-05 08:00:02.126] INFO: update.update @ 242: CAV
+[2022-04-05 08:00:02.132] INFO: update.update @ 246: 38
+[2022-04-05 11:37:39.610] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-05 11:37:40.784] INFO: update.update @ 237: 2022
+[2022-04-05 11:37:40.784] INFO: update.update @ 242: CAV
+[2022-04-05 11:37:40.791] INFO: update.update @ 246: 38
+[2022-04-05 16:08:35.387] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-05 16:08:36.726] INFO: update.update @ 237: 2022
+[2022-04-05 16:08:36.726] INFO: update.update @ 242: CAV
+[2022-04-05 16:08:36.736] INFO: update.update @ 246: 38
+[2022-04-05 16:10:01.273] INFO: update.update @ 242: CIT
+[2022-04-05 16:10:01.275] INFO: update.update @ 246: 2
+[2022-04-05 16:10:28.122] INFO: update.update @ 242: ELEC
+[2022-04-05 16:10:28.140] INFO: update.update @ 246: 2
+[2022-04-06 06:39:17.102] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-06 06:39:18.319] INFO: update.update_db @ 86: Sleeping for 4842 seconds
+[2022-04-06 08:00:06.77] INFO: update.update @ 237: 2022
+[2022-04-06 08:00:06.78] INFO: update.update @ 242: CAV
+[2022-04-06 08:00:06.85] INFO: update.update @ 246: 38
+[2022-04-06 10:22:16.477] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-06 10:22:20.683] INFO: update.update @ 237: 2022
+[2022-04-06 10:22:20.684] INFO: update.update @ 242: CAV
+[2022-04-06 10:22:20.731] INFO: update.update @ 246: 38
+[2022-04-06 10:24:16.394] INFO: update.update @ 242: CIT
+[2022-04-06 10:24:16.399] INFO: update.update @ 246: 2
+[2022-04-06 10:25:28.756] INFO: update.update @ 242: ELEC
+[2022-04-06 10:25:28.760] INFO: update.update @ 246: 2
+[2022-04-06 10:27:03.200] INFO: update.update @ 242: PRO
+[2022-04-06 10:27:04.55] INFO: update.update @ 246: 1829
+[2022-04-06 10:27:09.690] INFO: update.update @ 259: 1830
+[2022-04-06 10:28:31.785] INFO: update.update @ 259: 1840
+[2022-04-06 10:29:24.243] INFO: update.update @ 259: 1850
+[2022-04-06 10:29:57.424] INFO: update.update @ 259: 1860
+[2022-04-06 10:30:26.737] INFO: update.update @ 259: 1870
+[2022-04-06 10:31:10.692] INFO: update.update @ 259: 1880
+[2022-04-06 10:31:53.286] INFO: update.update @ 259: 1890
+[2022-04-06 10:32:26.918] INFO: update.update @ 259: 1900
+[2022-04-06 10:33:01.480] INFO: update.update @ 259: 1910
+[2022-04-06 10:33:23.481] INFO: update.update @ 259: 1920
+[2022-04-06 10:33:50.505] INFO: update.update @ 259: 1930
+[2022-04-06 10:34:11.136] INFO: update.update @ 259: 1940
+[2022-04-06 10:34:28.987] INFO: update.update @ 259: 1950
+[2022-04-06 10:34:50.433] INFO: update.update @ 259: 1960
+[2022-04-06 10:35:09.466] INFO: update.update @ 259: 1970
+[2022-04-06 10:35:27.841] INFO: update.update @ 259: 1980
+[2022-04-06 10:35:53.167] INFO: update.update @ 259: 1990
+[2022-04-06 10:36:11.114] INFO: update.update @ 259: 2000
+[2022-04-06 10:36:32.702] INFO: update.update @ 259: 2010
+[2022-04-06 10:36:50.938] INFO: update.update @ 259: 2020
+[2022-04-06 10:37:10.882] INFO: update.update @ 259: 2030
+[2022-04-06 10:37:34.474] INFO: update.update @ 242: REN
+[2022-04-06 10:37:34.475] INFO: update.update @ 246: 10
+[2022-04-06 10:38:02.245] INFO: update.update @ 242: STAT
+[2022-04-06 10:38:02.247] INFO: update.update @ 246: 0
+[2022-04-06 10:38:25.494] INFO: update.rescrape @ 468: rescraping
+[2022-04-06 10:38:25.541] DEBUG: update.rescrape @ 471: CAV 35/2022
+[2022-04-06 10:38:27.168] DEBUG: update.rescrape @ 471: CAV 36/2022
+[2022-04-06 10:38:28.419] DEBUG: update.rescrape @ 471: CAV 37/2022
+[2022-04-06 10:38:29.851] DEBUG: update.rescrape @ 471: REN 10/2022
+[2022-04-06 10:38:31.794] DEBUG: update.rescrape @ 471: PRO 1770/2022
+[2022-04-06 10:38:33.575] DEBUG: update.rescrape @ 471: ELEC 2/2022
+[2022-04-06 10:38:35.345] DEBUG: update.rescrape @ 471: PRO 1806/2022
+[2022-04-06 10:38:37.37] DEBUG: update.rescrape @ 471: PRO 1808/2022
+[2022-04-06 10:38:40.606] INFO: update.update_db @ 86: Sleeping for 1800 seconds
