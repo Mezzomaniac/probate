@@ -753,3 +753,126 @@ werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) 
 [2022-04-06 11:25:48.330] INFO: update.update @ 246: 0
 [2022-04-06 11:27:40.335] INFO: update.rescrape @ 468: rescraping
 [2022-04-06 11:27:40.916] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-04-06 11:41:32.855] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-06 11:41:35.224] INFO: update.update @ 237: 2022
+[2022-04-06 11:41:35.224] INFO: update.update @ 242: CAV
+[2022-04-06 11:41:35.246] INFO: update.update @ 246: 39
+[2022-04-06 11:43:26.359] INFO: update.update @ 242: CIT
+[2022-04-06 11:43:26.399] INFO: update.update @ 246: 2
+[2022-04-06 11:44:52.883] INFO: update.update @ 242: ELEC
+[2022-04-06 11:44:52.895] INFO: update.update @ 246: 2
+[2022-04-06 11:46:29.525] INFO: update.update @ 242: PRO
+[2022-04-06 11:46:30.326] INFO: update.update @ 246: 2032
+[2022-04-06 11:48:11.944] INFO: update.update @ 242: REN
+[2022-04-06 11:48:11.958] INFO: update.update @ 246: 12
+[2022-04-06 11:49:41.561] INFO: update.update @ 242: STAT
+[2022-04-06 11:49:41.570] INFO: update.update @ 246: 0
+[2022-04-06 11:50:57.112] INFO: update.rescrape @ 468: rescraping
+[2022-04-06 11:50:57.523] INFO: update.update_db @ 86: Sleeping for 1800 seconds
+[2022-04-06 12:09:51.733] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-06 12:09:52.888] INFO: update.update @ 237: 2022
+[2022-04-06 12:09:52.889] INFO: update.update @ 242: CAV
+[2022-04-06 12:09:52.894] INFO: update.update @ 246: 39
+[2022-04-06 12:11:06.430] INFO: update.update @ 242: CIT
+[2022-04-06 12:11:06.438] INFO: update.update @ 246: 2
+[2022-04-06 12:11:39.205] INFO: update.update @ 242: ELEC
+[2022-04-06 12:11:39.206] INFO: update.update @ 246: 2
+[2022-04-06 20:23:33.561] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-06 20:23:34.671] INFO: update.update_db @ 86: Sleeping for 41786 seconds
+[2022-04-06 23:39:19.180] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-06 23:39:20.232] INFO: update.update_db @ 86: Sleeping for 30040 seconds
+[2022-04-07 08:00:46.663] INFO: update.update @ 237: 2022
+[2022-04-07 08:00:46.666] INFO: update.update @ 242: CAV
+[2022-04-07 08:00:46.682] INFO: update.update @ 246: 39
+[2022-04-07 23:55:17.959] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-07 23:55:19.458] INFO: update.update_db @ 86: Sleeping for 29082 seconds
+[2022-04-08 07:40:39.230] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-08 07:40:40.566] INFO: update.update_db @ 86: Sleeping for 1160 seconds
+[2022-04-08 08:00:01.740] INFO: update.update @ 237: 2022
+[2022-04-08 08:00:01.741] INFO: update.update @ 242: CAV
+[2022-04-08 08:00:01.747] INFO: update.update @ 246: 39
+[2022-04-08 13:27:09.615] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-08 13:27:10.789] INFO: update.update @ 237: 2022
+[2022-04-08 13:27:10.789] INFO: update.update @ 242: CAV
+[2022-04-08 13:27:10.793] INFO: update.update @ 246: 39
+[2022-04-08 13:28:04.232] DEBUG: database.__call__ @ 43: record=Notification(22, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='CAV 40/2022'), NotificationField(description='Title', value='In the Estate of Ivan HUDINA deceased'), NotificationField(description='Party', value='Ashlee Marie Mcarthur')])
+[2022-04-08 13:28:12.188] DEBUG: database.__call__ @ 56: Sent
+[2022-04-08 13:28:12.376] DEBUG: database.__call__ @ 43: record=Notification(22, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='CAV 40/2022'), NotificationField(description='Title', value='In the Estate of Ivan HUDINA deceased'), NotificationField(description='Party', value='Karly Nicolle Fitzpatrick')])
+[2022-04-08 13:28:17.943] DEBUG: database.__call__ @ 56: Sent
+[2022-04-08 13:28:17.945] INFO: update.update @ 259: 40
+[2022-04-08 23:57:05.582] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-08 23:57:06.864] INFO: update.update_db @ 86: Sleeping for 201774 seconds
+[2022-04-09 06:12:21.220] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-09 06:12:22.690] INFO: update.update_db @ 86: Sleeping for 179258 seconds
+[2022-04-09 10:42:02.311] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-09 16:14:12.492] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-10 06:44:04.861] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-10 06:44:06.414] INFO: update.update_db @ 86: Sleeping for 90955 seconds
+[2022-04-10 11:44:06.911] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-10 11:44:08.193] INFO: update.update_db @ 86: Sleeping for 72953 seconds
+[2022-04-10 22:44:22.899] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-10 22:44:23.381] INFO: update.update_db @ 86: Sleeping for 33337 seconds
+[2022-04-11 04:30:34.748] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-11 04:30:36.439] INFO: update.update_db @ 86: Sleeping for 12565 seconds
+[2022-04-11 08:00:14.660] INFO: update.update @ 237: 2022
+[2022-04-11 08:00:14.661] INFO: update.update @ 242: CAV
+[2022-04-11 08:00:14.679] INFO: update.update @ 246: 40
+[2022-04-12 04:27:54.184] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-12 04:27:55.54] INFO: update.update_db @ 86: Sleeping for 12725 seconds
+[2022-04-12 08:00:12.73] INFO: update.update @ 237: 2022
+[2022-04-12 08:00:12.73] INFO: update.update @ 242: CAV
+[2022-04-12 08:00:12.188] INFO: update.update @ 246: 40
+[2022-04-12 08:13:47.843] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-12 08:13:48.824] INFO: update.update @ 237: 2022
+[2022-04-12 08:13:48.824] INFO: update.update @ 242: CAV
+[2022-04-12 08:13:48.831] INFO: update.update @ 246: 40
+[2022-04-12 12:14:06.238] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-12 12:14:07.619] INFO: update.update @ 237: 2022
+[2022-04-12 12:14:07.619] INFO: update.update @ 242: CAV
+[2022-04-12 12:14:07.622] INFO: update.update @ 246: 41
+[2022-04-12 12:15:22.293] INFO: update.update @ 242: CIT
+[2022-04-12 12:15:22.295] INFO: update.update @ 246: 2
+[2022-04-12 12:15:23.725] DEBUG: database.__call__ @ 43: record=Notification(22, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='CIT 3/2022'), NotificationField(description='Title', value='In the Estate of Ivan HUDINA deceased'), NotificationField(description='Party', value='Karly Nicolle Fitzpatrick')])
+[2022-04-12 12:15:31.311] DEBUG: database.__call__ @ 56: Sent
+[2022-04-12 12:15:55.931] INFO: update.update @ 242: ELEC
+[2022-04-12 12:15:55.932] INFO: update.update @ 246: 2
+[2022-04-12 12:16:31.39] INFO: update.update @ 242: PRO
+[2022-04-12 12:16:31.89] INFO: update.update @ 246: 2037
+[2022-04-12 12:16:41.557] INFO: update.update @ 259: 2040
+[2022-04-12 12:16:47.777] DEBUG: database.__call__ @ 43: record=Notification(18, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2042/2022'), NotificationField(description='Title', value='In the Estate of Christopher Robin GLEESON deceased'), NotificationField(description='Party', value='Chei Anthony Gleeson')])
+[2022-04-12 12:16:54.613] DEBUG: database.__call__ @ 56: Sent
+[2022-04-12 12:16:54.874] DEBUG: database.__call__ @ 43: record=Notification(18, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2042/2022'), NotificationField(description='Title', value='In the Estate of Christopher Robin GLEESON deceased'), NotificationField(description='Party', value='Jiah Peter Gleeson')])
+[2022-04-12 12:17:00.282] DEBUG: database.__call__ @ 56: Sent
+[2022-04-12 12:17:18.71] INFO: update.update @ 259: 2050
+[2022-04-12 12:17:41.46] INFO: update.update @ 259: 2060
+[2022-04-12 12:18:04.124] INFO: update.update @ 259: 2070
+[2022-04-12 12:18:22.837] INFO: update.update @ 259: 2080
+[2022-04-12 12:18:43.895] INFO: update.update @ 259: 2090
+[2022-04-12 12:19:04.929] INFO: update.update @ 259: 2100
+[2022-04-12 12:19:28.732] INFO: update.update @ 259: 2110
+[2022-04-12 12:19:41.135] DEBUG: database.__call__ @ 43: record=Notification(10, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2117/2022'), NotificationField(description='Title', value='In the Estate of Joseph Peter IEMMA deceased'), NotificationField(description='Party', value='Linda Dorreen Iemma')])
+[2022-04-12 12:19:46.660] DEBUG: database.__call__ @ 56: Sent
+[2022-04-12 12:19:51.802] INFO: update.update @ 259: 2120
+[2022-04-12 12:20:02.554] DEBUG: database.__call__ @ 43: record=Notification(12, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2125/2022'), NotificationField(description='Title', value='In the Estate of Maxwell John GORDON deceased'), NotificationField(description='Party', value='Jeremy John Gordon')])
+[2022-04-12 12:20:09.332] DEBUG: database.__call__ @ 56: Sent
+[2022-04-12 12:20:09.382] DEBUG: database.__call__ @ 43: record=Notification(12, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2125/2022'), NotificationField(description='Title', value='In the Estate of Maxwell John GORDON deceased'), NotificationField(description='Party', value='Geoffrey John Williams')])
+[2022-04-12 12:20:16.640] DEBUG: database.__call__ @ 56: Sent
+[2022-04-12 12:20:25.701] INFO: update.update @ 259: 2130
+[2022-04-12 12:20:44.716] INFO: update.update @ 259: 2140
+[2022-04-12 12:21:03.224] INFO: update.update @ 259: 2150
+[2022-04-12 12:21:34.679] INFO: update.update @ 242: REN
+[2022-04-12 12:21:34.679] INFO: update.update @ 246: 12
+[2022-04-12 12:22:02.470] INFO: update.update @ 242: STAT
+[2022-04-12 12:22:02.470] INFO: update.update @ 246: 0
+[2022-04-12 12:22:24.904] INFO: update.rescrape @ 468: rescraping
+[2022-04-12 12:22:24.925] DEBUG: update.rescrape @ 471: PRO 1958/2022
+[2022-04-12 12:22:26.821] DEBUG: update.rescrape @ 471: PRO 1961/2022
+[2022-04-12 12:22:28.334] DEBUG: update.rescrape @ 471: PRO 1967/2022
+[2022-04-12 12:22:29.725] DEBUG: update.rescrape @ 471: PRO 1973/2022
+[2022-04-12 12:22:30.978] DEBUG: update.rescrape @ 471: PRO 1975/2022
+[2022-04-12 12:22:32.644] DEBUG: update.rescrape @ 471: PRO 1978/2022
+[2022-04-12 12:22:33.998] DEBUG: update.rescrape @ 471: PRO 1983/2022
+[2022-04-12 12:22:35.816] DEBUG: update.rescrape @ 471: PRO 1984/2022
+[2022-04-12 12:22:37.356] DEBUG: update.rescrape @ 471: PRO 1985/2022
+[2022-04-12 12:22:38.839] DEBUG: update.rescrape @ 471: PRO 1986/2022
+[2022-04-12 12:22:40.235] INFO: update.update_db @ 86: Sleeping for 1800 seconds
