@@ -75,7 +75,7 @@ def update_db(app, setup=False, years=None):
                 pause = 900  # 15 mins
             except Exception:
                 updater_state = f'current_matter={updater.current_matter}'
-                app.logger.exception(f'Unexpected error: {current_matter}: ')
+                app.logger.exception(f'Unexpected error: {updater_state}: ')
                 pause = 900  # 15 mins
         elif now.hour > 17 or not business_day:
             pause = int((datetime.datetime.combine(updater.next_business_day(now, 1), datetime.time(8), now.tzinfo) - now).total_seconds())
