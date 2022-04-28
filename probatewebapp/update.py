@@ -153,25 +153,24 @@ class ProbateDBUpdater:
     def driver(self):
         if self._driver:
             return self._driver
-        chrome_options = Options()
-        chrome_options.add_argument('--no-sandbox')
-        #chrome_options.add_argument('--disable-dev-shm-usage')
-        chrome_options.headless = True
-        driver = webdriver.Chrome(chrome_options=chrome_options)
-        # other versions use webdriver.Chrome(options=chrome_options)
-        driver.implicitly_wait(0.5 + (not chrome_options.headless))
+        options = Options()
+        options.add_argument('--no-sandbox')
+        #options.add_argument('--disable-dev-shm-usage')
+        options.headless = True
+        driver = webdriver.Chrome(options=options)
+        driver.implicitly_wait(0.5 + (not options.headless))
         
         driver.get(LOGIN_URL)
         if 'Acknowledge' in driver.title:
-            driver.find_element_by_id('chkRead').send_keys(Keys.SPACE, Keys.ENTER)
-        driver.find_element_by_name(USERNAME_FIELD_NAME).send_keys(self.username, Keys.TAB, self.password, Keys.ENTER)
-        driver.find_element_by_link_text('eLodgment').click()
+            driver.find_element(By.ID, 'chkRead').send_keys(Keys.SPACE, Keys.ENTER)
+        driver.find_element(By.NAME, USERNAME_FIELD_NAME).send_keys(self.username, Keys.TAB, self.password, Keys.ENTER)
+        driver.find_element(By.LINK_TEXT, 'eLodgment').click()
         Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, JURISDICTION_SELECTOR_NAME)))).select_by_visible_text('Supreme Court')
         time.sleep(1)
         # TODO: Create a wait until not stale Wait
         Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, DIVISION_SELECTOR_NAME)))).select_by_visible_text('Probate')
         time.sleep(1)
-        driver.find_element_by_name(NUMBER_FIELD_START_PAGE_NAME).send_keys('0', Keys.TAB, '2021', Keys.ENTER)  # any year with matters will work
+        driver.find_element(By.NAME, NUMBER_FIELD_START_PAGE_NAME).send_keys('0', Keys.TAB, '2021', Keys.ENTER)  # any year with matters will work
         self._driver = driver
         return driver
 
@@ -367,23 +366,23 @@ class ProbateDBUpdater:
 
     def get_multipage_party_names(self):
         matter = self.current_matter
-        Select(self.driver.find_element_by_name(MATTER_TYPE_SELECTOR_NAME)).select_by_visible_text(matter.type)
-        number_field = self.driver.find_element_by_name(NUMBER_FIELD_NAME)
+        Select(self.driver.find_element(By.NAME, MATTER_TYPE_SELECTOR_NAME)).select_by_visible_text(matter.type)
+        number_field = self.driver.find_element(By.NAME, NUMBER_FIELD_NAME)
         number_field.clear()
         number_field.send_keys(matter.number, Keys.TAB, matter.year, Keys.ENTER)
-        self.driver.find_element_by_link_text('View...').click()
+        self.driver.find_element(By.LINK_TEXT, 'View...').click()
         table_ids = [APPLICANTS_TABLE_ID, RESPONDENTS_TABLE_ID, OTHER_PARTIES_TABLE_ID]
         party_names = set()
         for table_id in table_ids:
             page = 2
             while True:
                 try:
-                    table = self.driver.find_element_by_id(table_id)
-                    table.find_element_by_link_text(str(page)).click()
+                    table = self.driver.find_element(By.ID, table_id)
+                    table.find_element(By.LINK_TEXT, str(page)).click()
                 except NoSuchElementException:
                     break
-                rows = self.driver.find_elements_by_css_selector(f'#{table_id} tr')[1:-1]
-                party_names.update({row.find_elements_by_css_selector('td')[1].text for row in rows})
+                rows = self.driver.find_elements(By.CSS_SELECTOR, f'#{table_id} tr')[1:-1]
+                party_names.update({row.find_elements(By.CSS_SELECTOR, 'td')[1].text for row in rows})
                 page += 1
         return party_names
 
