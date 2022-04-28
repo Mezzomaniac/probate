@@ -164,7 +164,7 @@ class ProbateDBUpdater:
         if 'Acknowledge' in driver.title:
             driver.find_element(By.ID, 'chkRead').send_keys(Keys.SPACE, Keys.ENTER)
         driver.find_element(By.NAME, USERNAME_FIELD_NAME).send_keys(self.username, Keys.TAB, self.password, Keys.ENTER)
-        driver.find_element(By.LINK_TEXT, 'eLodgment').click()
+        driver.find_element(By.LINK_TEXT, 'eLodgment').send_keys(Keys.ENTER)  # click() was causing an ElementClickInterceptedException
         Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, JURISDICTION_SELECTOR_NAME)))).select_by_visible_text('Supreme Court')
         time.sleep(1)
         # TODO: Create a wait until not stale Wait
@@ -378,7 +378,7 @@ class ProbateDBUpdater:
             while True:
                 try:
                     table = self.driver.find_element(By.ID, table_id)
-                    table.find_element(By.LINK_TEXT, str(page)).click()
+                    table.find_element(By.LINK_TEXT, str(page)).send_keys(Keys.ENTER)  # click() was causing an ElementClickInterceptedException
                 except NoSuchElementException:
                     break
                 rows = self.driver.find_elements(By.CSS_SELECTOR, f'#{table_id} tr')[1:-1]
