@@ -69,7 +69,7 @@ def update_db(app, setup=False, years=None):
                     #updater.add_scattered_pros()
                     #updater.add_retrospective_flags()
                 updater.update(years)
-                updater.add_multipage_parties()
+                updater.get_skipped_multipage_parties()
                 updater.rescrape()
             except (ConnectionError, requests.ConnectionError):
                 pause = 900  # 15 mins
@@ -109,6 +109,7 @@ class ProbateDBUpdater:
     def db(self):
         if not self._db:
             with self.app.app_context():
+                self.app.logger.debug('Loading db')
                 self._db = get_db()
                 self._db.create_function('notify', -1, Notify(self.app))
         return self._db
@@ -116,13 +117,16 @@ class ProbateDBUpdater:
     @db.deleter
     def db(self):
         with self.app.app_context():
+            self.app.logger.debug('Closing db')
             close_db()
+            self.app.logger.debug('Closed db')
         self._db = None
 
     @property
     def browser(self):
         if self._browser:
             return self._browser
+        self.app.logger.debug('Starting RoboBrowser session')
         browser = RoboBrowser(parser='html5lib')
         browser.open(LOGIN_URL)
         acknowledgement_form = browser.get_form()
@@ -142,6 +146,7 @@ class ProbateDBUpdater:
         search_form[YEAR_FIELD_START_PAGE_NAME] = '2021'  # any year with matters will work
         search_form[NUMBER_FIELD_START_PAGE_NAME] = '0'
         browser.submit_form(search_form)
+        self.app.logger.debug('RoboBrower ready for searching')
         self._browser = browser
         return browser
 
@@ -153,6 +158,7 @@ class ProbateDBUpdater:
     def driver(self):
         if self._driver:
             return self._driver
+        self.app.logger.debug('Starting WebDriver session')
         options = Options()
         options.add_argument('--no-sandbox')
         #options.add_argument('--disable-dev-shm-usage')
@@ -171,19 +177,23 @@ class ProbateDBUpdater:
         Select(WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.NAME, DIVISION_SELECTOR_NAME)))).select_by_visible_text('Probate')
         time.sleep(1)
         driver.find_element(By.NAME, NUMBER_FIELD_START_PAGE_NAME).send_keys('0', Keys.TAB, '2021', Keys.ENTER)  # any year with matters will work
+        self.app.logger.debug('WebDriver ready for searching')
         self._driver = driver
         return driver
 
     @driver.deleter
     def driver(self):
         if self._driver:
+            self.app.logger.debug('Closing WebDriver')
             self._driver.quit()
+            self.app.logger.debug('Closed WebDriver')
         self._driver = None
 
     @property
     def public_holidays(self):
         if self._public_holidays:
             return self._public_holidays
+        self.app.logger.debug('Loading public holidays')
         dates = self.get_public_holidays()
         dates = {datetime.datetime.strptime(date, '%Y-%m-%d').date() for date in dates}
         self._public_holidays = dates
@@ -202,6 +212,7 @@ class ProbateDBUpdater:
         return {record[0] for record in dates}
 
     def update_public_holidays(self):
+        self.app.logger.info('Updating public holidays')
         today = datetime.date.today()
         this_year = today.year
         years = set()
@@ -214,6 +225,7 @@ class ProbateDBUpdater:
         with self.db:
             self.db.executemany("INSERT OR IGNORE INTO public_holidays VALUES (?, ?)", dates)
             self.db.execute("DELETE FROM public_holidays WHERE year < ?", (this_year,))
+        self.app.logger.debug('Updated public holidays')
         self._public_holidays.clear()  # Force update
 
     def next_business_day(self, date, days: int) -> datetime.date:
@@ -366,6 +378,7 @@ class ProbateDBUpdater:
 
     def get_multipage_party_names(self):
         matter = self.current_matter
+        self.app.logger.debug(f'Getting multipage party names for {matter.type} {matter.number}/{matter.year}')
         Select(self.driver.find_element(By.NAME, MATTER_TYPE_SELECTOR_NAME)).select_by_visible_text(matter.type)
         number_field = self.driver.find_element(By.NAME, NUMBER_FIELD_NAME)
         number_field.clear()
@@ -384,15 +397,18 @@ class ProbateDBUpdater:
                 rows = self.driver.find_elements(By.CSS_SELECTOR, f'#{table_id} tr')[1:-1]
                 party_names.update({row.find_elements(By.CSS_SELECTOR, 'td')[1].text for row in rows})
                 page += 1
+        self.app.logger.debug('Finished getting mulitpage party names')
         return party_names
 
-    def add_multipage_parties(self):
+    def get_skipped_multipage_parties(self):
+        self.app.logger.info('Getting skipped multipage matters')
         matters = self.db.execute("SELECT * FROM matters WHERE flags = 'm'")
         for matter in matters:
-            self.app.logger.warning(f'multipage matter: {matter}')
+            self.current_matter = Matter(*matter)
+            matter = self.current_matter
             party_names = self.get_multipage_party_names()
-            self.parties_cache.update({Party(standardize_party_name(name), *self.current_matter[:3]) for name in party_names})
-            self.matters_cache.discard(Matter(*matter))
+            self.parties_cache.update({Party(standardize_party_name(name), *matter[:3]) for name in party_names})
+            self.matters_cache.discard(matter)
             self.current_matter = Matter(*matter[:-1], None)
             self.matters_cache.add(self.current_matter)
         self.insert_matters_and_parties()

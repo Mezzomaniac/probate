@@ -18,7 +18,7 @@ def get_password(service, username):
 
 class Config:
     SECRET_KEY = os.urandom(16)
-    VERSION = '0.9.1'
+    VERSION = '0.9.2'
 
     TIMEZONE = datetime.timezone(datetime.timedelta(hours=8), 'AWST')
     

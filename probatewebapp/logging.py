@@ -47,7 +47,7 @@ def setup_logger(app):
         mail_handler.setLevel(logging.WARNING)
         app.logger.addHandler(mail_handler)
         
-        file_handler = RotatingFileHandler(app.config['LOG'], maxBytes=102400, backupCount=1, encoding='utf-8')
+        file_handler = RotatingFileHandler(app.config['LOG'], maxBytes=102400, backupCount=2, encoding='utf-8')
         file_handler.setFormatter(detailed_formatter)
         file_handler.setLevel(logging.DEBUG)
         app.logger.addHandler(file_handler)
