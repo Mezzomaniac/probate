@@ -39,3 +39,1047 @@
 [2022-04-29 11:14:24.93] INFO: update.update @ 254: CAV
 [2022-04-29 11:14:24.94] INFO: update.update @ 258: 53
 [2022-04-29 11:14:24.94] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 11:17:08.167] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-29 11:17:08.171] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-04-29 11:17:08.171] DEBUG: update.db @ 112: Loading db
+[2022-04-29 11:17:08.337] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-04-29 11:17:08.337] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-04-29 11:17:08.341] INFO: update.update @ 249: 2022
+[2022-04-29 11:17:08.341] INFO: update.update @ 254: CAV
+[2022-04-29 11:17:08.342] INFO: update.update @ 258: 53
+[2022-04-29 11:17:08.342] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 11:17:15.725] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 11:17:40.176] INFO: update.update @ 254: CIT
+[2022-04-29 11:17:40.176] INFO: update.update @ 258: 6
+[2022-04-29 11:18:05.177] INFO: update.update @ 254: ELEC
+[2022-04-29 11:18:05.183] INFO: update.update @ 258: 3
+[2022-04-29 11:18:32.193] INFO: update.update @ 254: PRO
+[2022-04-29 11:18:32.214] INFO: update.update @ 258: 2497
+[2022-04-29 11:18:36.483] INFO: update.update @ 271: 2500
+[2022-04-29 11:19:04.998] INFO: update.update @ 254: REN
+[2022-04-29 11:19:05.1] INFO: update.update @ 258: 17
+[2022-04-29 11:19:27.976] INFO: update.update @ 254: STAT
+[2022-04-29 11:19:27.976] INFO: update.update @ 258: 0
+[2022-04-29 11:19:51.623] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 11:19:51.697] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 11:19:51.771] DEBUG: update.db @ 120: Closing db
+[2022-04-29 11:19:51.772] DEBUG: update.db @ 122: Closed db
+[2022-04-29 11:19:51.776] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 11:49:53.865] INFO: update.update @ 249: 2022
+[2022-04-29 11:49:53.866] INFO: update.update @ 254: CAV
+[2022-04-29 11:49:53.866] DEBUG: update.db @ 112: Loading db
+[2022-04-29 11:49:53.868] INFO: update.update @ 258: 53
+[2022-04-29 11:49:53.869] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 11:50:29.491] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 11:51:00.724] INFO: update.update @ 254: CIT
+[2022-04-29 11:51:00.725] INFO: update.update @ 258: 6
+[2022-04-29 11:51:24.515] INFO: update.update @ 254: ELEC
+[2022-04-29 11:51:24.516] INFO: update.update @ 258: 3
+[2022-04-29 11:51:47.676] INFO: update.update @ 254: PRO
+[2022-04-29 11:51:47.694] INFO: update.update @ 258: 2503
+[2022-04-29 11:52:13.584] INFO: update.update @ 254: REN
+[2022-04-29 11:52:13.584] INFO: update.update @ 258: 17
+[2022-04-29 11:52:35.47] INFO: update.update @ 254: STAT
+[2022-04-29 11:52:35.51] INFO: update.update @ 258: 0
+[2022-04-29 11:52:57.797] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 11:52:57.853] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 11:52:57.933] DEBUG: update.db @ 120: Closing db
+[2022-04-29 11:52:57.933] DEBUG: update.db @ 122: Closed db
+[2022-04-29 11:52:57.937] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 12:23:00.137] INFO: update.update @ 249: 2022
+[2022-04-29 12:23:00.138] INFO: update.update @ 254: CAV
+[2022-04-29 12:23:00.138] DEBUG: update.db @ 112: Loading db
+[2022-04-29 12:23:00.141] INFO: update.update @ 258: 53
+[2022-04-29 12:23:00.142] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 12:23:51.869] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 12:24:15.168] INFO: update.update @ 254: CIT
+[2022-04-29 12:24:15.169] INFO: update.update @ 258: 7
+[2022-04-29 12:24:35.989] INFO: update.update @ 254: ELEC
+[2022-04-29 12:24:35.990] INFO: update.update @ 258: 3
+[2022-04-29 12:24:57.766] INFO: update.update @ 254: PRO
+[2022-04-29 12:24:57.820] INFO: update.update @ 258: 2505
+[2022-04-29 12:25:06.480] INFO: update.update @ 271: 2510
+[2022-04-29 12:25:27.680] INFO: update.update @ 254: REN
+[2022-04-29 12:25:27.680] INFO: update.update @ 258: 17
+[2022-04-29 12:25:48.868] INFO: update.update @ 254: STAT
+[2022-04-29 12:25:48.870] INFO: update.update @ 258: 0
+[2022-04-29 12:26:11.649] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 12:26:11.703] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 12:26:11.787] DEBUG: update.db @ 120: Closing db
+[2022-04-29 12:26:11.787] DEBUG: update.db @ 122: Closed db
+[2022-04-29 12:26:11.804] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 12:56:13.672] INFO: update.update @ 249: 2022
+[2022-04-29 12:56:13.672] INFO: update.update @ 254: CAV
+[2022-04-29 12:56:13.673] DEBUG: update.db @ 112: Loading db
+[2022-04-29 12:56:13.674] INFO: update.update @ 258: 53
+[2022-04-29 12:56:13.675] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 12:57:17.825] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 12:57:42.249] INFO: update.update @ 254: CIT
+[2022-04-29 12:57:42.249] INFO: update.update @ 258: 7
+[2022-04-29 12:58:03.567] INFO: update.update @ 254: ELEC
+[2022-04-29 12:58:03.571] INFO: update.update @ 258: 3
+[2022-04-29 12:58:23.465] INFO: update.update @ 254: PRO
+[2022-04-29 12:58:23.485] INFO: update.update @ 258: 2510
+[2022-04-29 12:58:48.165] INFO: update.update @ 254: REN
+[2022-04-29 12:58:48.166] INFO: update.update @ 258: 17
+[2022-04-29 12:59:09.36] INFO: update.update @ 254: STAT
+[2022-04-29 12:59:09.37] INFO: update.update @ 258: 0
+[2022-04-29 12:59:30.489] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 12:59:30.547] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 12:59:30.601] DEBUG: update.db @ 120: Closing db
+[2022-04-29 12:59:30.601] DEBUG: update.db @ 122: Closed db
+[2022-04-29 12:59:30.605] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 13:29:32.502] INFO: update.update @ 249: 2022
+[2022-04-29 13:29:32.503] INFO: update.update @ 254: CAV
+[2022-04-29 13:29:32.503] DEBUG: update.db @ 112: Loading db
+[2022-04-29 13:29:32.505] INFO: update.update @ 258: 53
+[2022-04-29 13:29:32.505] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 13:30:29.867] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 13:30:47.978] INFO: update.update @ 254: CIT
+[2022-04-29 13:30:47.979] INFO: update.update @ 258: 7
+[2022-04-29 13:31:08.844] INFO: update.update @ 254: ELEC
+[2022-04-29 13:31:08.845] INFO: update.update @ 258: 3
+[2022-04-29 13:31:27.485] INFO: update.update @ 254: PRO
+[2022-04-29 13:31:27.513] INFO: update.update @ 258: 2512
+[2022-04-29 13:31:50.553] INFO: update.update @ 254: REN
+[2022-04-29 13:31:50.568] INFO: update.update @ 258: 17
+[2022-04-29 13:32:09.522] INFO: update.update @ 254: STAT
+[2022-04-29 13:32:09.522] INFO: update.update @ 258: 0
+[2022-04-29 13:32:28.374] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 13:32:28.410] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 13:32:28.492] DEBUG: update.db @ 120: Closing db
+[2022-04-29 13:32:28.493] DEBUG: update.db @ 122: Closed db
+[2022-04-29 13:32:28.497] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 14:02:30.466] INFO: update.update @ 249: 2022
+[2022-04-29 14:02:30.467] INFO: update.update @ 254: CAV
+[2022-04-29 14:02:30.467] DEBUG: update.db @ 112: Loading db
+[2022-04-29 14:02:30.468] INFO: update.update @ 258: 53
+[2022-04-29 14:02:30.468] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 14:03:11.700] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 14:03:33.95] INFO: update.update @ 254: CIT
+[2022-04-29 14:03:33.98] INFO: update.update @ 258: 7
+[2022-04-29 14:03:56.379] INFO: update.update @ 254: ELEC
+[2022-04-29 14:03:56.380] INFO: update.update @ 258: 3
+[2022-04-29 14:04:19.124] INFO: update.update @ 254: PRO
+[2022-04-29 14:04:19.181] INFO: update.update @ 258: 2516
+[2022-04-29 14:04:25.562] INFO: update.update @ 271: 2520
+[2022-04-29 14:04:56.905] INFO: update.update @ 254: REN
+[2022-04-29 14:04:56.906] INFO: update.update @ 258: 17
+[2022-04-29 14:05:21.199] INFO: update.update @ 254: STAT
+[2022-04-29 14:05:21.200] INFO: update.update @ 258: 0
+[2022-04-29 14:05:42.694] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 14:05:42.731] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 14:05:42.799] DEBUG: update.db @ 120: Closing db
+[2022-04-29 14:05:42.799] DEBUG: update.db @ 122: Closed db
+[2022-04-29 14:05:42.803] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 14:35:44.882] INFO: update.update @ 249: 2022
+[2022-04-29 14:35:44.883] INFO: update.update @ 254: CAV
+[2022-04-29 14:35:44.883] DEBUG: update.db @ 112: Loading db
+[2022-04-29 14:35:44.885] INFO: update.update @ 258: 53
+[2022-04-29 14:35:44.886] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 14:36:20.549] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 14:36:46.306] INFO: update.update @ 254: CIT
+[2022-04-29 14:36:46.306] INFO: update.update @ 258: 7
+[2022-04-29 14:37:11.679] INFO: update.update @ 254: ELEC
+[2022-04-29 14:37:11.687] INFO: update.update @ 258: 3
+[2022-04-29 14:37:44.346] INFO: update.update @ 254: PRO
+[2022-04-29 14:37:44.423] INFO: update.update @ 258: 2523
+[2022-04-29 14:38:12.660] INFO: update.update @ 254: REN
+[2022-04-29 14:38:12.664] INFO: update.update @ 258: 17
+[2022-04-29 14:38:38.564] INFO: update.update @ 254: STAT
+[2022-04-29 14:38:38.572] INFO: update.update @ 258: 0
+[2022-04-29 14:39:02.452] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 14:39:02.523] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 14:39:02.569] DEBUG: update.db @ 120: Closing db
+[2022-04-29 14:39:02.569] DEBUG: update.db @ 122: Closed db
+[2022-04-29 14:39:02.574] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 15:09:04.943] INFO: update.update @ 249: 2022
+[2022-04-29 15:09:04.944] INFO: update.update @ 254: CAV
+[2022-04-29 15:09:04.944] DEBUG: update.db @ 112: Loading db
+[2022-04-29 15:09:04.946] INFO: update.update @ 258: 53
+[2022-04-29 15:09:04.946] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 15:09:59.898] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 15:10:26.400] INFO: update.update @ 254: CIT
+[2022-04-29 15:10:26.401] INFO: update.update @ 258: 7
+[2022-04-29 15:10:52.603] INFO: update.update @ 254: ELEC
+[2022-04-29 15:10:52.623] INFO: update.update @ 258: 3
+[2022-04-29 15:11:17.594] INFO: update.update @ 254: PRO
+[2022-04-29 15:11:17.625] INFO: update.update @ 258: 2525
+[2022-04-29 15:11:49.124] INFO: update.update @ 254: REN
+[2022-04-29 15:11:49.139] INFO: update.update @ 258: 17
+[2022-04-29 15:12:16.667] INFO: update.update @ 254: STAT
+[2022-04-29 15:12:16.668] INFO: update.update @ 258: 0
+[2022-04-29 15:12:45.94] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 15:12:45.178] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 15:12:45.289] DEBUG: update.db @ 120: Closing db
+[2022-04-29 15:12:45.289] DEBUG: update.db @ 122: Closed db
+[2022-04-29 15:12:45.341] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 15:42:47.318] INFO: update.update @ 249: 2022
+[2022-04-29 15:42:47.319] INFO: update.update @ 254: CAV
+[2022-04-29 15:42:47.320] DEBUG: update.db @ 112: Loading db
+[2022-04-29 15:42:47.322] INFO: update.update @ 258: 53
+[2022-04-29 15:42:47.322] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 15:43:25.288] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 15:43:44.904] INFO: update.update @ 254: CIT
+[2022-04-29 15:43:44.905] INFO: update.update @ 258: 7
+[2022-04-29 15:44:08.976] INFO: update.update @ 254: ELEC
+[2022-04-29 15:44:08.978] INFO: update.update @ 258: 3
+[2022-04-29 15:44:29.769] INFO: update.update @ 254: PRO
+[2022-04-29 15:44:29.798] INFO: update.update @ 258: 2528
+[2022-04-29 15:44:33.926] INFO: update.update @ 271: 2530
+[2022-04-29 15:44:59.360] INFO: update.update @ 254: REN
+[2022-04-29 15:44:59.361] INFO: update.update @ 258: 17
+[2022-04-29 15:45:20.182] INFO: update.update @ 254: STAT
+[2022-04-29 15:45:20.184] INFO: update.update @ 258: 0
+[2022-04-29 15:45:41.820] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 15:45:41.896] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 15:45:42.8] DEBUG: update.db @ 120: Closing db
+[2022-04-29 15:45:42.8] DEBUG: update.db @ 122: Closed db
+[2022-04-29 15:45:42.12] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 16:15:43.681] INFO: update.update @ 249: 2022
+[2022-04-29 16:15:43.681] INFO: update.update @ 254: CAV
+[2022-04-29 16:15:43.681] DEBUG: update.db @ 112: Loading db
+[2022-04-29 16:15:43.683] INFO: update.update @ 258: 53
+[2022-04-29 16:15:43.683] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 16:16:23.179] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 16:16:46.289] INFO: update.update @ 254: CIT
+[2022-04-29 16:16:46.291] INFO: update.update @ 258: 7
+[2022-04-29 16:17:08.798] INFO: update.update @ 254: ELEC
+[2022-04-29 16:17:08.799] INFO: update.update @ 258: 3
+[2022-04-29 16:17:29.501] INFO: update.update @ 254: PRO
+[2022-04-29 16:17:29.569] INFO: update.update @ 258: 2532
+[2022-04-29 16:17:54.503] INFO: update.update @ 254: REN
+[2022-04-29 16:17:54.504] INFO: update.update @ 258: 17
+[2022-04-29 16:18:15.220] INFO: update.update @ 254: STAT
+[2022-04-29 16:18:15.220] INFO: update.update @ 258: 0
+[2022-04-29 16:18:35.169] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 16:18:35.199] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 16:18:35.291] DEBUG: update.db @ 120: Closing db
+[2022-04-29 16:18:35.292] DEBUG: update.db @ 122: Closed db
+[2022-04-29 16:18:35.295] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 16:48:37.216] INFO: update.update @ 249: 2022
+[2022-04-29 16:48:37.217] INFO: update.update @ 254: CAV
+[2022-04-29 16:48:37.217] DEBUG: update.db @ 112: Loading db
+[2022-04-29 16:48:37.219] INFO: update.update @ 258: 53
+[2022-04-29 16:48:37.219] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 16:49:13.72] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 16:49:36.173] INFO: update.update @ 254: CIT
+[2022-04-29 16:49:36.174] INFO: update.update @ 258: 7
+[2022-04-29 16:49:56.957] INFO: update.update @ 254: ELEC
+[2022-04-29 16:49:56.958] INFO: update.update @ 258: 3
+[2022-04-29 16:50:17.490] INFO: update.update @ 254: PRO
+[2022-04-29 16:50:17.542] INFO: update.update @ 258: 2535
+[2022-04-29 16:50:38.398] INFO: update.update @ 254: REN
+[2022-04-29 16:50:38.399] INFO: update.update @ 258: 17
+[2022-04-29 16:51:00.32] INFO: update.update @ 254: STAT
+[2022-04-29 16:51:00.33] INFO: update.update @ 258: 0
+[2022-04-29 16:51:19.890] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 16:51:19.952] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 16:51:20.39] DEBUG: update.db @ 120: Closing db
+[2022-04-29 16:51:20.39] DEBUG: update.db @ 122: Closed db
+[2022-04-29 16:51:20.44] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 17:21:21.916] INFO: update.update @ 249: 2022
+[2022-04-29 17:21:21.916] INFO: update.update @ 254: CAV
+[2022-04-29 17:21:21.916] DEBUG: update.db @ 112: Loading db
+[2022-04-29 17:21:21.918] INFO: update.update @ 258: 53
+[2022-04-29 17:21:21.918] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 17:21:47.926] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 17:22:09.971] INFO: update.update @ 254: CIT
+[2022-04-29 17:22:09.971] INFO: update.update @ 258: 7
+[2022-04-29 17:22:29.406] INFO: update.update @ 254: ELEC
+[2022-04-29 17:22:29.407] INFO: update.update @ 258: 3
+[2022-04-29 17:22:49.775] INFO: update.update @ 254: PRO
+[2022-04-29 17:22:49.822] INFO: update.update @ 258: 2536
+[2022-04-29 17:23:10.479] INFO: update.update @ 254: REN
+[2022-04-29 17:23:10.480] INFO: update.update @ 258: 17
+[2022-04-29 17:23:32.147] INFO: update.update @ 254: STAT
+[2022-04-29 17:23:32.165] INFO: update.update @ 258: 0
+[2022-04-29 17:23:53.318] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 17:23:53.371] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 17:23:53.472] DEBUG: update.db @ 120: Closing db
+[2022-04-29 17:23:53.473] DEBUG: update.db @ 122: Closed db
+[2022-04-29 17:23:53.482] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 17:53:55.851] INFO: update.update @ 249: 2022
+[2022-04-29 17:53:55.852] INFO: update.update @ 254: CAV
+[2022-04-29 17:53:55.852] DEBUG: update.db @ 112: Loading db
+[2022-04-29 17:53:55.853] INFO: update.update @ 258: 53
+[2022-04-29 17:53:55.854] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-04-29 17:54:02.212] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-04-29 17:54:21.427] INFO: update.update @ 254: CIT
+[2022-04-29 17:54:21.427] INFO: update.update @ 258: 7
+[2022-04-29 17:54:41.513] INFO: update.update @ 254: ELEC
+[2022-04-29 17:54:41.514] INFO: update.update @ 258: 3
+[2022-04-29 17:55:00.85] INFO: update.update @ 254: PRO
+[2022-04-29 17:55:00.104] INFO: update.update @ 258: 2536
+[2022-04-29 17:55:18.816] INFO: update.update @ 254: REN
+[2022-04-29 17:55:18.817] INFO: update.update @ 258: 17
+[2022-04-29 17:55:37.440] INFO: update.update @ 254: STAT
+[2022-04-29 17:55:37.441] INFO: update.update @ 258: 0
+[2022-04-29 17:55:54.866] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-04-29 17:55:54.916] INFO: update.rescrape @ 484: rescraping
+[2022-04-29 17:55:54.981] DEBUG: update.db @ 120: Closing db
+[2022-04-29 17:55:54.981] DEBUG: update.db @ 122: Closed db
+[2022-04-29 17:55:54.984] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-04-29 19:22:41.355] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-29 19:22:41.356] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-04-29 19:22:41.356] DEBUG: update.db @ 112: Loading db
+[2022-04-29 19:22:42.562] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-04-29 19:22:42.562] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-04-29 19:22:42.567] DEBUG: update.db @ 120: Closing db
+[2022-04-29 19:22:42.567] DEBUG: update.db @ 122: Closed db
+[2022-04-29 19:22:42.568] INFO: update.update_db @ 87: Sleeping for 218238 seconds
+[2022-04-29 22:22:39.140] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-29 22:22:39.148] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-04-29 22:22:39.151] DEBUG: update.db @ 112: Loading db
+[2022-04-29 22:22:40.506] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-04-29 22:22:40.506] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-04-29 22:22:40.510] DEBUG: update.db @ 120: Closing db
+[2022-04-29 22:22:40.511] DEBUG: update.db @ 122: Closed db
+[2022-04-29 22:22:40.513] INFO: update.update_db @ 87: Sleeping for 207440 seconds
+[2022-04-30 00:22:47.163] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-30 00:22:47.170] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-04-30 00:22:47.173] DEBUG: update.db @ 112: Loading db
+[2022-04-30 00:22:49.145] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-04-30 00:22:49.145] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-04-30 00:22:49.148] DEBUG: update.db @ 120: Closing db
+[2022-04-30 00:22:49.149] DEBUG: update.db @ 122: Closed db
+[2022-04-30 00:22:49.149] INFO: update.update_db @ 87: Sleeping for 200232 seconds
+[2022-04-30 01:52:14.180] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-30 01:52:14.181] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-04-30 01:52:14.182] DEBUG: update.db @ 112: Loading db
+[2022-04-30 01:52:15.857] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-04-30 01:52:15.858] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-04-30 01:52:15.861] DEBUG: update.db @ 120: Closing db
+[2022-04-30 01:52:15.861] DEBUG: update.db @ 122: Closed db
+[2022-04-30 01:52:15.862] INFO: update.update_db @ 87: Sleeping for 194865 seconds
+[2022-04-30 06:52:06.628] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-30 06:52:06.633] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-04-30 06:52:06.633] DEBUG: update.db @ 112: Loading db
+[2022-04-30 06:52:07.798] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-04-30 06:52:07.798] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-04-30 06:52:07.802] DEBUG: update.db @ 120: Closing db
+[2022-04-30 06:52:07.803] DEBUG: update.db @ 122: Closed db
+[2022-04-30 06:52:07.803] INFO: update.update_db @ 87: Sleeping for 176873 seconds
+[2022-04-30 21:23:17.930] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-04-30 21:23:17.931] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-04-30 21:23:17.931] DEBUG: update.db @ 112: Loading db
+[2022-04-30 21:23:18.946] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-04-30 21:23:18.946] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-04-30 21:23:18.949] DEBUG: update.db @ 120: Closing db
+[2022-04-30 21:23:18.949] DEBUG: update.db @ 122: Closed db
+[2022-04-30 21:23:18.950] INFO: update.update_db @ 87: Sleeping for 124602 seconds
+[2022-05-01 01:24:32.757] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-01 01:24:32.759] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-01 01:24:32.763] DEBUG: update.db @ 112: Loading db
+[2022-05-01 01:24:34.196] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-01 01:24:34.196] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-01 01:24:34.202] DEBUG: update.db @ 120: Closing db
+[2022-05-01 01:24:34.210] DEBUG: update.db @ 122: Closed db
+[2022-05-01 01:24:34.212] INFO: update.update_db @ 87: Sleeping for 110127 seconds
+[2022-05-01 05:41:12.428] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-01 05:41:12.431] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-01 05:41:12.431] DEBUG: update.db @ 112: Loading db
+[2022-05-01 05:41:13.332] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-01 05:41:13.333] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-01 05:41:13.339] DEBUG: update.db @ 120: Closing db
+[2022-05-01 05:41:13.339] DEBUG: update.db @ 122: Closed db
+[2022-05-01 05:41:13.340] INFO: update.update_db @ 87: Sleeping for 94727 seconds
+[2022-05-01 06:56:00.558] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-01 06:56:00.562] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-01 06:56:00.562] DEBUG: update.db @ 112: Loading db
+[2022-05-01 06:56:01.978] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-01 06:56:01.978] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-01 06:56:01.983] DEBUG: update.db @ 120: Closing db
+[2022-05-01 06:56:01.983] DEBUG: update.db @ 122: Closed db
+[2022-05-01 06:56:01.984] INFO: update.update_db @ 87: Sleeping for 90239 seconds
+[2022-05-01 08:55:38.842] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-01 08:55:38.844] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-01 08:55:38.845] DEBUG: update.db @ 112: Loading db
+[2022-05-01 08:55:39.289] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-01 08:55:39.289] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-01 08:55:39.293] DEBUG: update.db @ 120: Closing db
+[2022-05-01 08:55:39.293] DEBUG: update.db @ 122: Closed db
+[2022-05-01 08:55:39.294] INFO: update.update_db @ 87: Sleeping for 83061 seconds
+[2022-05-01 21:25:57.877] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-01 21:25:57.878] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-01 21:25:57.879] DEBUG: update.db @ 112: Loading db
+[2022-05-01 21:25:59.7] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-01 21:25:59.7] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-01 21:25:59.11] DEBUG: update.db @ 120: Closing db
+[2022-05-01 21:25:59.12] DEBUG: update.db @ 122: Closed db
+[2022-05-01 21:25:59.12] INFO: update.update_db @ 87: Sleeping for 38042 seconds
+[2022-05-01 23:25:24.357] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-01 23:25:24.358] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-01 23:25:24.359] DEBUG: update.db @ 112: Loading db
+[2022-05-01 23:25:25.884] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-01 23:25:25.884] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-01 23:25:25.887] DEBUG: update.db @ 120: Closing db
+[2022-05-01 23:25:25.887] DEBUG: update.db @ 122: Closed db
+[2022-05-01 23:25:25.888] INFO: update.update_db @ 87: Sleeping for 30875 seconds
+[2022-05-02 07:27:42.105] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-02 07:27:42.110] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-02 07:27:42.111] DEBUG: update.db @ 112: Loading db
+[2022-05-02 07:27:43.193] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-02 07:27:43.194] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-02 07:27:43.197] DEBUG: update.db @ 120: Closing db
+[2022-05-02 07:27:43.197] DEBUG: update.db @ 122: Closed db
+[2022-05-02 07:27:43.198] INFO: update.update_db @ 87: Sleeping for 1937 seconds
+[2022-05-02 08:00:02.168] INFO: update.update @ 249: 2022
+[2022-05-02 08:00:02.168] INFO: update.update @ 254: CAV
+[2022-05-02 08:00:02.168] DEBUG: update.db @ 112: Loading db
+[2022-05-02 08:00:02.175] INFO: update.update @ 258: 53
+[2022-05-02 08:00:02.176] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-02 20:59:04.663] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-02 20:59:04.665] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-02 20:59:04.666] DEBUG: update.db @ 112: Loading db
+[2022-05-02 20:59:06.64] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-02 20:59:06.64] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-02 20:59:06.74] DEBUG: update.db @ 120: Closing db
+[2022-05-02 20:59:06.75] DEBUG: update.db @ 122: Closed db
+[2022-05-02 20:59:06.76] INFO: update.update_db @ 87: Sleeping for 39655 seconds
+[2022-05-03 06:13:43.14] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-03 06:13:43.16] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-03 06:13:43.17] DEBUG: update.db @ 112: Loading db
+[2022-05-03 06:13:44.746] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-03 06:13:44.747] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-03 06:13:44.750] DEBUG: update.db @ 120: Closing db
+[2022-05-03 06:13:44.750] DEBUG: update.db @ 122: Closed db
+[2022-05-03 06:13:44.751] INFO: update.update_db @ 87: Sleeping for 6376 seconds
+[2022-05-03 13:31:54.357] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-03 13:31:54.375] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-03 13:31:54.376] DEBUG: update.db @ 112: Loading db
+[2022-05-03 13:31:55.880] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-03 13:31:55.880] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-03 13:31:55.892] INFO: update.update @ 249: 2022
+[2022-05-03 13:31:55.893] INFO: update.update @ 254: CAV
+[2022-05-03 13:31:55.898] INFO: update.update @ 258: 53
+[2022-05-03 13:31:55.898] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-03 13:33:19.422] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-04 02:17:07.495] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-04 02:17:07.507] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-04 02:17:07.509] DEBUG: update.db @ 112: Loading db
+[2022-05-04 02:17:08.948] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-04 02:17:08.949] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-04 02:17:08.953] DEBUG: update.db @ 120: Closing db
+[2022-05-04 02:17:08.953] DEBUG: update.db @ 122: Closed db
+[2022-05-04 02:17:08.954] INFO: update.update_db @ 87: Sleeping for 20572 seconds
+[2022-05-04 11:47:07.393] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-04 11:47:07.394] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-04 11:47:07.395] DEBUG: update.db @ 112: Loading db
+[2022-05-04 11:47:09.102] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-04 11:47:09.103] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-04 11:47:09.107] INFO: update.update @ 249: 2022
+[2022-05-04 11:47:09.107] INFO: update.update @ 254: CAV
+[2022-05-04 11:47:09.111] INFO: update.update @ 258: 55
+[2022-05-04 11:47:09.111] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-04 11:48:34.245] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-04 11:48:57.891] INFO: update.update @ 254: CIT
+[2022-05-04 11:48:57.893] INFO: update.update @ 258: 7
+[2022-05-04 11:49:20.891] INFO: update.update @ 254: ELEC
+[2022-05-04 11:49:20.894] INFO: update.update @ 258: 3
+[2022-05-04 11:49:46.353] INFO: update.update @ 254: PRO
+[2022-05-04 11:49:46.482] INFO: update.update @ 258: 2536
+[2022-05-04 23:02:07.460] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-04 23:02:07.462] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-04 23:02:07.463] DEBUG: update.db @ 112: Loading db
+[2022-05-04 23:02:07.799] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-04 23:02:07.799] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-04 23:02:07.805] DEBUG: update.db @ 120: Closing db
+[2022-05-04 23:02:07.805] DEBUG: update.db @ 122: Closed db
+[2022-05-04 23:02:07.806] INFO: update.update_db @ 87: Sleeping for 32272 seconds
+[2022-05-05 04:01:48.382] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-05 04:01:48.388] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-05 04:01:48.401] DEBUG: update.db @ 112: Loading db
+[2022-05-05 04:01:49.604] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-05 04:01:49.605] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-05 04:01:49.608] DEBUG: update.db @ 120: Closing db
+[2022-05-05 04:01:49.609] DEBUG: update.db @ 122: Closed db
+[2022-05-05 04:01:49.609] INFO: update.update_db @ 87: Sleeping for 14291 seconds
+[2022-05-05 06:02:04.563] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-05 06:02:04.567] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-05 06:02:04.568] DEBUG: update.db @ 112: Loading db
+[2022-05-05 06:02:05.696] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-05 06:02:05.696] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-05 06:02:05.700] DEBUG: update.db @ 120: Closing db
+[2022-05-05 06:02:05.701] DEBUG: update.db @ 122: Closed db
+[2022-05-05 06:02:05.701] INFO: update.update_db @ 87: Sleeping for 7075 seconds
+[2022-05-05 21:17:37.945] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-05 21:17:37.951] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-05 21:17:37.951] DEBUG: update.db @ 112: Loading db
+[2022-05-05 21:17:39.112] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-05 21:17:39.112] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-05 21:17:39.114] DEBUG: update.db @ 120: Closing db
+[2022-05-05 21:17:39.115] DEBUG: update.db @ 122: Closed db
+[2022-05-05 21:17:39.115] INFO: update.update_db @ 87: Sleeping for 38542 seconds
+[2022-05-06 08:48:55.637] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-06 08:48:55.638] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-06 08:48:55.638] DEBUG: update.db @ 112: Loading db
+[2022-05-06 08:48:57.70] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-06 08:48:57.71] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-06 08:48:57.74] INFO: update.update @ 249: 2022
+[2022-05-06 08:48:57.75] INFO: update.update @ 254: CAV
+[2022-05-06 08:48:57.78] INFO: update.update @ 258: 55
+[2022-05-06 08:48:57.78] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-06 08:50:09.173] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-06 08:50:27.979] INFO: update.update @ 254: CIT
+[2022-05-06 08:50:27.980] INFO: update.update @ 258: 7
+[2022-05-06 08:50:45.680] INFO: update.update @ 254: ELEC
+[2022-05-06 08:50:45.683] INFO: update.update @ 258: 3
+[2022-05-06 08:51:09.861] INFO: update.update @ 254: PRO
+[2022-05-06 08:51:10.39] INFO: update.update @ 258: 2536
+[2022-05-06 14:19:28.656] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-06 14:19:28.659] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-06 14:19:28.659] DEBUG: update.db @ 112: Loading db
+[2022-05-06 14:19:30.222] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-06 14:19:30.223] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-06 14:19:30.226] INFO: update.update @ 249: 2022
+[2022-05-06 14:19:30.226] INFO: update.update @ 254: CAV
+[2022-05-06 14:19:30.230] INFO: update.update @ 258: 55
+[2022-05-06 14:19:30.230] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-06 14:20:22.97] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-06 14:20:42.774] INFO: update.update @ 254: CIT
+[2022-05-06 14:20:42.780] INFO: update.update @ 258: 7
+[2022-05-06 14:21:00.789] INFO: update.update @ 254: ELEC
+[2022-05-06 14:21:00.792] INFO: update.update @ 258: 3
+[2022-05-06 23:49:42.463] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-06 23:49:42.464] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-06 23:49:42.464] DEBUG: update.db @ 112: Loading db
+[2022-05-06 23:49:43.986] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-06 23:49:43.986] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-06 23:49:43.991] DEBUG: update.db @ 120: Closing db
+[2022-05-06 23:49:43.991] DEBUG: update.db @ 122: Closed db
+[2022-05-06 23:49:43.992] INFO: update.update_db @ 87: Sleeping for 202217 seconds
+[2022-05-07 06:34:19.1] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-07 06:34:19.2] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-07 06:34:19.2] DEBUG: update.db @ 112: Loading db
+[2022-05-07 06:34:20.410] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-07 06:34:20.411] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-07 06:34:20.413] DEBUG: update.db @ 120: Closing db
+[2022-05-07 06:34:20.414] DEBUG: update.db @ 122: Closed db
+[2022-05-07 06:34:20.414] INFO: update.update_db @ 87: Sleeping for 177940 seconds
+[2022-05-08 06:06:49.970] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-08 06:06:49.975] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-08 06:06:49.976] DEBUG: update.db @ 112: Loading db
+[2022-05-08 06:06:51.477] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-08 06:06:51.477] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-08 06:06:51.482] DEBUG: update.db @ 120: Closing db
+[2022-05-08 06:06:51.482] DEBUG: update.db @ 122: Closed db
+[2022-05-08 06:06:51.483] INFO: update.update_db @ 87: Sleeping for 93190 seconds
+[2022-05-08 10:55:31.717] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-08 10:55:31.720] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-08 10:55:31.721] DEBUG: update.db @ 112: Loading db
+[2022-05-08 10:55:33.272] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-08 10:55:33.272] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-08 10:55:33.276] DEBUG: update.db @ 120: Closing db
+[2022-05-08 10:55:33.276] DEBUG: update.db @ 122: Closed db
+[2022-05-08 10:55:33.277] INFO: update.update_db @ 87: Sleeping for 75868 seconds
+[2022-05-08 12:55:36.857] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-08 12:55:36.858] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-08 12:55:36.859] DEBUG: update.db @ 112: Loading db
+[2022-05-08 12:55:37.927] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-08 12:55:37.927] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-08 12:55:37.930] DEBUG: update.db @ 120: Closing db
+[2022-05-08 12:55:37.931] DEBUG: update.db @ 122: Closed db
+[2022-05-08 12:55:37.931] INFO: update.update_db @ 87: Sleeping for 68663 seconds
+[2022-05-08 21:26:49.579] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-08 21:26:49.581] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-08 21:26:49.581] DEBUG: update.db @ 112: Loading db
+[2022-05-08 21:26:49.939] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-08 21:26:49.940] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-08 21:26:49.943] DEBUG: update.db @ 120: Closing db
+[2022-05-08 21:26:49.943] DEBUG: update.db @ 122: Closed db
+[2022-05-08 21:26:49.943] INFO: update.update_db @ 87: Sleeping for 37990 seconds
+[2022-05-09 00:26:45.821] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-09 00:26:45.823] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-09 00:26:45.823] DEBUG: update.db @ 112: Loading db
+[2022-05-09 00:26:47.498] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-09 00:26:47.498] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-09 00:26:47.501] DEBUG: update.db @ 120: Closing db
+[2022-05-09 00:26:47.501] DEBUG: update.db @ 122: Closed db
+[2022-05-09 00:26:47.502] INFO: update.update_db @ 87: Sleeping for 27194 seconds
+[2022-05-09 16:43:11.750] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-09 16:43:11.751] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-09 16:43:11.752] DEBUG: update.db @ 112: Loading db
+[2022-05-09 16:43:12.625] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-09 16:43:12.626] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-09 16:43:12.629] INFO: update.update @ 249: 2022
+[2022-05-09 16:43:12.629] INFO: update.update @ 254: CAV
+[2022-05-09 16:43:12.633] INFO: update.update @ 258: 55
+[2022-05-09 16:43:12.633] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-09 16:43:42.315] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-09 21:43:27.860] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-09 21:43:27.862] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-09 21:43:27.864] DEBUG: update.db @ 112: Loading db
+[2022-05-09 21:43:28.888] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-09 21:43:28.889] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-09 21:43:28.892] DEBUG: update.db @ 120: Closing db
+[2022-05-09 21:43:28.892] DEBUG: update.db @ 122: Closed db
+[2022-05-09 21:43:28.892] INFO: update.update_db @ 87: Sleeping for 36992 seconds
+[2022-05-10 17:29:09.684] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-10 17:29:09.685] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-10 17:29:09.685] DEBUG: update.db @ 112: Loading db
+[2022-05-10 17:29:10.866] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-10 17:29:10.866] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-10 17:29:10.869] INFO: update.update @ 249: 2022
+[2022-05-10 17:29:10.869] INFO: update.update @ 254: CAV
+[2022-05-10 17:29:10.872] INFO: update.update @ 258: 56
+[2022-05-10 17:29:10.872] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-10 17:29:17.878] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-11 10:59:02.879] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-11 10:59:02.880] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-11 10:59:02.880] DEBUG: update.db @ 112: Loading db
+[2022-05-11 10:59:04.69] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-11 10:59:04.69] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-11 10:59:04.73] INFO: update.update @ 249: 2022
+[2022-05-11 10:59:04.74] INFO: update.update @ 254: CAV
+[2022-05-11 10:59:04.84] INFO: update.update @ 258: 56
+[2022-05-11 10:59:04.84] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-11 14:59:38.971] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-11 14:59:38.973] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-11 14:59:38.973] DEBUG: update.db @ 112: Loading db
+[2022-05-11 14:59:40.103] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-11 14:59:40.104] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-11 14:59:40.108] INFO: update.update @ 249: 2022
+[2022-05-11 14:59:40.109] INFO: update.update @ 254: CAV
+[2022-05-11 14:59:40.115] INFO: update.update @ 258: 56
+[2022-05-11 14:59:40.115] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-11 15:00:12.774] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-11 15:00:36.760] INFO: update.update @ 254: CIT
+[2022-05-11 15:00:36.763] INFO: update.update @ 258: 7
+[2022-05-11 15:01:02.915] INFO: update.update @ 254: ELEC
+[2022-05-11 15:01:02.921] INFO: update.update @ 258: 3
+[2022-05-11 15:01:32.445] INFO: update.update @ 254: PRO
+[2022-05-11 15:01:32.608] INFO: update.update @ 258: 2538
+[2022-05-11 15:01:37.259] INFO: update.update @ 271: 2540
+[2022-05-12 04:29:38.829] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-12 04:29:38.830] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-12 04:29:38.831] DEBUG: update.db @ 112: Loading db
+[2022-05-12 04:29:40.558] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-12 04:29:40.558] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-12 04:29:40.562] DEBUG: update.db @ 120: Closing db
+[2022-05-12 04:29:40.562] DEBUG: update.db @ 122: Closed db
+[2022-05-12 04:29:40.562] INFO: update.update_db @ 87: Sleeping for 12621 seconds
+[2022-05-12 09:45:01.601] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-12 09:45:01.603] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-12 09:45:01.643] DEBUG: update.db @ 112: Loading db
+[2022-05-12 09:45:02.810] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-12 09:45:02.811] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-12 09:45:02.815] INFO: update.update @ 249: 2022
+[2022-05-12 09:45:02.815] INFO: update.update @ 254: CAV
+[2022-05-12 09:45:02.818] INFO: update.update @ 258: 56
+[2022-05-12 09:45:02.819] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-12 09:45:50.337] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-12 09:46:12.494] INFO: update.update @ 254: CIT
+[2022-05-12 09:46:12.496] INFO: update.update @ 258: 7
+[2022-05-12 09:46:34.963] INFO: update.update @ 254: ELEC
+[2022-05-12 09:46:34.967] INFO: update.update @ 258: 3
+[2022-05-12 11:44:50.941] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-12 11:44:50.943] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-12 11:44:50.943] DEBUG: update.db @ 112: Loading db
+[2022-05-12 11:44:52.488] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-12 11:44:52.488] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-12 11:44:52.492] INFO: update.update @ 249: 2022
+[2022-05-12 11:44:52.492] INFO: update.update @ 254: CAV
+[2022-05-12 11:44:52.495] INFO: update.update @ 258: 56
+[2022-05-12 11:44:52.496] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-12 11:45:51.393] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-12 11:46:17.109] INFO: update.update @ 254: CIT
+[2022-05-12 11:46:17.110] INFO: update.update @ 258: 7
+[2022-05-12 11:46:42.789] INFO: update.update @ 254: ELEC
+[2022-05-12 11:46:42.793] INFO: update.update @ 258: 3
+[2022-05-12 11:47:11.431] INFO: update.update @ 254: PRO
+[2022-05-12 11:47:11.594] INFO: update.update @ 258: 2541
+[2022-05-12 15:14:49.406] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-12 15:14:49.407] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-12 15:14:49.408] DEBUG: update.db @ 112: Loading db
+[2022-05-12 15:14:50.710] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-12 15:14:50.710] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-12 15:14:50.713] INFO: update.update @ 249: 2022
+[2022-05-12 15:14:50.713] INFO: update.update @ 254: CAV
+[2022-05-12 15:14:50.716] INFO: update.update @ 258: 56
+[2022-05-12 15:14:50.716] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-12 15:16:13.938] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-12 15:16:34.643] INFO: update.update @ 254: CIT
+[2022-05-12 15:16:34.646] INFO: update.update @ 258: 7
+[2022-05-12 15:16:54.477] INFO: update.update @ 254: ELEC
+[2022-05-12 15:16:54.481] INFO: update.update @ 258: 3
+[2022-05-13 00:30:25.71] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-13 00:30:25.76] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-13 00:30:25.77] DEBUG: update.db @ 112: Loading db
+[2022-05-13 00:30:26.444] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-13 00:30:26.444] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-13 00:30:26.449] DEBUG: update.db @ 120: Closing db
+[2022-05-13 00:30:26.449] DEBUG: update.db @ 122: Closed db
+[2022-05-13 00:30:26.450] INFO: update.update_db @ 87: Sleeping for 26974 seconds
+[2022-05-13 02:30:36.550] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-13 02:30:36.551] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-13 02:30:36.552] DEBUG: update.db @ 112: Loading db
+[2022-05-13 02:30:37.995] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-13 02:30:37.996] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-13 02:30:38.8] DEBUG: update.db @ 120: Closing db
+[2022-05-13 02:30:38.9] DEBUG: update.db @ 122: Closed db
+[2022-05-13 02:30:38.20] INFO: update.update_db @ 87: Sleeping for 19763 seconds
+[2022-05-13 03:15:41.804] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-13 03:15:41.805] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-13 03:15:41.805] DEBUG: update.db @ 112: Loading db
+[2022-05-13 03:15:42.152] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-13 03:15:42.152] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-13 03:15:42.155] DEBUG: update.db @ 120: Closing db
+[2022-05-13 03:15:42.156] DEBUG: update.db @ 122: Closed db
+[2022-05-13 03:15:42.156] INFO: update.update_db @ 87: Sleeping for 17058 seconds
+[2022-05-13 05:45:23.400] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-13 05:45:23.403] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-13 05:45:23.404] DEBUG: update.db @ 112: Loading db
+[2022-05-13 05:45:24.389] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-13 05:45:24.390] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-13 05:45:24.393] DEBUG: update.db @ 120: Closing db
+[2022-05-13 05:45:24.394] DEBUG: update.db @ 122: Closed db
+[2022-05-13 05:45:24.394] INFO: update.update_db @ 87: Sleeping for 8076 seconds
+[2022-05-13 08:00:10.543] INFO: update.update @ 249: 2022
+[2022-05-13 08:00:10.543] INFO: update.update @ 254: CAV
+[2022-05-13 08:00:10.543] DEBUG: update.db @ 112: Loading db
+[2022-05-13 08:00:10.554] INFO: update.update @ 258: 56
+[2022-05-13 08:00:10.555] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-13 09:45:58.284] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-13 09:45:58.287] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-13 09:45:58.290] DEBUG: update.db @ 112: Loading db
+[2022-05-13 09:45:59.524] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-13 09:45:59.524] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-13 09:45:59.530] INFO: update.update @ 249: 2022
+[2022-05-13 09:45:59.531] INFO: update.update @ 254: CAV
+[2022-05-13 09:45:59.537] INFO: update.update @ 258: 56
+[2022-05-13 09:45:59.538] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-13 09:47:31.853] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-13 09:47:54.639] INFO: update.update @ 254: CIT
+[2022-05-13 09:47:54.640] INFO: update.update @ 258: 7
+[2022-05-13 09:48:18.592] INFO: update.update @ 254: ELEC
+[2022-05-13 09:48:18.595] INFO: update.update @ 258: 3
+[2022-05-13 09:48:42.299] INFO: update.update @ 254: PRO
+[2022-05-13 09:48:42.479] INFO: update.update @ 258: 2547
+[2022-05-13 15:31:04.20] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-13 15:31:04.22] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-13 15:31:04.23] DEBUG: update.db @ 112: Loading db
+[2022-05-13 15:31:05.175] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-13 15:31:05.175] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-13 15:31:05.180] INFO: update.update @ 249: 2022
+[2022-05-13 15:31:05.181] INFO: update.update @ 254: CAV
+[2022-05-13 15:31:05.185] INFO: update.update @ 258: 56
+[2022-05-13 15:31:05.187] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-13 15:32:10.350] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-14 06:15:43.690] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-14 06:15:43.691] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-14 06:15:43.692] DEBUG: update.db @ 112: Loading db
+[2022-05-14 08:31:18.494] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-14 08:31:18.495] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-14 08:31:18.496] DEBUG: update.db @ 112: Loading db
+[2022-05-14 08:31:19.674] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-14 08:31:19.675] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-14 08:31:19.679] DEBUG: update.db @ 120: Closing db
+[2022-05-14 08:31:19.681] DEBUG: update.db @ 122: Closed db
+[2022-05-14 08:31:19.681] INFO: update.update_db @ 87: Sleeping for 170921 seconds
+[2022-05-15 04:46:42.220] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-15 04:46:42.221] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-15 04:46:42.222] DEBUG: update.db @ 112: Loading db
+[2022-05-15 04:46:43.907] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-15 04:46:43.908] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-15 04:46:43.911] DEBUG: update.db @ 120: Closing db
+[2022-05-15 04:46:43.912] DEBUG: update.db @ 122: Closed db
+[2022-05-15 04:46:43.912] INFO: update.update_db @ 87: Sleeping for 97997 seconds
+[2022-05-15 21:33:21.826] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-15 21:33:21.828] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-15 21:33:21.830] DEBUG: update.db @ 112: Loading db
+[2022-05-15 21:33:22.981] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-15 21:33:22.981] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-15 21:33:22.989] DEBUG: update.db @ 120: Closing db
+[2022-05-15 21:33:22.990] DEBUG: update.db @ 122: Closed db
+[2022-05-15 21:33:22.990] INFO: update.update_db @ 87: Sleeping for 37598 seconds
+[2022-05-16 04:19:01.719] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-16 04:19:01.719] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-16 04:19:01.720] DEBUG: update.db @ 112: Loading db
+[2022-05-16 04:19:02.729] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-16 04:19:02.729] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-16 04:19:02.732] DEBUG: update.db @ 120: Closing db
+[2022-05-16 04:19:02.733] DEBUG: update.db @ 122: Closed db
+[2022-05-16 04:19:02.733] INFO: update.update_db @ 87: Sleeping for 13258 seconds
+[2022-05-16 08:00:19.87] INFO: update.update @ 249: 2022
+[2022-05-16 08:00:19.89] INFO: update.update @ 254: CAV
+[2022-05-16 08:00:19.89] DEBUG: update.db @ 112: Loading db
+[2022-05-16 08:00:19.96] INFO: update.update @ 258: 57
+[2022-05-16 08:00:19.97] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-16 08:19:24.406] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-16 15:19:37.75] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-16 15:19:37.79] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-16 15:19:37.83] DEBUG: update.db @ 112: Loading db
+[2022-05-16 15:19:37.445] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-16 15:19:37.445] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-16 15:19:37.463] INFO: update.update @ 249: 2022
+[2022-05-16 15:19:37.463] INFO: update.update @ 254: CAV
+[2022-05-16 15:19:37.470] INFO: update.update @ 258: 57
+[2022-05-16 15:19:37.471] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-16 22:49:20.862] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-16 22:49:20.864] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-16 22:49:20.865] DEBUG: update.db @ 112: Loading db
+[2022-05-16 22:49:22.422] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-16 22:49:22.423] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-16 22:49:22.433] DEBUG: update.db @ 120: Closing db
+[2022-05-16 22:49:22.433] DEBUG: update.db @ 122: Closed db
+[2022-05-16 22:49:22.436] INFO: update.update_db @ 87: Sleeping for 33039 seconds
+[2022-05-17 08:04:48.572] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-17 08:04:48.574] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-17 08:04:48.575] DEBUG: update.db @ 112: Loading db
+[2022-05-17 08:04:49.867] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-17 08:04:49.867] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-17 08:04:49.872] INFO: update.update @ 249: 2022
+[2022-05-17 08:04:49.872] INFO: update.update @ 254: CAV
+[2022-05-17 08:04:49.875] INFO: update.update @ 258: 57
+[2022-05-17 08:04:49.876] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-17 14:50:06.318] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-17 14:50:06.319] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-17 14:50:06.320] DEBUG: update.db @ 112: Loading db
+[2022-05-17 14:50:07.411] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-17 14:50:07.411] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-17 14:50:07.415] INFO: update.update @ 249: 2022
+[2022-05-17 14:50:07.415] INFO: update.update @ 254: CAV
+[2022-05-17 14:50:07.418] INFO: update.update @ 258: 57
+[2022-05-17 14:50:07.419] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-17 14:51:04.392] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-17 14:51:35.992] INFO: update.update @ 254: CIT
+[2022-05-17 14:51:36.12] INFO: update.update @ 258: 7
+[2022-05-17 23:34:34.282] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-17 23:34:34.285] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-17 23:34:34.285] DEBUG: update.db @ 112: Loading db
+[2022-05-17 23:34:35.497] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-17 23:34:35.497] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-17 23:34:35.503] DEBUG: update.db @ 120: Closing db
+[2022-05-17 23:34:35.504] DEBUG: update.db @ 122: Closed db
+[2022-05-17 23:34:35.505] INFO: update.update_db @ 87: Sleeping for 30325 seconds
+[2022-05-18 05:34:41.525] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-18 05:34:41.526] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-18 05:34:41.526] DEBUG: update.db @ 112: Loading db
+[2022-05-18 05:34:43.325] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-18 05:34:43.325] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-18 05:34:43.329] DEBUG: update.db @ 120: Closing db
+[2022-05-18 05:34:43.329] DEBUG: update.db @ 122: Closed db
+[2022-05-18 05:34:43.330] INFO: update.update_db @ 87: Sleeping for 8718 seconds
+[2022-05-18 08:00:13.766] INFO: update.update @ 249: 2022
+[2022-05-18 08:00:13.768] INFO: update.update @ 254: CAV
+[2022-05-18 08:00:13.768] DEBUG: update.db @ 112: Loading db
+[2022-05-18 08:00:13.784] INFO: update.update @ 258: 57
+[2022-05-18 08:00:13.785] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-18 09:04:23.4] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-18 09:04:23.5] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-18 09:04:23.6] DEBUG: update.db @ 112: Loading db
+[2022-05-18 09:04:24.317] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-18 09:04:24.317] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-18 09:04:24.321] INFO: update.update @ 249: 2022
+[2022-05-18 09:04:24.322] INFO: update.update @ 254: CAV
+[2022-05-18 09:04:24.325] INFO: update.update @ 258: 57
+[2022-05-18 09:04:24.326] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-18 09:05:28.942] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-18 09:05:48.226] INFO: update.update @ 254: CIT
+[2022-05-18 09:05:48.228] INFO: update.update @ 258: 8
+[2022-05-18 12:04:31.881] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-18 12:04:31.886] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-18 12:04:31.887] DEBUG: update.db @ 112: Loading db
+[2022-05-18 12:04:33.118] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-18 12:04:33.118] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-18 12:04:33.124] INFO: update.update @ 249: 2022
+[2022-05-18 12:04:33.125] INFO: update.update @ 254: CAV
+[2022-05-18 12:04:33.136] INFO: update.update @ 258: 57
+[2022-05-18 12:04:33.136] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-18 13:04:51.425] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-18 13:04:51.427] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-18 13:04:51.429] DEBUG: update.db @ 112: Loading db
+[2022-05-18 13:04:53.3] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-18 13:04:53.3] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-18 13:04:53.11] INFO: update.update @ 249: 2022
+[2022-05-18 13:04:53.12] INFO: update.update @ 254: CAV
+[2022-05-18 13:04:53.16] INFO: update.update @ 258: 57
+[2022-05-18 13:04:53.17] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-18 16:34:57.718] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-18 16:34:57.721] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-18 16:34:57.722] DEBUG: update.db @ 112: Loading db
+[2022-05-18 16:34:58.857] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-18 16:34:58.858] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-18 16:34:58.860] INFO: update.update @ 249: 2022
+[2022-05-18 16:34:58.861] INFO: update.update @ 254: CAV
+[2022-05-18 16:34:58.863] INFO: update.update @ 258: 57
+[2022-05-18 16:34:58.864] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-18 18:19:34.358] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-18 18:19:34.360] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-18 18:19:34.360] DEBUG: update.db @ 112: Loading db
+[2022-05-18 18:19:35.511] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-18 18:19:35.512] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-18 18:19:35.515] DEBUG: update.db @ 120: Closing db
+[2022-05-18 18:19:35.515] DEBUG: update.db @ 122: Closed db
+[2022-05-18 18:19:35.516] INFO: update.update_db @ 87: Sleeping for 49225 seconds
+[2022-05-18 20:19:26.221] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-18 20:19:26.221] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-18 20:19:26.222] DEBUG: update.db @ 112: Loading db
+[2022-05-18 20:19:27.249] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-18 20:19:27.249] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-18 20:19:27.252] DEBUG: update.db @ 120: Closing db
+[2022-05-18 20:19:27.252] DEBUG: update.db @ 122: Closed db
+[2022-05-18 20:19:27.252] INFO: update.update_db @ 87: Sleeping for 42033 seconds
+[2022-05-19 04:34:26.350] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-19 04:34:26.351] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-19 04:34:26.352] DEBUG: update.db @ 112: Loading db
+[2022-05-19 07:04:26.326] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-19 07:04:26.326] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-19 07:04:26.327] DEBUG: update.db @ 112: Loading db
+[2022-05-19 08:04:22.711] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-19 08:04:22.712] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-19 08:04:22.713] DEBUG: update.db @ 112: Loading db
+[2022-05-19 08:04:24.182] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-19 08:04:24.182] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-19 08:04:24.186] INFO: update.update @ 249: 2022
+[2022-05-19 08:04:24.186] INFO: update.update @ 254: CAV
+[2022-05-19 08:04:24.189] INFO: update.update @ 258: 57
+[2022-05-19 08:04:24.189] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-19 09:49:32.693] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-05-19 09:49:32.695] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-05-19 09:49:32.696] DEBUG: update.db @ 112: Loading db
+[2022-05-19 09:49:34.594] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-05-19 09:49:34.594] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-05-19 09:49:34.598] INFO: update.update @ 249: 2022
+[2022-05-19 09:49:34.600] INFO: update.update @ 254: CAV
+[2022-05-19 09:49:34.603] INFO: update.update @ 258: 57
+[2022-05-19 09:49:34.604] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-19 09:50:25.558] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-19 09:50:45.352] INFO: update.update @ 254: CIT
+[2022-05-19 09:50:45.355] INFO: update.update @ 258: 9
+[2022-05-19 09:51:04.629] INFO: update.update @ 254: ELEC
+[2022-05-19 09:51:04.636] INFO: update.update @ 258: 3
+[2022-05-19 09:51:24.358] INFO: update.update @ 254: PRO
+[2022-05-19 09:51:24.472] INFO: update.update @ 258: 2549
+[2022-05-19 09:51:26.437] INFO: update.update @ 271: 2550
+[2022-05-19 09:51:44.216] INFO: update.update @ 271: 2560
+[2022-05-19 09:52:02.595] INFO: update.update @ 271: 2570
+[2022-05-19 09:52:19.337] INFO: update.update @ 271: 2580
+[2022-05-19 09:52:36.714] INFO: update.update @ 271: 2590
+[2022-05-19 09:52:52.348] INFO: update.update @ 271: 2600
+[2022-05-19 09:53:08.353] INFO: update.update @ 271: 2610
+[2022-05-19 09:53:23.615] INFO: update.update @ 271: 2620
+[2022-05-19 09:53:38.932] INFO: update.update @ 271: 2630
+[2022-05-19 09:53:55.444] INFO: update.update @ 271: 2640
+[2022-05-19 09:54:12.267] INFO: update.update @ 271: 2650
+[2022-05-19 09:54:28.455] INFO: update.update @ 271: 2660
+[2022-05-19 09:54:45.309] INFO: update.update @ 271: 2670
+[2022-05-19 09:55:01.528] INFO: update.update @ 271: 2680
+[2022-05-19 09:55:17.533] INFO: update.update @ 271: 2690
+[2022-05-19 09:55:36.927] INFO: update.update @ 271: 2700
+[2022-05-19 09:55:52.548] INFO: update.update @ 271: 2710
+[2022-05-19 09:56:09.8] INFO: update.update @ 271: 2720
+[2022-05-19 09:56:26.900] INFO: update.update @ 271: 2730
+[2022-05-19 09:56:43.462] INFO: update.update @ 271: 2740
+[2022-05-19 09:56:59.618] INFO: update.update @ 271: 2750
+[2022-05-19 09:57:18.121] INFO: update.update @ 271: 2760
+[2022-05-19 09:57:36.207] INFO: update.update @ 271: 2770
+[2022-05-19 09:57:54.403] INFO: update.update @ 271: 2780
+[2022-05-19 09:58:10.404] INFO: update.update @ 271: 2790
+[2022-05-19 09:58:29.53] INFO: update.update @ 271: 2800
+[2022-05-19 09:58:45.462] INFO: update.update @ 271: 2810
+[2022-05-19 09:59:03.898] INFO: update.update @ 271: 2820
+[2022-05-19 09:59:20.197] INFO: update.update @ 271: 2830
+[2022-05-19 09:59:38.892] INFO: update.update @ 271: 2840
+[2022-05-19 09:59:54.105] INFO: update.update @ 271: 2850
+[2022-05-19 10:00:11.408] INFO: update.update @ 271: 2860
+[2022-05-19 10:00:27.403] INFO: update.update @ 271: 2870
+[2022-05-19 10:00:44.511] INFO: update.update @ 271: 2880
+[2022-05-19 10:01:02.295] INFO: update.update @ 271: 2890
+[2022-05-19 10:01:20.848] INFO: update.update @ 271: 2900
+[2022-05-19 10:01:31.322] DEBUG: database.__call__ @ 43: record=Notification(17, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2906/2022'), NotificationField(description='Title', value='In the Estate of Trevor Patrick BRIGGS deceased'), NotificationField(description='Party', value='Dawn Gertrude Brownlow')])
+[2022-05-19 10:01:41.532] DEBUG: database.__call__ @ 56: Sent
+[2022-05-19 10:01:41.578] DEBUG: database.__call__ @ 43: record=Notification(17, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2906/2022'), NotificationField(description='Title', value='In the Estate of Trevor Patrick BRIGGS deceased'), NotificationField(description='Party', value='Beverly Anne Wainwright')])
+[2022-05-19 10:01:47.505] DEBUG: database.__call__ @ 56: Sent
+[2022-05-19 10:01:53.243] INFO: update.update @ 271: 2910
+[2022-05-19 10:02:09.900] INFO: update.update @ 271: 2920
+[2022-05-19 10:02:25.305] INFO: update.update @ 271: 2930
+[2022-05-19 10:02:49.125] INFO: update.update @ 271: 2940
+[2022-05-19 10:02:53.604] DEBUG: database.__call__ @ 43: record=Notification(11, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2942/2022'), NotificationField(description='Title', value='In the Estate of Elizabeth Joan REYNOLDS deceased'), NotificationField(description='Party', value='Olivia Rae Pileggi')])
+[2022-05-19 10:02:58.411] DEBUG: database.__call__ @ 56: Sent
+[2022-05-19 10:02:58.457] DEBUG: database.__call__ @ 43: record=Notification(11, jlondon@robertsonhayles.com, [NotificationField(description='File number', value='PRO 2942/2022'), NotificationField(description='Title', value='In the Estate of Elizabeth Joan REYNOLDS deceased'), NotificationField(description='Party', value='Jodie Lee Reynolds')])
+[2022-05-19 10:03:04.50] DEBUG: database.__call__ @ 56: Sent
+[2022-05-19 10:03:27.22] INFO: update.update @ 254: REN
+[2022-05-19 10:03:27.22] INFO: update.update @ 258: 17
+[2022-05-19 10:03:46.359] INFO: update.update @ 254: STAT
+[2022-05-19 10:03:46.359] INFO: update.update @ 258: 0
+[2022-05-19 10:04:10.447] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-05-19 10:04:10.484] INFO: update.rescrape @ 484: rescraping
+[2022-05-19 10:04:10.502] DEBUG: update.rescrape @ 487: CAV 49/2022
+[2022-05-19 10:04:12.296] DEBUG: update.rescrape @ 487: CAV 50/2022
+[2022-05-19 10:04:14.73] DEBUG: update.rescrape @ 487: CAV 51/2022
+[2022-05-19 10:04:15.382] DEBUG: update.rescrape @ 487: CAV 52/2022
+[2022-05-19 10:04:16.661] DEBUG: update.rescrape @ 487: CAV 53/2022
+[2022-05-19 10:04:17.892] DEBUG: update.rescrape @ 487: CIT 5/2022
+[2022-05-19 10:04:19.288] DEBUG: update.rescrape @ 487: PRO 2496/2022
+[2022-05-19 10:04:21.11] DEBUG: update.rescrape @ 487: PRO 2497/2022
+[2022-05-19 10:04:22.212] DEBUG: update.rescrape @ 487: PRO 2499/2022
+[2022-05-19 10:04:23.592] DEBUG: update.rescrape @ 487: PRO 2501/2022
+[2022-05-19 10:04:24.997] DEBUG: update.rescrape @ 487: PRO 2502/2022
+[2022-05-19 10:04:26.588] DEBUG: update.rescrape @ 487: PRO 2503/2022
+[2022-05-19 10:04:28.630] DEBUG: update.rescrape @ 487: CIT 7/2022
+[2022-05-19 10:04:30.573] DEBUG: update.rescrape @ 487: PRO 2504/2022
+[2022-05-19 10:04:32.242] DEBUG: update.rescrape @ 487: PRO 2505/2022
+[2022-05-19 10:04:34.160] DEBUG: update.rescrape @ 487: PRO 2507/2022
+[2022-05-19 10:04:35.933] DEBUG: update.rescrape @ 487: PRO 2509/2022
+[2022-05-19 10:04:37.195] DEBUG: update.rescrape @ 487: PRO 2511/2022
+[2022-05-19 10:04:38.431] DEBUG: update.rescrape @ 487: PRO 2513/2022
+[2022-05-19 10:04:39.699] DEBUG: update.rescrape @ 487: PRO 2514/2022
+[2022-05-19 10:04:41.927] DEBUG: update.rescrape @ 487: PRO 2515/2022
+[2022-05-19 10:04:43.168] DEBUG: update.rescrape @ 487: PRO 2516/2022
+[2022-05-19 10:04:44.394] DEBUG: update.rescrape @ 487: PRO 2517/2022
+[2022-05-19 10:04:45.718] DEBUG: update.rescrape @ 487: PRO 2519/2022
+[2022-05-19 10:04:46.940] DEBUG: update.rescrape @ 487: PRO 2520/2022
+[2022-05-19 10:04:48.125] DEBUG: update.rescrape @ 487: PRO 2522/2022
+[2022-05-19 10:04:49.313] DEBUG: update.rescrape @ 487: PRO 2523/2022
+[2022-05-19 10:04:50.732] DEBUG: update.rescrape @ 487: PRO 2528/2022
+[2022-05-19 10:04:52.1] DEBUG: update.rescrape @ 487: PRO 2532/2022
+[2022-05-19 10:04:53.211] DEBUG: update.rescrape @ 487: CAV 54/2022
+[2022-05-19 10:04:54.396] DEBUG: update.rescrape @ 487: CAV 55/2022
+[2022-05-19 10:04:56.114] DEBUG: update.rescrape @ 487: CAV 56/2022
+[2022-05-19 10:04:57.694] DEBUG: update.db @ 120: Closing db
+[2022-05-19 10:04:57.694] DEBUG: update.db @ 122: Closed db
+[2022-05-19 10:04:57.699] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-05-19 10:34:59.570] INFO: update.update @ 249: 2022
+[2022-05-19 10:34:59.570] INFO: update.update @ 254: CAV
+[2022-05-19 10:34:59.571] DEBUG: update.db @ 112: Loading db
+[2022-05-19 10:34:59.572] INFO: update.update @ 258: 57
+[2022-05-19 10:34:59.572] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-19 10:36:12.840] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-19 10:36:31.767] INFO: update.update @ 254: CIT
+[2022-05-19 10:36:31.767] INFO: update.update @ 258: 9
+[2022-05-19 10:36:50.456] INFO: update.update @ 254: ELEC
+[2022-05-19 10:36:50.456] INFO: update.update @ 258: 3
+[2022-05-19 10:37:13.562] INFO: update.update @ 254: PRO
+[2022-05-19 10:37:13.589] INFO: update.update @ 258: 2945
+[2022-05-19 10:37:31.725] INFO: update.update @ 254: REN
+[2022-05-19 10:37:31.725] INFO: update.update @ 258: 18
+[2022-05-19 10:37:49.578] INFO: update.update @ 254: STAT
+[2022-05-19 10:37:49.578] INFO: update.update @ 258: 0
+[2022-05-19 10:38:09.501] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-05-19 10:38:09.553] INFO: update.rescrape @ 484: rescraping
+[2022-05-19 10:38:09.599] DEBUG: update.db @ 120: Closing db
+[2022-05-19 10:38:09.599] DEBUG: update.db @ 122: Closed db
+[2022-05-19 10:38:09.602] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-05-19 11:08:11.651] INFO: update.update @ 249: 2022
+[2022-05-19 11:08:11.652] INFO: update.update @ 254: CAV
+[2022-05-19 11:08:11.658] DEBUG: update.db @ 112: Loading db
+[2022-05-19 11:08:11.659] INFO: update.update @ 258: 57
+[2022-05-19 11:08:11.659] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-05-19 11:09:22.128] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-05-19 11:09:42.176] INFO: update.update @ 254: CIT
+[2022-05-19 11:09:42.176] INFO: update.update @ 258: 9
+[2022-05-19 11:10:00.14] INFO: update.update @ 254: ELEC
+[2022-05-19 11:10:00.15] INFO: update.update @ 258: 3
+[2022-05-19 11:10:18.134] INFO: update.update @ 254: PRO
+[2022-05-19 11:10:18.199] INFO: update.update @ 258: 2945
+[2022-05-19 11:10:40.625] INFO: update.update @ 254: REN
+[2022-05-19 11:10:40.626] INFO: update.update @ 258: 18
+[2022-05-19 11:10:59.844] INFO: update.update @ 254: STAT
+[2022-05-19 11:10:59.845] INFO: update.update @ 258: 0
+[2022-05-19 11:11:20.792] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-05-19 11:11:20.888] INFO: update.rescrape @ 484: rescraping
+[2022-05-19 11:11:20.989] DEBUG: update.db @ 120: Closing db
+[2022-05-19 11:11:20.989] DEBUG: update.db @ 122: Closed db
+[2022-05-19 11:11:20.994] INFO: update.update_db @ 87: Sleeping for 1800 seconds
