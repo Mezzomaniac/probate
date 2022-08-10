@@ -152,8 +152,8 @@ class ProbateDBUpdater:
         search_form[JURISDICTION_SELECTOR_NAME].value = 'Supreme Court'
         browser.submit_form(search_form)
         search_form = browser.get_form()
-        search_form[DIVISION_SELECTOR_NAME].value = 'Probate'
         try:
+            search_form[DIVISION_SELECTOR_NAME].value = 'Probate'
             browser.submit_form(search_form)
         except ValueError as exc:
             raise ElodgmentChangeException(

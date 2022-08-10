@@ -1032,3 +1032,64 @@ ValueError: Option Probate not found in field <robobrowser.forms.fields.Select o
 [2022-08-10 11:38:23.969] DEBUG: update.db @ 132: Closing db
 [2022-08-10 11:38:23.970] DEBUG: update.db @ 134: Closed db
 [2022-08-10 11:38:23.970] INFO: update.update_db @ 99: Sleeping for 900 seconds
+[2022-08-10 11:40:47.154] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-10 11:40:47.158] INFO: update.update_public_holidays @ 250: Updating public holidays
+[2022-08-10 11:40:47.158] DEBUG: update.db @ 124: Loading db
+[2022-08-10 11:40:48.505] DEBUG: update.update_public_holidays @ 265: Updated public holidays
+[2022-08-10 11:40:48.505] DEBUG: update.public_holidays @ 227: Loading public holidays
+[2022-08-10 11:40:48.509] INFO: update.update @ 286: 2022
+[2022-08-10 11:40:48.510] INFO: update.update @ 291: CAV
+[2022-08-10 11:40:48.511] INFO: update.update @ 295: 81
+[2022-08-10 11:40:48.511] DEBUG: update.browser @ 141: Starting RoboBrowser session
+[2022-08-10 11:40:54.587] ERROR: update.update_db @ 85: Unexpected error: current_matter=Matter(type='CAV', number=82, year=2022, title=None, deceased_name=None, flags=None): 
+Traceback (most recent call last):
+  File "/home/runner/probate/probatewebapp/update.py", line 75, in update_db
+    updater.update(years)
+  File "/home/runner/probate/probatewebapp/update.py", line 299, in update
+    self.search_matter(
+  File "/home/runner/probate/probatewebapp/update.py", line 329, in search_matter
+    search_form = self.browser.get_form()
+  File "/home/runner/probate/probatewebapp/update.py", line 155, in browser
+    search_form[DIVISION_SELECTOR_NAME].value = 'Probate'
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/robobrowser/forms/fields.py", line 109, in value
+    self._value = self._value_to_index(value)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/robobrowser/forms/fields.py", line 99, in _value_to_index
+    raise ValueError('Option {0} not found in field {1!r}'.format(value, self))
+ValueError: Option Probate not found in field <robobrowser.forms.fields.Select object at 0x7fae9b025f40>
+[2022-08-10 11:41:01.432] DEBUG: update.db @ 132: Closing db
+[2022-08-10 11:41:01.432] DEBUG: update.db @ 134: Closed db
+[2022-08-10 11:41:01.433] INFO: update.update_db @ 99: Sleeping for 900 seconds
+[2022-08-10 11:44:03.465] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-10 11:44:03.466] INFO: update.update_public_holidays @ 250: Updating public holidays
+[2022-08-10 11:44:03.468] DEBUG: update.db @ 124: Loading db
+[2022-08-10 11:44:09.742] DEBUG: update.update_public_holidays @ 265: Updated public holidays
+[2022-08-10 11:44:09.742] DEBUG: update.public_holidays @ 227: Loading public holidays
+[2022-08-10 11:44:09.747] INFO: update.update @ 286: 2022
+[2022-08-10 11:44:09.748] INFO: update.update @ 291: CAV
+[2022-08-10 11:44:09.748] INFO: update.update @ 295: 81
+[2022-08-10 11:44:09.748] DEBUG: update.browser @ 141: Starting RoboBrowser session
+[2022-08-10 11:44:15.523] ERROR: update.update_db @ 81: Elodgment change exception:
+Traceback (most recent call last):
+  File "/home/runner/probate/probatewebapp/update.py", line 156, in browser
+    search_form[DIVISION_SELECTOR_NAME].value = 'Probate'
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/robobrowser/forms/fields.py", line 109, in value
+    self._value = self._value_to_index(value)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/robobrowser/forms/fields.py", line 99, in _value_to_index
+    raise ValueError('Option {0} not found in field {1!r}'.format(value, self))
+ValueError: Option Probate not found in field <robobrowser.forms.fields.Select object at 0x7f48de9b8f40>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/probate/probatewebapp/update.py", line 75, in update_db
+    updater.update(years)
+  File "/home/runner/probate/probatewebapp/update.py", line 299, in update
+    self.search_matter(
+  File "/home/runner/probate/probatewebapp/update.py", line 329, in search_matter
+    search_form = self.browser.get_form()
+  File "/home/runner/probate/probatewebapp/update.py", line 159, in browser
+    raise ElodgmentChangeException(
+probatewebapp.update.ElodgmentChangeException: No "Probate" option in eLodgment: Option Probate not found in field <robobrowser.forms.fields.Select object at 0x7f48de9b8f40>
+[2022-08-10 11:44:22.72] DEBUG: update.db @ 132: Closing db
+[2022-08-10 11:44:22.72] DEBUG: update.db @ 134: Closed db
+[2022-08-10 11:44:22.73] INFO: update.update_db @ 99: Sleeping for 86400 seconds
