@@ -1,0 +1,1523 @@
+[2022-08-01 14:08:00.298] ERROR: update.update_db @ 78: Unexpected error: current_matter=Matter(type='CAV', number=81, year=2022, title=None, deceased_name=None, flags=None): 
+Traceback (most recent call last):
+  File "/home/runner/probate/probatewebapp/update.py", line 71, in update_db
+    updater.update(years)
+  File "/home/runner/probate/probatewebapp/update.py", line 262, in update
+    self.search_matter(Matter(matter_type, number, year, None, None, None))
+  File "/home/runner/probate/probatewebapp/update.py", line 288, in search_matter
+    search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.type
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/robobrowser/forms/form.py", line 213, in __getitem__
+    return self.fields[item]
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/werkzeug/datastructures.py", line 716, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+[2022-08-01 14:08:06.931] DEBUG: update.db @ 120: Closing db
+[2022-08-01 14:08:06.931] DEBUG: update.db @ 122: Closed db
+[2022-08-01 14:08:06.932] INFO: update.update_db @ 87: Sleeping for 900 seconds
+[2022-08-01 14:23:08.39] INFO: update.update @ 249: 2022
+[2022-08-01 14:23:08.40] INFO: update.update @ 254: CAV
+[2022-08-01 14:23:08.41] DEBUG: update.db @ 112: Loading db
+[2022-08-01 14:23:08.46] INFO: update.update @ 258: 79
+[2022-08-01 14:23:08.46] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-01 14:24:37.121] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-01 14:25:01.451] INFO: update.update @ 254: CIT
+[2022-08-01 14:25:01.452] INFO: update.update @ 258: 15
+[2022-08-01 14:25:25.529] INFO: update.update @ 254: ELEC
+[2022-08-01 14:25:25.530] INFO: update.update @ 258: 5
+[2022-08-01 14:25:48.658] INFO: update.update @ 254: PRO
+[2022-08-01 14:25:48.665] INFO: update.update @ 258: 4714
+[2022-08-01 14:26:23.779] INFO: update.update @ 254: REN
+[2022-08-01 14:26:23.779] INFO: update.update @ 258: 29
+[2022-08-01 14:26:47.371] INFO: update.update @ 254: STAT
+[2022-08-01 14:26:47.371] INFO: update.update @ 258: 0
+[2022-08-01 14:27:11.601] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-01 14:27:11.649] INFO: update.rescrape @ 484: rescraping
+[2022-08-01 14:27:11.692] DEBUG: update.db @ 120: Closing db
+[2022-08-01 14:27:11.692] DEBUG: update.db @ 122: Closed db
+[2022-08-01 14:27:11.699] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-01 14:57:13.830] INFO: update.update @ 249: 2022
+[2022-08-01 14:57:13.830] INFO: update.update @ 254: CAV
+[2022-08-01 14:57:13.831] DEBUG: update.db @ 112: Loading db
+[2022-08-01 14:57:13.832] INFO: update.update @ 258: 79
+[2022-08-01 14:57:13.833] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-01 14:58:01.475] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-01 14:58:24.181] INFO: update.update @ 254: CIT
+[2022-08-01 14:58:24.181] INFO: update.update @ 258: 15
+[2022-08-01 14:58:51.127] INFO: update.update @ 254: ELEC
+[2022-08-01 14:58:51.129] INFO: update.update @ 258: 5
+[2022-08-01 14:59:17.814] INFO: update.update @ 254: PRO
+[2022-08-01 14:59:17.827] INFO: update.update @ 258: 4719
+[2022-08-01 14:59:19.894] INFO: update.update @ 271: 4720
+[2022-08-01 14:59:49.195] INFO: update.update @ 254: REN
+[2022-08-01 14:59:49.197] INFO: update.update @ 258: 29
+[2022-08-01 15:00:15.754] INFO: update.update @ 254: STAT
+[2022-08-01 15:00:15.755] INFO: update.update @ 258: 0
+[2022-08-01 15:00:57.667] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-01 15:00:57.751] INFO: update.rescrape @ 484: rescraping
+[2022-08-01 15:00:57.865] DEBUG: update.db @ 120: Closing db
+[2022-08-01 15:00:57.865] DEBUG: update.db @ 122: Closed db
+[2022-08-01 15:00:57.874] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-01 15:31:00.313] INFO: update.update @ 249: 2022
+[2022-08-01 15:31:00.313] INFO: update.update @ 254: CAV
+[2022-08-01 15:31:00.314] DEBUG: update.db @ 112: Loading db
+[2022-08-01 15:31:00.315] INFO: update.update @ 258: 79
+[2022-08-01 15:31:00.316] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-01 15:31:44.103] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-01 15:32:14.691] INFO: update.update @ 254: CIT
+[2022-08-01 15:32:14.692] INFO: update.update @ 258: 15
+[2022-08-01 15:32:44.502] INFO: update.update @ 254: ELEC
+[2022-08-01 15:32:44.515] INFO: update.update @ 258: 5
+[2022-08-01 15:33:19.978] INFO: update.update @ 254: PRO
+[2022-08-01 15:33:20.10] INFO: update.update @ 258: 4724
+[2022-08-01 15:33:57.197] INFO: update.update @ 254: REN
+[2022-08-01 15:33:57.198] INFO: update.update @ 258: 29
+[2022-08-01 15:34:29.483] INFO: update.update @ 254: STAT
+[2022-08-01 15:34:29.487] INFO: update.update @ 258: 0
+[2022-08-01 15:34:57.653] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-01 15:34:57.719] INFO: update.rescrape @ 484: rescraping
+[2022-08-01 15:34:57.840] DEBUG: update.db @ 120: Closing db
+[2022-08-01 15:34:57.840] DEBUG: update.db @ 122: Closed db
+[2022-08-01 15:34:57.862] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-01 16:41:39.13] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-01 16:41:39.14] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-08-01 16:41:39.15] DEBUG: update.db @ 112: Loading db
+[2022-08-01 16:41:39.941] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-08-01 16:41:39.941] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-08-01 16:41:39.944] INFO: update.update @ 249: 2022
+[2022-08-01 16:41:39.944] INFO: update.update @ 254: CAV
+[2022-08-01 16:41:39.946] INFO: update.update @ 258: 79
+[2022-08-01 16:41:39.947] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-01 16:42:20.632] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-01 16:42:54.151] INFO: update.update @ 254: CIT
+[2022-08-01 16:42:54.153] INFO: update.update @ 258: 15
+[2022-08-01 16:43:34.203] INFO: update.update @ 254: ELEC
+[2022-08-01 16:43:34.207] INFO: update.update @ 258: 5
+[2022-08-01 16:44:09.137] INFO: update.update @ 254: PRO
+[2022-08-01 16:44:09.175] INFO: update.update @ 258: 4727
+[2022-08-01 16:44:21.329] INFO: update.update @ 271: 4730
+[2022-08-01 16:45:06.730] INFO: update.update @ 254: REN
+[2022-08-01 16:45:06.731] INFO: update.update @ 258: 29
+[2022-08-01 16:45:40.302] INFO: update.update @ 254: STAT
+[2022-08-01 16:45:40.303] INFO: update.update @ 258: 0
+[2022-08-01 16:46:13.64] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-01 16:46:13.94] INFO: update.rescrape @ 484: rescraping
+[2022-08-01 16:46:13.114] DEBUG: update.db @ 120: Closing db
+[2022-08-01 16:46:13.114] DEBUG: update.db @ 122: Closed db
+[2022-08-01 16:46:13.115] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-01 17:41:27.956] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-01 17:41:27.957] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-08-01 17:41:27.958] DEBUG: update.db @ 112: Loading db
+[2022-08-01 17:41:29.900] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-08-01 17:41:29.901] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-08-01 17:41:29.904] INFO: update.update @ 249: 2022
+[2022-08-01 17:41:29.904] INFO: update.update @ 254: CAV
+[2022-08-01 17:41:29.906] INFO: update.update @ 258: 79
+[2022-08-01 17:41:29.907] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-01 17:42:04.134] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-01 17:42:39.631] INFO: update.update @ 254: CIT
+[2022-08-01 17:42:39.633] INFO: update.update @ 258: 15
+[2022-08-01 17:43:11.906] INFO: update.update @ 254: ELEC
+[2022-08-01 17:43:11.919] INFO: update.update @ 258: 5
+[2022-08-01 17:43:39.631] INFO: update.update @ 254: PRO
+[2022-08-01 17:43:39.682] INFO: update.update @ 258: 4731
+[2022-08-01 17:44:08.939] INFO: update.update @ 254: REN
+[2022-08-01 17:44:08.946] INFO: update.update @ 258: 29
+[2022-08-01 17:44:36.375] INFO: update.update @ 254: STAT
+[2022-08-01 17:44:36.376] INFO: update.update @ 258: 0
+[2022-08-01 17:45:04.319] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-01 17:45:04.383] INFO: update.rescrape @ 484: rescraping
+[2022-08-01 17:45:04.434] DEBUG: update.db @ 120: Closing db
+[2022-08-01 17:45:04.435] DEBUG: update.db @ 122: Closed db
+[2022-08-01 17:45:04.441] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-01 18:15:07.146] DEBUG: update.db @ 120: Closing db
+[2022-08-01 18:15:07.146] DEBUG: update.db @ 122: Closed db
+[2022-08-01 18:15:07.146] INFO: update.update_db @ 87: Sleeping for 49492 seconds
+[2022-08-02 08:01:03.824] INFO: update.update @ 249: 2022
+[2022-08-02 08:01:03.826] INFO: update.update @ 254: CAV
+[2022-08-02 08:01:03.826] DEBUG: update.db @ 112: Loading db
+[2022-08-02 08:01:03.896] INFO: update.update @ 258: 79
+[2022-08-02 08:01:03.896] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 08:02:30.929] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 08:02:54.149] INFO: update.update @ 254: CIT
+[2022-08-02 08:02:54.151] INFO: update.update @ 258: 15
+[2022-08-02 08:03:18.536] INFO: update.update @ 254: ELEC
+[2022-08-02 08:03:18.541] INFO: update.update @ 258: 5
+[2022-08-02 08:03:43.232] INFO: update.update @ 254: PRO
+[2022-08-02 08:03:43.300] INFO: update.update @ 258: 4731
+[2022-08-02 08:04:06.553] INFO: update.update @ 254: REN
+[2022-08-02 08:04:06.554] INFO: update.update @ 258: 29
+[2022-08-02 08:04:28.382] INFO: update.update @ 254: STAT
+[2022-08-02 08:04:28.383] INFO: update.update @ 258: 0
+[2022-08-02 08:04:53.173] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 08:04:53.309] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 08:04:53.359] DEBUG: update.rescrape @ 487: PRO 4589/2022
+[2022-08-02 08:04:55.287] DEBUG: update.rescrape @ 487: PRO 4591/2022
+[2022-08-02 08:04:57.53] DEBUG: update.rescrape @ 487: PRO 4595/2022
+[2022-08-02 08:04:58.750] DEBUG: update.rescrape @ 487: PRO 4596/2022
+[2022-08-02 08:05:00.292] DEBUG: update.rescrape @ 487: PRO 4597/2022
+[2022-08-02 08:05:01.848] DEBUG: update.rescrape @ 487: PRO 4599/2022
+[2022-08-02 08:05:03.452] DEBUG: update.rescrape @ 487: PRO 4606/2022
+[2022-08-02 08:05:05.593] DEBUG: update.rescrape @ 487: PRO 4607/2022
+[2022-08-02 08:05:07.415] DEBUG: update.db @ 120: Closing db
+[2022-08-02 08:05:07.415] DEBUG: update.db @ 122: Closed db
+[2022-08-02 08:05:07.422] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 08:35:09.753] INFO: update.update @ 249: 2022
+[2022-08-02 08:35:09.754] INFO: update.update @ 254: CAV
+[2022-08-02 08:35:09.754] DEBUG: update.db @ 112: Loading db
+[2022-08-02 08:35:09.758] INFO: update.update @ 258: 79
+[2022-08-02 08:35:09.758] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 08:36:29.373] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 08:36:50.178] INFO: update.update @ 254: CIT
+[2022-08-02 08:36:50.222] INFO: update.update @ 258: 15
+[2022-08-02 08:37:11.279] INFO: update.update @ 254: ELEC
+[2022-08-02 08:37:11.279] INFO: update.update @ 258: 5
+[2022-08-02 08:37:31.692] INFO: update.update @ 254: PRO
+[2022-08-02 08:37:31.731] INFO: update.update @ 258: 4731
+[2022-08-02 08:37:52.85] INFO: update.update @ 254: REN
+[2022-08-02 08:37:52.86] INFO: update.update @ 258: 29
+[2022-08-02 08:38:12.538] INFO: update.update @ 254: STAT
+[2022-08-02 08:38:12.539] INFO: update.update @ 258: 0
+[2022-08-02 08:38:33.410] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 08:38:33.452] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 08:38:33.526] DEBUG: update.db @ 120: Closing db
+[2022-08-02 08:38:33.526] DEBUG: update.db @ 122: Closed db
+[2022-08-02 08:38:33.529] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 09:08:35.850] INFO: update.update @ 249: 2022
+[2022-08-02 09:08:35.853] INFO: update.update @ 254: CAV
+[2022-08-02 09:08:35.853] DEBUG: update.db @ 112: Loading db
+[2022-08-02 09:08:35.913] INFO: update.update @ 258: 79
+[2022-08-02 09:08:35.914] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 09:09:29.800] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 09:09:57.103] INFO: update.update @ 254: CIT
+[2022-08-02 09:09:57.103] INFO: update.update @ 258: 15
+[2022-08-02 09:10:26.43] INFO: update.update @ 254: ELEC
+[2022-08-02 09:10:26.46] INFO: update.update @ 258: 5
+[2022-08-02 09:10:57.278] INFO: update.update @ 254: PRO
+[2022-08-02 09:10:57.315] INFO: update.update @ 258: 4731
+[2022-08-02 09:11:26.12] INFO: update.update @ 254: REN
+[2022-08-02 09:11:26.13] INFO: update.update @ 258: 29
+[2022-08-02 09:11:58.145] INFO: update.update @ 254: STAT
+[2022-08-02 09:11:58.147] INFO: update.update @ 258: 0
+[2022-08-02 09:12:29.749] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 09:12:29.866] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 09:12:29.937] DEBUG: update.db @ 120: Closing db
+[2022-08-02 09:12:29.938] DEBUG: update.db @ 122: Closed db
+[2022-08-02 09:12:29.941] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 09:42:32.521] INFO: update.update @ 249: 2022
+[2022-08-02 09:42:32.524] INFO: update.update @ 254: CAV
+[2022-08-02 09:42:32.524] DEBUG: update.db @ 112: Loading db
+[2022-08-02 09:42:32.540] INFO: update.update @ 258: 79
+[2022-08-02 09:42:32.541] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 09:43:19.297] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 09:43:45.630] INFO: update.update @ 254: CIT
+[2022-08-02 09:43:45.631] INFO: update.update @ 258: 15
+[2022-08-02 09:44:20.787] INFO: update.update @ 254: ELEC
+[2022-08-02 09:44:20.793] INFO: update.update @ 258: 5
+[2022-08-02 09:44:52.645] INFO: update.update @ 254: PRO
+[2022-08-02 09:44:52.718] INFO: update.update @ 258: 4731
+[2022-08-02 09:45:28.881] INFO: update.update @ 254: REN
+[2022-08-02 09:45:28.883] INFO: update.update @ 258: 29
+[2022-08-02 09:45:58.443] INFO: update.update @ 254: STAT
+[2022-08-02 09:45:58.444] INFO: update.update @ 258: 0
+[2022-08-02 09:46:26.835] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 09:46:26.949] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 09:46:26.985] DEBUG: update.db @ 120: Closing db
+[2022-08-02 09:46:27.21] DEBUG: update.db @ 122: Closed db
+[2022-08-02 09:46:27.25] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 10:16:29.637] INFO: update.update @ 249: 2022
+[2022-08-02 10:16:29.641] INFO: update.update @ 254: CAV
+[2022-08-02 10:16:29.641] DEBUG: update.db @ 112: Loading db
+[2022-08-02 10:16:29.671] INFO: update.update @ 258: 79
+[2022-08-02 10:16:29.671] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 10:18:20.741] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 10:18:52.681] INFO: update.update @ 254: CIT
+[2022-08-02 10:18:52.685] INFO: update.update @ 258: 15
+[2022-08-02 10:19:26.212] INFO: update.update @ 254: ELEC
+[2022-08-02 10:19:26.219] INFO: update.update @ 258: 5
+[2022-08-02 11:28:37.266] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-02 11:28:37.268] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-08-02 11:28:37.268] DEBUG: update.db @ 112: Loading db
+[2022-08-02 11:28:38.180] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-08-02 11:28:38.181] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-08-02 11:28:38.184] INFO: update.update @ 249: 2022
+[2022-08-02 11:28:38.185] INFO: update.update @ 254: CAV
+[2022-08-02 11:28:38.186] INFO: update.update @ 258: 79
+[2022-08-02 11:28:38.187] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 11:29:35.369] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 11:29:53.906] INFO: update.update @ 254: CIT
+[2022-08-02 11:29:53.907] INFO: update.update @ 258: 15
+[2022-08-02 11:30:15.39] INFO: update.update @ 254: ELEC
+[2022-08-02 11:30:15.42] INFO: update.update @ 258: 5
+[2022-08-02 11:30:36.954] INFO: update.update @ 254: PRO
+[2022-08-02 11:30:37.5] INFO: update.update @ 258: 4731
+[2022-08-02 11:31:02.459] INFO: update.update @ 254: REN
+[2022-08-02 11:31:02.460] INFO: update.update @ 258: 29
+[2022-08-02 11:31:21.228] INFO: update.update @ 254: STAT
+[2022-08-02 11:31:21.228] INFO: update.update @ 258: 0
+[2022-08-02 11:31:40.197] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 11:31:40.218] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 11:31:40.291] DEBUG: update.db @ 120: Closing db
+[2022-08-02 11:31:40.292] DEBUG: update.db @ 122: Closed db
+[2022-08-02 11:31:40.294] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 12:01:42.97] INFO: update.update @ 249: 2022
+[2022-08-02 12:01:42.97] INFO: update.update @ 254: CAV
+[2022-08-02 12:01:42.98] DEBUG: update.db @ 112: Loading db
+[2022-08-02 12:01:42.99] INFO: update.update @ 258: 79
+[2022-08-02 12:01:42.99] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 12:02:12.907] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 12:02:33.514] INFO: update.update @ 254: CIT
+[2022-08-02 12:02:33.514] INFO: update.update @ 258: 15
+[2022-08-02 12:02:56.412] INFO: update.update @ 254: ELEC
+[2022-08-02 12:02:56.412] INFO: update.update @ 258: 5
+[2022-08-02 12:03:16.57] INFO: update.update @ 254: PRO
+[2022-08-02 12:03:16.64] INFO: update.update @ 258: 4735
+[2022-08-02 12:03:24.368] INFO: update.update @ 271: 4740
+[2022-08-02 12:03:51.375] INFO: update.update @ 254: REN
+[2022-08-02 12:03:51.376] INFO: update.update @ 258: 29
+[2022-08-02 12:04:10.704] INFO: update.update @ 254: STAT
+[2022-08-02 12:04:10.704] INFO: update.update @ 258: 0
+[2022-08-02 12:04:30.555] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 12:04:30.579] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 12:04:30.599] DEBUG: update.db @ 120: Closing db
+[2022-08-02 12:04:30.599] DEBUG: update.db @ 122: Closed db
+[2022-08-02 12:04:30.601] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 12:34:32.424] INFO: update.update @ 249: 2022
+[2022-08-02 12:34:32.424] INFO: update.update @ 254: CAV
+[2022-08-02 12:34:32.424] DEBUG: update.db @ 112: Loading db
+[2022-08-02 12:34:32.426] INFO: update.update @ 258: 79
+[2022-08-02 12:34:32.427] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 12:35:15.864] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 12:35:34.313] INFO: update.update @ 254: CIT
+[2022-08-02 12:35:34.314] INFO: update.update @ 258: 15
+[2022-08-02 12:35:54.805] INFO: update.update @ 254: ELEC
+[2022-08-02 12:35:54.805] INFO: update.update @ 258: 5
+[2022-08-02 12:36:13.394] INFO: update.update @ 254: PRO
+[2022-08-02 12:36:13.401] INFO: update.update @ 258: 4741
+[2022-08-02 12:36:38.471] INFO: update.update @ 254: REN
+[2022-08-02 12:36:38.471] INFO: update.update @ 258: 29
+[2022-08-02 12:36:57.834] INFO: update.update @ 254: STAT
+[2022-08-02 12:36:57.834] INFO: update.update @ 258: 0
+[2022-08-02 12:37:16.158] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 12:37:16.189] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 12:37:16.258] DEBUG: update.db @ 120: Closing db
+[2022-08-02 12:37:16.259] DEBUG: update.db @ 122: Closed db
+[2022-08-02 12:37:16.263] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 13:07:18.107] INFO: update.update @ 249: 2022
+[2022-08-02 13:07:18.107] INFO: update.update @ 254: CAV
+[2022-08-02 13:07:18.107] DEBUG: update.db @ 112: Loading db
+[2022-08-02 13:07:18.109] INFO: update.update @ 258: 79
+[2022-08-02 13:07:18.109] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 13:07:55.489] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 13:08:15.52] INFO: update.update @ 254: CIT
+[2022-08-02 13:08:15.53] INFO: update.update @ 258: 15
+[2022-08-02 13:08:41.182] INFO: update.update @ 254: ELEC
+[2022-08-02 13:08:41.183] INFO: update.update @ 258: 5
+[2022-08-02 13:09:04.605] INFO: update.update @ 254: PRO
+[2022-08-02 13:09:04.612] INFO: update.update @ 258: 4743
+[2022-08-02 13:09:26.753] INFO: update.update @ 254: REN
+[2022-08-02 13:09:26.753] INFO: update.update @ 258: 29
+[2022-08-02 13:09:46.505] INFO: update.update @ 254: STAT
+[2022-08-02 13:09:46.505] INFO: update.update @ 258: 0
+[2022-08-02 13:10:05.77] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 13:10:05.130] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 13:10:05.169] DEBUG: update.db @ 120: Closing db
+[2022-08-02 13:10:05.169] DEBUG: update.db @ 122: Closed db
+[2022-08-02 13:10:05.174] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 13:40:07.66] INFO: update.update @ 249: 2022
+[2022-08-02 13:40:07.67] INFO: update.update @ 254: CAV
+[2022-08-02 13:40:07.67] DEBUG: update.db @ 112: Loading db
+[2022-08-02 13:40:07.68] INFO: update.update @ 258: 79
+[2022-08-02 13:40:07.68] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 13:40:08.307] DEBUG: update.db @ 120: Closing db
+[2022-08-02 13:40:08.308] DEBUG: update.db @ 122: Closed db
+[2022-08-02 13:40:08.308] INFO: update.update_db @ 87: Sleeping for 900 seconds
+[2022-08-02 13:55:09.315] INFO: update.update @ 249: 2022
+[2022-08-02 13:55:09.315] INFO: update.update @ 254: CAV
+[2022-08-02 13:55:09.316] DEBUG: update.db @ 112: Loading db
+[2022-08-02 13:55:09.317] INFO: update.update @ 258: 79
+[2022-08-02 13:55:09.317] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 13:56:07.517] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 13:56:31.966] INFO: update.update @ 254: CIT
+[2022-08-02 13:56:31.967] INFO: update.update @ 258: 15
+[2022-08-02 13:56:50.815] INFO: update.update @ 254: ELEC
+[2022-08-02 13:56:50.816] INFO: update.update @ 258: 5
+[2022-08-02 13:57:11.361] INFO: update.update @ 254: PRO
+[2022-08-02 13:57:11.368] INFO: update.update @ 258: 4745
+[2022-08-02 13:57:36.4] INFO: update.update @ 254: REN
+[2022-08-02 13:57:36.8] INFO: update.update @ 258: 29
+[2022-08-02 13:57:57.872] INFO: update.update @ 254: STAT
+[2022-08-02 13:57:57.872] INFO: update.update @ 258: 0
+[2022-08-02 13:58:16.557] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 13:58:16.593] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 13:58:16.658] DEBUG: update.db @ 120: Closing db
+[2022-08-02 13:58:16.660] DEBUG: update.db @ 122: Closed db
+[2022-08-02 13:58:16.663] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 14:28:18.621] INFO: update.update @ 249: 2022
+[2022-08-02 14:28:18.622] INFO: update.update @ 254: CAV
+[2022-08-02 14:28:18.622] DEBUG: update.db @ 112: Loading db
+[2022-08-02 14:28:18.624] INFO: update.update @ 258: 79
+[2022-08-02 14:28:18.624] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 14:29:12.171] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 14:29:31.600] INFO: update.update @ 254: CIT
+[2022-08-02 14:29:31.600] INFO: update.update @ 258: 15
+[2022-08-02 14:29:49.279] INFO: update.update @ 254: ELEC
+[2022-08-02 14:29:49.279] INFO: update.update @ 258: 5
+[2022-08-02 14:30:11.349] INFO: update.update @ 254: PRO
+[2022-08-02 14:30:11.371] INFO: update.update @ 258: 4748
+[2022-08-02 14:30:30.642] INFO: update.update @ 254: REN
+[2022-08-02 14:30:30.643] INFO: update.update @ 258: 29
+[2022-08-02 14:30:50.125] INFO: update.update @ 254: STAT
+[2022-08-02 14:30:50.125] INFO: update.update @ 258: 0
+[2022-08-02 14:31:07.538] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 14:31:07.574] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 14:31:07.606] DEBUG: update.db @ 120: Closing db
+[2022-08-02 14:31:07.606] DEBUG: update.db @ 122: Closed db
+[2022-08-02 14:31:07.608] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 15:01:09.583] INFO: update.update @ 249: 2022
+[2022-08-02 15:01:09.583] INFO: update.update @ 254: CAV
+[2022-08-02 15:01:09.584] DEBUG: update.db @ 112: Loading db
+[2022-08-02 15:01:09.585] INFO: update.update @ 258: 79
+[2022-08-02 15:01:09.588] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 15:01:56.677] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 15:02:19.7] INFO: update.update @ 254: CIT
+[2022-08-02 15:02:19.13] INFO: update.update @ 258: 15
+[2022-08-02 15:02:38.854] INFO: update.update @ 254: ELEC
+[2022-08-02 15:02:38.855] INFO: update.update @ 258: 5
+[2022-08-02 15:03:01.499] INFO: update.update @ 254: PRO
+[2022-08-02 15:03:01.509] INFO: update.update @ 258: 4748
+[2022-08-02 15:03:04.893] INFO: update.update @ 271: 4750
+[2022-08-02 15:03:29.848] INFO: update.update @ 254: REN
+[2022-08-02 15:03:29.848] INFO: update.update @ 258: 29
+[2022-08-02 15:03:51.63] INFO: update.update @ 254: STAT
+[2022-08-02 15:03:51.65] INFO: update.update @ 258: 0
+[2022-08-02 15:04:14.708] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 15:04:14.735] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 15:04:14.774] DEBUG: update.db @ 120: Closing db
+[2022-08-02 15:04:14.774] DEBUG: update.db @ 122: Closed db
+[2022-08-02 15:04:14.783] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 15:34:16.846] INFO: update.update @ 249: 2022
+[2022-08-02 15:34:16.847] INFO: update.update @ 254: CAV
+[2022-08-02 15:34:16.847] DEBUG: update.db @ 112: Loading db
+[2022-08-02 15:34:16.848] INFO: update.update @ 258: 79
+[2022-08-02 15:34:16.848] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 15:35:31.646] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 15:35:53.418] INFO: update.update @ 254: CIT
+[2022-08-02 15:35:53.418] INFO: update.update @ 258: 15
+[2022-08-02 15:36:13.202] INFO: update.update @ 254: ELEC
+[2022-08-02 15:36:13.203] INFO: update.update @ 258: 5
+[2022-08-02 15:36:31.170] INFO: update.update @ 254: PRO
+[2022-08-02 15:36:31.176] INFO: update.update @ 258: 4751
+[2022-08-02 15:36:49.903] INFO: update.update @ 254: REN
+[2022-08-02 15:36:49.903] INFO: update.update @ 258: 29
+[2022-08-02 15:37:08.635] INFO: update.update @ 254: STAT
+[2022-08-02 15:37:08.635] INFO: update.update @ 258: 0
+[2022-08-02 15:37:29.193] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 15:37:29.218] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 15:37:29.284] DEBUG: update.db @ 120: Closing db
+[2022-08-02 15:37:29.284] DEBUG: update.db @ 122: Closed db
+[2022-08-02 15:37:29.288] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 16:07:31.275] INFO: update.update @ 249: 2022
+[2022-08-02 16:07:31.275] INFO: update.update @ 254: CAV
+[2022-08-02 16:07:31.276] DEBUG: update.db @ 112: Loading db
+[2022-08-02 16:07:31.277] INFO: update.update @ 258: 79
+[2022-08-02 16:07:31.277] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 16:08:13.177] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 16:08:42.311] INFO: update.update @ 254: CIT
+[2022-08-02 16:08:42.311] INFO: update.update @ 258: 15
+[2022-08-02 16:09:10.769] INFO: update.update @ 254: ELEC
+[2022-08-02 16:09:10.770] INFO: update.update @ 258: 5
+[2022-08-02 16:09:30.7] INFO: update.update @ 254: PRO
+[2022-08-02 16:09:30.17] INFO: update.update @ 258: 4751
+[2022-08-02 16:09:52.832] INFO: update.update @ 254: REN
+[2022-08-02 16:09:52.833] INFO: update.update @ 258: 29
+[2022-08-02 16:10:14.888] INFO: update.update @ 254: STAT
+[2022-08-02 16:10:14.889] INFO: update.update @ 258: 0
+[2022-08-02 16:10:37.353] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 16:10:37.423] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 16:10:37.452] DEBUG: update.db @ 120: Closing db
+[2022-08-02 16:10:37.452] DEBUG: update.db @ 122: Closed db
+[2022-08-02 16:10:37.455] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 16:40:39.442] INFO: update.update @ 249: 2022
+[2022-08-02 16:40:39.442] INFO: update.update @ 254: CAV
+[2022-08-02 16:40:39.443] DEBUG: update.db @ 112: Loading db
+[2022-08-02 16:40:39.445] INFO: update.update @ 258: 79
+[2022-08-02 16:40:39.446] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 16:41:15.374] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 16:41:32.481] INFO: update.update @ 254: CIT
+[2022-08-02 16:41:32.486] INFO: update.update @ 258: 15
+[2022-08-02 16:41:48.711] INFO: update.update @ 254: ELEC
+[2022-08-02 16:41:48.712] INFO: update.update @ 258: 5
+[2022-08-02 16:42:06.301] INFO: update.update @ 254: PRO
+[2022-08-02 16:42:06.307] INFO: update.update @ 258: 4753
+[2022-08-02 16:42:23.231] INFO: update.update @ 254: REN
+[2022-08-02 16:42:23.232] INFO: update.update @ 258: 29
+[2022-08-02 16:42:39.570] INFO: update.update @ 254: STAT
+[2022-08-02 16:42:39.570] INFO: update.update @ 258: 0
+[2022-08-02 16:42:56.533] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 16:42:56.595] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 16:42:56.629] DEBUG: update.db @ 120: Closing db
+[2022-08-02 16:42:56.629] DEBUG: update.db @ 122: Closed db
+[2022-08-02 16:42:56.632] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 17:12:58.639] INFO: update.update @ 249: 2022
+[2022-08-02 17:12:58.640] INFO: update.update @ 254: CAV
+[2022-08-02 17:12:58.640] DEBUG: update.db @ 112: Loading db
+[2022-08-02 17:12:58.641] INFO: update.update @ 258: 79
+[2022-08-02 17:12:58.642] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 17:13:42.584] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 17:14:00.342] INFO: update.update @ 254: CIT
+[2022-08-02 17:14:00.358] INFO: update.update @ 258: 15
+[2022-08-02 17:14:19.181] INFO: update.update @ 254: ELEC
+[2022-08-02 17:14:19.183] INFO: update.update @ 258: 5
+[2022-08-02 17:14:40.57] INFO: update.update @ 254: PRO
+[2022-08-02 17:14:40.76] INFO: update.update @ 258: 4753
+[2022-08-02 17:14:57.598] INFO: update.update @ 254: REN
+[2022-08-02 17:14:57.599] INFO: update.update @ 258: 29
+[2022-08-02 17:15:14.550] INFO: update.update @ 254: STAT
+[2022-08-02 17:15:14.550] INFO: update.update @ 258: 0
+[2022-08-02 17:15:31.600] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 17:15:31.624] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 17:15:31.684] DEBUG: update.db @ 120: Closing db
+[2022-08-02 17:15:31.684] DEBUG: update.db @ 122: Closed db
+[2022-08-02 17:15:31.686] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 17:45:33.718] INFO: update.update @ 249: 2022
+[2022-08-02 17:45:33.719] INFO: update.update @ 254: CAV
+[2022-08-02 17:45:33.719] DEBUG: update.db @ 112: Loading db
+[2022-08-02 17:45:33.720] INFO: update.update @ 258: 79
+[2022-08-02 17:45:33.721] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-02 17:45:40.675] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-02 17:46:10.338] INFO: update.update @ 254: CIT
+[2022-08-02 17:46:10.338] INFO: update.update @ 258: 15
+[2022-08-02 17:46:38.652] INFO: update.update @ 254: ELEC
+[2022-08-02 17:46:38.667] INFO: update.update @ 258: 5
+[2022-08-02 17:47:04.714] INFO: update.update @ 254: PRO
+[2022-08-02 17:47:04.720] INFO: update.update @ 258: 4753
+[2022-08-02 17:47:31.956] INFO: update.update @ 254: REN
+[2022-08-02 17:47:31.956] INFO: update.update @ 258: 29
+[2022-08-02 17:47:58.918] INFO: update.update @ 254: STAT
+[2022-08-02 17:47:58.919] INFO: update.update @ 258: 0
+[2022-08-02 17:48:24.869] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-02 17:48:24.897] INFO: update.rescrape @ 484: rescraping
+[2022-08-02 17:48:24.963] DEBUG: update.db @ 120: Closing db
+[2022-08-02 17:48:24.964] DEBUG: update.db @ 122: Closed db
+[2022-08-02 17:48:24.966] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-02 18:18:27.29] DEBUG: update.db @ 120: Closing db
+[2022-08-02 18:18:27.29] DEBUG: update.db @ 122: Closed db
+[2022-08-02 18:18:27.29] INFO: update.update_db @ 87: Sleeping for 49292 seconds
+[2022-08-03 02:49:15.366] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-03 02:49:15.367] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-08-03 02:49:15.368] DEBUG: update.db @ 112: Loading db
+[2022-08-03 02:49:16.654] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-08-03 02:49:16.655] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-08-03 02:49:16.659] DEBUG: update.db @ 120: Closing db
+[2022-08-03 02:49:16.659] DEBUG: update.db @ 122: Closed db
+[2022-08-03 02:49:16.660] INFO: update.update_db @ 87: Sleeping for 18644 seconds
+[2022-08-03 08:00:28.498] INFO: update.update @ 249: 2022
+[2022-08-03 08:00:28.519] INFO: update.update @ 254: CAV
+[2022-08-03 08:00:28.536] DEBUG: update.db @ 112: Loading db
+[2022-08-03 08:00:28.644] INFO: update.update @ 258: 79
+[2022-08-03 08:00:28.645] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 08:01:44.177] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 08:02:11.803] INFO: update.update @ 254: CIT
+[2022-08-03 08:02:11.806] INFO: update.update @ 258: 15
+[2022-08-03 08:02:51.434] INFO: update.update @ 254: ELEC
+[2022-08-03 08:02:51.444] INFO: update.update @ 258: 5
+[2022-08-03 08:03:25.861] INFO: update.update @ 254: PRO
+[2022-08-03 08:03:25.992] INFO: update.update @ 258: 4753
+[2022-08-03 08:04:19.149] INFO: update.update @ 254: REN
+[2022-08-03 08:04:19.155] INFO: update.update @ 258: 29
+[2022-08-03 08:05:05.682] INFO: update.update @ 254: STAT
+[2022-08-03 08:05:05.683] INFO: update.update @ 258: 0
+[2022-08-03 08:05:58.625] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 08:05:59.7] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 08:05:59.278] DEBUG: update.rescrape @ 487: REN 27/2022
+[2022-08-03 08:06:01.735] DEBUG: update.rescrape @ 487: REN 28/2022
+[2022-08-03 08:06:05.38] DEBUG: update.rescrape @ 487: PRO 4617/2022
+[2022-08-03 08:06:07.316] DEBUG: update.rescrape @ 487: PRO 4620/2022
+[2022-08-03 08:06:13.55] DEBUG: update.rescrape @ 487: PRO 4622/2022
+[2022-08-03 08:06:17.270] DEBUG: update.rescrape @ 487: PRO 4623/2022
+[2022-08-03 08:06:20.97] DEBUG: update.rescrape @ 487: PRO 4625/2022
+[2022-08-03 08:06:22.611] DEBUG: update.rescrape @ 487: PRO 4628/2022
+[2022-08-03 08:06:24.982] DEBUG: update.rescrape @ 487: PRO 4630/2022
+[2022-08-03 08:06:29.226] DEBUG: update.rescrape @ 487: PRO 4631/2022
+[2022-08-03 08:06:31.807] DEBUG: update.rescrape @ 487: PRO 4633/2022
+[2022-08-03 08:06:34.579] DEBUG: update.rescrape @ 487: PRO 4635/2022
+[2022-08-03 08:06:38.255] DEBUG: update.rescrape @ 487: PRO 4636/2022
+[2022-08-03 08:06:40.783] DEBUG: update.rescrape @ 487: CAV 78/2022
+[2022-08-03 08:06:45.64] DEBUG: update.db @ 120: Closing db
+[2022-08-03 08:06:45.65] DEBUG: update.db @ 122: Closed db
+[2022-08-03 08:06:45.70] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 08:36:48.269] INFO: update.update @ 249: 2022
+[2022-08-03 08:36:48.271] INFO: update.update @ 254: CAV
+[2022-08-03 08:36:48.271] DEBUG: update.db @ 112: Loading db
+[2022-08-03 08:36:48.319] INFO: update.update @ 258: 79
+[2022-08-03 08:36:48.320] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 08:38:05.981] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 08:38:36.820] INFO: update.update @ 254: CIT
+[2022-08-03 08:38:36.824] INFO: update.update @ 258: 15
+[2022-08-03 08:38:59.938] INFO: update.update @ 254: ELEC
+[2022-08-03 08:38:59.943] INFO: update.update @ 258: 5
+[2022-08-03 08:39:33.876] INFO: update.update @ 254: PRO
+[2022-08-03 08:39:34.365] INFO: update.update @ 258: 4753
+[2022-08-03 08:40:01.357] INFO: update.update @ 254: REN
+[2022-08-03 08:40:01.358] INFO: update.update @ 258: 29
+[2022-08-03 08:40:34.201] INFO: update.update @ 254: STAT
+[2022-08-03 08:40:34.203] INFO: update.update @ 258: 0
+[2022-08-03 08:41:03.256] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 08:41:03.548] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 08:41:03.737] DEBUG: update.db @ 120: Closing db
+[2022-08-03 08:41:03.741] DEBUG: update.db @ 122: Closed db
+[2022-08-03 08:41:03.754] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 09:11:07.514] INFO: update.update @ 249: 2022
+[2022-08-03 09:11:07.518] INFO: update.update @ 254: CAV
+[2022-08-03 09:11:07.518] DEBUG: update.db @ 112: Loading db
+[2022-08-03 09:11:07.544] INFO: update.update @ 258: 79
+[2022-08-03 09:11:07.545] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 09:12:02.900] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 09:12:45.996] INFO: update.update @ 254: CIT
+[2022-08-03 09:12:46.0] INFO: update.update @ 258: 15
+[2022-08-03 09:13:16.934] INFO: update.update @ 254: ELEC
+[2022-08-03 09:13:16.939] INFO: update.update @ 258: 5
+[2022-08-03 09:13:55.649] INFO: update.update @ 254: PRO
+[2022-08-03 09:13:55.728] INFO: update.update @ 258: 4753
+[2022-08-03 09:14:53.369] INFO: update.update @ 254: REN
+[2022-08-03 09:14:53.396] INFO: update.update @ 258: 29
+[2022-08-03 09:15:48.623] INFO: update.update @ 254: STAT
+[2022-08-03 09:15:48.624] INFO: update.update @ 258: 0
+[2022-08-03 09:16:38.304] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 09:16:38.554] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 09:16:38.954] DEBUG: update.db @ 120: Closing db
+[2022-08-03 09:16:38.955] DEBUG: update.db @ 122: Closed db
+[2022-08-03 09:16:38.977] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 09:46:42.613] INFO: update.update @ 249: 2022
+[2022-08-03 09:46:42.615] INFO: update.update @ 254: CAV
+[2022-08-03 09:46:42.615] DEBUG: update.db @ 112: Loading db
+[2022-08-03 09:46:42.660] INFO: update.update @ 258: 79
+[2022-08-03 09:46:42.661] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 09:48:03.34] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 09:48:51.389] INFO: update.update @ 254: CIT
+[2022-08-03 09:48:51.412] INFO: update.update @ 258: 15
+[2022-08-03 09:49:42.71] INFO: update.update @ 254: ELEC
+[2022-08-03 09:49:42.80] INFO: update.update @ 258: 6
+[2022-08-03 09:50:41.530] INFO: update.update @ 254: PRO
+[2022-08-03 09:50:41.953] INFO: update.update @ 258: 4753
+[2022-08-03 09:52:22.751] INFO: update.update @ 254: REN
+[2022-08-03 09:52:22.787] INFO: update.update @ 258: 29
+[2022-08-03 09:53:35.764] INFO: update.update @ 254: STAT
+[2022-08-03 09:53:35.770] INFO: update.update @ 258: 0
+[2022-08-03 09:54:38.230] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 09:54:38.398] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 09:54:38.543] DEBUG: update.db @ 120: Closing db
+[2022-08-03 09:54:38.543] DEBUG: update.db @ 122: Closed db
+[2022-08-03 09:54:38.552] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 10:24:42.627] INFO: update.update @ 249: 2022
+[2022-08-03 10:24:42.628] INFO: update.update @ 254: CAV
+[2022-08-03 10:24:42.629] DEBUG: update.db @ 112: Loading db
+[2022-08-03 10:24:42.656] INFO: update.update @ 258: 79
+[2022-08-03 10:24:42.656] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 10:25:47.668] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 10:26:56.885] ERROR: update.search_matter @ 290: current_matter=Matter(type='CAV', number=101, year=2022, title=None, deceased_name=None, flags=None)
+search_form=<RoboForm __VIEWSTATE=ifiZrDWddrikjDntufbL7JUWMi5uPAsoJhjTQrc+uD18BkfQDu/6UrVyBSk6ucR4j+s7m92lWCzC6p3pelxNj2LxHs2QrRUyltM5rTIfw8QQhQSWe5OYQZjtI7jYvOktIsmazaFhakfJW2bwu4QszDKhcKj/MwrANDYMLbruFkp6Epye60BH9E7OcP8nTpwE0tH3TRfgs5xiaqjSVii08w60uvWiW9kL7tyLaqdh0aWd4hQXtNtAiqGjFzqTi7KtPMzychWfDxEsHlHSWkt7E4if3if7Zz3Ykr3uSb2GAKuV3gmsK55SR6aaPkQmvE6iO+qi41CapOSg31Xg1JuTbo0ZAqV/1MR5bgz4FGMgTdPbo5aDAUqe9z30mNwQtqgEOi2nrbSi2O46/JfZPPB0Ja7iG570J2QqIRU5mnyZFiiQbVf2LgrrdbnFTUslTwFcQLV3q7RPzS3LMy/cM4guqOtvTa6ZDX2MQES8asY/KN20DdkhK28LvAc9h4VzLfTWRSElA77PDhaRnV/vhUyMZfh7EhaJJ/sDFsdWb07y4RMWCz2ladcY1YvTKm4RkDrIWBGzuRA4OSYV7jaR/DyLI0uHTsbdjnGcSuk16ZWBhzlPnKs1N3/+eZcKYbEq/71m7Kyt7c4BUvmSpj10NzG3/BtHzztKMsnWCv7Y9bwB7AEl3mvZP1pNRYOSoDC6nPYpZzCB85lqZAQVrT8MB2cXRDbINSvQ5oD9rGA2mAi1XuUy3c6vm6tO8eiW3xLGHpyLamGIrfsj2r/SKwvPczaEoJLEZMjoIgikFxyc/D9H0qvI80kM/0rjuuixEqwRpOSSxCYn3HtYacvgplX/xU6GwVqg1N3iPG1lqoj5oyVqRmfnev6iTEznNnsqvKpS2iRglwNtgGFLAnr39ORDY4vqQ1v5TsiHr6hvVb3VHEVRsPOAuYG5gygXBYYDRKCF43kGyaBBIDmMxN7muOZ5LIg9UhWMi78aDD+3rGSp7DOEH+32FwI4s7n8YOsbPibM26bNmSs0ZgDa50H8ztYpHuFlGSOXC7cc6nI5EwU700iASxJYALTr7TlV+kfPzGVD8/iS1mFlXoZZ/sl3duYoIffT7W8IeFwTu3PQfpRmgD0AIUSgQCav0tqzvipf5cHatrdkYN9iReyLqx5Mw199p9jZ0HVZeniAse7Ug2RXAvErKsjI2lzmjhFtdLsuJ6GEDhUy34w5tS3d7ylJdes/31ITtHx9fTnyzQQixZhYfriixih71BEL1kdKqcl6dJZ1W9fTP2U0qxnLVT5Ky7/rrsn/1ntNGO2m4enQ2ZVYgKY95XV3tbjHcoLmL5SW7vXdOA9X4zinJV5K0WHeimdwGpRv/d5rXYJJi2DMPRlYeKRBdDWisFew3V437eu+EFvzJC6Rxy9ErB81tWOxlxqxRdiLR3ukI1oiU/3G2ak9FjlxPTn0AAxITxS5X8qEG68V31rO9oCvsRI8tnmc6K4fZO0XwfOKBRWKKFX/WsLqJIYa41b/nvYgg0V3lnfNFWxZ2F30+EHPZJl6kji6WD6kXZLcJeIvUeuTnKTizcCdPtRbr3/TLWqupRGdU8S0wAiQu2x4/V2fgCtlnRnwEteR+2cC/LHXjEofLoprbibTcOKqFvh/VPpS11QKrNh18oAFCqXgaiWVS/oJsLT/FlPX0kyX4ygr/FPj+All1GYPUxg6u9JhZlVPjoBNkmWF1s/7c8aYS0Mx0jSRmj8q5BS9SUcBRBAaiEUkJq9hCJt6x1x0Kze+BxDQX/XTU/XY2XDy3R69aYFo05Gs2RRVUABP9W7lur+ejVCgbuyO0oZXA9pf3nvONcIEdYc4BX9j/YXNyJR0AfcieMjjlv0iFZ3IXLSVmJ2LEWDMNOu5h4Z8GmT8vkoBC2WoPEjiJYRExZoXmHF8FdrvL4CpY27m0b/JCt4Sdb6ILNEvZZyq4VmG99O3PeFriUb8g8LzbUdecB7zbNM0+EJCMQ==, __VIEWSTATEGENERATOR=E559B24A, __VIEWSTATEENCRYPTED=, ucQuickSearch$mUcJDLSearch$ddlJurisdiction=, ucQuickSearch$mUcJDLSearch$ddlDivision=, ucQuickSearch$mUcJDLSearch$ddlLocation=, ucQuickSearch$ddlMatterType=, ucQuickSearch$txtFileNumber=, ucQuickSearch$txtFileYear=, ucQuickSearch$txtPartyName=, ucQuickSearch$searchButton=Search>
+search_form.fields=OrderedMultiDict([('__VIEWSTATE', <robobrowser.forms.fields.Input object at 0x7fcaf2d01550>), ('__VIEWSTATEGENERATOR', <robobrowser.forms.fields.Input object at 0x7fcaf2d015e0>), ('__VIEWSTATEENCRYPTED', <robobrowser.forms.fields.Input object at 0x7fcaf2d01730>), ('ucQuickSearch$mUcJDLSearch$ddlJurisdiction', <robobrowser.forms.fields.Select object at 0x7fcaf2d01790>), ('ucQuickSearch$mUcJDLSearch$ddlDivision', <robobrowser.forms.fields.Select object at 0x7fcaf2d017f0>), ('ucQuickSearch$mUcJDLSearch$ddlLocation', <robobrowser.forms.fields.Select object at 0x7fcaf2d018b0>), ('ucQuickSearch$ddlMatterType', <robobrowser.forms.fields.Select object at 0x7fcaf2d01820>), ('ucQuickSearch$txtFileNumber', <robobrowser.forms.fields.Input object at 0x7fcaf2d018e0>), ('ucQuickSearch$txtFileYear', <robobrowser.forms.fields.Input object at 0x7fcaf2d01a00>), ('ucQuickSearch$txtPartyName', <robobrowser.forms.fields.Input object at 0x7fcaf2d01940>), ('ucQuickSearch$searchButton', <robobrowser.forms.fields.Submit object at 0x7fcaf2d01190>)])
+[2022-08-03 10:27:03.149] ERROR: update.update_db @ 78: Unexpected error: current_matter=Matter(type='CAV', number=101, year=2022, title=None, deceased_name=None, flags=None): 
+Traceback (most recent call last):
+  File "/home/runner/probate/probatewebapp/update.py", line 71, in update_db
+    updater.update(years)
+  File "/home/runner/probate/probatewebapp/update.py", line 262, in update
+    self.search_matter(Matter(matter_type, number, year, None, None, None))
+  File "/home/runner/probate/probatewebapp/update.py", line 288, in search_matter
+    search_form[MATTER_TYPE_SELECTOR_NAME].value = matter.type
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/robobrowser/forms/form.py", line 213, in __getitem__
+    return self.fields[item]
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/werkzeug/datastructures.py", line 716, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+[2022-08-03 10:27:09.443] DEBUG: update.db @ 120: Closing db
+[2022-08-03 10:27:09.443] DEBUG: update.db @ 122: Closed db
+[2022-08-03 10:27:09.477] INFO: update.update_db @ 87: Sleeping for 900 seconds
+[2022-08-03 10:42:11.254] INFO: update.update @ 249: 2022
+[2022-08-03 10:42:11.258] INFO: update.update @ 254: CAV
+[2022-08-03 10:42:11.260] DEBUG: update.db @ 112: Loading db
+[2022-08-03 10:42:11.289] INFO: update.update @ 258: 79
+[2022-08-03 10:42:11.290] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 10:42:55.861] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 10:43:31.180] INFO: update.update @ 254: CIT
+[2022-08-03 10:43:31.185] INFO: update.update @ 258: 15
+[2022-08-03 10:44:04.650] INFO: update.update @ 254: ELEC
+[2022-08-03 10:44:04.654] INFO: update.update @ 258: 6
+[2022-08-03 10:44:44.745] INFO: update.update @ 254: PRO
+[2022-08-03 10:44:44.860] INFO: update.update @ 258: 4756
+[2022-08-03 10:45:32.592] INFO: update.update @ 254: REN
+[2022-08-03 10:45:32.596] INFO: update.update @ 258: 29
+[2022-08-03 10:46:07.986] INFO: update.update @ 254: STAT
+[2022-08-03 10:46:07.987] INFO: update.update @ 258: 0
+[2022-08-03 10:46:55.66] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 10:46:55.269] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 10:46:55.397] DEBUG: update.db @ 120: Closing db
+[2022-08-03 10:46:55.401] DEBUG: update.db @ 122: Closed db
+[2022-08-03 10:46:55.405] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 11:16:58.697] INFO: update.update @ 249: 2022
+[2022-08-03 11:16:58.698] INFO: update.update @ 254: CAV
+[2022-08-03 11:16:58.698] DEBUG: update.db @ 112: Loading db
+[2022-08-03 11:16:58.753] INFO: update.update @ 258: 79
+[2022-08-03 11:16:58.754] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 11:18:04.158] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 11:18:57.207] INFO: update.update @ 254: CIT
+[2022-08-03 11:18:57.209] INFO: update.update @ 258: 15
+[2022-08-03 11:19:30.693] INFO: update.update @ 254: ELEC
+[2022-08-03 11:19:30.707] INFO: update.update @ 258: 6
+[2022-08-03 11:20:21.941] INFO: update.update @ 254: PRO
+[2022-08-03 11:20:22.99] INFO: update.update @ 258: 4759
+[2022-08-03 11:20:27.163] INFO: update.update @ 271: 4760
+[2022-08-03 11:21:50.350] INFO: update.update @ 254: REN
+[2022-08-03 11:21:50.367] INFO: update.update @ 258: 29
+[2022-08-03 11:22:49.541] INFO: update.update @ 254: STAT
+[2022-08-03 11:22:49.550] INFO: update.update @ 258: 0
+[2022-08-03 11:23:19.456] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 11:23:19.657] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 11:23:19.737] DEBUG: update.db @ 120: Closing db
+[2022-08-03 11:23:19.737] DEBUG: update.db @ 122: Closed db
+[2022-08-03 11:23:19.742] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 11:53:23.421] INFO: update.update @ 249: 2022
+[2022-08-03 11:53:23.424] INFO: update.update @ 254: CAV
+[2022-08-03 11:53:23.424] DEBUG: update.db @ 112: Loading db
+[2022-08-03 11:53:23.458] INFO: update.update @ 258: 79
+[2022-08-03 11:53:23.462] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 11:55:00.711] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 11:55:35.198] INFO: update.update @ 254: CIT
+[2022-08-03 11:55:35.216] INFO: update.update @ 258: 15
+[2022-08-03 11:56:26.823] INFO: update.update @ 254: ELEC
+[2022-08-03 11:56:26.842] INFO: update.update @ 258: 6
+[2022-08-03 11:57:15.872] INFO: update.update @ 254: PRO
+[2022-08-03 11:57:16.510] INFO: update.update @ 258: 4762
+[2022-08-03 11:57:57.122] INFO: update.update @ 271: 4770
+[2022-08-03 11:58:44.810] INFO: update.update @ 254: REN
+[2022-08-03 11:58:44.821] INFO: update.update @ 258: 29
+[2022-08-03 11:59:36.453] INFO: update.update @ 254: STAT
+[2022-08-03 11:59:36.454] INFO: update.update @ 258: 0
+[2022-08-03 12:00:16.721] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 12:00:17.38] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 12:00:17.223] DEBUG: update.db @ 120: Closing db
+[2022-08-03 12:00:17.226] DEBUG: update.db @ 122: Closed db
+[2022-08-03 12:00:17.255] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 12:30:20.905] INFO: update.update @ 249: 2022
+[2022-08-03 12:30:20.906] INFO: update.update @ 254: CAV
+[2022-08-03 12:30:20.906] DEBUG: update.db @ 112: Loading db
+[2022-08-03 12:30:20.942] INFO: update.update @ 258: 79
+[2022-08-03 12:30:20.944] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 12:31:22.772] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 12:32:48.387] INFO: update.update @ 254: CIT
+[2022-08-03 12:32:48.413] INFO: update.update @ 258: 15
+[2022-08-03 12:34:17.134] INFO: update.update @ 254: ELEC
+[2022-08-03 12:34:17.164] INFO: update.update @ 258: 6
+[2022-08-03 12:35:02.414] INFO: update.update @ 254: PRO
+[2022-08-03 12:35:02.463] INFO: update.update @ 258: 4771
+[2022-08-03 12:36:12.494] INFO: update.update @ 254: REN
+[2022-08-03 12:36:12.502] INFO: update.update @ 258: 29
+[2022-08-03 12:37:05.397] INFO: update.update @ 254: STAT
+[2022-08-03 12:37:05.402] INFO: update.update @ 258: 0
+[2022-08-03 12:37:47.188] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 12:37:47.672] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 12:37:47.801] DEBUG: update.db @ 120: Closing db
+[2022-08-03 12:37:47.802] DEBUG: update.db @ 122: Closed db
+[2022-08-03 12:37:47.811] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 13:07:50.933] INFO: update.update @ 249: 2022
+[2022-08-03 13:07:50.936] INFO: update.update @ 254: CAV
+[2022-08-03 13:07:50.937] DEBUG: update.db @ 112: Loading db
+[2022-08-03 13:07:50.949] INFO: update.update @ 258: 79
+[2022-08-03 13:07:50.950] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 13:08:41.836] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 13:09:04.179] INFO: update.update @ 254: CIT
+[2022-08-03 13:09:04.180] INFO: update.update @ 258: 15
+[2022-08-03 13:09:29.159] INFO: update.update @ 254: ELEC
+[2022-08-03 13:09:29.161] INFO: update.update @ 258: 6
+[2022-08-03 13:09:51.497] INFO: update.update @ 254: PRO
+[2022-08-03 13:09:51.552] INFO: update.update @ 258: 4774
+[2022-08-03 13:10:21.936] INFO: update.update @ 254: REN
+[2022-08-03 13:10:21.941] INFO: update.update @ 258: 29
+[2022-08-03 13:10:50.292] INFO: update.update @ 254: STAT
+[2022-08-03 13:10:50.293] INFO: update.update @ 258: 0
+[2022-08-03 13:11:16.256] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 13:11:16.822] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 13:11:17.79] DEBUG: update.db @ 120: Closing db
+[2022-08-03 13:11:17.82] DEBUG: update.db @ 122: Closed db
+[2022-08-03 13:11:17.105] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 13:41:19.673] INFO: update.update @ 249: 2022
+[2022-08-03 13:41:19.685] INFO: update.update @ 254: CAV
+[2022-08-03 13:41:19.689] DEBUG: update.db @ 112: Loading db
+[2022-08-03 13:41:19.731] INFO: update.update @ 258: 79
+[2022-08-03 13:41:19.732] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 13:42:11.950] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 13:42:42.807] INFO: update.update @ 254: CIT
+[2022-08-03 13:42:42.809] INFO: update.update @ 258: 15
+[2022-08-03 13:43:11.318] INFO: update.update @ 254: ELEC
+[2022-08-03 13:43:11.328] INFO: update.update @ 258: 6
+[2022-08-03 13:43:37.289] INFO: update.update @ 254: PRO
+[2022-08-03 13:43:37.348] INFO: update.update @ 258: 4777
+[2022-08-03 13:44:07.487] INFO: update.update @ 254: REN
+[2022-08-03 13:44:07.488] INFO: update.update @ 258: 29
+[2022-08-03 13:44:33.824] INFO: update.update @ 254: STAT
+[2022-08-03 13:44:33.824] INFO: update.update @ 258: 0
+[2022-08-03 13:45:04.826] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 13:45:05.10] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 13:45:05.42] DEBUG: update.db @ 120: Closing db
+[2022-08-03 13:45:05.42] DEBUG: update.db @ 122: Closed db
+[2022-08-03 13:45:05.75] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 14:15:08.640] INFO: update.update @ 249: 2022
+[2022-08-03 14:15:08.641] INFO: update.update @ 254: CAV
+[2022-08-03 14:15:08.641] DEBUG: update.db @ 112: Loading db
+[2022-08-03 14:15:08.669] INFO: update.update @ 258: 79
+[2022-08-03 14:15:08.670] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 14:18:05.239] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 14:18:36.870] INFO: update.update @ 254: CIT
+[2022-08-03 14:18:36.874] INFO: update.update @ 258: 15
+[2022-08-03 14:19:11.677] INFO: update.update @ 254: ELEC
+[2022-08-03 14:19:11.711] INFO: update.update @ 258: 6
+[2022-08-03 14:19:57.553] INFO: update.update @ 254: PRO
+[2022-08-03 14:19:57.639] INFO: update.update @ 258: 4778
+[2022-08-03 14:20:03.964] INFO: update.update @ 271: 4780
+[2022-08-03 14:20:52.623] INFO: update.update @ 254: REN
+[2022-08-03 14:20:52.640] INFO: update.update @ 258: 29
+[2022-08-03 14:21:37.135] INFO: update.update @ 254: STAT
+[2022-08-03 14:21:37.145] INFO: update.update @ 258: 0
+[2022-08-03 14:22:18.76] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 14:22:18.276] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 14:22:18.496] DEBUG: update.db @ 120: Closing db
+[2022-08-03 14:22:18.497] DEBUG: update.db @ 122: Closed db
+[2022-08-03 14:22:18.534] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 14:52:21.488] INFO: update.update @ 249: 2022
+[2022-08-03 14:52:21.509] INFO: update.update @ 254: CAV
+[2022-08-03 14:52:21.510] DEBUG: update.db @ 112: Loading db
+[2022-08-03 14:52:21.546] INFO: update.update @ 258: 79
+[2022-08-03 14:52:21.554] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 14:53:50.430] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 14:54:20.842] INFO: update.update @ 254: CIT
+[2022-08-03 14:54:20.845] INFO: update.update @ 258: 15
+[2022-08-03 14:54:51.793] INFO: update.update @ 254: ELEC
+[2022-08-03 14:54:51.795] INFO: update.update @ 258: 6
+[2022-08-03 14:55:18.377] INFO: update.update @ 254: PRO
+[2022-08-03 14:55:18.427] INFO: update.update @ 258: 4782
+[2022-08-03 14:55:56.370] INFO: update.update @ 254: REN
+[2022-08-03 14:55:56.378] INFO: update.update @ 258: 29
+[2022-08-03 14:56:26.234] INFO: update.update @ 254: STAT
+[2022-08-03 14:56:26.236] INFO: update.update @ 258: 0
+[2022-08-03 14:56:56.979] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 14:56:57.139] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 14:56:57.198] DEBUG: update.db @ 120: Closing db
+[2022-08-03 14:56:57.198] DEBUG: update.db @ 122: Closed db
+[2022-08-03 14:56:57.212] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 15:27:00.401] INFO: update.update @ 249: 2022
+[2022-08-03 15:27:00.404] INFO: update.update @ 254: CAV
+[2022-08-03 15:27:00.404] DEBUG: update.db @ 112: Loading db
+[2022-08-03 15:27:00.432] INFO: update.update @ 258: 79
+[2022-08-03 15:27:00.433] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 15:28:12.210] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 15:28:54.263] INFO: update.update @ 254: CIT
+[2022-08-03 15:28:54.265] INFO: update.update @ 258: 15
+[2022-08-03 15:29:28.48] INFO: update.update @ 254: ELEC
+[2022-08-03 15:29:28.57] INFO: update.update @ 258: 6
+[2022-08-03 15:30:01.667] INFO: update.update @ 254: PRO
+[2022-08-03 15:30:01.723] INFO: update.update @ 258: 4785
+[2022-08-03 15:30:39.975] INFO: update.update @ 254: REN
+[2022-08-03 15:30:39.986] INFO: update.update @ 258: 29
+[2022-08-03 15:31:09.874] INFO: update.update @ 254: STAT
+[2022-08-03 15:31:09.875] INFO: update.update @ 258: 0
+[2022-08-03 15:31:43.150] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 15:31:43.361] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 15:31:43.576] DEBUG: update.db @ 120: Closing db
+[2022-08-03 15:31:43.581] DEBUG: update.db @ 122: Closed db
+[2022-08-03 15:31:43.599] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 16:01:46.902] INFO: update.update @ 249: 2022
+[2022-08-03 16:01:46.906] INFO: update.update @ 254: CAV
+[2022-08-03 16:01:46.907] DEBUG: update.db @ 112: Loading db
+[2022-08-03 16:01:46.949] INFO: update.update @ 258: 79
+[2022-08-03 16:01:46.950] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 16:03:00.517] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 16:03:36.726] INFO: update.update @ 254: CIT
+[2022-08-03 16:03:36.744] INFO: update.update @ 258: 15
+[2022-08-03 16:04:14.16] INFO: update.update @ 254: ELEC
+[2022-08-03 16:04:14.35] INFO: update.update @ 258: 6
+[2022-08-03 16:05:05.745] INFO: update.update @ 254: PRO
+[2022-08-03 16:05:05.821] INFO: update.update @ 258: 4785
+[2022-08-03 16:05:47.451] INFO: update.update @ 254: REN
+[2022-08-03 16:05:47.471] INFO: update.update @ 258: 29
+[2022-08-03 16:06:17.244] INFO: update.update @ 254: STAT
+[2022-08-03 16:06:17.261] INFO: update.update @ 258: 0
+[2022-08-03 16:06:59.422] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 16:06:59.528] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 16:06:59.586] DEBUG: update.db @ 120: Closing db
+[2022-08-03 16:06:59.587] DEBUG: update.db @ 122: Closed db
+[2022-08-03 16:06:59.595] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 16:36:43.573] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-03 16:36:43.574] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-08-03 16:36:43.575] DEBUG: update.db @ 112: Loading db
+[2022-08-03 16:36:44.713] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-08-03 16:36:44.713] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-08-03 16:36:44.716] INFO: update.update @ 249: 2022
+[2022-08-03 16:36:44.717] INFO: update.update @ 254: CAV
+[2022-08-03 16:36:44.718] INFO: update.update @ 258: 79
+[2022-08-03 16:36:44.718] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 16:37:34.375] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 16:37:52.290] INFO: update.update @ 254: CIT
+[2022-08-03 16:37:52.291] INFO: update.update @ 258: 15
+[2022-08-03 16:38:10.103] INFO: update.update @ 254: ELEC
+[2022-08-03 16:38:10.109] INFO: update.update @ 258: 6
+[2022-08-03 16:38:29.657] INFO: update.update @ 254: PRO
+[2022-08-03 16:38:29.711] INFO: update.update @ 258: 4786
+[2022-08-03 16:38:46.988] INFO: update.update @ 254: REN
+[2022-08-03 16:38:46.989] INFO: update.update @ 258: 29
+[2022-08-03 16:39:04.153] INFO: update.update @ 254: STAT
+[2022-08-03 16:39:04.154] INFO: update.update @ 258: 0
+[2022-08-03 16:39:23.137] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 16:39:23.179] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 16:39:23.250] DEBUG: update.db @ 120: Closing db
+[2022-08-03 16:39:23.250] DEBUG: update.db @ 122: Closed db
+[2022-08-03 16:39:23.252] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 17:09:25.212] INFO: update.update @ 249: 2022
+[2022-08-03 17:09:25.213] INFO: update.update @ 254: CAV
+[2022-08-03 17:09:25.213] DEBUG: update.db @ 112: Loading db
+[2022-08-03 17:09:25.214] INFO: update.update @ 258: 79
+[2022-08-03 17:09:25.214] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 17:10:07.702] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 17:10:25.777] INFO: update.update @ 254: CIT
+[2022-08-03 17:10:25.778] INFO: update.update @ 258: 15
+[2022-08-03 17:10:44.798] INFO: update.update @ 254: ELEC
+[2022-08-03 17:10:44.799] INFO: update.update @ 258: 6
+[2022-08-03 17:11:02.405] INFO: update.update @ 254: PRO
+[2022-08-03 17:11:02.410] INFO: update.update @ 258: 4786
+[2022-08-03 17:11:21.857] INFO: update.update @ 254: REN
+[2022-08-03 17:11:21.858] INFO: update.update @ 258: 29
+[2022-08-03 17:11:40.177] INFO: update.update @ 254: STAT
+[2022-08-03 17:11:40.178] INFO: update.update @ 258: 0
+[2022-08-03 17:11:58.439] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 17:11:58.463] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 17:11:58.490] DEBUG: update.db @ 120: Closing db
+[2022-08-03 17:11:58.490] DEBUG: update.db @ 122: Closed db
+[2022-08-03 17:11:58.492] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 17:42:00.532] INFO: update.update @ 249: 2022
+[2022-08-03 17:42:00.532] INFO: update.update @ 254: CAV
+[2022-08-03 17:42:00.532] DEBUG: update.db @ 112: Loading db
+[2022-08-03 17:42:00.533] INFO: update.update @ 258: 79
+[2022-08-03 17:42:00.534] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-03 17:42:40.543] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-03 17:42:59.554] INFO: update.update @ 254: CIT
+[2022-08-03 17:42:59.555] INFO: update.update @ 258: 15
+[2022-08-03 17:43:18.645] INFO: update.update @ 254: ELEC
+[2022-08-03 17:43:18.647] INFO: update.update @ 258: 6
+[2022-08-03 17:43:39.938] INFO: update.update @ 254: PRO
+[2022-08-03 17:43:39.948] INFO: update.update @ 258: 4786
+[2022-08-03 17:44:00.58] INFO: update.update @ 254: REN
+[2022-08-03 17:44:00.59] INFO: update.update @ 258: 29
+[2022-08-03 17:44:20.877] INFO: update.update @ 254: STAT
+[2022-08-03 17:44:20.885] INFO: update.update @ 258: 0
+[2022-08-03 17:44:41.104] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-03 17:44:41.126] INFO: update.rescrape @ 484: rescraping
+[2022-08-03 17:44:41.176] DEBUG: update.db @ 120: Closing db
+[2022-08-03 17:44:41.176] DEBUG: update.db @ 122: Closed db
+[2022-08-03 17:44:41.178] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-03 18:14:43.117] DEBUG: update.db @ 120: Closing db
+[2022-08-03 18:14:43.118] DEBUG: update.db @ 122: Closed db
+[2022-08-03 18:14:43.118] INFO: update.update_db @ 87: Sleeping for 49516 seconds
+[2022-08-04 08:00:59.951] INFO: update.update @ 249: 2022
+[2022-08-04 08:00:59.953] INFO: update.update @ 254: CAV
+[2022-08-04 08:00:59.954] DEBUG: update.db @ 112: Loading db
+[2022-08-04 08:00:59.977] INFO: update.update @ 258: 79
+[2022-08-04 08:00:59.979] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 08:02:11.981] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 08:02:42.621] INFO: update.update @ 254: CIT
+[2022-08-04 08:02:42.624] INFO: update.update @ 258: 15
+[2022-08-04 08:03:07.616] INFO: update.update @ 254: ELEC
+[2022-08-04 08:03:07.624] INFO: update.update @ 258: 6
+[2022-08-04 08:03:36.952] INFO: update.update @ 254: PRO
+[2022-08-04 08:03:37.5] INFO: update.update @ 258: 4786
+[2022-08-04 08:04:00.105] INFO: update.update @ 254: REN
+[2022-08-04 08:04:00.107] INFO: update.update @ 258: 29
+[2022-08-04 08:04:37.153] INFO: update.update @ 254: STAT
+[2022-08-04 08:04:37.161] INFO: update.update @ 258: 0
+[2022-08-04 08:05:21.210] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 08:05:21.426] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 08:05:21.607] DEBUG: update.rescrape @ 487: PRO 4645/2022
+[2022-08-04 08:05:25.837] DEBUG: update.rescrape @ 487: PRO 4647/2022
+[2022-08-04 08:05:28.965] DEBUG: update.rescrape @ 487: PRO 4650/2022
+[2022-08-04 08:05:32.866] DEBUG: update.rescrape @ 487: PRO 4652/2022
+[2022-08-04 08:05:35.851] DEBUG: update.rescrape @ 487: PRO 4653/2022
+[2022-08-04 08:05:39.164] DEBUG: update.rescrape @ 487: PRO 4655/2022
+[2022-08-04 08:05:42.79] DEBUG: update.rescrape @ 487: PRO 4656/2022
+[2022-08-04 08:05:44.147] DEBUG: update.rescrape @ 487: PRO 4658/2022
+[2022-08-04 08:05:46.344] DEBUG: update.rescrape @ 487: PRO 4659/2022
+[2022-08-04 08:05:49.131] DEBUG: update.rescrape @ 487: PRO 4660/2022
+[2022-08-04 08:05:53.110] DEBUG: update.rescrape @ 487: PRO 4661/2022
+[2022-08-04 08:05:56.449] DEBUG: update.rescrape @ 487: PRO 4662/2022
+[2022-08-04 08:06:00.878] DEBUG: update.rescrape @ 487: PRO 4664/2022
+[2022-08-04 08:06:02.997] DEBUG: update.rescrape @ 487: PRO 4665/2022
+[2022-08-04 08:06:05.829] DEBUG: update.rescrape @ 487: PRO 4668/2022
+[2022-08-04 08:06:16.83] DEBUG: update.rescrape @ 487: PRO 4669/2022
+[2022-08-04 08:06:18.189] DEBUG: update.rescrape @ 487: REN 29/2022
+[2022-08-04 08:06:20.5] DEBUG: update.rescrape @ 487: PRO 4671/2022
+[2022-08-04 08:06:21.738] DEBUG: update.rescrape @ 487: PRO 4676/2022
+[2022-08-04 08:06:23.858] DEBUG: update.db @ 120: Closing db
+[2022-08-04 08:06:23.859] DEBUG: update.db @ 122: Closed db
+[2022-08-04 08:06:23.867] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 08:36:26.527] INFO: update.update @ 249: 2022
+[2022-08-04 08:36:26.530] INFO: update.update @ 254: CAV
+[2022-08-04 08:36:26.531] DEBUG: update.db @ 112: Loading db
+[2022-08-04 08:36:26.546] INFO: update.update @ 258: 79
+[2022-08-04 08:36:26.546] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 08:37:49.414] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 08:38:14.880] INFO: update.update @ 254: CIT
+[2022-08-04 08:38:14.883] INFO: update.update @ 258: 15
+[2022-08-04 08:38:47.925] INFO: update.update @ 254: ELEC
+[2022-08-04 08:38:47.983] INFO: update.update @ 258: 6
+[2022-08-04 08:39:16.467] INFO: update.update @ 254: PRO
+[2022-08-04 08:39:16.518] INFO: update.update @ 258: 4786
+[2022-08-04 08:39:46.329] INFO: update.update @ 254: REN
+[2022-08-04 08:39:46.336] INFO: update.update @ 258: 29
+[2022-08-04 08:40:08.351] INFO: update.update @ 254: STAT
+[2022-08-04 08:40:08.352] INFO: update.update @ 258: 0
+[2022-08-04 08:40:34.128] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 08:40:34.240] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 08:40:34.280] DEBUG: update.db @ 120: Closing db
+[2022-08-04 08:40:34.280] DEBUG: update.db @ 122: Closed db
+[2022-08-04 08:40:34.283] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 09:10:37.651] INFO: update.update @ 249: 2022
+[2022-08-04 09:10:37.654] INFO: update.update @ 254: CAV
+[2022-08-04 09:10:37.655] DEBUG: update.db @ 112: Loading db
+[2022-08-04 09:10:37.679] INFO: update.update @ 258: 79
+[2022-08-04 09:10:37.680] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 11:23:42.763] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-04 11:23:42.764] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-08-04 11:23:42.764] DEBUG: update.db @ 112: Loading db
+[2022-08-04 11:23:44.197] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-08-04 11:23:44.197] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-08-04 11:23:44.200] INFO: update.update @ 249: 2022
+[2022-08-04 11:23:44.201] INFO: update.update @ 254: CAV
+[2022-08-04 11:23:44.203] INFO: update.update @ 258: 79
+[2022-08-04 11:23:44.203] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 11:24:32.808] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 11:24:51.691] INFO: update.update @ 254: CIT
+[2022-08-04 11:24:51.692] INFO: update.update @ 258: 15
+[2022-08-04 11:25:11.188] INFO: update.update @ 254: ELEC
+[2022-08-04 11:25:11.224] INFO: update.update @ 258: 6
+[2022-08-04 11:25:31.127] INFO: update.update @ 254: PRO
+[2022-08-04 11:25:31.189] INFO: update.update @ 258: 4786
+[2022-08-04 11:25:36.634] INFO: update.update @ 271: 4790
+[2022-08-04 11:26:01.726] INFO: update.update @ 254: REN
+[2022-08-04 11:26:01.727] INFO: update.update @ 258: 29
+[2022-08-04 11:26:22.538] INFO: update.update @ 254: STAT
+[2022-08-04 11:26:22.538] INFO: update.update @ 258: 0
+[2022-08-04 11:26:43.748] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 11:26:43.769] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 11:26:43.840] DEBUG: update.db @ 120: Closing db
+[2022-08-04 11:26:43.840] DEBUG: update.db @ 122: Closed db
+[2022-08-04 11:26:43.843] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 11:56:46.571] INFO: update.update @ 249: 2022
+[2022-08-04 11:56:46.572] INFO: update.update @ 254: CAV
+[2022-08-04 11:56:46.572] DEBUG: update.db @ 112: Loading db
+[2022-08-04 11:56:46.575] INFO: update.update @ 258: 79
+[2022-08-04 11:56:46.578] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 11:58:44.862] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 11:59:07.516] INFO: update.update @ 254: CIT
+[2022-08-04 11:59:07.517] INFO: update.update @ 258: 15
+[2022-08-04 11:59:31.663] INFO: update.update @ 254: ELEC
+[2022-08-04 11:59:31.664] INFO: update.update @ 258: 6
+[2022-08-04 11:59:55.479] INFO: update.update @ 254: PRO
+[2022-08-04 11:59:55.486] INFO: update.update @ 258: 4792
+[2022-08-04 12:00:28.604] INFO: update.update @ 254: REN
+[2022-08-04 12:00:28.605] INFO: update.update @ 258: 29
+[2022-08-04 12:00:50.932] INFO: update.update @ 254: STAT
+[2022-08-04 12:00:50.936] INFO: update.update @ 258: 0
+[2022-08-04 12:01:16.677] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 12:01:16.739] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 12:01:16.791] DEBUG: update.db @ 120: Closing db
+[2022-08-04 12:01:16.791] DEBUG: update.db @ 122: Closed db
+[2022-08-04 12:01:16.795] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 12:31:19.245] INFO: update.update @ 249: 2022
+[2022-08-04 12:31:19.246] INFO: update.update @ 254: CAV
+[2022-08-04 12:31:19.246] DEBUG: update.db @ 112: Loading db
+[2022-08-04 12:31:19.247] INFO: update.update @ 258: 79
+[2022-08-04 12:31:19.247] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 12:32:10.594] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 12:32:37.738] INFO: update.update @ 254: CIT
+[2022-08-04 12:32:37.739] INFO: update.update @ 258: 15
+[2022-08-04 12:33:05.268] INFO: update.update @ 254: ELEC
+[2022-08-04 12:33:05.269] INFO: update.update @ 258: 6
+[2022-08-04 12:33:28.721] INFO: update.update @ 254: PRO
+[2022-08-04 12:33:28.735] INFO: update.update @ 258: 4796
+[2022-08-04 12:33:53.931] INFO: update.update @ 254: REN
+[2022-08-04 12:33:53.932] INFO: update.update @ 258: 29
+[2022-08-04 12:34:20.635] INFO: update.update @ 254: STAT
+[2022-08-04 12:34:20.641] INFO: update.update @ 258: 0
+[2022-08-04 12:34:42.879] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 12:34:42.935] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 12:34:42.997] DEBUG: update.db @ 120: Closing db
+[2022-08-04 12:34:42.997] DEBUG: update.db @ 122: Closed db
+[2022-08-04 12:34:43.0] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 13:04:45.527] INFO: update.update @ 249: 2022
+[2022-08-04 13:04:45.527] INFO: update.update @ 254: CAV
+[2022-08-04 13:04:45.527] DEBUG: update.db @ 112: Loading db
+[2022-08-04 13:04:45.529] INFO: update.update @ 258: 79
+[2022-08-04 13:04:45.529] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 13:05:37.280] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 13:06:27.620] INFO: update.update @ 254: CIT
+[2022-08-04 13:06:27.625] INFO: update.update @ 258: 15
+[2022-08-04 13:07:25.828] INFO: update.update @ 254: ELEC
+[2022-08-04 13:07:25.830] INFO: update.update @ 258: 6
+[2022-08-04 13:08:15.198] INFO: update.update @ 254: PRO
+[2022-08-04 13:08:15.205] INFO: update.update @ 258: 4798
+[2022-08-04 13:08:19.865] INFO: update.update @ 271: 4800
+[2022-08-04 13:09:06.469] INFO: update.update @ 254: REN
+[2022-08-04 13:09:06.470] INFO: update.update @ 258: 29
+[2022-08-04 13:09:38.119] INFO: update.update @ 254: STAT
+[2022-08-04 13:09:38.120] INFO: update.update @ 258: 0
+[2022-08-04 13:10:02.840] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 13:10:02.865] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 13:10:02.951] DEBUG: update.db @ 120: Closing db
+[2022-08-04 13:10:02.952] DEBUG: update.db @ 122: Closed db
+[2022-08-04 13:10:02.955] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 13:40:05.489] INFO: update.update @ 249: 2022
+[2022-08-04 13:40:05.497] INFO: update.update @ 254: CAV
+[2022-08-04 13:40:05.503] DEBUG: update.db @ 112: Loading db
+[2022-08-04 13:40:05.509] INFO: update.update @ 258: 79
+[2022-08-04 13:40:05.510] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 13:41:00.601] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 13:41:21.420] INFO: update.update @ 254: CIT
+[2022-08-04 13:41:21.428] INFO: update.update @ 258: 15
+[2022-08-04 13:41:41.114] INFO: update.update @ 254: ELEC
+[2022-08-04 13:41:41.115] INFO: update.update @ 258: 6
+[2022-08-04 13:42:01.4] INFO: update.update @ 254: PRO
+[2022-08-04 13:42:01.12] INFO: update.update @ 258: 4803
+[2022-08-04 13:42:10.81] INFO: update.update @ 271: 4810
+[2022-08-04 13:42:31.53] INFO: update.update @ 254: REN
+[2022-08-04 13:42:31.55] INFO: update.update @ 258: 29
+[2022-08-04 13:42:49.741] INFO: update.update @ 254: STAT
+[2022-08-04 13:42:49.742] INFO: update.update @ 258: 0
+[2022-08-04 13:43:10.272] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 13:43:10.336] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 13:43:10.368] DEBUG: update.db @ 120: Closing db
+[2022-08-04 13:43:10.368] DEBUG: update.db @ 122: Closed db
+[2022-08-04 13:43:10.373] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 14:13:12.967] INFO: update.update @ 249: 2022
+[2022-08-04 14:13:12.967] INFO: update.update @ 254: CAV
+[2022-08-04 14:13:12.968] DEBUG: update.db @ 112: Loading db
+[2022-08-04 14:13:12.969] INFO: update.update @ 258: 79
+[2022-08-04 14:13:12.969] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 14:14:03.61] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 14:14:24.601] INFO: update.update @ 254: CIT
+[2022-08-04 14:14:24.602] INFO: update.update @ 258: 15
+[2022-08-04 14:14:53.719] INFO: update.update @ 254: ELEC
+[2022-08-04 14:14:53.720] INFO: update.update @ 258: 6
+[2022-08-04 14:15:17.567] INFO: update.update @ 254: PRO
+[2022-08-04 14:15:17.573] INFO: update.update @ 258: 4810
+[2022-08-04 14:15:47.828] INFO: update.update @ 254: REN
+[2022-08-04 14:15:47.829] INFO: update.update @ 258: 29
+[2022-08-04 14:16:16.362] INFO: update.update @ 254: STAT
+[2022-08-04 14:16:16.363] INFO: update.update @ 258: 0
+[2022-08-04 14:16:40.182] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 14:16:40.219] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 14:16:40.277] DEBUG: update.db @ 120: Closing db
+[2022-08-04 14:16:40.277] DEBUG: update.db @ 122: Closed db
+[2022-08-04 14:16:40.281] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 14:46:42.747] INFO: update.update @ 249: 2022
+[2022-08-04 14:46:42.747] INFO: update.update @ 254: CAV
+[2022-08-04 14:46:42.748] DEBUG: update.db @ 112: Loading db
+[2022-08-04 14:46:42.751] INFO: update.update @ 258: 79
+[2022-08-04 14:46:42.751] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 14:47:46.833] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 14:47:50.168] INFO: update.update @ 271: 80
+[2022-08-04 14:48:14.101] INFO: update.update @ 254: CIT
+[2022-08-04 14:48:14.103] INFO: update.update @ 258: 15
+[2022-08-04 14:48:40.450] INFO: update.update @ 254: ELEC
+[2022-08-04 14:48:40.455] INFO: update.update @ 258: 6
+[2022-08-04 14:49:09.549] INFO: update.update @ 254: PRO
+[2022-08-04 14:49:09.556] INFO: update.update @ 258: 4815
+[2022-08-04 14:49:39.80] INFO: update.update @ 254: REN
+[2022-08-04 14:49:39.80] INFO: update.update @ 258: 29
+[2022-08-04 14:50:08.263] INFO: update.update @ 254: STAT
+[2022-08-04 14:50:08.288] INFO: update.update @ 258: 0
+[2022-08-04 14:50:44.51] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 14:50:44.119] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 14:50:44.190] DEBUG: update.db @ 120: Closing db
+[2022-08-04 14:50:44.208] DEBUG: update.db @ 122: Closed db
+[2022-08-04 14:50:44.210] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 15:20:46.556] INFO: update.update @ 249: 2022
+[2022-08-04 15:20:46.556] INFO: update.update @ 254: CAV
+[2022-08-04 15:20:46.556] DEBUG: update.db @ 112: Loading db
+[2022-08-04 15:20:46.558] INFO: update.update @ 258: 80
+[2022-08-04 15:20:46.558] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 15:22:20.537] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 15:23:28.979] INFO: update.update @ 254: CIT
+[2022-08-04 15:23:28.980] INFO: update.update @ 258: 15
+[2022-08-04 15:24:49.86] INFO: update.update @ 254: ELEC
+[2022-08-04 15:24:49.87] INFO: update.update @ 258: 6
+[2022-08-04 15:26:11.928] INFO: update.update @ 254: PRO
+[2022-08-04 15:26:11.942] INFO: update.update @ 258: 4815
+[2022-08-04 15:29:19.191] INFO: update.update @ 254: REN
+[2022-08-04 15:29:19.192] INFO: update.update @ 258: 29
+[2022-08-04 15:32:49.207] INFO: update.update @ 254: STAT
+[2022-08-04 15:32:49.207] INFO: update.update @ 258: 0
+[2022-08-04 15:36:38.986] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 15:36:39.78] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 15:36:39.179] DEBUG: update.db @ 120: Closing db
+[2022-08-04 15:36:39.180] DEBUG: update.db @ 122: Closed db
+[2022-08-04 15:36:39.182] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 16:06:41.427] INFO: update.update @ 249: 2022
+[2022-08-04 16:06:41.427] INFO: update.update @ 254: CAV
+[2022-08-04 16:06:41.428] DEBUG: update.db @ 112: Loading db
+[2022-08-04 16:06:41.429] INFO: update.update @ 258: 80
+[2022-08-04 16:06:41.430] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 16:08:03.252] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 16:09:14.750] INFO: update.update @ 254: CIT
+[2022-08-04 16:09:14.750] INFO: update.update @ 258: 15
+[2022-08-04 16:10:19.410] INFO: update.update @ 254: ELEC
+[2022-08-04 16:10:19.411] INFO: update.update @ 258: 6
+[2022-08-04 16:11:11.811] INFO: update.update @ 254: PRO
+[2022-08-04 16:11:11.840] INFO: update.update @ 258: 4819
+[2022-08-04 16:11:17.656] INFO: update.update @ 271: 4820
+[2022-08-04 16:12:43.802] INFO: update.update @ 254: REN
+[2022-08-04 16:12:43.803] INFO: update.update @ 258: 29
+[2022-08-04 16:13:26.399] INFO: update.update @ 254: STAT
+[2022-08-04 16:13:26.399] INFO: update.update @ 258: 0
+[2022-08-04 16:14:13.578] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 16:14:13.652] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 16:14:13.725] DEBUG: update.db @ 120: Closing db
+[2022-08-04 16:14:13.726] DEBUG: update.db @ 122: Closed db
+[2022-08-04 16:14:13.728] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 16:44:15.983] INFO: update.update @ 249: 2022
+[2022-08-04 16:44:15.983] INFO: update.update @ 254: CAV
+[2022-08-04 16:44:15.984] DEBUG: update.db @ 112: Loading db
+[2022-08-04 16:44:15.986] INFO: update.update @ 258: 80
+[2022-08-04 16:44:15.986] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 16:45:13.878] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 16:45:37.190] INFO: update.update @ 254: CIT
+[2022-08-04 16:45:37.192] INFO: update.update @ 258: 15
+[2022-08-04 16:45:58.389] INFO: update.update @ 254: ELEC
+[2022-08-04 16:45:58.390] INFO: update.update @ 258: 6
+[2022-08-04 16:46:21.390] INFO: update.update @ 254: PRO
+[2022-08-04 16:46:21.398] INFO: update.update @ 258: 4824
+[2022-08-04 16:46:40.613] INFO: update.update @ 254: REN
+[2022-08-04 16:46:40.614] INFO: update.update @ 258: 29
+[2022-08-04 16:47:02.393] INFO: update.update @ 254: STAT
+[2022-08-04 16:47:02.406] INFO: update.update @ 258: 0
+[2022-08-04 16:47:25.648] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 16:47:25.744] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 16:47:25.792] DEBUG: update.db @ 120: Closing db
+[2022-08-04 16:47:25.793] DEBUG: update.db @ 122: Closed db
+[2022-08-04 16:47:25.796] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 17:17:28.432] INFO: update.update @ 249: 2022
+[2022-08-04 17:17:28.432] INFO: update.update @ 254: CAV
+[2022-08-04 17:17:28.433] DEBUG: update.db @ 112: Loading db
+[2022-08-04 17:17:28.434] INFO: update.update @ 258: 80
+[2022-08-04 17:17:28.434] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 17:18:25.573] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 17:18:51.468] INFO: update.update @ 254: CIT
+[2022-08-04 17:18:51.470] INFO: update.update @ 258: 15
+[2022-08-04 17:19:14.946] INFO: update.update @ 254: ELEC
+[2022-08-04 17:19:14.960] INFO: update.update @ 258: 6
+[2022-08-04 17:19:40.195] INFO: update.update @ 254: PRO
+[2022-08-04 17:19:40.204] INFO: update.update @ 258: 4824
+[2022-08-04 17:20:06.880] INFO: update.update @ 254: REN
+[2022-08-04 17:20:06.881] INFO: update.update @ 258: 29
+[2022-08-04 17:20:26.893] INFO: update.update @ 254: STAT
+[2022-08-04 17:20:26.893] INFO: update.update @ 258: 0
+[2022-08-04 17:20:48.379] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 17:20:48.424] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 17:20:48.475] DEBUG: update.db @ 120: Closing db
+[2022-08-04 17:20:48.475] DEBUG: update.db @ 122: Closed db
+[2022-08-04 17:20:48.477] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 17:50:50.747] INFO: update.update @ 249: 2022
+[2022-08-04 17:50:50.752] INFO: update.update @ 254: CAV
+[2022-08-04 17:50:50.753] DEBUG: update.db @ 112: Loading db
+[2022-08-04 17:50:50.766] INFO: update.update @ 258: 80
+[2022-08-04 17:50:50.767] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-04 17:51:24.204] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-04 17:51:57.673] INFO: update.update @ 254: CIT
+[2022-08-04 17:51:57.676] INFO: update.update @ 258: 15
+[2022-08-04 17:52:29.386] INFO: update.update @ 254: ELEC
+[2022-08-04 17:52:29.387] INFO: update.update @ 258: 6
+[2022-08-04 17:52:51.747] INFO: update.update @ 254: PRO
+[2022-08-04 17:52:51.763] INFO: update.update @ 258: 4824
+[2022-08-04 17:53:11.833] INFO: update.update @ 254: REN
+[2022-08-04 17:53:11.834] INFO: update.update @ 258: 29
+[2022-08-04 17:53:32.374] INFO: update.update @ 254: STAT
+[2022-08-04 17:53:32.375] INFO: update.update @ 258: 0
+[2022-08-04 17:53:50.827] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-04 17:53:50.859] INFO: update.rescrape @ 484: rescraping
+[2022-08-04 17:53:50.883] DEBUG: update.db @ 120: Closing db
+[2022-08-04 17:53:50.884] DEBUG: update.db @ 122: Closed db
+[2022-08-04 17:53:50.924] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-04 18:23:53.328] DEBUG: update.db @ 120: Closing db
+[2022-08-04 18:23:53.328] DEBUG: update.db @ 122: Closed db
+[2022-08-04 18:23:53.329] INFO: update.update_db @ 87: Sleeping for 48966 seconds
+[2022-08-05 08:01:08.51] INFO: update.update @ 249: 2022
+[2022-08-05 08:01:08.60] INFO: update.update @ 254: CAV
+[2022-08-05 08:01:08.60] DEBUG: update.db @ 112: Loading db
+[2022-08-05 08:01:08.130] INFO: update.update @ 258: 80
+[2022-08-05 08:01:08.132] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 08:02:31.803] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 08:02:56.636] INFO: update.update @ 254: CIT
+[2022-08-05 08:02:56.638] INFO: update.update @ 258: 15
+[2022-08-05 08:03:20.500] INFO: update.update @ 254: ELEC
+[2022-08-05 08:03:20.505] INFO: update.update @ 258: 6
+[2022-08-05 08:03:45.429] INFO: update.update @ 254: PRO
+[2022-08-05 08:03:45.507] INFO: update.update @ 258: 4824
+[2022-08-05 08:04:14.665] INFO: update.update @ 254: REN
+[2022-08-05 08:04:14.667] INFO: update.update @ 258: 29
+[2022-08-05 08:04:45.689] INFO: update.update @ 254: STAT
+[2022-08-05 08:04:45.689] INFO: update.update @ 258: 0
+[2022-08-05 08:05:19.144] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 08:05:19.318] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 08:05:19.407] DEBUG: update.rescrape @ 487: PRO 4682/2022
+[2022-08-05 08:05:21.287] DEBUG: update.rescrape @ 487: PRO 4684/2022
+[2022-08-05 08:05:23.66] DEBUG: update.rescrape @ 487: PRO 4693/2022
+[2022-08-05 08:05:25.98] DEBUG: update.db @ 120: Closing db
+[2022-08-05 08:05:25.99] DEBUG: update.db @ 122: Closed db
+[2022-08-05 08:05:25.103] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 08:35:29.429] INFO: update.update @ 249: 2022
+[2022-08-05 08:35:29.445] INFO: update.update @ 254: CAV
+[2022-08-05 08:35:29.446] DEBUG: update.db @ 112: Loading db
+[2022-08-05 08:35:29.477] INFO: update.update @ 258: 80
+[2022-08-05 08:35:29.481] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 08:37:03.281] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 08:38:08.647] INFO: update.update @ 254: CIT
+[2022-08-05 08:38:08.656] INFO: update.update @ 258: 15
+[2022-08-05 08:38:56.588] INFO: update.update @ 254: ELEC
+[2022-08-05 08:38:56.609] INFO: update.update @ 258: 6
+[2022-08-05 08:39:42.27] INFO: update.update @ 254: PRO
+[2022-08-05 08:39:42.243] INFO: update.update @ 258: 4824
+[2022-08-05 08:40:33.670] INFO: update.update @ 254: REN
+[2022-08-05 08:40:33.692] INFO: update.update @ 258: 29
+[2022-08-05 08:41:29.481] INFO: update.update @ 254: STAT
+[2022-08-05 08:41:29.537] INFO: update.update @ 258: 0
+[2022-08-05 08:42:04.959] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 08:42:05.139] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 08:42:05.329] DEBUG: update.db @ 120: Closing db
+[2022-08-05 08:42:05.334] DEBUG: update.db @ 122: Closed db
+[2022-08-05 08:42:05.340] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 09:12:09.324] INFO: update.update @ 249: 2022
+[2022-08-05 09:12:09.335] INFO: update.update @ 254: CAV
+[2022-08-05 09:12:09.347] DEBUG: update.db @ 112: Loading db
+[2022-08-05 09:12:09.397] INFO: update.update @ 258: 80
+[2022-08-05 09:12:09.398] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 09:14:26.394] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 09:15:01.995] INFO: update.update @ 254: CIT
+[2022-08-05 09:15:01.998] INFO: update.update @ 258: 15
+[2022-08-05 09:15:47.138] INFO: update.update @ 254: ELEC
+[2022-08-05 09:15:47.179] INFO: update.update @ 258: 6
+[2022-08-05 09:16:46.649] INFO: update.update @ 254: PRO
+[2022-08-05 09:16:46.775] INFO: update.update @ 258: 4824
+[2022-08-05 09:17:32.592] INFO: update.update @ 254: REN
+[2022-08-05 09:17:32.593] INFO: update.update @ 258: 29
+[2022-08-05 09:18:02.847] INFO: update.update @ 254: STAT
+[2022-08-05 09:18:02.852] INFO: update.update @ 258: 0
+[2022-08-05 09:18:38.729] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 09:18:38.886] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 09:18:38.966] DEBUG: update.db @ 120: Closing db
+[2022-08-05 09:18:38.966] DEBUG: update.db @ 122: Closed db
+[2022-08-05 09:18:38.993] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 09:48:42.578] INFO: update.update @ 249: 2022
+[2022-08-05 09:48:42.584] INFO: update.update @ 254: CAV
+[2022-08-05 09:48:42.584] DEBUG: update.db @ 112: Loading db
+[2022-08-05 09:48:42.645] INFO: update.update @ 258: 80
+[2022-08-05 09:48:42.645] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 09:49:54.983] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 09:50:30.139] INFO: update.update @ 254: CIT
+[2022-08-05 09:50:30.150] INFO: update.update @ 258: 15
+[2022-08-05 09:51:20.126] INFO: update.update @ 254: ELEC
+[2022-08-05 09:51:20.352] INFO: update.update @ 258: 6
+[2022-08-05 09:52:00.376] INFO: update.update @ 254: PRO
+[2022-08-05 09:52:00.477] INFO: update.update @ 258: 4824
+[2022-08-05 09:52:46.637] INFO: update.update @ 254: REN
+[2022-08-05 09:52:46.650] INFO: update.update @ 258: 29
+[2022-08-05 09:53:40.332] INFO: update.update @ 254: STAT
+[2022-08-05 09:53:40.351] INFO: update.update @ 258: 0
+[2022-08-05 09:54:33.612] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 09:54:34.627] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 09:54:35.190] DEBUG: update.db @ 120: Closing db
+[2022-08-05 09:54:35.207] DEBUG: update.db @ 122: Closed db
+[2022-08-05 09:54:35.225] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 10:24:39.139] INFO: update.update @ 249: 2022
+[2022-08-05 10:24:39.139] INFO: update.update @ 254: CAV
+[2022-08-05 10:24:39.139] DEBUG: update.db @ 112: Loading db
+[2022-08-05 10:24:39.154] INFO: update.update @ 258: 80
+[2022-08-05 10:24:39.155] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 10:25:50.37] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 10:26:52.123] INFO: update.update @ 254: CIT
+[2022-08-05 10:26:52.125] INFO: update.update @ 258: 15
+[2022-08-05 10:27:29.718] INFO: update.update @ 254: ELEC
+[2022-08-05 10:27:29.723] INFO: update.update @ 258: 6
+[2022-08-05 10:28:11.506] INFO: update.update @ 254: PRO
+[2022-08-05 10:28:11.770] INFO: update.update @ 258: 4825
+[2022-08-05 10:29:21.244] INFO: update.update @ 254: REN
+[2022-08-05 10:29:21.250] INFO: update.update @ 258: 29
+[2022-08-05 10:30:22.579] INFO: update.update @ 254: STAT
+[2022-08-05 10:30:22.585] INFO: update.update @ 258: 0
+[2022-08-05 10:31:22.764] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 10:31:23.219] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 10:31:23.469] DEBUG: update.db @ 120: Closing db
+[2022-08-05 10:31:23.470] DEBUG: update.db @ 122: Closed db
+[2022-08-05 10:31:23.481] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 11:11:12.639] INFO: __init__.create_app @ 30: App startup in production mode
+[2022-08-05 11:11:12.641] INFO: update.update_public_holidays @ 215: Updating public holidays
+[2022-08-05 11:11:12.641] DEBUG: update.db @ 112: Loading db
+[2022-08-05 11:11:13.962] DEBUG: update.update_public_holidays @ 228: Updated public holidays
+[2022-08-05 11:11:13.962] DEBUG: update.public_holidays @ 196: Loading public holidays
+[2022-08-05 11:11:13.966] INFO: update.update @ 249: 2022
+[2022-08-05 11:11:13.966] INFO: update.update @ 254: CAV
+[2022-08-05 11:11:13.969] INFO: update.update @ 258: 80
+[2022-08-05 11:11:13.969] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 11:12:31.144] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 11:12:54.420] INFO: update.update @ 254: CIT
+[2022-08-05 11:12:54.421] INFO: update.update @ 258: 15
+[2022-08-05 11:13:16.835] INFO: update.update @ 254: ELEC
+[2022-08-05 11:13:16.841] INFO: update.update @ 258: 6
+[2022-08-05 11:13:39.182] INFO: update.update @ 254: PRO
+[2022-08-05 11:13:39.261] INFO: update.update @ 258: 4828
+[2022-08-05 11:13:42.212] INFO: update.update @ 271: 4830
+[2022-08-05 11:14:10.432] INFO: update.update @ 254: REN
+[2022-08-05 11:14:10.433] INFO: update.update @ 258: 29
+[2022-08-05 11:14:32.544] INFO: update.update @ 254: STAT
+[2022-08-05 11:14:32.544] INFO: update.update @ 258: 0
+[2022-08-05 11:14:55.611] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 11:14:55.642] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 11:14:55.721] DEBUG: update.db @ 120: Closing db
+[2022-08-05 11:14:55.723] DEBUG: update.db @ 122: Closed db
+[2022-08-05 11:14:55.727] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 11:44:58.135] INFO: update.update @ 249: 2022
+[2022-08-05 11:44:58.136] INFO: update.update @ 254: CAV
+[2022-08-05 11:44:58.137] DEBUG: update.db @ 112: Loading db
+[2022-08-05 11:44:58.139] INFO: update.update @ 258: 80
+[2022-08-05 11:44:58.139] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 11:46:14.954] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 11:46:39.648] INFO: update.update @ 254: CIT
+[2022-08-05 11:46:39.648] INFO: update.update @ 258: 15
+[2022-08-05 11:47:01.619] INFO: update.update @ 254: ELEC
+[2022-08-05 11:47:01.621] INFO: update.update @ 258: 6
+[2022-08-05 11:47:31.808] INFO: update.update @ 254: PRO
+[2022-08-05 11:47:31.870] INFO: update.update @ 258: 4832
+[2022-08-05 11:48:14.181] INFO: update.update @ 254: REN
+[2022-08-05 11:48:14.182] INFO: update.update @ 258: 29
+[2022-08-05 11:48:50.900] INFO: update.update @ 254: STAT
+[2022-08-05 11:48:50.902] INFO: update.update @ 258: 0
+[2022-08-05 11:49:14.776] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 11:49:14.823] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 11:49:14.876] DEBUG: update.db @ 120: Closing db
+[2022-08-05 11:49:14.876] DEBUG: update.db @ 122: Closed db
+[2022-08-05 11:49:14.885] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 12:19:17.71] INFO: update.update @ 249: 2022
+[2022-08-05 12:19:17.71] INFO: update.update @ 254: CAV
+[2022-08-05 12:19:17.72] DEBUG: update.db @ 112: Loading db
+[2022-08-05 12:19:17.73] INFO: update.update @ 258: 80
+[2022-08-05 12:19:17.74] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 12:20:28.930] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 12:21:00.307] INFO: update.update @ 254: CIT
+[2022-08-05 12:21:00.308] INFO: update.update @ 258: 15
+[2022-08-05 12:21:39.702] INFO: update.update @ 254: ELEC
+[2022-08-05 12:21:39.703] INFO: update.update @ 258: 6
+[2022-08-05 12:22:10.433] INFO: update.update @ 254: PRO
+[2022-08-05 12:22:10.452] INFO: update.update @ 258: 4836
+[2022-08-05 12:22:42.583] INFO: update.update @ 254: REN
+[2022-08-05 12:22:42.586] INFO: update.update @ 258: 29
+[2022-08-05 12:23:11.272] INFO: update.update @ 254: STAT
+[2022-08-05 12:23:11.273] INFO: update.update @ 258: 0
+[2022-08-05 12:23:35.812] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 12:23:35.876] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 12:23:35.971] DEBUG: update.db @ 120: Closing db
+[2022-08-05 12:23:35.971] DEBUG: update.db @ 122: Closed db
+[2022-08-05 12:23:35.983] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 12:53:38.66] INFO: update.update @ 249: 2022
+[2022-08-05 12:53:38.66] INFO: update.update @ 254: CAV
+[2022-08-05 12:53:38.67] DEBUG: update.db @ 112: Loading db
+[2022-08-05 12:53:38.68] INFO: update.update @ 258: 80
+[2022-08-05 12:53:38.68] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 12:54:43.66] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 12:55:17.106] INFO: update.update @ 254: CIT
+[2022-08-05 12:55:17.107] INFO: update.update @ 258: 15
+[2022-08-05 12:55:45.838] INFO: update.update @ 254: ELEC
+[2022-08-05 12:55:45.839] INFO: update.update @ 258: 6
+[2022-08-05 12:56:10.305] INFO: update.update @ 254: PRO
+[2022-08-05 12:56:10.314] INFO: update.update @ 258: 4839
+[2022-08-05 12:56:13.372] INFO: update.update @ 271: 4840
+[2022-08-05 12:56:46.369] INFO: update.update @ 254: REN
+[2022-08-05 12:56:46.370] INFO: update.update @ 258: 29
+[2022-08-05 12:57:16.872] INFO: update.update @ 254: STAT
+[2022-08-05 12:57:16.872] INFO: update.update @ 258: 0
+[2022-08-05 12:57:39.518] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 12:57:39.579] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 12:57:39.645] DEBUG: update.db @ 120: Closing db
+[2022-08-05 12:57:39.646] DEBUG: update.db @ 122: Closed db
+[2022-08-05 12:57:39.648] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 13:27:41.881] INFO: update.update @ 249: 2022
+[2022-08-05 13:27:41.882] INFO: update.update @ 254: CAV
+[2022-08-05 13:27:41.882] DEBUG: update.db @ 112: Loading db
+[2022-08-05 13:27:41.883] INFO: update.update @ 258: 80
+[2022-08-05 13:27:41.883] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 13:28:48.391] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 13:29:11.620] INFO: update.update @ 254: CIT
+[2022-08-05 13:29:11.621] INFO: update.update @ 258: 15
+[2022-08-05 13:29:32.712] INFO: update.update @ 254: ELEC
+[2022-08-05 13:29:32.713] INFO: update.update @ 258: 6
+[2022-08-05 13:29:57.141] INFO: update.update @ 254: PRO
+[2022-08-05 13:29:57.151] INFO: update.update @ 258: 4845
+[2022-08-05 13:30:17.54] INFO: update.update @ 254: REN
+[2022-08-05 13:30:17.54] INFO: update.update @ 258: 29
+[2022-08-05 13:30:42.401] INFO: update.update @ 254: STAT
+[2022-08-05 13:30:42.402] INFO: update.update @ 258: 0
+[2022-08-05 13:31:03.420] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 13:31:03.448] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 13:31:03.518] DEBUG: update.db @ 120: Closing db
+[2022-08-05 13:31:03.518] DEBUG: update.db @ 122: Closed db
+[2022-08-05 13:31:03.520] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 14:01:05.715] INFO: update.update @ 249: 2022
+[2022-08-05 14:01:05.716] INFO: update.update @ 254: CAV
+[2022-08-05 14:01:05.716] DEBUG: update.db @ 112: Loading db
+[2022-08-05 14:01:05.717] INFO: update.update @ 258: 80
+[2022-08-05 14:01:05.718] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 14:01:58.813] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 14:02:20.55] INFO: update.update @ 254: CIT
+[2022-08-05 14:02:20.56] INFO: update.update @ 258: 15
+[2022-08-05 14:02:41.979] INFO: update.update @ 254: ELEC
+[2022-08-05 14:02:41.981] INFO: update.update @ 258: 6
+[2022-08-05 14:03:05.157] INFO: update.update @ 254: PRO
+[2022-08-05 14:03:05.170] INFO: update.update @ 258: 4845
+[2022-08-05 14:03:30.914] INFO: update.update @ 254: REN
+[2022-08-05 14:03:30.916] INFO: update.update @ 258: 29
+[2022-08-05 14:03:57.427] INFO: update.update @ 254: STAT
+[2022-08-05 14:03:57.428] INFO: update.update @ 258: 0
+[2022-08-05 14:04:24.170] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 14:04:24.215] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 14:04:24.262] DEBUG: update.db @ 120: Closing db
+[2022-08-05 14:04:24.263] DEBUG: update.db @ 122: Closed db
+[2022-08-05 14:04:24.267] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 14:34:26.692] INFO: update.update @ 249: 2022
+[2022-08-05 14:34:26.693] INFO: update.update @ 254: CAV
+[2022-08-05 14:34:26.693] DEBUG: update.db @ 112: Loading db
+[2022-08-05 14:34:26.696] INFO: update.update @ 258: 80
+[2022-08-05 14:34:26.697] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 14:36:55.552] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 14:37:24.968] INFO: update.update @ 254: CIT
+[2022-08-05 14:37:24.969] INFO: update.update @ 258: 15
+[2022-08-05 14:38:00.664] INFO: update.update @ 254: ELEC
+[2022-08-05 14:38:00.665] INFO: update.update @ 258: 6
+[2022-08-05 14:38:25.112] INFO: update.update @ 254: PRO
+[2022-08-05 14:38:25.124] INFO: update.update @ 258: 4848
+[2022-08-05 14:38:47.0] INFO: update.update @ 254: REN
+[2022-08-05 14:38:47.0] INFO: update.update @ 258: 29
+[2022-08-05 14:39:09.253] INFO: update.update @ 254: STAT
+[2022-08-05 14:39:09.253] INFO: update.update @ 258: 0
+[2022-08-05 14:39:31.944] INFO: update.get_skipped_multipage_parties @ 404: Getting skipped multipage matters
+[2022-08-05 14:39:32.11] INFO: update.rescrape @ 484: rescraping
+[2022-08-05 14:39:32.45] DEBUG: update.db @ 120: Closing db
+[2022-08-05 14:39:32.46] DEBUG: update.db @ 122: Closed db
+[2022-08-05 14:39:32.48] INFO: update.update_db @ 87: Sleeping for 1800 seconds
+[2022-08-05 15:09:34.251] INFO: update.update @ 249: 2022
+[2022-08-05 15:09:34.252] INFO: update.update @ 254: CAV
+[2022-08-05 15:09:34.252] DEBUG: update.db @ 112: Loading db
+[2022-08-05 15:09:34.254] INFO: update.update @ 258: 80
+[2022-08-05 15:09:34.254] DEBUG: update.browser @ 129: Starting RoboBrowser session
+[2022-08-05 15:10:32.146] DEBUG: update.browser @ 149: RoboBrower ready for searching
+[2022-08-05 15:10:59.930] INFO: update.update @ 254: CIT
+[2022-08-05 15:10:59.931] INFO: update.update @ 258: 15
+[2022-08-05 15:11:24.616] INFO: update.update @ 254: ELEC
+[2022-08-05 15:11:24.618] INFO: update.update @ 258: 6
+[2022-08-05 15:11:48.437] INFO: update.update @ 254: PRO
+[2022-08-05 15:11:48.448] INFO: update.update @ 258: 4848
+[2022-08-05 15:11:51.419] INFO: update.update @ 271: 4850
