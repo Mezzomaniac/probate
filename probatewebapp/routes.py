@@ -14,24 +14,35 @@ def home():
     results = None
     if form.validate_on_submit():
         title = 'Search results'
-        search_parameters = processing.standardize_search_parameters(**form.data)
+        search_parameters = processing.standardize_search_parameters(
+            **form.data)
         db = get_db()
         results = processing.search(db, search_parameters)
         email = form.data['email'].strip()
         if email:
-            flash(f'A notification email will be sent to {email} if any matters/parties match this search.')
+            flash(
+                f'A notification email will be sent to {email} if any matters/parties match this search.'
+            )
             if 'robertsonhayles.com' in email:
-                app.logger.debug([tuple(row) for row in db.execute('select * from party_notification_requests')])
+                app.logger.debug([
+                    tuple(row) for row in db.execute(
+                        'select * from party_notification_requests')
+                ])
             processing.register(db, search_parameters, email)
             if 'robertsonhayles.com' in email:
-                app.logger.debug(f'New registration for {email}: {search_parameters}')
-                app.logger.debug([tuple(row) for row in db.execute('select * from party_notification_requests')])
+                app.logger.debug(
+                    f'New registration for {email}: {search_parameters}')
+                app.logger.debug([
+                    tuple(row) for row in db.execute(
+                        'select * from party_notification_requests')
+                ])
         #close_db()
-    return render_template('home.html', 
-    title=title, 
-    form=form, 
-    last_update=last_update, 
-    results=results)
+    return render_template('home_no_updater.html',
+                           title=title,
+                           form=form,
+                           last_update=last_update,
+                           results=results)
+
 
 @app.route('/manage_registration', methods=['GET', 'POST'])
 def manage_registration():
@@ -50,19 +61,30 @@ def manage_registration():
             start_year, 
             end_year 
             FROM party_notification_requests WHERE email = ?"""
-        party_notification_requests = [Notification(*party_notification_request) for party_notification_request in db.execute(command, (email,))]
+        party_notification_requests = [
+            Notification(*party_notification_request)
+            for party_notification_request in db.execute(command, (email, ))
+        ]
         secret_key = app.config['SECRET_KEY']
-        id_tokens = {party_notification_request.id: processing.create_token(party_notification_request.id, secret_key) for party_notification_request in party_notification_requests}
+        id_tokens = {
+            party_notification_request.id:
+            processing.create_token(party_notification_request.id, secret_key)
+            for party_notification_request in party_notification_requests
+        }
         email_token = processing.create_token(email, secret_key)
-        processing.send_message(email, 
-            'Notifications List', 
-            'list', 
-            notification_requests=party_notification_requests, 
-            id_tokens=id_tokens, 
+        processing.send_message(
+            email,
+            'Notifications List',
+            'list',
+            notification_requests=party_notification_requests,
+            id_tokens=id_tokens,
             email_token=email_token)
         #close_db()
         flash('The email has been sent.')
-    return render_template('manage_registration.html', title='Manage registration', form=form)
+    return render_template('manage_registration.html',
+                           title='Manage registration',
+                           form=form)
+
 
 @app.route('/cancel_registration/<token>')
 def cancel_registration(token):
@@ -71,21 +93,29 @@ def cancel_registration(token):
     db = get_db()
     if isinstance(value, int):
         with db:
-            db.execute('DELETE FROM party_notification_requests WHERE id = ?', (value,))
+            db.execute('DELETE FROM party_notification_requests WHERE id = ?',
+                       (value, ))
         flash('Your notification request has been cancelled.')
     elif isinstance(value, str):
         with db:
-            db.execute('DELETE FROM party_notification_requests WHERE email = ?', (value,))
+            db.execute(
+                'DELETE FROM party_notification_requests WHERE email = ?',
+                (value, ))
         flash('All your notification requests have been cancelled.')
     else:
-        flash(f"Your cancellation link has expired. Please visit <a href=\"{url_for('manage_registration')}\">Manage registration</a> to request a new cancellation link.")
+        flash(
+            f"Your cancellation link has expired. Please visit <a href=\"{url_for('manage_registration')}\">Manage registration</a> to request a new cancellation link."
+        )
     #close_db()
-    return render_template('cancel_registration.html', title='Cancel registration')
+    return render_template('cancel_registration.html',
+                           title='Cancel registration')
+
 
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404
-    
+
+
 @app.errorhandler(500)
 def internal_error(error):
     app.logger.error(error)
@@ -93,6 +123,7 @@ def internal_error(error):
         g.db.rollback()
         close_db()
     return render_template('500.html'), 500
+
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():

@@ -1165,3 +1165,4 @@ probatewebapp.update.ElodgmentChangeException: No "Probate" option in eLodgment:
 [2022-08-11 10:14:47.157] DEBUG: update.db @ 132: Closing db
 [2022-08-11 10:14:47.157] DEBUG: update.db @ 134: Closed db
 [2022-08-11 10:14:47.158] INFO: update.update_db @ 99: Sleeping for 86400 seconds
+[2022-08-11 12:32:13.388] INFO: __init__.create_app @ 31: App startup in production mode
