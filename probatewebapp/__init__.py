@@ -12,7 +12,7 @@ from .database import init_db, db_last_update, close_db
 from .update import update_db
 
 
-def create_app(test=False, setup=False, years=None):
+def create_app(*, test=False, setup=False, years=True):
     app = Flask(__name__)
     config = TestingConfig if test else Config
     app.config.from_object(config)
@@ -32,6 +32,8 @@ def create_app(test=False, setup=False, years=None):
 
     # Updater is disabled until further notice
     # because the source database is no longer available
-    #threading.Thread(target=update_db, name='updater_thread', args=(app,), kwargs={'setup': setup, 'years': years}).start()
+    if years:
+        app.config['UPDATING'] = True
+        threading.Thread(target=update_db, name='updater_thread', args=(app,), kwargs={'setup': setup, 'years': years}).start()
 
     return app

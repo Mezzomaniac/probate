@@ -21,8 +21,13 @@
     <p>Not case sensitive. You may use "%" as a multi-character wildcard and "_" as a single character wildcard.</p>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
+        {% if config['UPDATING'] %}
+        {% set exclusions = ("CSRFTokenField", "SubmitField") %}
+        {% else %}
+        {% set exclusions = ("CSRFTokenField", "SubmitField", "EmailField") %}
+        {% endif %}
         {% for field in form %}
-        {% if field.type not in ("CSRFTokenField", "SubmitField") %}
+        {% if field.type not in exclusions %}
         <div id="{{ field.id }}-div" class="field">
             {{ field.label }}<br>
             {{ field(size=32) }}<br>
@@ -43,18 +48,25 @@
         {% endif %}
         {% endwith %}
         </div>
+        {% if config['UPDATING'] %}
         <p>Click <a href="{{ url_for('manage_registration') }}">here</a> to manage existing notification requests.</p>
+        {% endif %}
         <p>{{ form.submit() }}</p>
     </form>
 </div>
-<aside><p>
-    Last database update: 
-    {% if last_update %}
-    <time datetime="{{ last_update }}">{{ last_update }}</time>
-    {% else %}
-    None
+<aside>
+    <p>
+        Last database update: 
+        {% if last_update %}
+        <time datetime="{{ last_update }}">{{ last_update }}</time>
+        {% else %}
+        None
+        {% endif %}
+    </p>
+    {% if not config['UPDATING'] %}
+    <p>Unfortunately, the source data is no longer accessible, so this database is no longer able to be updated.</p>
     {% endif %}
-</p></aside>
+</aside>
 <div id="results">
     {% if request.method == 'POST' %}
     <h2>Search results</h2>

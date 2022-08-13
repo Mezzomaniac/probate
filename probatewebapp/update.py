@@ -53,7 +53,7 @@ class ElodgmentChangeException(Exception):
     pass
 
 
-def update_db(app, setup=False, years=None):
+def update_db(app, setup=False, years=True):
     updater = ProbateDBUpdater(app)
     current_month = None
     while True:
@@ -276,12 +276,16 @@ class ProbateDBUpdater:
                 days -= 1
         return date
 
-    def update(self, years=None):
+    def update(self, years=True):
         this_year = datetime.date.today().year
+        if not years:
+            return
+        if years is True:
+            years = range(this_year, this_year + 1)
         try:
             years = range(years, years + 1)
         except TypeError:
-            years = years or range(this_year, this_year + 1)
+            pass
         for year in years:
             self.app.logger.info(year)
             for matter_type in MATTER_TYPES:

@@ -43,6 +43,7 @@ class Config:
     ELODGMENT_USERNAME = get_username('ELODGMENT')
     ELODGMENT_PASSWORD = get_password('ELODGMENT', ELODGMENT_USERNAME)
     LAST_UPDATE = None
+    UPDATING = False
 
 class TestingConfig(Config):
     TESTING = True

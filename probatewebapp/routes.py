@@ -37,7 +37,7 @@ def home():
                         'select * from party_notification_requests')
                 ])
         #close_db()
-    return render_template('home_no_updater.html',
+    return render_template('home.html',
                            title=title,
                            form=form,
                            last_update=last_update,
