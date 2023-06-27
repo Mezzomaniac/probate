@@ -1,8 +1,7 @@
 import datetime
 
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, StringField, SubmitField
-from wtforms.fields.html5 import EmailField, IntegerField
+from wtforms import BooleanField, EmailField, IntegerField, StringField, SubmitField
 from wtforms.validators import Optional, Email
 
 class SearchForm(FlaskForm):
