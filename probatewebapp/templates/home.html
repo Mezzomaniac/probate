@@ -21,14 +21,9 @@
     <p>Not case sensitive. You may use "%" as a multi-character wildcard and "_" as a single character wildcard.</p>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
-        {% if config['UPDATING'] %}
-        {% set exclusions = ("CSRFTokenField", "SubmitField") %}
-        {% else %}
-        {% set exclusions = ("CSRFTokenField", "SubmitField", "EmailField") %}
-        {% endif %}
         {% for field in form %}
-        {% if field.type not in exclusions %}
-        <div id="{{ field.id }}-div" class="field">
+        {% if field.type not in ("CSRFTokenField", "SubmitField") %}
+        <div id="{{ field.id }}-div" class="field" {{ field.render_kw["hidden"] }}>
             {{ field.label }}<br>
             {{ field(size=32) }}<br>
             {% for error in field.errors %}

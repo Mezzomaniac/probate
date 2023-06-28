@@ -402,3 +402,39 @@
 [2023-06-27 11:50:07.872] INFO: __init__.create_app @ 31: App startup in production mode
 [2023-06-27 11:57:07.382] INFO: __init__.create_app @ 31: App startup in production mode
 [2023-06-27 12:20:36.359] INFO: __init__.create_app @ 31: App startup in production mode
+[2023-06-27 12:43:06.624] INFO: __init__.create_app @ 31: App startup in production mode
+[2023-06-28 10:39:52.408] INFO: __init__.create_app @ 31: App startup in production mode
+[2023-06-28 11:07:22.325] ERROR: app.log_exception @ 1414: Exception on / [POST]
+Traceback (most recent call last):
+  File "/home/runner/probate/venv/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/runner/probate/venv/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/runner/probate/venv/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/runner/probate/venv/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/runner/probate/probatewebapp/routes.py", line 21, in home
+    email = form.data['email'].strip()
+AttributeError: 'NoneType' object has no attribute 'strip'
+[2023-06-28 11:07:30.169] ERROR: routes.internal_error @ 121: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+[2023-06-28 11:09:26.699] ERROR: app.log_exception @ 1414: Exception on / [POST]
+Traceback (most recent call last):
+  File "/home/runner/probate/venv/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/runner/probate/venv/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/runner/probate/venv/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/runner/probate/venv/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/runner/probate/probatewebapp/routes.py", line 21, in home
+    email = form.data['email'].strip()
+AttributeError: 'NoneType' object has no attribute 'strip'
+[2023-06-28 11:09:33.821] ERROR: routes.internal_error @ 121: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+[2023-06-28 11:50:44.484] INFO: __init__.create_app @ 31: App startup in production mode
+[2023-06-28 11:52:02.999] INFO: __init__.create_app @ 31: App startup in production mode
+[2023-06-28 11:52:23.817] INFO: __init__.create_app @ 31: App startup in production mode
+[2023-06-28 11:52:46.394] INFO: __init__.create_app @ 31: App startup in production mode
+[2023-06-28 11:58:15.86] INFO: __init__.create_app @ 31: App startup in production mode
+[2023-06-28 12:01:33.335] INFO: __init__.create_app @ 31: App startup in production mode

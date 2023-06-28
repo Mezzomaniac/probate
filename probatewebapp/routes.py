@@ -10,6 +10,8 @@ from . import processing
 def home():
     title = 'Home'
     form = SearchForm()
+    if not app.config['UPDATING']:
+        form.email.render_kw = {"hidden": "hidden"}
     last_update = app.config['LAST_UPDATE']
     results = None
     if form.validate_on_submit():
@@ -20,9 +22,7 @@ def home():
         results = processing.search(db, search_parameters)
         email = form.data['email'].strip()
         if email:
-            flash(
-                f'A notification email will be sent to {email} if any matters/parties match this search.'
-            )
+            flash(f'A notification email will be sent to {email} if any matters/parties match this search.')
             if 'robertsonhayles.com' in email:
                 app.logger.debug([
                     tuple(row) for row in db.execute(
